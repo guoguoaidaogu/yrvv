@@ -1,3 +1,12 @@
+## .gitignore
+
+.DS_Store
+
+html/
+.obsidian/
+
+## The following are the TeX template from Github.
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
