@@ -1,0 +1,55 @@
+% 附录
+\chapter{二次曲线系的退化元素与交比参数}
+
+本附录补充曲线系的一个结构性的结论。
+
+\begin{proposition}
+设 $a,b,c,d$ 是平面上四个点，其中任意三点不共线。则经过这四点的二次线系中含有三条退化的
+二次线，它们分别是四条连线两两配对的对称积。
+\end{proposition}
+
+\begin{proof}
+四点两两连共有六条直线，分成三对互不相交的对边：
+\[
+l_1=a\times d,\quad l_1'=b\times c;\qquad
+l_2=a\times c,\quad l_2'=d\times b;\qquad
+l_3=a\times b,\quad l_3'=c\times d .
+\]
+把三条退化二次线写为
+\[
+h_1=(l_1l_1'),\qquad h_2=(l_2l_2'),\qquad h_3=(l_3l_3').
+\]
+$h_1$ 对应的点集是 $l_1\cup l_1'$，它经过 $a,b,c,d$ 四点；$h_2,h_3$ 同理。三点不共线保证这
+四点确实落在两条直线上（而不落在一条直线上），故三者确实不同。又二次线系由两个线性无关的
+元素生成，而 $h_1,h_2,h_3$ 满足一个线性关系（六条连线之间有三组对边，对应 $h_1,h_2,h_3$ 的
+线性相关），因此它们给出的正是曲线系中全部的退化元素。
+\end{proof}
+
+\begin{proposition}
+上述曲线系可以写成
+\begin{equation}
+g=((a\times d),(b\times c))+\lambda\,((a\times c),(d\times b)),
+\label{eq:appendix-pencil}
+\end{equation}
+即由两条退化二次线生成。式中的参数 $\lambda$ 具有几何意义：它等于 $a,b,c,d$ 四点在 $g$ 上的交比。
+\end{proposition}
+
+\begin{proof}[证明要点]
+由前一条命题，$g$ 是这两条退化二次线的线性组合，故形如 \eqref{eq:appendix-pencil}。
+关于 $\lambda$ 的几何意义：在 $g$ 上任取一点 $P$，以 $P$ 为心把曲线系上的四点投影为线束，
+交比是射影不变量，算出该交比即得 $\lambda$。计算得知
+\[
+g=((a\times b),(c\times d))\quad\Longleftrightarrow\quad \lambda=1,
+\]
+即 $\lambda=1$ 给出第三条退化二次线；而当
+\[
+g:(ab)(cd)=0\quad\Longleftrightarrow\quad \lambda=-1
+\]
+时，$a,b,c,d$ 在 $g$ 上成调和点列。
+\end{proof}
+
+\begin{remark}
+\eqref{eq:appendix-pencil} 中 $\lambda$ 的取值与生成的曲线系之间是一一对应的，
+因此四点 $a,b,c,d$ 确定了一个以 $\lambda$ 为参数的曲线族；$\lambda=-1$（调和）与
+$\lambda=1$（第三条退化二次线）是这个族中两个特殊的位置。
+\end{remark}

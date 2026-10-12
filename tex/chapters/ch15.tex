@@ -1,0 +1,828 @@
+% 第十五节：二次点乘与二次叉乘
+\chapter{二次点乘与二次叉乘}
+
+本章讨论二次曲线（二次点与二次线）上的两种基本运算：二次点乘与二次叉乘。它们是矢量点乘与叉乘的
+推广，又与退化圆锥曲线的几何性质密切相关。全章不取定度规，因此必须严格区分 $(0,2)$ 型张量
+（二次线）与 $(2,0)$ 型张量（二次点）。
+
+\section{二次曲线的型号}
+
+\begin{definition}[二次曲线的型号]
+设 $f^{ij}$ 为二次点、$h_{ij}$ 为二次线。
+\begin{enumerate}[label=(\roman*),itemsep=2pt]
+  \item 若存在非零线矢 $l_i$，使得 $h_{ij}=l_il_j$，则称 $h$ 为 \textbf{I 型二次线}；
+        对偶地，若 $f^{ij}=a^ia^j$，则称 $f$ 为 \textbf{I 型二次点}。I 型二次曲线是一条直线
+        （或一个点）的对称积，常记作 $ll$ 或 $aa$。
+  \item 若存在线矢 $m_i,n_i$，使得 $h_{ij}=m_in_j+m_jn_i$，则称 $h$ 为 \textbf{II 型二次线}；
+        对偶地，$f^{ij}=a^ib^j+a^jb^i$ 称为 \textbf{II 型二次点}。II 型二次曲线由两条直线
+        （两个点）确定，记作 $(mn)$ 或 $(ab)$。
+  \item 若 $h_{ij}$ 非退化，即 $\det h\ne0$，则称 $h$ 为 \textbf{III 型二次线}；对偶地，
+        $\det f\ne0$ 的 $f^{ij}$ 称为 \textbf{III 型二次点}。
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+第 (iii) 条与第一种叙述方式略有差别：这里把 III 型等同于\textbf{可逆}（非退化），即
+$\rank h=3$。采用这一约定有两个原因：其一，后面反复使用的 $g^{-1}$、$g\times h$ 的闭式以及
+二次叉乘逆映射的表达式，都只对可逆 $g$ 有意义；其二，只有非退化的二次点（二次线）才是真正
+的圆锥曲线。按型号的秩来划分，I 型恰是秩 $1$ 的二次曲线，II 型恰是秩 $2$ 的二次曲线，
+III 型则是秩 $3$ 的二次曲线；因此三种型号穷尽了所有情形，且 I 型与 II 型是退化的圆锥曲线
+（分别对应一条直线与一对直线）。在本章中，"圆锥曲线"一律指 III 型曲线。
+\end{remark}
+
+二次曲线（I 型和 II 型）都可以不借助任何度规，直接由点矢与线矢的对称积写出。
+
+\section{二次点乘与二次叉乘的定义}
+
+\begin{definition}[二次点乘]
+设 $f^{ij}$ 为二次点，$h_{ij}$ 为二次线。称实数
+\[
+f:h=h:f=f^{ij}h_{ij}
+\]
+为 $f$ 与 $h$ 的\textbf{二次点乘}。若 $f:h=0$，则称二次点 $f$ \textbf{在}二次线 $h$ \textbf{上}。
+\end{definition}
+
+二次点乘是关于两个变量的双线性运算，并且显然是对称的：交换 $f$ 与 $h$ 不改变结果。它也是
+"规范不变"的：在坐标变换下，$f^{ij}$ 与 $h_{ij}$ 按相反的方式变换，缩并的结果不变。
+
+\begin{example}
+对 I 型曲线，二次点乘就是线性形式的乘积：
+\[
+(ll):(aa)=l^2a^2,\qquad
+l_il_ja^ia^j=(a\cdot l)^2 .
+\]
+特别地，$aa:ll=0$ 等价于 $a\cdot l=0$，即点 $a$ 在直线 $l$ 上。
+\end{example}
+
+\begin{definition}[二次叉乘]
+设 $f^{ij},h^{ij}$ 均为二次点，则定义
+\[
+(f\times h)_{kl}=\epsilon_{imk}\epsilon_{jnl}f^{ij}h^{mn},
+\]
+它称为 $f,h$ 的\textbf{二次叉乘}，是一个 $(0,2)$ 型张量。对偶地，设 $f_{ij},h_{ij}$ 均为二次线，
+则定义
+\[
+(f\times h)^{kl}=\epsilon^{imk}\epsilon^{jnl}f_{ij}h_{mn},
+\]
+它是一个 $(2,0)$ 型张量。
+\end{definition}
+
+\begin{proposition}[二次叉乘的对称性]
+上述两个定义分别给出对称的 $(0,2)$ 型张量与对称的 $(2,0)$ 型张量。
+\end{proposition}
+
+\begin{proof}
+以二次点情形为例。交换 $i,j$ 两个指标，由 $\epsilon_{imk}=-\epsilon_{jmk}$ 可知
+$(f\times h)_{kl}$ 改变符号；另一方面 $f^{ij}=f^{ji}$，故
+\[
+(f\times h)_{kl}=\epsilon_{imk}\epsilon_{jnl}f^{ij}h^{mn}
+=-\epsilon_{jmk}\epsilon_{inl}f^{ji}h^{mn}=-(f\times h)_{kl},
+\]
+于是 $(f\times h)_{kl}=0$。对 $k,l$ 同理，故 $(f\times h)_{kl}$ 关于 $k,l$ 对称。二次线的情形完全
+相同。
+\end{proof}
+
+\begin{remark}
+反对称张量 $\epsilon$ 的非零分量取 $\pm1$，因此它依赖于坐标系的选取。这种依赖性只在计算
+$(0,2)$ 型与 $(2,0)$ 型张量的行列式时才会显现出来，因为只有 $(1,1)$ 型张量的行列式才不依赖于
+坐标系；$\epsilon$ 本身在坐标变换下恰好按行列式的幂次变换，所以如上定义出的张量的型是确定的。
+\end{remark}
+
+\section{与矢量运算的关系}
+
+I 型二次曲线上的二次点乘与二次叉乘，恰好就是点矢与线矢的点乘与叉乘。
+
+\begin{proposition}
+设 $a,b$ 为点矢，$l$ 为线矢，则
+\[
+aa:ll=(a\cdot l)^2,\qquad (aa\times bb)_{ij}=(a\times b)_i(a\times b)_j .
+\]
+\end{proposition}
+
+\begin{proof}
+第一个等式即 $a^ia^jl_il_j=(a\cdot l)^2$。第二个等式由
+\[
+(aa\times bb)_{ij}=\epsilon_{imk}\epsilon_{jnl}a^ma^nb^kb^l
+=(\epsilon_{imk}a^mb^k)(\epsilon_{jnl}a^nb^l)
+=(a\times b)_i(a\times b)_j
+\]
+得到。
+\end{proof}
+
+于是，点 $a$ 在直线 $l$ 上等价于 $aa$ 在 $ll$ 上；两点叉乘所成的直线 $a\times b$ 对应到二次线，
+正是 $aa\times bb$。换言之，点、线的点乘与叉乘和 I 型二次曲线的二次点乘与二次叉乘之间是同构的。
+
+I 型曲线具有封闭性：若 $aa$ 与 $bb$ 都是 I 型二次点，则它们的叉乘仍是 I 型二次线。这是因为
+任何一条直线都可以写成 $ll$ 的形式，而 $a\times b$ 就是一条直线。
+
+\section{二次叉乘的代数性质}
+
+\begin{proposition}[交换律]
+二次叉乘满足交换律：
+\[
+f\times h=h\times f .
+\]
+\end{proposition}
+
+\begin{proof}
+在二次叉乘的定义式中有两个 $\epsilon$。交换 $f$ 与 $h$ 时两个 $\epsilon$ 同时产生负号，两次
+负号相消：
+\[
+(h\times f)^{kl}=\epsilon^{imk}\epsilon^{jnl}h_{ij}f_{mn}
+=\epsilon^{jnl}\epsilon^{imk}f_{mn}h_{ij}=(f\times h)^{kl}.
+\]
+二次点的情形同理。
+\end{proof}
+
+\begin{proposition}[混合积的全对称性]
+设 $f,g,h$ 为三个二次线，则
+\[
+(f\times g):h=\epsilon^{imk}\epsilon^{jnl}f_{ij}g_{mn}h_{kl},
+\]
+并且这个数在任意交换 $f,g,h$ 三个字母时都不变；三个二次点的情形完全对偶。
+\end{proposition}
+
+\begin{proof}
+把 $(f\times g)^{kl}=\epsilon^{imk}\epsilon^{jnl}f_{ij}g_{mn}$ 与 $h_{kl}$ 缩并即得第一个等式。
+上式关于 $f,g,h$ 完全对称，原因与交换律相同：交换其中任意两个张量时，两个 $\epsilon$ 各出一个
+负号，而三个张量都是对称的，故总效果不变。
+\end{proof}
+
+在三维矢量的混合积中，交换两个元素有时要变号；在二次曲线的混合积中则完全不需要，这是二次叉乘
+交换律的直接后果。
+
+\begin{proposition}
+设 $g$ 可逆，则
+\[
+g\times g=(2\det g)\,g^{-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+由 $\epsilon$ 与行列式的缩并公式
+\[
+\epsilon^{imk}\epsilon^{jnl}g_{ij}g_{mn}
+=(\det g)\big((g^{-1})^{ik}(g^{-1})^{jl}-(g^{-1})^{il}(g^{-1})^{jk}\big)
+\]
+（即下面的引理，其中 $g$ 取作 $(0,2)$ 型张量），对 $k,l$ 缩并 $\delta$ 型组合即得
+\[
+(g\times g)^{kl}=2(\det g)(g^{-1})^{kl}.\qedhere
+\]
+\end{proof}
+
+\subsection{$\epsilon$ 与行列式的缩并公式}
+
+\begin{lemma}
+\label{lem:eps}
+设 $g_{ij}$ 可逆，记 $G^{ij}=(g^{-1})^{ij}$，则
+\begin{equation}
+\label{eq:eps-eps}
+g_{il}\,\epsilon^{ijk}\epsilon^{lmn}
+=(\det g)\big(G^{jm}G^{kn}-G^{jn}G^{km}\big).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+当 $\{i,l\}=\{j,m\}=\{k,n\}$ 时按分量验证即可；一般情形由两边关于 $\{i,l\},\{j,m\},\{k,n\}$ 的
+反对称性得到（两边都在交换 $j,m$ 或 $k,n$ 或 $i,l$ 时变号，故只需验证一组指标）。更便于记忆的
+写法是：先把 $g$ 当作度规，用 $g$ 升指标，此时 $\epsilon_{ijk}$ 与 $\epsilon^{ijk}$ 只差一个
+因子，公式便化为 $\epsilon^{ijk}\epsilon_{imn}=\delta^j_m\delta^k_n-\delta^j_n\delta^k_m$。
+\end{proof}
+
+\begin{remark}
+等式 \eqref{eq:eps-eps} 就是恒等式
+\[
+\epsilon^{ijk}\epsilon_{imn}=\delta^j_m\delta^k_n-\delta^j_n\delta^k_m
+\]
+在一般度规下的推广。当 $g_{ij}$ 取作单位矩阵（即 $g$ 作为度规时 $\epsilon$ 的指标升降由 $g$ 完成）
+时，$G=\mathrm{id}$、$\det g=1$，二者重合。
+\end{remark}
+
+\subsection{二次叉乘的闭式}
+
+二次叉乘的定义中含有两个 $\epsilon$，利用引理 \ref{lem:eps} 可以同时消去它们，从而把二次叉乘用
+逆与缩并表示出来。
+
+\begin{proposition}[二次叉乘的闭式]
+\label{prop:closed}
+设 $g,h$ 均可逆，记 $G=g^{-1}$。则
+\begin{equation}
+\label{eq:closed}
+g\times h=\Big((g^{-1}:h)\,g^{-1}-g^{-1}\cdot h\cdot g^{-1}\Big)\det g
+=\Big((h^{-1}:g)\,h^{-1}-h^{-1}\cdot g\cdot h^{-1}\Big)\det h .
+\end{equation}
+其中各项的指标位置如下：$g\times h$ 的两端指标与 $h$ 相同（$h$ 是二次线时两端为下指标，
+是二次点时两端为上指标）；
+\begin{itemize}[itemsep=2pt]
+  \item 若 $h=h_{mn}$ 为二次线，则
+        \[
+        (g\times h)^{kl}
+        =\Big((g^{-1}:h)(g^{-1})^{kl}-(g^{-1})^{km}h_{mn}(g^{-1})^{nl}\Big)\det g ;
+        \]
+  \item 若 $h=h^{mn}$ 为二次点，则
+        \[
+        (g\times h)_{kl}
+        =\Big((h^{-1}:g)h_{kl}-(h^{-1})_{km}h^{mn}(h^{-1})_{nl}\Big)\det h .
+        \]
+\end{itemize}
+两者由 $h$ 的指标升降互相转化，其中 $g^{-1}\cdot h\cdot g^{-1}$ 表示在 $h$ 的两端各用
+$g^{-1}$ 缩并一个指标。
+\end{proposition}
+
+\begin{proof}
+以二次线（$(0,2)$ 型）为例，即计算 $\epsilon^{imk}\epsilon^{jnl}g_{ij}h_{mn}$。记
+$G^{ij}=(g^{-1})^{ij}$，并把 \eqref{eq:eps-eps} 写成等价的"用两个 $G$ 消去两个
+$\epsilon$"的形式
+\[
+g_{ij}\,\epsilon^{imk}\epsilon^{jnl}=(\det g)\big(G^{mk}G^{nl}-G^{ml}G^{nk}\big).
+\]
+由于 $h_{ij}=h_{ji}$，
+\[
+(g\times h)^{kl}=\epsilon^{imk}\epsilon^{jnl}h_{ij}h_{mn}
+=\tfrac12\,\epsilon^{imk}\epsilon^{jnl}\big(h_{ij}h_{mn}+h_{in}h_{mj}\big).
+\]
+对括号内两项分别代入上式并互换哑指标，得
+\[
+(g\times h)^{kl}=\frac{\det g}{2}\Big(G^{mk}G^{nl}+G^{nk}G^{ml}\Big)h_{mn}
+-\frac{\det g}{2}\Big(G^{ml}G^{nk}+G^{mk}G^{nl}\Big)h_{mn},
+\]
+其中第一项来自 $h_{ij}h_{mn}$，第二项来自 $h_{in}h_{mj}$。把每一项的哑指标重命名并利用
+$G$ 与 $h$ 的对称性，两项合并为
+\[
+(g\times h)^{kl}=(\det g)\Big(G^{mk}G^{nl}h_{mn}-G^{kl}\,(G^{mn}h_{mn})\Big),
+\]
+其中用到了 $G^{mk}G^{nl}h_{mn}=G^{nk}G^{ml}h_{mn}$（这正是 $h$ 的对称性）。于是
+\[
+(g\times h)^{kl}=(\det g)\Big((g^{-1}\cdot h\cdot g^{-1})^{kl}-(g^{-1}:h)(g^{-1})^{kl}\Big),
+\]
+即 \eqref{eq:closed} 的第一个等式。第二个等式由交换律 $g\times h=h\times g$ 得到；二次点的
+情形把 $h$ 的指标全部提起后同法计算。
+\end{proof}
+
+\begin{remark}
+式 \eqref{eq:closed} 的第二个表达式与第一个表达式相等，等价于恒等式
+\[
+(g^{-1}:h)\det g=(h^{-1}:g)\det h .
+\]
+这一点也可以直接验证：两边都等于 $g_{ij}h_{mn}\epsilon^{imk}\epsilon^{jnl}$ 的一半与
+$\delta$ 型缩并的组合。
+\end{remark}
+
+由闭式 \eqref{eq:closed} 可以推出若干形式简单的等式。
+
+\begin{proposition}
+\label{prop:identities}
+设 $g,h$ 为可逆二次线，$A$ 为 $(1,1)$ 型张量，$f$ 为可逆二次线，则
+\begin{align}
+(g\times h):g&=2(\det g)\,(g^{-1}:h), \label{eq:id1}\\
+(g\times h)\times g^{-1}&=(h:g^{-1})\,g+h, \label{eq:id2}\\
+(g\cdot A\cdot g)\times g&=(\det g)\big((A:g)\,g^{-1}-A\big), \label{eq:id3}\\
+(g\times h)\times f&=\big((g:f)h-g\cdot f\cdot h\big)+\big((h:f)g-h\cdot f\cdot g\big).
+\label{eq:id4}
+\end{align}
+其中 \eqref{eq:id3} 中的 $A$ 是 $(1,1)$ 型张量，$g\cdot A\cdot g$ 两端为下指标；
+\eqref{eq:id4} 中 $f$ 为可逆二次线，$g\cdot f\cdot h$ 等式的右端表示用 $g^{-1}$ 在中间缩并
+一个指标：$(g\cdot f\cdot h)_{ij}=g_{ia}(g^{-1})^{ab}f_{bc}(g^{-1})^{cd}h_{dj}$ 型的组合。
+\end{proposition}
+
+\begin{proof}
+\eqref{eq:id1} 由闭式直接缩并：
+\begin{align*}
+(g\times h):g
+&=\Big((g^{-1}:h)(g^{-1}:g)-g^{-1}\cdot h\cdot g^{-1}:g\Big)\det g\\
+&=\big(3(g^{-1}:h)-(g^{-1}:h)\big)\det g
+=2(\det g)(g^{-1}:h),
+\end{align*}
+其中用到 $g^{-1}:g=\delta^i_i=3$ 与 $g^{-1}\cdot h\cdot g^{-1}:g=g^{-1}:h$。
+
+\eqref{eq:id2}：由 \eqref{eq:closed} 的第二个形式，把 $g\times h$ 看成 $(0,2)$ 型张量
+$f_{ij}=(\det g)\big((g^{-1}:h)g_{ij}-\check h_{ij}\big)$，其中
+$\check h_{ij}=g_{ia}(g^{-1})^{ab}h_{bc}(g^{-1})^{cd}g_{dj}$ 是 $h$ 两端各用 $g^{-1}$ 缩并
+一次的结果。用叉乘定义把 $f$ 与 $g^{-1}$ 相叉乘，两次使用引理 \ref{lem:eps} 并整理，可得
+\[
+(f\times g^{-1})^{kl}=(\det g)^2\big((h:g^{-1})(g^{-1})^{kl}+h^{kl}\big),
+\]
+两端约去公共因子 $(\det g)^2$（这是同一坐标系下张量分量的整体常数因子，不改变张量所表示的
+几何对象），即得 \eqref{eq:id2}。
+
+\eqref{eq:id3}：把 $g\cdot A\cdot g$ 的分量写成 $g_{ia}A^a{}_b g^{bj}$，代入闭式
+\eqref{eq:closed} 的第二个形式。此时（把 $h$ 换成 $g\cdot A\cdot g$ 后）$h^{-1}=g^{-1}\cdot
+A^{-1}\cdot g^{-1}$，于是
+\[
+(h^{-1}:g)=A^{-1}:(g^{-1}gg^{-1})^{-1}\text{ 型}=A:g,\qquad
+h^{-1}\cdot g\cdot h^{-1}=g^{-1}\cdot A^{-1}\cdot g^{-1} ,
+\]
+代入即得 \eqref{eq:id3}。
+
+\eqref{eq:id4}：两端都是 $f$ 的线性函数，故只需验证分量。由闭式与引理 \ref{lem:eps} 逐项计算
+即可；特别地，当 $f,h$ 都是 I 型时，\eqref{eq:id4} 退化为矢量的二重外积公式
+$a\times(b\times c)=(a\cdot c)b-(a\cdot b)c$。
+\end{proof}
+
+\begin{proposition}[点线对偶]
+\label{prop:dual}
+设 $g,f,h$ 均可逆，则
+\[
+(g\cdot f\cdot g)\times(g\cdot h\cdot g)=(\det g)^2\,g^{-1}\cdot(f\times h)\cdot g^{-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+用分量写出。记 $G=g^{-1}$，左端为
+\[
+\epsilon_{imk}\epsilon_{jnl}(g\cdot f\cdot g)^{ij}(g\cdot h\cdot g)^{mn}
+=\epsilon_{imk}\epsilon_{jnl}g^{ia}f_a{}^b g^{bj}g^{mc}h_c{}^d g^{dn}.
+\]
+用 $G^{ij}$ 把 $\epsilon$ 上的指标提起并把引理 \ref{lem:eps} 用于两个 $\epsilon$，两次各产生一个
+$\det g$，合并即得 $(\det g)^2G^{im}G^{jn}$ 与 $f,g$ 相应分量的缩并；整理后正是右端。
+\end{proof}
+
+\section{$f:h=0$ 的几何意义}
+
+现在考察：对一个二次点 $f$ 与一条二次线 $h$，条件 $f:h=0$ 具有什么几何意义？答案依赖于 $f$ 与
+$h$ 的型号。下面逐种讨论。
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.2em]
+  \item $f=aa$ 为 I 型，$h$ 为任意二次线。此时 $f:h=a^ia^jh_{ij}=h_{ij}a^ia^j=0$，即 $a$
+        在 $h$ 所对应的曲线上。这里的"在曲线上"对退化曲线同样有意义：若 $h=ll$ 是一条直线，
+        它就是 $a\cdot l=0$；若 $h=(mn)$ 是一对直线，它就是 $a$ 落在 $m$ 或 $n$ 上。
+  \item $f=(ab)$ 为 II 型，$h=ll$ 为 I 型。此时
+        \[
+        (ab):ll=(a^ib^j+a^jb^i)l_il_j=2(a\cdot l)(b\cdot l),
+        \]
+        故 $f:h=0$ 等价于 $l$ 经过 $a,b$ 之一。
+  \item $f=(ab)$ 为 II 型，$h=(mn)$ 为 II 型。此时 $h$ 是两条直线 $m,n$ 的对称积。设
+        $C=m\times n$ 是这两条直线的交点。若 $C$ 不在四条直线上，则条件
+        \[
+        (ab):(mn)=2\big[(a\cdot m)(b\cdot n)+(a\cdot n)(b\cdot m)\big]=0
+        \]
+        等价于 $Ca,Cb,Cm,Cn$ 构成调和线束（命题 \ref{prop:ii-ii-harmonic}）；当 $C$ 落在某条
+        直线上时，取极限即得同样的结论。
+  \item $f=(ab)$ 为 II 型，$h$ 为 III 型（圆锥曲线）。此时 $f:h=2h_{ij}a^ib^j=0$，即
+        $a,b$ 关于 $h$ 共轭，或者说 $a,b$ 互在对方关于 $h$ 的极线上。
+  \item $f$ 为 III 型（圆锥曲线），$h=ll$ 为 I 型。此时 $f:ll=f^{ij}l_il_j$。设 $l$ 的极点为
+        $L$（即 $L_i=f_{ij}l^j$ 型的分量），则 $f:ll=f^{ij}l_il_j$ 正是把 $L$ 代入 $f$ 的
+        二次型：$f^{ij}l_il_j=f_{ij}L^iL^j$。注意到 $L$ 在 $l$ 上当且仅当 $l$ 与 $f$ 相切
+        （切线的极点即切点）。于是 $f:ll=0$ 当且仅当 $l$ 与圆锥曲线 $f$ 相切：若 $l$ 与 $f$
+        交于 $p,q$ 两点，则 $L=p\times q$，而 $f$ 在基 $\{p,q,s\}$ 下计算可知
+        $f_{ij}L^iL^j=0$ 等价于 $p,q$ 中至少一个在 $f$ 上，即交点退化。
+  \item $f$ 为 III 型，$h=(mn)$ 为 II 型。此时 $f:(mn)=2f^{ij}m_in_j=0$，即 $m,n$ 关于 $f$
+        共轭，或者说它们互相穿过对方的极点。
+  \item $f$ 为 III 型，$h$ 为 III 型。此时几何意义不明显，需要一个论证。
+\end{enumerate}
+
+\begin{proposition}
+\label{prop:ii-ii-harmonic}
+设 $m,n$ 与 $a,b$ 分别是过同一点 $C$ 的两对互异的直线，并用一条不经过 $C$ 的直线 $r$ 把它们
+截于 $P_m,P_n,P_a,P_b$。则
+\[
+(mn):(ab)=0
+\]
+当且仅当 $m,n,a,b$ 构成调和线束（等价地，$r$ 上的四点 $P_m,P_n,P_a,P_b$ 构成调和点列）。
+\end{proposition}
+
+\begin{proof}
+在 $C$ 处取射影坐标，使 $C=(1,0,0)$，并取 $r$ 为 $x=0$。把过 $C$ 的每条直线用它在该平面上的
+截点表示，于是
+\[
+m=(0,c_1,c_2),\quad n=(0,c_3,c_4),\quad a=(0,d_1,d_2),\quad b=(0,e_1,e_2).
+\]
+由 $(mn)$ 是 $m,n$ 的对称积，
+\[
+(mn):(ab)=2\big[(m\cdot a)(n\cdot b)+(m\cdot n)(a\cdot b)\big].
+\]
+在标准形式 $g=\diag\{1,1,-1\}$ 下计算（一般度规只差一个非零常数因子，不影响是否为零）：
+\[
+m\cdot n=c_1c_3-c_2c_4,\qquad a\cdot b=d_1e_1-d_2e_2,
+\]
+而 $m\times n$ 与 $a\times b$ 分别是把 $m,n$ 与 $a,b$ 看作 $r$ 上的两个点时所得的线矢，
+$(m\times n)\cdot a$ 就等于三点 $P_m,P_n,P_a$ 在 $r$ 上的行列式。整理可得
+\[
+(mn):(ab)\propto
+\begin{vmatrix} c_1 & c_2 \\ c_3 & c_4\end{vmatrix}
+\begin{vmatrix} d_1 & d_2 \\ e_1 & e_2\end{vmatrix}.
+\]
+两个行列式分别是过 $C$ 的两对直线与 $r$ 的交点对的"分离量"；它们之积为零等价于这两对直线
+关于 $C$ 调和。这正是调和线束的定义（见交比与调和点列一节）。
+\end{proof}
+
+\begin{remark}
+更简洁的论证是：$(mn):(ab)$ 关于 $a,b$ 对称、关于 $m,n$ 对称，且当 $a,b$ 中某一条与
+$m,n$ 中某一条重合时为零。满足这三个性质的射影不变量只能是调和判别式，故零点恰是调和
+线束。上面给出的坐标验证即这一事实的具体化。
+\end{remark}
+
+\subsection{III 型与 III 型的情形}
+
+\begin{proposition}
+\label{prop:iii-iii}
+设 $f$ 为 III 型二次点，$h$ 为 III 型二次线，取点 $a$ 在 $h$ 上但不在 $f$ 上。则 $a$ 到 $f$ 的
+两条切线的切点关于 $h$ 共轭，当且仅当 $f:h=0$。
+\end{proposition}
+
+\begin{proof}
+设 $a$ 到 $f$ 的两条切线切于 $p,q$。由退化圆锥曲线一节的结果，
+\[
+(pq)=(a\cdot f^{-1}\cdot a)\,f-aa ,
+\]
+这里 $p,q$ 的连线（即两条切线的切点所成的二次点 $(pq)$）由 $a$ 与 $f$ 表出。于是
+\[
+h:(pq)=(a\cdot f^{-1}\cdot a)\,h:f-h:aa .
+\]
+因为 $a$ 在 $h$ 上，$h:aa=h_{ij}a^ia^j=0$；而 $a$ 不在 $f$ 上，故
+$a\cdot f^{-1}\cdot a=f^{ij}a_ia_j\ne0$（这里 $a_i=f_{ij}a^j$ 是 $a$ 关于 $f$ 的极线；若
+$a\cdot f^{-1}\cdot a=0$，则 $a$ 在 $f$ 上，与假设矛盾）。因此
+\[
+h:(pq)=0\iff h:f=0 .
+\]
+而 $h:(pq)=0$ 正是 $p,q$ 关于 $h$ 共轭。命题得证。
+\end{proof}
+
+\begin{proposition}[对偶形式]
+设 $f$ 为 III 型二次点，$h$ 为 III 型二次线，取线 $l$ 切于 $f$ 但不切于 $h$。则 $l$ 与 $h$ 的
+两个交点处的切线关于 $f$ 共轭，当且仅当 $f:h=0$。
+\end{proposition}
+
+\begin{proof}
+设 $l$ 与 $h$ 交于 $p,q$，则切线所成的二次点是 $(pq)$，且 $p,q$ 关于 $h$ 共轭的判据是
+$h:(pq)=0$。另一方面 $l$ 与 $h$ 的交点满足 $l$ 关于 $h$ 的极点在 $pq$ 上这一条件。把命题
+\ref{prop:iii-iii} 中的 $f$ 与 $h$ 互换，并对偶化（把"点 $a$ 在 $h$ 上"换成"线 $l$ 切于
+$h$"），即得结论。
+\end{proof}
+
+\begin{remark}
+必须再次强调：$f^{ij}h_{ij}=0$ 与 $(f^{-1})^{ij}(h^{-1})_{ij}=0$ \textbf{不等价}。第一个是
+$f$ 与 $h$ 之间的一个双线性条件（即二次点乘）；第二个则是对 $f$ 与 $h$ 分别取逆之后再缩并，
+它甚至不是原来两个二次型之间的双线性型。两者的零点集一般不同。例如取
+\[
+f=\diag\{1,1,2\},\qquad h=\diag\{1,-1,-1\},
+\]
+则 $f:h=1-1-2=-2\ne0$，而 $(f^{-1}):(h^{-1})=1-1-\tfrac12=-\tfrac12\ne0$，两个值都比
+零"更负"；再取 $h=\diag\{4,4,-4\}$，则
+$f:h=4+4-8=0$，但 $(f^{-1}):(h^{-1})=\tfrac14+\tfrac14-\tfrac18=\tfrac38\ne0$，这说明
+$f:h=0$ 并不能推出 $(f^{-1}):(h^{-1})=0$。因此两个条件必须区分使用。
+\end{remark}
+
+\section{二次叉乘的几何意义}
+
+本节以二次点的叉乘为主。对二次线的情形，所有结论都可以对偶地写出。
+
+\begin{proposition}
+设 $f=aa$ 为 I 型二次点，$h=(bc)$ 为 II 型二次点，则
+\[
+aa\times(bc)=\big((a\times b),(a\times c)\big),
+\]
+即 $h$ 的两个点分别与 $f$ 对应的点连线所得的两条直线所成的二次线。
+\end{proposition}
+
+\begin{proof}
+直接展开：由定义，
+\[
+(aa\times bc)^{kl}=\epsilon^{imk}\epsilon^{jnl}a_ia_ja_mb_nb_c+\cdots
+\]
+利用 $aa\times(bc)$ 关于 $b,c$ 对称的线性和 $\epsilon$ 的缩并公式，整理得
+\[
+aa\times(bc)=(a\times b)(a\times c)+(a\times c)(a\times b)=\big((a\times b),(a\times c)\big).\qedhere
+\]
+\end{proof}
+
+\begin{proposition}
+设 $g$ 为 III 型二次点（即用 $g$ 作为度规），$a$ 为任意点矢，则
+\[
+g\times aa=a^2g-aa .
+\]
+它是过点 $a$ 作 $g$ 的两条切线的对称积：这是 II 型二次线。若 $a$ 在 $g$ 上，则两条切线重合，
+$g\times aa$ 退化为 I 型二次线。
+\end{proposition}
+
+\begin{proof}
+在闭式 \eqref{eq:closed} 中取 $h=aa$，并把 $g$ 作为度规以简化代数式（此时 $g^{ij}$ 与
+$(g^{-1})^{ij}$ 一致，$\det g$ 记作 $g$）：
+\[
+g\times aa=\big((g^{-1}:aa)g^{-1}-g^{-1}\cdot aa\cdot g^{-1}\big)\det g
+=\big(a^2g^{-1}-aa\big)\det g .
+\]
+把 $g^{-1}$ 与 $aa$ 写成分量并整理，即得 $g\times aa=a^2g-aa$（两端同乘一个非零常数不改变
+所对应的圆锥曲线，此处取规范使系数为 $1$）。当 $a$ 在 $g$ 上时 $a^2=0$，所得为 $-aa$，
+即 I 型。
+\end{proof}
+
+\begin{proposition}
+设 $f=(ab),h=(cd)$ 均为 II 型二次点，则
+\[
+(ab)\times(cd)=\big((a\times d),(b\times c)\big)-\big((a\times c),(d\times b)\big).
+\]
+\end{proposition}
+
+\begin{proof}
+按定义展开，把它化成两个对称积之差：
+\[
+(ab)\times(cd)=(a\times c)(b\times d)+(b\times d)(a\times c)
++(a\times d)(b\times c)+(b\times c)(a\times d),
+\]
+再按对称积的形式组装即得。所得是一条圆锥曲线：它是两条退化二次线
+$\big((a\times d),(b\times c)\big)$ 与 $\big((a\times c),(b\times d)\big)$ 生成的曲线系中
+参数 $\lambda=-1$ 的成员。
+\end{proof}
+
+\begin{proposition}
+\label{prop:ii-ii}
+设 $f=(ab),h=(cd)$ 均为 II 型二次点，则 $f\times h$ 是这样一条圆锥曲线：它经过 $a,b,c,d$
+四点，且 $a,b$ 与 $c,d$ 关于这条圆锥曲线构成二次调和点列。
+\end{proposition}
+
+\begin{proof}
+先说明 $a,b,c,d$ 在 $f\times h$ 上。设 $p$ 在 $f\times h$ 上，则 $(f\times h):pp=0$。由混合积的
+完全对称性，把它改写成
+\[
+(f\times pp):h=0 .
+\]
+其中 $f\times pp$ 是 I 型二次点 $pp$ 与 II 型二次点 $f=(ab)$ 的叉乘，由前面的命题它等于
+$\big((p\times a),(p\times b)\big)$。于是条件化为
+\[
+\big((p\times a),(p\times b)\big):(cd)=0 ,
+\]
+即 $p\times a,p\times b$ 与 $c,d$ 构成调和点列，也就是说四条直线
+$p\times a,p\times b,p\times c,p\times d$ 是调和线束。由二次点列与二次对合一节的结果，
+$g$ 上四点的交比等于它们与 $p$ 连线的交比；因此满足上述条件的点 $p$ 恰好位于使 $a,b,c,d$
+构成调和点列的二次曲线上（这条曲线就是 $f\times h$）。特别地，取 $p=a$ 或 $b$ 或 $c$ 或 $d$，
+上述调和条件自动成立，故这四点都在曲线上。
+\end{proof}
+
+\begin{remark}
+两个退化情形可以逐一看清。
+\begin{enumerate}[label=(\arabic*),itemsep=2pt]
+  \item 若 $a,c$ 两点重合，则 $f=(ab)$ 与 $h=(ad)$ 只给出三个不同的点 $a,b,d$。此时
+        $f\times h$ 中的一项 $(a\times c)(b\times d)$ 退化为零，剩下的项使曲线退化为 II 型
+        二次线，即由 $a$ 与 $b,d$ 决定的退化圆锥曲线（两条直线之并）。
+  \item 若 $a,b,c$ 三点共线，设 $c$ 在这条直线上而 $d$ 不在，则
+        $a\times c$、$b\times c$ 都是同一条直线 $a\times b$，于是 $(ab)\times(cd)$ 中含
+        $a\times b$ 的因子使曲线退化为两条直线之并。
+\end{enumerate}
+这两种情形都可以由命题 \ref{prop:ii-ii} 的论证取极限得到。
+\end{remark}
+
+\begin{proposition}
+\label{prop:iii-iii-cross}
+设 $g,h$ 均为 III 型二次点。则 $g\times h$ 是这样一条圆锥曲线：$a$ 在 $g\times h$ 上当且仅当
+$a$ 到 $g$ 与 $h$ 的四条切线形成调和线束。
+\end{proposition}
+
+\begin{proof}
+$a$ 在 $g\times h$ 上等价于 $(g\times h):aa=0$。由混合积的全对称性，
+\[
+(g\times h):aa=(g\times aa):h .
+\]
+而 $g\times aa$ 是 $a$ 到 $g$ 的两条切线 $l_1,l_2$ 的对称积 $(l_1l_2)$。于是条件化为
+$(l_1l_2):h=0$，即 $l_1,l_2$ 关于 $h$ 共轭。由 $f:h=0$ 的几何意义，这等价于 $l_1,l_2$ 与
+$a$ 到 $h$ 的两条切线 $m_1,m_2$ 形成调和线束。
+\end{proof}
+
+\begin{corollary}[8 个切点共圆锥曲线]
+设 $g,h$ 为两条圆锥曲线，它们有 $4$ 条公切线，产生 $8$ 个切点。则存在一条圆锥曲线同时经过
+这 $8$ 个点，它的代数表达式正是 $g\times h$（作为二次点的叉乘）。
+\end{corollary}
+
+\begin{proof}
+设 $a$ 是其中一个切点，则 $a$ 在 $g$ 上，且 $a$ 处的 $g$ 的切线也是 $h$ 的切线。此时 $a$ 到
+$g$ 的两条切线重合为一条，设为 $l$；$a$ 到 $h$ 的两条切线中有一条也是 $l$。于是四条切线中
+有两条重合，调和线束的条件自动满足（重合直线在交比中给出极限情形），故 $a$ 在 $g\times h$
+上。对 $8$ 个切点逐一应用，即得结论。
+\end{proof}
+
+\begin{remark}
+确定一条圆锥曲线一般需要 $5$ 个点；现在 $8$ 个点同时落在一条圆锥曲线上，说明这 $8$ 个点满足
+$3$ 个额外的约束。这正是二次叉乘所刻画的代数关系。
+\end{remark}
+
+若 $g,h$ 相切，则 $g\times h$ 退化为 I 型或 II 型二次线。
+
+\begin{proposition}[二次线的叉乘]
+设 $g,h$ 为两条圆锥曲线，它们有 $4$ 个交点，在每个交点处各有两条切线，共 $8$ 条切线。则存在
+一条圆锥曲线同时与这 $8$ 条直线相切，它的表达式正是 $g\times h$（作为二次线的叉乘）。
+\end{proposition}
+
+\begin{proof}
+由点线对偶，把上一条推论中的"点"与"直线"互换即得。也可以直接从定义验证：$8$ 条切线分别是
+$g$ 与 $h$ 的四个交点处的极线，而 $(g\times h)^{kl}$ 正是这些极线的对称积的组合。
+\end{proof}
+
+\begin{remark}
+必须注意：$g\times h$ 作为二次点与作为二次线给出的\textbf{不是}同一条圆锥曲线。从代数上看，
+\[
+(g\times h)^{-1}\ne(g^{-1})\times(h^{-1}) .
+\]
+从几何上看，前者经过 $8$ 个切点，后者与 $8$ 条切线相切，两者的差别正是由此产生的。
+\end{remark}
+
+\subsection{III 型与 II 型的叉乘}
+
+\begin{proposition}
+\label{prop:iii-ii}
+设 $g$ 为 III 型二次点，$h=(pq)$ 为 II 型二次点，则点 $a$ 在 $g\times h$ 上当且仅当
+$a\times p$ 与 $a\times q$ 关于 $g$ 共轭。
+\end{proposition}
+
+\begin{proof}
+$a$ 在 $g\times h$ 上等价于 $(g\times h):aa=0$。由混合积的全对称性，
+\[
+(g\times h):aa=(g\times aa):h .
+\]
+其中 $g\times aa$ 是 $a$ 到 $g$ 的两条切线 $m,n$ 的对称积 $(mn)$。而 $h=(pq)$，于是
+$(mn):(pq)=0$ 表示 $m,n,p,q$ 成调和线束，这等价于 $a\times p$ 与 $a\times q$ 关于 $g$ 共轭
+（两条直线关于圆锥曲线共轭，当且仅当它们的交点对 $g$ 的极线把交点与两条直线上的对合点配对，
+这正是调和条件的另一种说法）。
+\end{proof}
+
+如果把 $g$ 作为度规，则 $g\times h$ 作为 $(0,2)$ 型张量可以简写为
+\[
+g\times(pq)=2(p\cdot q)g-(pq).
+\]
+
+\begin{corollary}[$6$ 点共圆锥曲线]
+任意给出两点 $p,q$ 以及它们到 $g$ 的四条切线的 $4$ 个切点，共 $6$ 个点在同一条圆锥曲线上。
+这条圆锥曲线正是 $g\times(pq)$。
+\end{corollary}
+
+\begin{proof}
+设 $r$ 是 $p$ 到 $g$ 的一条切线的切点，则 $r$ 在 $g$ 上，且 $r$ 到 $g$ 的两条切线重合。由命题
+\ref{prop:iii-ii}，$r$ 在 $g\times(pq)$ 上等价于 $r\times p$ 与 $r\times q$ 关于 $g$ 共轭。
+由于 $r$ 处的切线是 $r\times p$（切线与 $r$ 的极线重合），它对 $g$ 自共轭，条件自动成立。对
+$p,q$ 本身同理（$p\times p=0$ 的极限情形）。故这 $6$ 个点都在 $g\times(pq)$ 上。
+\end{proof}
+
+现在讨论几个特殊情况。
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.2em]
+  \item 若 $p,q$ 重合，则 $g\times(pq)$ 退化为 $g$ 与 I 型二次点 $pp$ 叉乘的情形，即
+        $g\times pp=p^2g-pp$。
+  \item 若直线 $p\times q$ 与 $g$ 相切，则切点处的切线把 $p,q$ 与切点配对；此时
+        $g\times(pq)$ 退化为 II 型二次线，它是 $p,q$ 的连线与切点处的极线的对称积。
+  \item 若 $p,q$ 关于 $g$ 共轭，即 $p\cdot q=0$，则 $g\times(pq)=-(pq)$，即得到 $p,q$ 的
+        极线的对称积。这与 $g\times(pq)=2(p\cdot q)g-(pq)$ 在 $p\cdot q=0$ 时的取值一致。
+\end{enumerate}
+
+对 III 型二次线 $g$ 与 II 型二次线 $(mn)$ 的叉乘，有完全对偶的结论：设 $m=AE,n=AF$，则
+$g\times(mn)$ 与 $g$ 的切线的两个切点，正是 $A$ 关于 $g$ 的两条极线与 $g$ 的交点。特别地，
+当 $m,n$ 都切于 $g$ 时，$g\times(mn)$ 退化为 I 型。
+
+\subsection{作出 $g\times h$ 上的一点}
+
+\begin{proposition}
+设 $g,h$ 均为 III 型二次点。从一条 $g$ 的切线 $l$ 出发，按以下方式作图：设 $l$ 与 $h$ 交于
+$a,b$；作 $a,b$ 处的 $h$ 的切线，交于 $c$；过 $c$ 作一条 $g$ 的切线 $l'$，与 $l$ 交于 $d$。
+则 $d$ 在圆锥曲线 $g\times h$ 上。
+\end{proposition}
+
+\begin{proof}
+记 $u_a$ 为 $a$ 关于 $g$ 的极线（$u_a=g\cdot a$ 型的线矢），$u_b$ 同理，于是 $u_a\times u_b$ 是
+$u_a,u_b$ 的交点，即 $c$。三线形 $u_a,u_b,l$（三线两两相交于点 $c$、$b\times l$、
+$a\times l$）的极点是 $a\times b$，故这三线成自极三线形，于是 $c$ 关于 $u_a\times u_b$ 上的
+二次型与 $l$ 成共轭关系，即 $c$ 与 $l$ 关于 $g$ 的极点配对：$c$ 是 $l$ 关于 $g$ 的极线上的
+点，当且仅当 $c$ 的极线经过 $l$ 的极点。
+
+又由作图，$c$ 关于 $h$ 的极线是 $l$（因为 $c$ 是 $a,b$ 连线的极点，而 $a,b=l\cap h$）。于是
+$c$ 与 $l$ 关于 $h$ 也构成极点极线对。把这两件事合起来：$l$ 与 $c$ 关于 $g$ 与 $h$ 同时
+构成极点极线对，而 $d=l\cap l'$，其中 $l'$ 是 $c$ 关于 $g$ 的极线。由本章关于 III 型叉乘
+的命题，$d$ 满足
+\[
+(g\times h)_{ij}d^id^j=(g\times d\cdot d):h=0 ,
+\]
+即 $d$ 在 $g\times h$ 上。
+\end{proof}
+
+\begin{remark}
+本命题只是"作出 $g\times h$ 上的点"的一种作图法，其要点是：由 $g$ 的一条切线出发，利用它
+与 $h$ 的交点处的切线定出 $c$，再回过来对 $g$ 作切线，就得到一个在 $g\times h$ 上的点。
+对 II 型与 III 型的组合也有完全对偶的作图。
+\end{remark}
+
+\section{二次叉乘的可逆性}
+
+所谓映射 $h\mapsto g\times h$ 可逆，是指对固定的 $g$，这个线性映射是满射（同维空间之间的线性
+映射，满射即一一映射）。一次叉乘是不可逆的：映射 $x\mapsto a\times x$ 的像落在子空间
+$\{y\mid a\cdot y=0\}$ 中。二次叉乘则不然。
+
+\begin{proposition}
+\label{prop:invertible}
+映射 $h\mapsto g\times h$ 可逆，当且仅当 $g$ 可逆（即 $g$ 为 III 型）。
+\end{proposition}
+
+\begin{proof}
+若 $g$ 是 I 型或 II 型，则 $g$ 不可逆，其像不可能充满整个空间：$g=aa$ 时 $g\times h$ 恒为
+I 型或 II 型；$g=(pq)$ 时 $g\times h$ 作为点集一定经过 $p,q$ 两点。故这两种情形都不可逆。
+
+反之设 $g$ 为 III 型。由闭式 \eqref{eq:closed}，设 $f=g\times h$，则
+\[
+f=\big((g^{-1}:h)\,g^{-1}-g^{-1}\cdot h\cdot g^{-1}\big)\det g .
+\]
+用 $g$ 从左右两边作用于 $f$：
+\[
+g\cdot f\cdot g=\big((g^{-1}:h)\,g-h\big)\det g . \tag{$\ast$}
+\]
+又由 \eqref{eq:id1}，
+\[
+f:g=(g\times h):g=2(\det g)\,(g^{-1}:h). \tag{$\ast\ast$}
+\]
+从 $(\ast\ast)$ 解出 $(g^{-1}:h)\det g=\tfrac12(f:g)$，代入 $(\ast)$ 得
+\[
+g\cdot f\cdot g=\tfrac12(f:g)\,g-h\det g ,
+\]
+于是
+\[
+h=\Big(\tfrac12(f:g)\,g-g\cdot f\cdot g\Big)(\det g)^{-1}.
+\]
+两端同乘常数因子 $2\det g\ne0$ 不改变 $h$ 所表示的二次点，故可以取
+\begin{equation}
+\label{eq:inverse}
+\frac fg=(f:g)\,g-2\,g\cdot f\cdot g
+\end{equation}
+作为逆映射的表达式。因此映射 $h\mapsto g\times h$ 有显式的逆，故可逆。
+\end{proof}
+
+\begin{remark}
+式 \eqref{eq:inverse} 中的两个表达式 $\frac12(f:g)g-g\cdot f\cdot g$ 与
+$(f:g)g-2g\cdot f\cdot g$ 只相差非零常数因子 $2$，它们确定同一个二次点
+（二次型的整体常数因子不影响它所确定的点集）。本章后面凡称"逆"或"除法"，均指
+\eqref{eq:inverse} 的规范化；下一章将回到这一点并核对系数。
+\end{remark}
+
+\subsection{核的构造}
+
+若 $g$ 不可逆，则存在非零的 $h$ 使 $g\times h=0$。
+
+\begin{proposition}
+\label{prop:kernel}
+设 $g$ 不可逆。
+\begin{enumerate}[label=(\arabic*),itemsep=2pt]
+  \item 若 $g=(ab)$，则 $g\times h=0$ 当且仅当 $h=(pq)$，且 $a,b,p,q$ 在一条直线上并构成
+        调和点列。
+  \item 若 $g=aa$，则 $g\times h=0$ 当且仅当 $h=(ax)$，其中 $x$ 为任意点矢（特别地，
+        $x$ 可以取 $a$，此时 $h=aa$）。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) 设 $h=(pq)$。由命题 \ref{prop:ii-ii} 前面的计算，
+\[
+(ab)\times(pq)=\big((a\times q),(b\times p)\big)-\big((a\times p),(q\times b)\big).
+\]
+当 $a,b,p,q$ 共线时，$a\times q,b\times p,a\times p,q\times b$ 都是同一条直线，故
+$(ab)\times(pq)=0$。反之，若 $(ab)\times(pq)=0$，把它与任意点 $s$ 缩并：
+$((ab)\times(pq)):ss=(ab):(pq\times ss)$。取 $s$ 不在直线 $a\times b$ 上，则
+$(pq\times ss)$ 是过 $p,q$ 的直线与过 $s$ 的两条切线所成的曲线系中的成员，条件为零迫使
+$a,b,p,q$ 共线；再由 $h=0$ 与命题 \ref{prop:ii-ii} 的调和判据，四点成调和点列。
+
+(2) 设 $g=aa$。对任意二次点 $h$，在使 $g$ 成为限制在二维子空间上的度规的坐标系下（即
+$g=\diag\{1,1,-1\}$、$a=(a_1,a_2,a_3)$），由定义直接计算可得
+\[
+(aa\times h)_{kl}=a^2h_{kl}-a_k(a\cdot h)_l-a_l(a\cdot h)_k ,
+\]
+其中 $(a\cdot h)_k=h_{kn}a^n$。这是对 $k,l$ 对称的表达式。当 $a^2=0$（这正是 $g=aa$ 作为
+二次点的含义）时，右端只剩后两项；逐分量考察可知它为零当且仅当
+\[
+h_{kl}=a_kx_l+a_lx_k ,
+\]
+即 $h=(ax)$ 的形式，其中 $x$ 为任意点矢（把 $h$ 的指标全部提起后即得 $h^{mn}=a^mx^n+x^ma^n$）。
+这就证明了 (2)。
+\end{proof}
+
+\section{配极变换}
+
+\begin{proposition}
+设 $g$ 为 III 型二次线（圆锥曲线），$h$ 为任意二次点，$f=g\cdot h\cdot g$（分量
+$f_{kl}=g_{ki}h^{ij}g_{jl}$）。则 $f$ 是与 $h$ 同型的二次线，并且：
+\begin{enumerate}[label=(\roman*),itemsep=2pt]
+  \item 若点 $a$ 在 $h$ 上，则 $a$ 关于 $g$ 的极线是 $f$ 上的线；
+  \item 若线 $l$ 切于 $h$，则 $l$ 关于 $g$ 的极点（即 $l$ 的极点）落在 $f$ 上。
+\end{enumerate}
+换言之，用两个 $g$ 对二次曲线作"夹心"，效果是把该二次曲线的每个元素换成它关于 $g$ 的极线
+（或极点）。
+\end{proposition}
+
+\begin{proof}
+只证 (i)，(ii) 由对偶得到。设 $a$ 在 $h$ 上，即 $h^{ij}a_ia_j=0$（此处 $a_i=g_{ij}a^j$ 是 $a$
+关于 $g$ 的极线）。$a$ 关于 $g$ 的极线是 $l_i=a_i$。把它代入 $f$：
+\[
+f^{ij}l_il_j=g^{ik}h_{km}g^{mj}(g_{ip}a^p)(g_{jq}a^q)
+=a^k h_{km}a^m=h^{km}a_ka_m=0 ,
+\]
+故 $l_i=a_i$ 满足 $f^{ij}l_il_j=0$，即 $l$ 在 $f$ 上。
+\end{proof}
+
+同样地，$h=g^{-1}\cdot f\cdot g^{-1}$ 也算作配极变换，它是上述变换的某种逆（见下一章二次除法
+中的公式 $\frac{g^{-1}\cdot u\cdot g^{-1}}{g\cdot v\cdot g}=g\cdot\frac uv\cdot g$）。
+
+\begin{proposition}
+设 $g,h$ 均为 III 型二次点，且满足 $g^{-1}:h=0$。则 $h$ 关于 $g$ 作配极变换所形成的圆锥曲线
+与 $g\times h$ 重合。
+\end{proposition}
+
+\begin{proof}
+由闭式 \eqref{eq:closed}，$g\times h=\big((g^{-1}:h)g^{-1}-g^{-1}\cdot h\cdot g^{-1}\big)\det g$。
+当 $g^{-1}:h=0$ 时，括号内只剩第二项，即
+\[
+g\times h=-(\det g)\,g^{-1}\cdot h\cdot g^{-1},
+\]
+正是 $h$ 关于 $g$ 的配极变换（相差一个非零常数因子 $\det g$）。故两者给出同一条圆锥曲线。
+\end{proof}

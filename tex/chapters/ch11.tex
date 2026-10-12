@@ -1,0 +1,540 @@
+% 第十节：二次点列与二次对合
+\chapter{二次点列与二次对合}
+
+\section{二次点列}
+
+本章取定一条非退化圆锥曲线 $g_{ij}$，并把它当作度规使用。本章只有这一条圆锥曲线被用作度规，
+因此一律用 $g$ 升降指标，$g^{ij}$ 就是 $g$ 的逆 $(g^{-1})^{ij}$；退化二次曲线 $h$ 不是度规，
+不用它升降指标。
+
+\begin{definition}[二次点列]
+设 $g_{ij}$ 是一条圆锥曲线。满足
+\[
+a^2=g_{ij}a^ia^j=0
+\]
+的点 $a$ 称为 $g$ 上的\emph{二次点}；$g$ 上全体二次点组成的集合称为 $g$ 上的
+\emph{二次点列}。
+\end{definition}
+
+直线上的点列是一维对象，二次点列同样是一维对象，只是它没有事先指定的坐标。下面说明它也可以
+定义交比，并且定义方式与直线上的点列完全平行。
+
+\subsection{二次点列的交比}
+
+\begin{definition}[二次点列的交比]\label{def:doublecross}
+设 $a,b,c,d$ 是 $g$ 上四个互不相同的点，$P$ 是 $g$ 上异于这四点的点。过 $P$ 的四条直线
+$P\times a,\ P\times b,\ P\times c,\ P\times d$ 构成一次线束，把它的交比记为
+\[
+J(P)=\frac{[Pac][Pbd]}{[Pad][Pbc]},
+\]
+其中 $[Pac]=(P\times a)\cdot c=\eps_{ijk}P^ia^jc^k$ 是三点的混合积。$J(P)$ 称为
+$a,b,c,d$ 关于 $P$ 的交比；若它与 $P$ 无关，就把这个公共值称为 $a,b,c,d$ 的交比，记作
+$J_{ab,cd}$。
+\end{definition}
+
+上述定义就是把二次点列上的点从 $P$ 射影为一次线束中的直线，再取这个线束的交比，与第九节关于
+射影的讨论一致。关键的事实是这个交比与 $P$ 的选取无关。
+
+\begin{theorem}[交比与辅助点无关]\label{thm:doublecross}
+设 $a,b,c,d$ 是圆锥曲线 $g$ 上四个互不相同的点，则对 $g$ 上任意异于这四点的点 $P$，由
+定义~\ref{def:doublecross} 给出的 $J(P)$ 都相等。
+\end{theorem}
+
+\begin{proof}
+\textbf{第一步：计算 $J(P)^2$。}
+取以 $P,a,c$ 为三列的矩阵 $M$。由 $\det(AB)=(\det A)(\det B)$，
+\[
+\det(M^{t}GM)=(\det M)^2\det g=[Pac]^2\det g,
+\]
+而 $M^{t}GM$ 的第 $m$ 行第 $n$ 列恰好是这两点的点乘（三点依次为 $P,a,c$）。因此 $[Pac]^2$
+与 Gram 行列式
+\[
+\det\begin{pmatrix}
+P\cdot P & P\cdot a & P\cdot c\\
+a\cdot P & a\cdot a & a\cdot c\\
+c\cdot P & c\cdot a & c\cdot c
+\end{pmatrix}
+\]
+只相差一个与 $P,a,c$ 无关的非零常数因子。在
+$J(P)^2=\dfrac{[Pac]^2[Pbd]^2}{[Pad]^2[Pbc]^2}$ 中这个因子在分子、分母里各出现两次，整体
+相消，故不妨直接用 Gram 行列式代替 $[Pac]^2$ 计算。把 $P^2=a^2=c^2=0$ 代入，对角元全为零，
+于是
+\[
+\det\begin{pmatrix}
+0 & P\cdot a & P\cdot c\\
+a\cdot P & 0 & a\cdot c\\
+c\cdot P & c\cdot a & 0
+\end{pmatrix}
+=2(P\cdot a)(P\cdot c)(a\cdot c).
+\]
+同理
+\[
+[Pbd]^2\propto2(P\cdot b)(P\cdot d)(b\cdot d),\quad
+[Pad]^2\propto2(P\cdot a)(P\cdot d)(a\cdot d),\quad
+[Pbc]^2\propto2(P\cdot b)(P\cdot c)(b\cdot c),
+\]
+其中各式的比例因子相同。代入得
+\[
+J(P)^2=\frac{(a\cdot c)(b\cdot d)}{(a\cdot d)(b\cdot c)},
+\]
+右端与 $P$ 无关。
+
+还要说明右端既不为零也不为无穷。若 $[Pad]=0$，则 $P,a,d$ 共线，而一条直线与非退化圆锥曲线
+至多有两个交点，与 $P,a,d$ 互异矛盾，故 $[Pad]\neq0$；$[Pbc]\neq0$ 同理。又 $P\cdot a=0$
+意味着 $a$ 在 $P$ 的极线（即 $P$ 处的切线）上，与 $a\neq P$ 矛盾，故 $P\cdot a\neq0$；同理
+$P\cdot d\neq0$。于是由上面的比例关系可知 $(a\cdot d)\neq0$，$(b\cdot c)\neq0$，右端是一个
+非零实数。
+
+\textbf{第二步：由连续性确定 $J(P)$ 的符号。}
+当 $P$ 在 $g$ 上变动时，$J(P)$ 是 $P$ 的连续函数：四个混合积都随 $P$ 连续变化，且分母处处非零。
+在射影平面上，非退化实圆锥曲线同胚于圆周，特别地是连通的，因此 $J$ 的像连通。另一方面
+$J(P)^2$ 是与 $P$ 无关的正常数 $c_0$，故 $J(P)$ 只能取 $\pm\sqrt{c_0}$ 两个值；连通的像不可能
+分成两个点，所以 $J(P)$ 恒等于 $\sqrt{c_0}$ 或恒等于 $-\sqrt{c_0}$。总之 $J(P)$ 与 $P$ 无关。
+\end{proof}
+
+\begin{remark}
+上面第二步（连续性论证）不可省略：仅由 $J(P)^2$ 与 $P$ 无关只能断定 $J(P)$ 的绝对值固定，
+而 $J(P)$ 原则上可以在不同的连通分支上分别取 $\sqrt{c_0}$ 与 $-\sqrt{c_0}$。此外，Gram 行列式
+与 $[Pac]^2$ 只在标准规范下相等；一般规范下二者相差常数因子 $\det g$，该因子在交比中相消，
+不影响结论。
+\end{remark}
+
+\subsection{二次调和点列}
+
+\begin{definition}[二次调和点列]
+设 $a,b,c,d$ 是 $g$ 上四个互不相同的点。若 $J_{ab,cd}=-1$，则称 $a,b$ 与 $c,d$ 互相
+\emph{调和分割}，并称 $a,b,c,d$ 为 $g$ 上的\emph{二次调和点列}。
+\end{definition}
+
+由第九节交比的置换性质，$J=-1$ 在交换 $a,b$（或交换 $c,d$）时不变（$1/J=-1$），在重新搭配
+$a,c$ 与 $b,d$ 时得到 $1-J=2$，因此“哪两点与哪两点调和分割”的配对方式是确定的。
+
+\begin{proposition}[二次调和点列的代数条件]\label{prop:doubleharmonic}
+$g$ 上四个互不相同的点 $a,b,c,d$ 构成二次调和点列，当且仅当
+\[
+(a\times b)\cdot(c\times d)=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+由定理~\ref{thm:doublecross}，$J^2=\dfrac{(a\cdot c)(b\cdot d)}{(a\cdot d)(b\cdot c)}$。
+$J=-1$ 给出 $J^2=1$；反之若 $J^2=1$，则 $J=\pm1$，而 $J=1$ 对四个互不相同的点不可能
+（第九节关于交比取值的注），故 $J^2=1$ 与 $J=-1$ 等价。于是调和条件等价于
+\[
+(a\cdot c)(b\cdot d)-(a\cdot d)(b\cdot c)=0 .
+\]
+由第三章的二重叉乘公式
+\[
+(a\times b)\cdot(c\times d)=(a\cdot c)(b\cdot d)-(a\cdot d)(b\cdot c)
+\]
+（一般规范下右端可相差一个非零常数因子，但零点位置不变），上式等价于
+$(a\times b)\cdot(c\times d)=0$。
+\end{proof}
+
+这一条件有明显的几何意义：直线 $a\times b$ 与直线 $c\times d$ 关于 $g$ 共轭。直线的共轭可以
+从两个方向来理解：一个方向是极点与极线，另一个方向是一维的对合变换。
+
+\section{二次对合}
+
+回忆第九节的一维对合：给定两个不动点 $p,q$，与 $p,q$ 构成调和点列的两点 $a,b$ 互相对合，
+这一配对由 $g_{ij}a^ib^j=0$ 给出，其中 $g=\sym{p}{q}$ 是两个不动点的对称积。把 $p,q$ 换成过
+它们的直线 $\ell=p\times q$，二次调和点列的条件 $(a\times b)\cdot(c\times d)=0$ 就化为关于
+$\ell$ 的条件。
+
+\begin{definition}[二次对合]\label{def:doubleinv}
+设 $\ell$ 是一条不与 $g$ 相切的直线。对 $g$ 上的点 $a$，满足
+\[
+(a\times b)\cdot\ell=0
+\]
+的点 $b\in g$ 称为 $a$ 关于 $\ell$ 的\emph{对合点}；由此给出的配对关系称为由 $\ell$ 确定的
+\emph{二次对合}。
+\end{definition}
+
+\begin{proposition}[二次对合的结构]\label{prop:doubleinv-struct}
+设 $\ell$ 不与 $g$ 相切，$D=g^{-1}\ell$ 是 $\ell$ 的极点。则定义~\ref{def:doubleinv} 给出的
+配对就是：过 $D$ 的直线与 $g$ 的两个交点互相对合。特别地，
+\begin{enumerate}
+\item 每个 $a\in g$ 都有唯一的对合点 $b$，并且 $a,b,D$ 共线；
+\item 配对是对合：$b$ 是 $a$ 的对合点当且仅当 $a$ 是 $b$ 的对合点；
+\item 若 $\ell$ 与 $g$ 交于 $p,q$，则 $p,q$ 是对合的不动点；若 $\ell$ 与 $g$ 没有交点，则对合
+没有不动点。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+固定 $a$。条件 $(a\times b)\cdot\ell=0$ 关于 $b$ 是线性的，故解构成一条直线 $L_a$。由于
+$a\times a=0$，$b=a$ 总满足条件，故 $a\in L_a$；又把 $\ell$ 的极点 $D=g^{-1}\ell$ 代入，
+由叉乘与配极的定义可知 $D\in L_a$。于是 $L_a$ 就是直线 $a\times D$，它与 $g$ 的两个交点中
+有一个是 $a$，另一个就是 $b$，且 $a,b,D$ 共线。这同时说明了 $b$ 的存在唯一性。条件关于
+$a,b$ 对称（因为 $(a\times b)\cdot\ell=-(b\times a)\cdot\ell$），故 $a$ 也是 $b$ 的对合点。
+
+不动点满足 $a=b$，此时 $L_a=a\times D$ 是 $g$ 在 $a$ 处的切线，即 $a$ 是从 $D$ 可以作切线的
+切点，也就是 $\ell$ 与 $g$ 的交点：由配极关系，$a$ 处的切线过 $D$ 等价于 $D$ 在 $a$ 的极线
+上，也等价于 $a$ 在 $D$ 的极线 $\ell$ 上。反之，若 $a\in\ell\cap g$，则 $a$ 处的切线过 $D$，
+故 $L_a$ 与 $g$ 在 $a$ 处相切，$a$ 的对合点仍是 $a$。若 $\ell$ 与 $g$ 没有交点，这样的 $a$
+不存在。
+\end{proof}
+
+\begin{remark}
+当 $a,b$ 重合时，应把它们想象成错开了无穷小距离，此时 $a\times a$ 理解为 $a$ 处的切线。线矢
+与点矢的缩并写作 $\ell\cdot a=\ell_ia^i$，不要与两个点矢之间的 $a\cdot b=g_{ij}a^ib^j$ 混淆。
+\end{remark}
+
+\begin{theorem}[过定点的线束给出的对合]\label{thm:pencil-inv}
+设 $s$ 不在 $g$ 上。过 $s$ 的每条直线与 $g$ 的两个交点（可以重合）互相对合。换言之，过 $s$
+的线束在 $g$ 上诱导一个二次对合，它的不动点是从 $s$ 向 $g$ 所引两条切线的切点。
+\end{theorem}
+
+\begin{proof}
+取 $\ell$ 为 $s$ 的极线，则 $s$ 是 $\ell$ 的极点。过 $s$ 的直线 $u$ 与 $g$ 交于 $a,b$，此时
+$a\times b=u$ 过 $s$，即 $(a\times b)\cdot\ell=0$。由命题~\ref{prop:doubleinv-struct}，
+$a,b$ 互相对合。不动点是 $\ell\cap g$，也就是从 $s$ 所引两条切线的切点。
+\end{proof}
+
+对偶地，把点与直线、点矢与线矢的地位互换（对偶圆锥曲线由 $g$ 的逆给出），就得到关于二次线束
+的结论。所谓\emph{二次线束}，就是 $g$ 的全部切线组成的集合。
+
+\begin{theorem}[定直线上的点列]\label{thm:linerange-inv}
+设 $L$ 是不与 $g$ 相切的直线。对 $L$ 上的点 $A$，设从 $A$ 向 $g$ 所引的两条切线切 $g$ 于
+$E,F$，直线 $EF$ 交 $L$ 于 $B$。则
+\begin{enumerate}
+\item $A\mapsto B$ 是 $L$ 上以 $L\cap g$ 为不动点的对合；
+\item $E,F$ 是 $g$ 上的一对对合点，不动点也是 $L\cap g$；
+\item 二次线束中的两条切线 $AE,AF$ 互相对合，不动元素是 $L\cap g$ 处的切线。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+设 $S$ 是 $L$ 的极点。$A\in L$ 的极线是 $EF$，由配极关系它过 $S$，故 $E,F$ 是过 $S$ 的线束
+与 $g$ 的两个交点，由定理~\ref{thm:pencil-inv} 互相对合，不动点是从 $S$ 所引切线的切点，即
+$S$ 的极线 $L$ 与 $g$ 的交点 $L\cap g$。这给出第二条。第一条中的配对正是 $g$ 在直线 $L$ 上的
+限制给出的对合（第九节关于圆锥曲线在直线上限制的定理），其不动点同样是 $L\cap g$。第三条是
+第二条的换位表述。
+\end{proof}
+
+\subsection{几个同时出现的对合}
+
+把上面两个定理放在一起，可以看到在同一构图中往往同时出现几个对合。
+
+设 $s$ 不在 $g$ 上。过 $s$ 的动直线 $u$ 交 $g$ 于 $P,Q$，$P,Q$ 处的切线交于 $D$（$D$ 是 $u$
+的极点）。则
+\begin{enumerate}
+\item 在二次点列上：$P,Q$ 是由 $s$ 诱导的对合中的一对对合点；
+\item 在二次线束上：$P,Q$ 处的两条切线是由同一定点诱导的对合中的一对对合直线；
+\item 在过 $s$ 的一次线束上：直线 $sPQ=u$ 与直线 $sD$ 互相对合，这是第九节关于圆锥曲线在
+点上限制（对偶形式）的定理给出的线束对合。
+\end{enumerate}
+三个对合的不动元素都是 $s$ 到 $g$ 的两条切线（或它们的切点）。
+
+对偶地，设 $L$ 是一条定直线，交 $g$ 于 $P,Q$。$A$ 是 $L$ 上的动点，过 $A$ 的两条切线切 $g$
+于 $E,F$，直线 $EF$ 交 $L$ 于 $B$。则
+\begin{enumerate}
+\item 在二次点列上：$E,F$ 是一对对合点，不动点是 $P,Q$；
+\item 在二次线束上：$AE,AF$ 是一对对合切线，不动元素是 $P,Q$ 处的切线；
+\item 在直线 $L$ 的点列上：$A,B$ 是一对对合点，不动点是 $P,Q$。
+\end{enumerate}
+
+二次曲线可以产生直线上的对合，直线也可以产生二次曲线上的对合，两者互相配合，构成了本节讨论
+的主要内容。
+
+\begin{example}[共轭直线给出的对合]\label{ex:conj}
+设直线 $PQ$ 与直线 $CD$ 关于 $g$ 共轭，即 $(p\times q)\cdot(c\times d)=0$，其中 $p,q$ 是
+$PQ$ 与 $g$ 的两个交点，$c,d$ 是 $CD$ 与 $g$ 的两个交点。$X$ 是 $g$ 上的动点，直线 $XC$、
+$XD$ 分别交直线 $PQ$ 于 $A,B$。则 $A,B$ 是直线 $PQ$ 上以 $p,q$ 为不动点的对合中的一对对合点。
+\end{example}
+
+\begin{proof}[解]
+由 $(p\times q)\cdot(c\times d)=0$ 知 $p,q,c,d$ 是 $g$ 上的二次调和点列。把这一调和点列从
+$X$（也在 $g$ 上）射影为线束，由定理~\ref{thm:doublecross}，四条直线 $XP,XQ,XC,XD$ 构成调和
+线束。再与直线 $PQ$ 相交：$XP,XQ$ 分别交 $PQ$ 于 $p,q$（因为 $p,q\in PQ$），$XC,XD$ 分别交
+$PQ$ 于 $A,B$。射影保持交比，故 $A,B,p,q$ 成调和点列，即 $A,B$ 是以 $p,q$ 为不动点的对合中的
+一对对合点。
+\end{proof}
+
+\section{对合张量与三步算法}
+
+\subsection{问题与记号}
+
+设 $s$ 是 $g$ 上一点，$h$ 是两条过 $s$ 的直线 $m,n$ 构成的退化二次曲线
+\[
+h_{ij}=m_in_j+m_jn_i=\sym{m}{n}_{ij}.
+\]
+由 $h_{ij}s^j=0$ 知 $s$ 是 $h$ 的奇异点，$h$ 的两条直线都过 $s$。在过 $s$ 的线束上，以
+$m,n$ 为不动直线的调和对合由 $h$ 给出；它又通过 $s$ 处的中心射影诱导出 $g$ 上的一个二次对合。
+具体地说，对 $a\in g$，直线 $L_a$ 由 $h_{ij}a^ix^j=0$ 定义，它恒过 $s$；把 $L_a$ 与 $g$ 的
+另一个交点记为 $b$，则 $a,b$ 对合（由 $h_{ij}a^ib^j=0$ 的对称性，这一配对是对合）。这一对合的
+不动点是 $m,n$ 与 $g$ 的另一个交点，记作 $p,q$；而 $g$ 上互相对合的两点连线必过一定点 $D$，
+$D$ 就是直线 $\ell=p\times q$ 的极点。
+
+于是问题可以表述为：已知 $s$ 与对合张量 $h$（它给出过 $s$ 的线束上的对合），求直线 $\ell$
+的极点 $D$。下面先解决相反的问题，即由 $\ell$ 与 $s$ 写出 $h$，再把它看成关于 $\ell$ 的方程
+反解。
+
+\subsection{从 $\ell$ 到 $h$}
+
+设 $\ell$ 过对合的两个不动点 $p,q$。由第八节关于联立二次点的例题，$p,q$ 的对称积（联立二次点）
+与
+\[
+(pq)^{ij}\propto\ell^2g^{ij}-\ell^i\ell^j,
+\qquad \ell^2=\ell_i\ell^i,\quad \ell^i=g^{ij}\ell_j
+\]
+成正比（在适当的规范化下相等；相差的常数不影响以下结论）。两条固定直线是 $m=s\times p$、
+$n=s\times q$，其对称积为
+\[
+h_{ij}=m_in_j+m_jn_i=\eps_{ikm}s^k\,\eps_{jln}s^l\,(pq)^{mn}.
+\]
+把 $(pq)$ 的表达式代入并化简，可得
+\[
+h_{ij}\propto\ell_is_j+s_i\ell_j-(\ell\cdot s)g_{ij},
+\qquad\text{即}\qquad
+h\propto\ell s+s\ell-(\ell\cdot s)g,
+\]
+其中 $s_i=g_{ij}s^j$，$\ell\cdot s=\ell_is^i$。
+
+\begin{proof}[化简与验证]
+把 $(pq)^{mn}\propto\ell^2g^{mn}-\ell^m\ell^n$ 代入后，利用 $\eps$ 的两个恒等式
+\[
+\eps_{ikm}\eps_{jln}g^{mn}s^ks^l=\frac{1}{\det g}\bigl[(s\cdot s)g_{ij}-s_is_j\bigr],
+\qquad
+\eps_{ikm}s^k\ell^m=(\ell\times s)_i,
+\]
+再代入 $s^2=s\cdot s=0$，即可得到上面的结果（相差一个非零常数因子）。
+
+也可以直接验证右端确实给出所要的对合张量。令
+\[
+h'_{ij}=\ell_is_j+s_i\ell_j-(\ell\cdot s)g_{ij}.
+\]
+则
+\[
+h'_{ij}s^j=(\ell\cdot s)s_i+(s\cdot s)\ell_i-(\ell\cdot s)s_i=s^2\,\ell_i=0,
+\]
+故 $s$ 在 $h'$ 的核中，$h'$ 退化，且是两条过 $s$ 的直线之积。又对 $\ell$ 与 $g$ 的交点 $p$
+（$p^2=0$，$\ell\cdot p=0$）有
+\[
+h'_{ij}p^ip^j=2(\ell\cdot p)(s\cdot p)-(\ell\cdot s)(p\cdot p)=0,
+\]
+同理 $q$ 也使 $h'$ 为零。因此在一般位置下，$h'$ 的两条直线分别过 $p$ 与 $q$，即正是
+$m=s\times p$ 与 $n=s\times q$。于是 $h'\propto h$。
+\end{proof}
+
+\subsection{从 $h$ 到 $\ell$}
+
+把 $h\propto\ell s+s\ell-(\ell\cdot s)g$ 看作关于未知线矢 $\ell$ 的方程。用 $g^{ij}$ 缩并：
+\[
+g:h:=g^{ij}h_{ij}
+=g^{ij}\ell_is_j+g^{ij}s_i\ell_j-(\ell\cdot s)g^{ij}g_{ij}
+=2(\ell\cdot s)-(\ell\cdot s)\delta^i_i,
+\]
+其中用到 $g^{ij}\ell_is_j=g^{ij}\ell_ig_{jk}s^k=\ell^is_i=\ell\cdot s$，$g^{ij}s_i\ell_j$ 同理。
+又 $\delta^i_i=3$（三维空间中每个维度贡献一个 $1$），于是
+\[
+g:h=2(\ell\cdot s)-3(\ell\cdot s)=-(\ell\cdot s).
+\]
+因此方程化简为
+\[
+h-(g:h)g=\ell s+s\ell .
+\]
+这说明：已知对称积 $(\ell s)$ 以及其中一个因子 $s$，求另一个因子 $\ell$；这相当于已知二次方程
+的一个根求另一个根。记
+\[
+f^{ij}=h^{ij}-(g:h)g^{ij},
+\]
+则 $f^{ij}=\ell^is^j+s^i\ell^j$，而 $f$ 完全由已知的 $h$ 与 $g$ 算出，不需要解二次方程。
+
+为从 $f$ 与 $s$ 解出 $\ell$，任取一条线矢 $m$（要求 $m\cdot s\neq0$），令
+\[
+D^i=2(m\cdot s)\,(f^{ij}m_j)-(m_if^{ij}m_j)\,s^i .
+\]
+代入 $f^{ij}=\ell^is^j+s^i\ell^j$，得
+\[
+f^{ij}m_j=\ell^i(s\cdot m)+s^i(\ell\cdot m),
+\qquad
+m_if^{ij}m_j=2(m\cdot s)(m\cdot\ell),
+\]
+于是
+\[
+D^i=2(m\cdot s)\bigl[\ell^i(s\cdot m)+s^i(\ell\cdot m)\bigr]-2(m\cdot\ell)(m\cdot s)s^i
+=2(m\cdot s)^2\ell^i .
+\]
+由于 $\ell^i=g^{ij}\ell_j$ 正是 $\ell$ 的极点，上式给出的就是所求定点（相差非零常数
+$2(m\cdot s)^2$）。特别地，结果与辅助线矢 $m$ 的取法无关，只要 $m\cdot s\neq0$。
+
+\subsection{三步算法}
+
+综合以上讨论，从对合张量 $h$ 求定点 $D$ 可以归纳为三步。记号约定：线矢与点矢的缩并
+$m\cdot s=m_is^i$；$(f\cdot m)^i=f^{ij}m_j$；$m\cdot f\cdot m=f^{ij}m_im_j$。
+\begin{enumerate}
+\item 写出对合张量 $h$（退化二次曲线，即两条固定直线的对称积）；
+\item 先求 $g:h=g^{ij}h_{ij}$，再令 $f=h-(g:h)g$；
+\item 任取线矢 $m$（要求 $m\cdot s\neq0$），由
+\[
+D=2(m\cdot s)\,f\cdot m-(m\cdot f\cdot m)\,s
+\]
+求出定点 $D$。
+\end{enumerate}
+
+\begin{remark}
+第 3 步给出的矢量 $D^i$ 已经是 $\ell$ 的极点，即所求定点本身，不需要再取一次极点。若 $h$ 以
+下降指标的形式 $h_{ij}$ 给出，必须先写成 $h^{ij}=g^{ia}g^{jb}h_{ab}$ 再代入，否则 $g:h$ 与
+$f$ 都会算错。
+\end{remark}
+
+\begin{remark}
+算法的输入是 $h$ 与 $s$，由它们只能确定 $\ell$（从而确定 $D$）到相差一个非零常数。若题目只
+给出对合的部分信息（例如只知道斜率之和为常数 $c$，而不知道两条不动直线），应先把 $h$ 写成含
+$c$ 的表达式，代入算法得到含 $c$ 的定点，再结合题目的其他条件定出 $c$。定点落在某条已知直线
+上、或与某个已知点重合，都是可以定出 $c$ 的常见条件。
+\end{remark}
+
+\section{例：2017 年全国卷 I 第 20 题}
+
+\begin{example}\label{ex:2017}
+已知椭圆 $C:\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1\ (a>b>0)$，四点
+\[
+P_1(1,1),\quad P_2(0,1),\quad
+P_3\!\left(-1,\dfrac{\sqrt3}{2}\right),\quad P_4\!\left(1,\dfrac{\sqrt3}{2}\right)
+\]
+中恰有三点在 $C$ 上。
+
+(1) 求 $C$ 的方程；
+
+(2) 设直线 $l$ 不经过 $P_2$，且与 $C$ 交于 $A,B$ 两点。若直线 $P_2A$ 与直线 $P_2B$ 的斜率
+之和为 $-1$，证明：$l$ 过定点。
+\end{example}
+
+\subsection{第一问}
+
+$P_3=\left(-1,\dfrac{\sqrt3}{2}\right)$ 与 $P_4=\left(1,\dfrac{\sqrt3}{2}\right)$ 关于 $y$ 轴
+对称，椭圆 $C$ 也关于 $y$ 轴对称，故它们要么都在 $C$ 上，要么都不在 $C$ 上。由于恰有三点在
+$C$ 上，$P_3,P_4$ 必都在 $C$ 上（否则 $C$ 上至多还有 $P_1,P_2$ 两点，与“恰有四点中的三点”
+矛盾）。于是 $P_1,P_2$ 中恰有一点在 $C$ 上。
+
+把 $P_4$ 代入得
+\[
+\frac{1}{a^2}+\frac{3}{4b^2}=1 .
+\]
+若 $P_1(1,1)$ 也在 $C$ 上，则 $\dfrac{1}{a^2}+\dfrac{1}{b^2}=1$，与上式相减得
+$\dfrac{1}{4b^2}=0$，不可能。所以 $P_1\notin C$，从而 $P_2(0,1)\in C$，即 $b^2=1$。代回上式
+得 $\dfrac{1}{a^2}=\dfrac14$，即 $a^2=4$。故
+\[
+C:\ \frac{x^2}{4}+y^2=1 .
+\]
+
+\subsection{第二问：几何论证}
+
+为免与线矢记号 $\ell$ 混淆，下面把第二问中的动直线 $l$ 记作 $L$。取齐次坐标 $(x,y,z)$，
+$z=1$ 表示通常的平面。椭圆 $C$ 的张量为
+\[
+g_{ij}=\diag\left\{\tfrac14,1,-1\right\},\qquad
+g^{ij}=\diag\{4,1,-1\},
+\]
+点 $s=P_2=(0,1,1)$ 在 $C$ 上。
+
+过 $s$ 的直线（竖直线除外）可写成 $y=kx+1$，对应线矢 $(k,-1,1)$；竖直线 $x=0$ 对应线矢
+$(1,0,0)$，可看作斜率 $k=\infty$。条件“两直线斜率之和为 $-1$”是对过 $s$ 的一次线束的一个
+对合：它把斜率为 $k$ 的直线与斜率为 $-1-k$ 的直线配对。不动直线由 $k=-1-k$ 得 $k=-\tfrac12$，
+再加上竖直线（$k=\infty$）。
+
+由于 $s\in C$，从 $s$ 把 $C$ 上的点射影为过 $s$ 的直线是一个射影对应，因此线束上的这个对合
+诱导出 $C$ 上的一个对合，而 $A,B$ 正是这一对合中的一对对合点（它们分别对应直线 $sA,sB$）。
+对 $C$ 上的对合，互相对合的两点的连线都经过一个定点：这个定点是过两个不动点 $p,q$ 的直线
+$\ell$ 的极点（命题~\ref{prop:doubleinv-struct}）。所以 $L=AB$ 过定点 $D$，问题化为求 $D$。
+
+\subsection{第二问：定点坐标的计算}
+
+先写出对合张量 $h$。设 $C$ 上的点 $a$ 对应齐次点 $a=(x_a,y_a,1)$，则过 $s=(0,1,1)$ 与 $a$
+的直线斜率为
+\[
+k_a=\frac{y_a-1}{x_a}=\frac{a^2-a^3}{a^1}
+\]
+（$x_a=0$ 时 $k_a=\infty$；下面的方程是多项式方程，对 $x_a=0$ 也按极限理解）。条件
+$k_a+k_b=-1$ 等价于
+\[
+(a^2-a^3)\,b^1+(b^2-b^3)\,a^1+a^1b^1=0,
+\]
+这正是 $h_{ij}a^ib^j=0$，其中
+\[
+h_{ij}=
+\begin{pmatrix}
+1 & 1 & -1\\
+1 & 0 & 0\\
+-1 & 0 & 0
+\end{pmatrix}.
+\]
+（可以直接验证 $h_{ij}s^j=0$，即 $s$ 是奇异点，符合前一节的要求。）
+
+\textbf{第一步}：对合张量 $h$ 如上。
+
+\textbf{第二步}：先算 $h^{ij}=g^{ia}g^{jb}h_{ab}$，再算 $g:h=g^{ij}h_{ij}$：
+\[
+h^{ij}=
+\begin{pmatrix}
+16 & 4 & 4\\
+4 & 0 & 0\\
+4 & 0 & 0
+\end{pmatrix},
+\qquad
+g:h=g^{ij}h_{ij}=4\cdot1+1\cdot0+(-1)\cdot0=4 .
+\]
+于是
+\[
+f^{ij}=h^{ij}-(g:h)\,g^{ij}
+=
+\begin{pmatrix}
+16 & 4 & 4\\
+4 & 0 & 0\\
+4 & 0 & 0
+\end{pmatrix}
+-4
+\begin{pmatrix}
+4 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 4 & 4\\
+4 & -4 & 0\\
+4 & 0 & 4
+\end{pmatrix}.
+\]
+
+\textbf{第三步}：取辅助线矢 $m=(0,0,1)$（即无穷远直线 $z=0$）。此时
+\[
+m\cdot s=m_is^i=1,\qquad
+f\cdot m=(f^{ij}m_j)=(4,0,4),\qquad
+m\cdot f\cdot m=f^{ij}m_im_j=f^{33}=4 .
+\]
+由三步公式
+\[
+D^i=2(m\cdot s)(f^{ij}m_j)-(m\cdot f\cdot m)s^i
+=2(4,0,4)-4(0,1,1)=(8,-4,4),
+\]
+即 $D=(8,-4,4)$，只取到规范因子时 $D\sim(2,-1,1)$。在仿射平面 $z=1$ 上，定点为
+\[
+\boxed{(2,-1)} .
+\]
+
+\begin{remark}
+这里第 3 步算出的 $D=(8,-4,4)$ 已经是 $\ell$ 的极点，也就是定点本身，它对应仿射点
+$(2,-1)$；不要再对它取极点。为作对照，可以直接求出两个不动点：不动直线为
+$k=-\tfrac12$（即 $y=1-\tfrac x2$）与 $x=0$，它们与 $C$ 的另一个交点分别为 $q=(2,0,1)$
+与 $p=(0,-1,1)$，故
+\[
+\ell=p\times q=(-1,2,2),
+\]
+其极点为 $g^{-1}\ell=(-4,2,-2)\sim(2,-1,1)$，与三步算法的结果一致。
+\end{remark}
+
+\begin{remark}
+对合条件须取题设给出的 $k_1+k_2=-1$。作为旁证，若改用 $k_1+k_2=1$ 重复上面的计算（此时
+$h_{ij}=\begin{pmatrix}-1&1&-1\\1&0&0\\-1&0&0\end{pmatrix}$），三步算法给出的定点是 $(2,1)$，
+与题设要求的答案不符。
+\end{remark}
+
+\begin{remark}
+第 3 步中的辅助线矢 $m$ 可以任取（只要 $m\cdot s\neq0$）。例如取 $m=(1,1,1)$，则
+$m\cdot s=2$，$f\cdot m=(8,0,8)$，$m\cdot f\cdot m=16$，于是
+$D=2\cdot2\cdot(8,0,8)-16\cdot(0,1,1)=(32,-16,16)\sim(2,-1,1)$，结果相同。若取
+$m=(1,0,0)$，则 $m\cdot s=0$，公式给出零矢，说明这一类 $m$ 与 $s$ 的配对退化，应避开。
+\end{remark}

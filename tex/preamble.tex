@@ -1,0 +1,60 @@
+% !TEX program = xelatex
+% =====================================================================
+%  圆锥曲线的三维矢量方法 —— 导言区
+%  编译方式：xelatex main.tex  （连续编译两次以生成目录与交叉引用）
+% =====================================================================
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{mathrsfs}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{calc,intersections}
+\usepackage[hidelinks,bookmarksnumbered]{hyperref}
+
+\geometry{a4paper,left=2.6cm,right=2.6cm,top=2.8cm,bottom=2.8cm}
+
+% ---------- 定理类环境 ----------
+\theoremstyle{definition}
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{example}[definition]{例}
+\newtheorem{exercise}[definition]{习题}
+\newtheorem{remark}[definition]{注}
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{定理}
+\newtheorem{proposition}[definition]{命题}
+\newtheorem{lemma}[definition]{引理}
+\newtheorem{corollary}[definition]{推论}
+
+\renewcommand{\proofname}{\bfseries 证明}
+\renewcommand{\contentsname}{目\quad 录}
+
+% ---------- 常用记号 ----------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Ima}{Im}
+
+% 度规无关记号：混合积
+\newcommand{\mix}[3]{[#1\,#2\,#3]}
+% 三阶反对称张量
+\newcommand{\eps}{\epsilon}
+% 对称积 (\cdot\cdot)
+\newcommand{\sym}[2]{(#1#2)}
+% 无穷远线矢
+\newcommand{\linf}{l_{\infty}}
+\newcommand{\linfsub}[1]{l_{\infty #1}}
+
+\allowdisplaybreaks
+
+% 中文段落断行容忍度：避免个别行溢出页面右边界
+\setlength{\emergencystretch}{2.5em}
+\tolerance=2000
+\hbadness=3000

@@ -1,0 +1,689 @@
+% 第十三节：焦点与准线
+\chapter{焦点与准线}
+
+\section{复点与垂直结构}
+
+平行与正交一章说明，正交结构可以看作由两个无穷远处的复点确定。记
+\begin{equation}
+z^i=(1,\ii,0),\qquad \bar z^i=(1,-\ii,0),
+\label{eq:zz}
+\end{equation}
+其中 $\ii$ 为虚数单位。两点都在无穷远直线 $\linf$ 上，事实上
+\[
+z\times\bar z=(0,0,-2\ii)\sim(0,0,1)=\linf .
+\]
+$z$ 与 $\bar z$ 互为复共轭，它们与实射影平面上的实点、实直线具有相同的代数地位。
+
+本节的约定是：把坐标含复数的点矢、线矢与实的点矢、线矢同样处理，一切运算（线性组合、缩并、
+叉乘、求逆）都按代数规则进行，只在需要判断某个量是否为实数时才使用复共轭。经验表明，只要问题
+的提法本身不涉及实数性，坐标中的虚部不影响结论；下文凡按几何意义应当为实的量，算出的结果都是
+实的。
+
+垂直结构取为这两点的对称积
+\begin{equation}
+\theta^{ij}=(\sym{z}{\bar z})^{ij}=z^i\bar z^j+z^j\bar z^i .
+\label{eq:theta-zz}
+\end{equation}
+按分量计算，$z^i\bar z^j$ 只在 $(1,1)$ 与 $(2,2)$ 处分别为 $1$ 与 $1$，其余分量为零，因此
+\[
+\theta^{ij}=
+\begin{pmatrix}
+2&0&0\\
+0&2&0\\
+0&0&0
+\end{pmatrix}
+\sim\diag\{1,1,0\}.
+\]
+可见 \eqref{eq:theta-zz} 定义的 $\theta$ 与实标准形式 $\diag\{1,1,0\}$ 只相差规范因子 $2$，属于
+同一个倍数类。在下文的分量计算中直接取
+\begin{equation}
+\theta^{ij}=\diag\{1,1,0\}.
+\label{eq:theta-standard}
+\end{equation}
+
+对任意线矢 $\ell$，
+\begin{equation}
+\theta^{ij}\ell_i\ell_j=2(\ell\cdot z)(\ell\cdot\bar z),
+\label{eq:theta-line}
+\end{equation}
+因此 $\theta$ 所对应的退化二次点正是两点 $z,\bar z$：经过 $\theta$ 的直线恰为过 $z$ 的直线与过
+$\bar z$ 的直线的并。$\theta$ 的号差为 $(1,1,0)$，它是退化的，核由 $\linf$ 张成。
+
+\section{焦点方程与离心率}
+
+\begin{definition}[焦点方程]
+设 $g$ 是一条圆锥曲线，$\theta$ 是垂直结构。方程
+\begin{equation}
+\det\bigl(\theta^{ij}-\lambda g^{ij}\bigr)=0
+\label{eq:focus-eq}
+\end{equation}
+称为 $g$ 的\textbf{焦点方程}，其中的 $\lambda$ 称为\textbf{特征值}。这里 $g^{ij}$ 是 $g_{ij}$ 的
+逆 $(g^{-1})^{ij}$。
+\end{definition}
+
+焦点方程是三维矢量空间中的特征值方程：把 $\theta,g$ 看作矩阵，由 $g$ 可逆，
+\[
+\det(\theta-\lambda g)=\det g\cdot\det\bigl(g^{-1}\theta-\lambda I\bigr),
+\]
+故 \eqref{eq:focus-eq} 的根正是线性变换 $g^{-1}\theta$ 的特征值。由于 $g^{-1}\theta$ 是三阶
+矩阵，方程关于 $\lambda$ 至多是三次的。又 $\theta$ 退化，$\det\theta=0$，即
+$\det(g^{-1}\theta)=0$，所以 $\lambda=0$ 是一个根。
+
+\begin{proposition}[特征值]
+焦点方程 \eqref{eq:focus-eq} 有三个根
+\[
+\lambda_1,\qquad \lambda_2,\qquad 0,
+\]
+其中 $\lambda_1,\lambda_2$ 是二次方程
+\[
+\det\bigl(\theta^{ij}-\lambda g^{ij}\bigr)=0
+\]
+在去掉因子 $\lambda$ 之后所剩的两个根。
+\end{proposition}
+
+\begin{proposition}[规范变换下特征值的变化]
+把 $\theta$ 换成 $\nu\theta$、把 $g$ 换成 $\mu g$（$\mu,\nu\ne0$）时，\eqref{eq:focus-eq} 的
+非零根全部乘以同一个因子 $\nu/\mu$。
+\end{proposition}
+
+\begin{proof}
+直接计算
+\[
+\det(\nu\theta-\lambda\mu g)
+=\nu^3\det\Bigl(\theta-\frac{\lambda\mu}{\nu}g\Bigr).
+\]
+因此 $\nu\theta-\lambda\mu g$ 退化当且仅当 $\theta-\lambda_0g$ 退化，其中
+$\lambda_0=\lambda\mu/\nu$，即 $\lambda=\lambda_0\nu/\mu$。原来的每个特征值都乘以 $\nu/\mu$。
+\end{proof}
+
+由此，单个特征值 $\lambda_1,\lambda_2$ 依赖 $g,\theta$ 的规范选取，只有比值
+$\lambda_2/\lambda_1$ 是规范无关的，因而有几何意义。据此定义离心率。
+
+\begin{definition}[离心率]
+在焦点方程的两个非零根中，约定 $\lambda_1$ 对应实焦点所在的那条主轴（见下一节），$\lambda_2$
+对应另一条主轴，并取
+\begin{equation}
+e=\sqrt{1-\frac{\lambda_2}{\lambda_1}}.
+\label{eq:ecc}
+\end{equation}
+称 $e$ 为圆锥曲线 $g$ 的\textbf{离心率}。
+\end{definition}
+
+\begin{remark}[次序的约定]
+$\lambda_1,\lambda_2$ 是两个根，本身没有先后之分；\eqref{eq:ecc} 只在固定取法之后才有确定的值。
+上文把 $\lambda_1$ 约定为对应实焦点所在主轴的根，这使 $e$ 在下述意义下取到标准值：椭圆时
+$0<e<1$，抛物线时 $e=1$，双曲线时 $e>1$，圆时 $e=0$。若不约定次序，则 $e$ 可能对应
+$1-e^2$ 的另一个分支。
+\end{remark}
+
+\section{六个焦点与三条主轴}
+
+由上一节的结论，$\lambda_1,\lambda_2,0$ 分别对应三个退化二次点
+\begin{equation}
+X^{ij}=\theta^{ij}-\lambda_1g^{ij},\qquad
+Y^{ij}=\theta^{ij}-\lambda_2g^{ij},\qquad
+\theta^{ij}=\theta^{ij}-0\cdot g^{ij}.
+\label{eq:XYZ}
+\end{equation}
+三者都满足 $\det=0$。一般情况下它们的秩为 $2$，号差为 $(1,1,0)$，因而每一个都可以写成两个点的
+对称积。按第八章的记号，设
+\begin{equation}
+X=(\sym{f_{X1}}{f_{X2}}),\qquad
+Y=(\sym{f_{Y1}}{f_{Y2}}),\qquad
+\theta=(\sym{z}{\bar z}).
+\label{eq:focus-sym}
+\end{equation}
+
+\begin{definition}[焦点]
+\eqref{eq:focus-sym} 中的六个点
+\[
+f_{X1},\ f_{X2},\ f_{Y1},\ f_{Y2},\ z,\ \bar z
+\]
+称为圆锥曲线 $g$ 的\textbf{焦点}。其中 $f_{X1},f_{X2}$ 称为一对配对焦点，$f_{Y1},f_{Y2}$ 与
+$z,\bar z$ 也各称一对配对焦点；每一对配对焦点的对称积依次为 $X,Y,\theta$。
+\end{definition}
+
+于是圆锥曲线共有六个焦点，两两配对成三对。
+
+\begin{proposition}[主轴]
+设 $x_i$ 是 $\lambda_1$ 对应的特征线矢，即
+$X^{ij}x_j=0$，则直线 $x$ 经过 $f_{X1},f_{X2}$；同理 $\lambda_2$ 对应的特征线矢 $y$ 经过
+$f_{Y1},f_{Y2}$，而 $\lambda=0$ 对应的特征线矢是无穷远直线 $\linf$。这三条直线分别称为
+$x$ \textbf{主轴}、$y$ \textbf{主轴}与无穷远直线。
+\end{proposition}
+
+\begin{proof}
+由 $X^{ij}=f_{X1}^if_{X2}^j+f_{X2}^if_{X1}^j$，对任意线矢 $x$，
+\[
+X^{ij}x_j=(f_{X2}\cdot x)f_{X1}^i+(f_{X1}\cdot x)f_{X2}^i,
+\]
+其中 $f\cdot x=f^ix_i$。$f_{X1},f_{X2}$ 不共线，故 $X^{ij}x_j=0$ 当且仅当
+$f_{X1}\cdot x=f_{X2}\cdot x=0$，即直线 $x$ 同时经过 $f_{X1},f_{X2}$。对 $\lambda_2$ 同理。
+
+对 $\lambda=0$，条件 $\theta^{ij}\linfsub{j}=0$ 由 \eqref{eq:theta-standard} 直接看出，核由
+$\linf$ 张成。故 $\lambda=0$ 对应的特征线矢就是 $\linf$。
+\end{proof}
+
+\begin{proposition}[主轴两两共轭]
+$x,y,\linf$ 三条直线两两关于 $g$ 共轭，即对其中任意两条 $m,n$ 都有
+$g^{ij}m_in_j=0$。
+\end{proposition}
+
+\begin{proof}
+设 $m,n$ 分别对应特征值 $\lambda,\mu$，即
+$\theta^{ij}m_j=\lambda g^{ij}m_j$、$\theta^{ij}n_j=\mu g^{ij}n_j$。用 $n_i$ 缩并第一式，
+用 $m_i$ 缩并第二式，由于 $\theta^{ij}$ 对称，两式左端相等，于是
+\[
+\lambda\,g^{ij}m_in_j=\mu\,g^{ij}m_in_j,
+\qquad\text{即}\qquad
+(\lambda-\mu)\,g^{ij}m_in_j=0 .
+\]
+当 $\lambda\ne\mu$ 时得 $g^{ij}m_in_j=0$。三个特征值 $\lambda_1,\lambda_2,0$ 两两不同时结论
+成立；若有重根，则该情形对应圆或抛物线的退化位置，此时相应的两条主轴重合或其中之一退化，
+命题按极限理解。
+\end{proof}
+
+\section{圆锥曲线的分类}
+
+特征值的符号决定圆锥曲线的类型。
+
+\begin{proposition}[按特征值分类]
+设 $\lambda_1,\lambda_2$ 是两个非零特征值，按上一节的约定排列。
+\begin{enumerate}
+\item 若 $\lambda_1\lambda_2>0$，则 $g$ 是\textbf{椭圆}，此时 $\lambda_2/\lambda_1\in(0,1)$，
+$0<e<1$；
+\item 若 $\lambda_1\lambda_2=0$（即某个非零根为零），则 $g$ 是\textbf{抛物线}，$e=1$；
+\item 若 $\lambda_1\lambda_2<0$，则 $g$ 是\textbf{双曲线}，$e>1$。
+\end{enumerate}
+\end{proposition}
+
+两类特殊的圆锥曲线也由特征值刻画。
+
+\begin{proposition}[圆与等轴双曲线]
+\begin{enumerate}
+\item $g$ 是圆，当且仅当焦点方程有重根，即 $\lambda_1=\lambda_2$，此时 $e=0$；
+\item $g$ 是等轴双曲线，当且仅当 $\lambda_1+\lambda_2=0$，此时 $e=\sqrt2$。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+第二款：由第一款的注记，若把 $\theta$ 降指标，则
+\[
+\lambda_1+\lambda_2=\tr(g^{-1}\theta)=g^{ij}\theta_{ij}=g_{ij}\theta^{ij}=g:\theta .
+\]
+等轴双曲线的定义是两条渐近线互相垂直，在正交几何中等价于 $g:\theta=0$，故
+$g$ 为等轴双曲线当且仅当 $\lambda_1+\lambda_2=0$。代入 \eqref{eq:ecc} 得
+$e=\sqrt{1-(-1)}=\sqrt2$。
+\end{proof}
+
+\begin{remark}[特征值的规范依赖]
+$\lambda_1,\lambda_2$ 各自随规范改变，但 $\lambda_1=\lambda_2$、$\lambda_1\lambda_2=0$ 与
+$\lambda_1+\lambda_2=0$ 都是规范无关的条件，因为规范变化把两者乘以同一个因子。因此上面的分类
+条件有意义。
+\end{remark}
+
+\section{椭圆情形的分量计算}
+
+下面取椭圆具体算出全部焦点，以验证上面的定义与解析几何中的焦点一致。设椭圆为
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1,\qquad a>b>0,
+\]
+其张量及其逆为
+\begin{equation}
+g_{ij}=\diag\Bigl\{\frac{1}{a^2},\frac{1}{b^2},-1\Bigr\},
+\qquad
+g^{ij}=\diag\{a^2,b^2,-1\}.
+\label{eq:ellipse-g}
+\end{equation}
+按 \eqref{eq:theta-standard} 取 $\theta^{ij}=\diag\{1,1,0\}$，则
+\[
+\theta^{ij}-\lambda g^{ij}
+=\diag\{1-\lambda a^2,\ 1-\lambda b^2,\ \lambda\},
+\]
+于是
+\begin{equation}
+\det\bigl(\theta^{ij}-\lambda g^{ij}\bigr)
+=\lambda\,(1-\lambda a^2)(1-\lambda b^2).
+\label{eq:ellipse-det}
+\end{equation}
+三个根为
+\[
+\lambda=0,\qquad \lambda=\frac{1}{a^2},\qquad \lambda=\frac{1}{b^2}.
+\]
+因 $a>b>0$，有 $1/b^2>1/a^2$。按约定 $\lambda_1$ 对应实焦点所在主轴，取
+\begin{equation}
+\lambda_1=\frac{1}{b^2},\qquad \lambda_2=\frac{1}{a^2},
+\qquad
+\frac{\lambda_2}{\lambda_1}=\frac{b^2}{a^2}.
+\label{eq:ellipse-lambda}
+\end{equation}
+记 $c^2=a^2-b^2>0$，则
+\[
+e=\sqrt{1-\frac{\lambda_2}{\lambda_1}}
+=\sqrt{1-\frac{b^2}{a^2}}
+=\frac{c}{a},
+\]
+与解析几何中的离心率一致。
+
+把 $\lambda_1=1/b^2$ 代入 \eqref{eq:XYZ}，得
+\[
+X^{ij}=\theta^{ij}-\frac{1}{b^2}g^{ij}
+=\diag\Bigl\{-\frac{c^2}{b^2},\ 0,\ \frac{1}{b^2}\Bigr\}
+\sim\diag\{-2c^2,\ 0,\ 2\}.
+\]
+后一个矩阵可以分解为对称积
+\begin{equation}
+X^{ij}=
+\begin{pmatrix}
+-2c^2&0&0\\
+0&0&0\\
+0&0&2
+\end{pmatrix}
+=
+\begin{pmatrix}
+-c\\0\\1
+\end{pmatrix}
+\begin{pmatrix}
+-c&0&1
+\end{pmatrix}
++
+\begin{pmatrix}
+c\\0\\1
+\end{pmatrix}
+\begin{pmatrix}
+c&0&1
+\end{pmatrix}.
+\label{eq:ellipse-X}
+\end{equation}
+即
+\[
+X=(\sym{f_{X1}}{f_{X2}}),\qquad
+f_{X1}=(-c,0,1),\qquad f_{X2}=(c,0,1).
+\]
+在仿射图 $z=1$ 中，这一对焦点的坐标是 $(-c,0)$ 与 $(c,0)$，正是解析几何中椭圆的两个焦点。
+
+把 $\lambda_2=1/a^2$ 代入 \eqref{eq:XYZ}，得
+\[
+Y^{ij}=\theta^{ij}-\frac{1}{a^2}g^{ij}
+=\diag\Bigl\{0,\ \frac{c^2}{a^2},\ \frac{1}{a^2}\Bigr\}
+\sim\diag\{0,\ 2c^2,\ 2\},
+\]
+它同样可以分解为对称积
+\begin{equation}
+Y^{ij}=
+\begin{pmatrix}
+0&0&0\\
+0&2c^2&0\\
+0&0&2
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\ \ii c\\1
+\end{pmatrix}
+\begin{pmatrix}
+0&-\ii c&1
+\end{pmatrix}
++
+\begin{pmatrix}
+0\\ -\ii c\\1
+\end{pmatrix}
+\begin{pmatrix}
+0&\ii c&1
+\end{pmatrix}.
+\label{eq:ellipse-Y}
+\end{equation}
+因此
+\[
+f_{Y1}=(0,\ii c,1),\qquad f_{Y2}=(0,-\ii c,1),
+\]
+它们的仿射坐标是 $(0,\ii c)$ 与 $(0,-\ii c)$，不在实平面内。
+
+最后，$\lambda=0$ 对应的一对焦点是 $z=(1,\ii,0)$ 与 $\bar z=(1,-\ii,0)$，它们位于无穷远
+直线上。
+
+\begin{remark}[解析几何中可见的焦点]
+六个焦点中，$f_{Y1},f_{Y2}$ 的坐标含虚数，$z,\bar z$ 在无穷远，只有 $f_{X1},f_{X2}$ 落在实
+仿射平面内。因此在解析几何中通常只讨论 $(-c,0)$ 与 $(c,0)$ 这两个焦点；另外四个焦点是射影
+构造中不可省去的部分，但在实平面内看不到。
+\end{remark}
+
+此时三条主轴分别是
+\[
+x=(0,1,0)\quad(y=0),\qquad
+y=(1,0,0)\quad(x=0),\qquad
+\linf=(0,0,1).
+\]
+$x$ 主轴是 $f_{X1},f_{X2}$ 的连线，即 $x$ 轴；$y$ 主轴是 $f_{Y1},f_{Y2}$ 的连线，即 $y$ 轴。
+用 $g^{ij}=\diag\{a^2,b^2,-1\}$ 直接验证三者两两共轭：
+$g^{ij}x_iy_j=g^{ij}x_i\linfsub{j}=g^{ij}y_i\linfsub{j}=0$，因为 $g^{ij}$ 是对角矩阵。
+
+\section{六个焦点的几何构造}
+
+现在说明六个焦点的几何来源。从 \eqref{eq:focus-eq} 出发，考察曲线系
+\[
+\theta^{ij}-\lambda g^{ij}.
+\]
+其中的成员都是 $(2,0)$ 型对称张量，即二次点。$\theta$ 与 $g^{ij}$ 各自有明确的几何意义：
+\begin{itemize}
+\item $\theta$ 是退化二次点 $(\sym{z}{\bar z})$。由 \eqref{eq:theta-line}，经过 $\theta$ 的直线恰
+为过 $z$ 或过 $\bar z$ 的直线；
+\item $g^{ij}$ 是圆锥曲线 $g$ 的对偶二次点，经过它的直线恰为 $g$ 的全部切线。
+\end{itemize}
+因此曲线系 $\theta-\lambda g$ 的每个成员都含有 $\theta$ 与 $g$ 共同含有的直线，也就是既经过
+$z$ 或 $\bar z$、又与 $g$ 相切的直线。这样的直线共有四条：从 $z$ 引出的两条切线与从 $\bar z$
+引出的两条切线。记这四条切线为 $\ell_1,\ell_2,\ell_3,\ell_4$。
+
+另一方面，$X,Y,\theta$ 都是曲线系中行列式为零的成员，即退化二次点。一个秩为 $2$ 的退化二次点
+对应两个点，经过它的直线恰为过其中任一者的直线。既然 $X$ 含有全部四条切线
+$\ell_1,\ell_2,\ell_3,\ell_4$，这四条直线就必须分成两对，每一对各自过 $X$ 的两个点之一。把四条
+直线分成两对的方式共有三种；三种分法分别给出 $X,Y,\theta$ 三个退化二次点。$\theta$ 对应的分法
+是把过 $z$ 的两条切线放在一起、过 $\bar z$ 的两条放在一起，两个点正是 $z,\bar z$；$X$ 与 $Y$
+对应的分法给出其余四个焦点。
+
+把四条切线两两求交，共得 $6$ 个交点。上述三种分法所对应的恰好是这些交点的三种配对，六个焦点
+正是这 $6$ 个交点。于是得到下面三条等价的刻画。
+
+\begin{proposition}[焦点的几何刻画]
+设 $g$ 是圆锥曲线，$\theta=(\sym{z}{\bar z})$ 是垂直结构。以下三条性质中的每一条都唯一确定了
+$g$ 的六个焦点：
+\begin{enumerate}
+\item $z,\bar z$ 关于圆锥曲线的切线相交于焦点；
+\item 过焦点作圆锥曲线的两条切线，它们分别经过 $z,\bar z$；
+\item 圆锥曲线过 $z,\bar z$ 的四条切线交于 $6$ 个点；在这 $6$ 个点中取一对不落在同一条切线上
+的点 $p,q$，令 $\theta'=(\sym{p}{q})$，则这 $6$ 个点正是 $g$ 关于垂直结构 $\theta'$ 的六个焦点。
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}[一般的生成点]
+上面的构造并不依赖 $z,\bar z$ 的具体位置。任意给定两个点 $p,q$，都可以作出对称积
+$\theta'=(\sym{p}{q})$，并写出方程
+\[
+\det\bigl(g^{ij}-\lambda\theta'^{ij}\bigr)=0,
+\]
+按完全相同的方式得到六个点。这时称这六个点为 $p,q$ 生成的焦点。第 $3$ 条性质说明，从圆锥曲线
+的四条切线及其交点出发，任取合适的一对点作为新的生成点，所得的六个点保持不变。
+\end{remark}
+
+\section{准线}
+
+前面的构造是对 $(2,0)$ 型张量进行的。同样可以对 $(0,2)$ 型张量求解
+\[
+\det\bigl(\theta_{ij}-\lambda g_{ij}\bigr)=0,
+\qquad
+\theta_{ij}=g_{ik}g_{jl}\theta^{kl}.
+\]
+这个方程与 \eqref{eq:focus-eq} 有相同的特征值，由它构造出的几何量与前者基本相同，只相差一次
+指标的升降。
+
+\begin{definition}[准线]
+焦点的极线称为圆锥曲线的\textbf{准线}。
+\end{definition}
+
+六个焦点给出六条准线，按配对也分成三对，与三对焦点相对应。与焦点一样，通常只有一对准线落在
+实仿射平面内可见的位置。
+
+以椭圆为例。取焦点 $f_{X1}=(c,0,1)$，其极线为
+\[
+l_i=g_{ij}f_{X1}^j=\Bigl(\frac{c}{a^2},\ 0,\ -1\Bigr),
+\]
+即直线
+\[
+\frac{c}{a^2}x-z=0
+\quad\Longleftrightarrow\quad
+x=\frac{a^2}{c}.
+\]
+这正是解析几何中的准线 $x=a^2/c$。焦点 $f_{X2}=(-c,0,1)$ 的极线是 $x=-a^2/c$。虚焦点
+$f_{Y1}=(0,\ii c,1)$ 的极线为 $\dfrac{\ii c}{b^2}y-z=0$，即
+$y=-\ii b^2/c$，不在实平面内；$z,\bar z$ 的极线经过中心，也是虚的或无穷远的直线。
+
+\section{例题：焦点、切线与准线}
+
+\begin{example}\label{ex:focus-directrix}
+设 $g$ 是椭圆，$F$ 是它的一个焦点。过 $F$ 的直线与 $g$ 交于 $A,B$ 两点，$A,B$ 处的两条切线
+交于点 $H$。则 $H$ 落在 $F$ 对应的准线上，并且 $AF\perp FH$。
+\end{example}
+
+证明分两部分。
+
+\begin{proof}[第一部分：$H$ 在准线上]
+$A,B$ 是过 $F$ 的直线与 $g$ 的交点，$A,B$ 处的切线交于 $H$。由极点与极线的性质，$H$ 的极线
+就是两个切点 $A,B$ 的连线，即直线 $AB$。由于 $F$ 在直线 $AB$ 上，按配极的对称性（La Hire
+定理），$F$ 的极线经过 $H$。而 $F$ 的极线按定义就是 $F$ 对应的准线，因此 $H$ 在准线上。
+\end{proof}
+
+\begin{proof}[第二部分：$FA$ 与 $FH$ 共轭当且仅当它们垂直]
+先说明 $FA$ 与 $FH$ 关于 $g$ 共轭。直线 $AB$ 的极点是 $H$；又 $H$ 在直线 $FH$ 上，把 $AB$
+的极线 $H$ 与直线 $FH$ 相接可知 $AB$ 与 $FH$ 关于 $g$ 共轭。而 $F,A,B$ 共线，$FA$ 就是直线
+$AB$，于是 $FA$ 与 $FH$ 关于 $g$ 共轭。
+
+于是问题化为：过焦点 $F$ 的两条直线关于 $g$ 共轭，当且仅当它们垂直。这由下面两条引理给出。
+\end{proof}
+
+\begin{lemma}\label{lem:conj-harmonic}
+设 $P$ 是不在圆锥曲线 $g$ 上的点，$t_1,t_2$ 是从 $P$ 引出的两条切线。则过 $P$ 的两条直线
+$m,n$ 关于 $g$ 共轭（即 $g^{ij}m_in_j=0$）当且仅当 $m,n,t_1,t_2$ 构成调和线束。
+\end{lemma}
+
+\begin{proof}
+共轭关系、切线与调和线束都在射影变换下保持，因此可以取 $g$ 为圆、$P$ 在一条直径上。取
+\[
+g:\ x^2+y^2=1,\qquad P=(d,0),\qquad d\ne0,\ \pm1 .
+\]
+过 $P$ 斜率为 $s$ 的直线为 $m_i=(s,-1,-sd)$，即 $y=s(x-d)$。它的极点为
+\[
+D^i=g^{ij}m_j=(s,-1,sd),\qquad g^{ij}=\diag\{1,1,-1\}.
+\]
+过 $P$ 且经过 $D$ 的直线就是 $m$ 的共轭直线，直接计算
+\[
+P\times D=(d,0,1)\times(s,-1,sd)=\bigl(1,\ s(1-d^2),\ -d\bigr),
+\]
+其斜率（表示为 $y=t(x-d)$）满足
+\[
+t=\frac{1}{s(d^2-1)}.
+\]
+这条直线与 $g$ 相切当且仅当它到原点的距离为 $1$，即
+$|sd|/\sqrt{s^2+1}=1$，解得
+\[
+s=\pm\frac{1}{\sqrt{d^2-1}}=\pm k,\qquad k=\frac{1}{\sqrt{d^2-1}} .
+\]
+两条切线的斜率因此是 $\pm k$。斜率 $s$ 与其共轭直线的斜率 $k^2/s$ 的交比
+\[
+\Bigl(s,\ \frac{k^2}{s};\ k,\ -k\Bigr)
+=\frac{(s-k)(k^2/s+k)}{(s+k)(k^2/s-k)}
+=\frac{(s-k)\cdot k(k+s)/s}{(s+k)\cdot k(k-s)/s}
+=-1 .
+\]
+故 $m,n$ 与两条切线成调和线束。
+\end{proof}
+
+\begin{lemma}\label{lem:perp-harmonic}
+设 $\theta=(\sym{z}{\bar z})$ 是垂直结构，$P$ 是任一点。过 $P$ 的两条直线 $m,n$ 垂直，当且仅当
+$m,n$ 与直线 $Pz,P\bar z$ 构成调和线束。
+\end{lemma}
+
+\begin{proof}
+取 \eqref{eq:theta-standard} 的标准坐标系。直线 $Pz$ 与 $P\bar z$ 分别是以 $z,\bar z$ 为方向的
+直线，由于 $z=(1,\ii,0)$、$\bar z=(1,-\ii,0)$，它们的斜率是 $\ii$ 与 $-\ii$。过 $P$ 的两条
+直线写成 $m_i=(s,-1,b_1)$、$n_i=(t,-1,b_2)$，则
+\[
+\theta^{ij}m_in_j=st+1,
+\]
+故 $m\perp n$ 当且仅当 $st=-1$。另一方面，
+\[
+(s,t;\ii,-\ii)
+=\frac{(s-\ii)(t+\ii)}{(s+\ii)(t-\ii)}
+=-1
+\]
+等价于 $(s-\ii)(t+\ii)=-(s+\ii)(t-\ii)$，展开即 $st+1=-st-1$，也就是 $st=-1$。两种条件
+一致。
+\end{proof}
+
+\begin{proof}[例题的完成]
+设 $t_1,t_2$ 是从焦点 $F$ 引出的 $g$ 的两条切线。由焦点的构造，$F$ 是四条切线中某两条的交点，
+其中一条经过 $z$、一条经过 $\bar z$；而经过 $F$ 且经过 $z$ 的切线只能是 $Fz$，经过 $F$ 且经过
+$\bar z$ 的切线只能是 $F\bar z$。因此
+\[
+\{t_1,t_2\}=\{Fz,\ F\bar z\}.
+\]
+由引理 \ref{lem:conj-harmonic}，$FA$ 与 $FH$ 关于 $g$ 共轭，当且仅当 $FA,FH$ 与 $Fz,F\bar z$
+构成调和线束；由引理 \ref{lem:perp-harmonic}，$FA\perp FH$ 也当且仅当 $FA,FH$ 与
+$Fz,F\bar z$ 构成调和线束。两个条件等价，所以 $FA$ 与 $FH$ 共轭当且仅当 $FA\perp FH$。
+
+前面已经证明 $FA$ 与 $FH$ 确实共轭，故 $FA\perp FH$，即 $AF\perp FH$。结合第一部分，$H$ 在
+准线上。命题得证。
+\end{proof}
+
+\section{离心率的交比表示}
+
+离心率有射影的解释。先引入一个由 $g$ 决定的交比型不变量。对两个点 $p,q$，记
+\begin{equation}
+\{p,q\}_g
+=\frac{\bigl(g_{ij}p^iq^j\bigr)^2}
+{\bigl(g_{ij}p^ip^j\bigr)\bigl(g_{ij}q^iq^j\bigr)},
+\label{eq:invariant-point}
+\end{equation}
+只要分母不为零，它就是 $p,q$ 的规范无关的函数。对两条直线 $m,n$ 类似地记
+\[
+\{m,n\}_g
+=\frac{\bigl(g^{ij}m_in_j\bigr)^2}
+{\bigl(g^{ij}m_im_j\bigr)\bigl(g^{ij}n_in_j\bigr)} .
+\]
+若 $m=p^*=g_{ij}p^j$、$n=q^*=g_{ij}q^j$ 是 $p,q$ 的极线，则由 $g^{ij}m_in_j=g_{ij}p^iq^j$
+等等式得 $\{p,q\}_g=\{m,n\}_g$。
+
+\begin{lemma}\label{lem:invariant-J}
+设直线 $m,n$ 分别与圆锥曲线 $g$ 交于 $a,b$ 与 $c,d$ 四个互不相同的点，$J_{ab,cd}$ 是这四点在
+$g$ 上的交比，则
+\begin{equation}
+\{m,n\}_g=\left(\frac{J_{ab,cd}+1}{J_{ab,cd}-1}\right)^2 .
+\label{eq:invariant-J}
+\end{equation}
+特别地，若 $p,q$ 是两点，$a,b$ 与 $c,d$ 分别是从 $p,q$ 引出的切线与 $g$ 的切点，则
+$\{p,q\}_g$ 也由 \eqref{eq:invariant-J} 给出。
+\end{lemma}
+
+\begin{proof}
+不妨设 $m=a\times b$、$n=c\times d$。由叉乘的恒等式
+\[
+(a\times b)\cdot(c\times d)=(a\cdot c)(b\cdot d)-(a\cdot d)(b\cdot c).
+\]
+又 $a,b$ 在 $g$ 上，$a^2=b^2=0$，故
+\[
+(a\times b)^2=a^2b^2-(a\cdot b)^2=-(a\cdot b)^2,
+\]
+同理 $(c\times d)^2=-(c\cdot d)^2$。于是
+\[
+\{m,n\}_g
+=\frac{\bigl[(a\cdot c)(b\cdot d)-(a\cdot d)(b\cdot c)\bigr]^2}{(a\cdot b)^2(c\cdot d)^2}.
+\]
+由二次点列交比的公式与交比在交换下标时的变化规律，有
+\[
+(a\cdot c)(b\cdot d)=J^2\,(a\cdot d)(b\cdot c),\qquad
+(a\cdot b)(c\cdot d)=(1-J)^2(a\cdot d)(b\cdot c),
+\]
+其中 $J=J_{ab,cd}$（第一式是交比平方公式，第二式来自 $J_{db,ca}=1-J_{ab,cd}$ 的平方）。代入得
+\[
+\{m,n\}_g
+=\frac{\bigl[(J^2-1)(a\cdot d)(b\cdot c)\bigr]^2}
+{\bigl[(1-J)^2(a\cdot d)(b\cdot c)\bigr]^2}
+=\frac{(J+1)^2(J-1)^2}{(J-1)^4}
+=\left(\frac{J+1}{J-1}\right)^2 .
+\]
+把上式用于极线 $m=p^*$、$n=q^*$，即得关于 $p,q$ 的结论。
+\end{proof}
+
+\begin{remark}
+\eqref{eq:invariant-J} 的右端在 $J\mapsto1/J$ 下不变，因此给定 $\{p,q\}_g$ 只能把 $J$ 确定到
+$J$ 与 $1/J$ 两种取法。具体取哪一个由几何连续性（例如圆时应取 $J_\theta=1$）确定。
+\end{remark}
+
+现在对椭圆 $g^{ij}=\diag\{a^2,b^2,-1\}$、$g_{ij}=\diag\{1/a^2,1/b^2,-1\}$ 逐一计算。由
+\eqref{eq:zz}，
+\[
+z\cdot z=\frac{1}{a^2}-\frac{1}{b^2},\qquad
+\bar z\cdot\bar z=\frac{1}{a^2}-\frac{1}{b^2},\qquad
+z\cdot\bar z=\frac{1}{a^2}+\frac{1}{b^2},
+\]
+其中 $z\cdot\bar z=g_{ij}z^i\bar z^j$。因此
+\begin{equation}
+\{z,\bar z\}_g
+=\left(\frac{1/a^2+1/b^2}{1/a^2-1/b^2}\right)^2
+=\left(\frac{a^2+b^2}{c^2}\right)^2 .
+\label{eq:inv-z}
+\end{equation}
+由 \eqref{eq:ellipse-X}，$f_{X1}=(-c,0,1)$、$f_{X2}=(c,0,1)$，于是
+\[
+f_{X1}\cdot f_{X2}=-\frac{c^2}{a^2}-1=-\frac{a^2+c^2}{a^2},\qquad
+f_{X1}\cdot f_{X1}=f_{X2}\cdot f_{X2}=\frac{c^2}{a^2}-1=-\frac{b^2}{a^2},
+\]
+所以
+\begin{equation}
+\{f_{X1},f_{X2}\}_g
+=\left(\frac{a^2+c^2}{b^2}\right)^2 .
+\label{eq:inv-X}
+\end{equation}
+由 \eqref{eq:ellipse-Y}，$f_{Y1}=(0,\ii c,1)$、$f_{Y2}=(0,-\ii c,1)$，于是
+\[
+f_{Y1}\cdot f_{Y2}=\frac{c^2}{b^2}-1=\frac{c^2-b^2}{b^2},\qquad
+f_{Y1}\cdot f_{Y1}=f_{Y2}\cdot f_{Y2}=-\frac{c^2}{b^2}-1=-\frac{b^2+c^2}{b^2},
+\]
+所以
+\begin{equation}
+\{f_{Y1},f_{Y2}\}_g
+=\left(\frac{c^2-b^2}{c^2+b^2}\right)^2
+=\left(\frac{b^2-c^2}{b^2+c^2}\right)^2 .
+\label{eq:inv-Y}
+\end{equation}
+
+把 \eqref{eq:inv-z}--\eqref{eq:inv-Y} 代入 \eqref{eq:invariant-J}，并利用
+$c^2=a^2-b^2$，解得相应的交比
+\begin{equation}
+J_\theta=\frac{b^2}{a^2}=1-e^2=\frac{\lambda_2}{\lambda_1},\qquad
+J_X=e^2,\qquad
+J_Y=1-e^{-2}.
+\label{eq:J}
+\end{equation}
+例如第一个：\eqref{eq:inv-z} 给出 $\{z,\bar z\}_g=((a^2+b^2)/c^2)^2$，而
+$(J+1)/(J-1)$ 在 $J=b^2/a^2$ 时等于 $(a^2+b^2)/(b^2-a^2)=-(a^2+b^2)/c^2$，平方后与
+\eqref{eq:inv-z} 一致，故 $J_\theta=b^2/a^2=1-e^2$。另外两式同法可得，其中 $J_X=e^2$ 由
+$(e^2+1)/(e^2-1)=-(a^2+c^2)/b^2$ 得到，$J_Y=1-e^{-2}$ 由
+$(J_Y+1)/(J_Y-1)=(b^2-c^2)/(b^2+c^2)$ 得到。这里 $J_\theta$ 是过 $z,\bar z$ 的四条切线的
+四个切点所对应的交比，$J_X$ 与 $J_Y$ 是把 $z,\bar z$ 分别换成 $f_{X1},f_{X2}$ 与
+$f_{Y1},f_{Y2}$ 后所得的同类交比。于是离心率完全由这三个交比决定。
+
+\subsection{特殊情形与连续变化}
+
+由 \eqref{eq:J} 可以读出几个特殊位置。
+\begin{itemize}
+\item $J_\theta=-1$ 时四线成调和线束，此时 $1-e^2=-1$，$e=\sqrt2$，圆锥曲线是等轴双曲线。
+\item $J_\theta=0$ 时成立 $b^2=0$，$e=1$。此时 $\{z,\bar z\}_g=1$ 所对应的四条切线中有两条
+重合，有一个焦点落在圆锥曲线上，圆锥曲线与无穷远直线相切，即抛物线。
+\item $e=0$ 时 $\lambda_1=\lambda_2$，圆锥曲线是圆。此时 $z,\bar z$ 都落在圆锥曲线上，从它们
+引出的切线各退化为一条；四个有限焦点同时重合到圆锥曲线的中心，也就是无穷远直线的极点。
+\end{itemize}
+相应地，$J_X=e^2$ 在圆时为 $0$，在抛物线时为 $1$，在等轴双曲线时为 $2$；$J_Y=1-e^{-2}$ 在
+圆时为无穷（即该对焦点的连线退化），在抛物线时为 $0$，在等轴双曲线时为 $1/2$。
+
+椭圆的离心率变化时，六个焦点的位置可以连续地描述。设 $a>b>0$，四个有限焦点是
+$(\pm c,0)$ 与 $(0,\pm\ii c)$，其中 $c^2=a^2-b^2$。当 $a$ 与 $b$ 逐渐接近时，$c$ 减小，
+$x$ 轴上的两个实焦点与 $y$ 轴上的两个虚焦点同时向中心靠拢；当 $a=b$ 时 $c=0$，四个焦点重合
+于中心，此时圆锥曲线是圆，而 $z,\bar z$ 落在圆锥曲线上。若继续压缩，使 $b>a$，则原来的两个
+实焦点变为虚焦点、原来的两个虚焦点变为实焦点，四个焦点重新分开：此时长轴转到 $y$ 轴，实焦点
+位于 $y$ 轴。整个过程中两个无穷远焦点 $z,\bar z$ 的位置不变。
+
+\section{注：共焦点圆锥曲线族}
+
+最后补充关于共焦点圆锥曲线族的一个观察。
+
+\begin{remark}[共焦点族]
+设 $g,h$ 是两条圆锥曲线。方程
+\[
+\det(g-\lambda h)=0
+\]
+的根给出与 $g,h$ 的焦点有关的射影数据；当 $g,h$ 共焦点时，这个方程出现重根。
+
+另一方面，焦点由四条切线决定。设 $g$ 及其过 $z,\bar z$ 的四条切线给定，则所有与这四条切线都
+相切的圆锥曲线 $h$ 都与 $g$ 有相同的焦点，它们构成一个单参数的圆锥曲线族，即共焦点圆锥曲线
+族。因此共焦点族既可以用方程 $\det(g-\lambda h)=0$ 从代数上刻画，也可以用四条公切线的相切条件
+从几何上刻画。这两种刻画互相等价，可作为处理共焦点圆锥曲线的一种方法。
+\end{remark}

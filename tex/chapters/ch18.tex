@@ -1,0 +1,238 @@
+% 第十八节：指标分裂与二次嵌入
+\chapter{指标分裂与二次嵌入}
+
+\section{二次点列与一次点列}
+
+在二次点列与二次对合一节中已经看到，圆锥曲线 $g$ 上的点集（二次点列）与直线上的点集
+（一次点列）有许多相似之处：
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item 两者具有相同的拓扑。一次点列补入无穷远点后是紧致的，二次点列同样是紧致的。
+\item 在两者上都可以定义交比、对合与调和点列。
+\item 在 $g$ 上任取一点 $p$，把 $g$ 上的点 $a$ 映为直线 $pa$，就得到二次点列与以 $p$ 为
+      中心的一次线束之间的一一对应。
+\item 射影变换的复合仍是射影变换。设有分别以 $p,q$ 为中心的线束 $\Sigma_p,\Sigma_q$。
+      取 $\Sigma_p$ 中的直线 $pA$，令 $f_1$ 把它映为它与 $g$ 的交点 $A$，再令 $f_2$ 把 $A$
+      映为 $\Sigma_q$ 中的直线 $qA$，于是得到复合映射 $f=f_2\circ f_1:\Sigma_p\to\Sigma_q$。
+      由于 $g$ 不是线性子空间，$f_1$ 与 $f_2$ 都不是线性映射，$f$ 看上去不必是射影变换；
+      然而由交比的不变性可以证明，$f$ 确实是射影变换。
+\end{enumerate}
+
+这四条性质的共同根据是：二次点列与一次点列之间存在保持交比的一一对应，因而前者可以
+自然地参与经典射影几何中关于射影变换的讨论。这一结论在前面已经证明，但那个证明并不自然，
+像是某种巧合。另一方面，二次点列与一次点列仍有明显的差别：
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item 一次点列是平面的线性子空间，而二次点列不是平面的线性子空间。
+\item 上面第 (4) 条中的 $f_1,f_2$ 虽然与射影变换相似，毕竟不是射影变换。其根源是：
+      一次点列与二次点列之间的一一映射是非线性的。
+\end{enumerate}
+
+非线性的后果是二次点列的代数意义不明确，它像是一次点列间射影变换的中间产物。
+一次点列的代数意义很清楚：它就是三维线性空间中一个二维子空间的元素，而"二维线性空间"
+这一背景正提供了交比、对合与调和点列这些结构。二次点列却是
+\[
+\{a\mid g_{ij}a^ia^j=0\},
+\]
+即由一个方程确定的点集，它根本不是二维线性空间，却同样带有这些结构。对此可以给出如下
+说法：
+
+\begin{quote}
+就本质而言，二次点列\emph{是}一个二维线性空间，这使得它具有交比、对合与调和点列；
+但在把这个二维线性空间嵌入三维线性空间时，它被"弯曲"了，因而丢失了一部分线性性质。
+\end{quote}
+
+也就是说，二次点列是"部分线性、部分非线性"的：其中的线性部分使它与一次点列相似，
+非线性部分使它与一次点列不同。为了明确讨论，需要先对"部分线性、部分非线性"作出定义。
+
+\section{嵌入与线性嵌入}
+
+\begin{definition}[嵌入]
+设 $M,N$ 是流形，$\phi:M\to N$ 是连续的单射，则称 $\phi$ 为嵌入。
+（这里只取数学定义中我们会用到的部分。）
+\end{definition}
+
+矢量空间是流形的特例。设 $U$ 是二维矢量空间，$V$ 是三维矢量空间，则 $U,V$ 都是流形，
+并且各自带有加法。为区别二者，暂把 $U$ 中的加法记为 $\oplus$，其元素记为
+$\mathfrak a,\mathfrak b,\mathfrak c,\mathfrak d$；$V$ 中的加法仍记为 $+$，其元素记为
+$a,b,c,d$。
+
+\begin{definition}[线性嵌入与非线性嵌入]
+设 $\phi:U\to V$ 是嵌入。若对任意 $\mathfrak a,\mathfrak b\in U$ 恒有
+\[
+\phi(\mathfrak a\oplus\mathfrak b)=\phi(\mathfrak a)+\phi(\mathfrak b),
+\]
+则称 $\phi$ 为线性嵌入；否则称为非线性嵌入。
+\end{definition}
+
+线性嵌入保持矢量空间的线性运算，非线性嵌入则不然。一次点列作为 $U$ 到 $V$ 的嵌入是线性
+嵌入；后文将看到，二次点列是非线性嵌入。
+
+\section{指标的分解与旋量空间}
+
+先用一个例子说明指标的分解是怎样产生的。在四维时空中，洛伦兹度规
+$t^2-x^2-y^2-z^2$ 下的四维矢量 $a^i=(t,x,y,z)$ 可以写成 $2\times2$ 矩阵
+\[
+A=\begin{pmatrix} t+x & y+\ii z\\ y-\ii z & t-x\end{pmatrix},
+\]
+其行列式恰好等于 $t^2-x^2-y^2-z^2$。现在处理的是平面几何，用的是三维矢量空间，
+只需去掉坐标 $z$：此时洛伦兹度规成为 $t^2-x^2-y^2$，点矢 $a^i=(t,x,y)$ 对应矩阵
+\[
+A=\begin{pmatrix} t+x & y\\ y & t-x\end{pmatrix},
+\qquad \det A=t^2-x^2-y^2 .
+\]
+这里的"洛伦兹度规"是一个不定二次型，也就是一条圆锥曲线。因此，当平面上给定一条圆锥曲线
+$g$ 时，只要选取坐标系使 $g$ 的方程成为 $t^2-x^2-y^2=0$，就可以用上述方法把平面上的
+每一点写成 $2\times2$ 的对称矩阵。
+
+矩阵的本质是张量，而张量可以用指标描述。矩阵 $A$ 的两个指标记为 $\alpha,\dot\alpha$，
+取值范围都是 $1,2$，于是 $A$ 写成 $a^{\alpha\dot\alpha}$，与原指标 $i$（取值范围 $1,2,3$）
+不同。对偶矢量 $a_i=g_{ij}a^j=(t,-x,-y)$ 同样可写成对称张量
+\[
+a_{\alpha\dot\alpha}=\begin{pmatrix} t-x & -y\\ -y & t+x\end{pmatrix}.
+\]
+进一步，任意张量，例如 ${f^{ij}}_k$，都可以改写成
+${f^{\alpha\dot\alpha\beta\dot\beta}}_{\gamma\dot\gamma}$：原张量的每一个取值为 $1,2,3$
+的指标，都被两个取值为 $1,2$ 的指标代替。
+
+\begin{definition}[指标分裂与旋量空间]
+把张量的每个指标替换为一对旋量指标 $\alpha\dot\alpha$（$\alpha,\dot\alpha\in\{1,2\}$）
+的写法，称为\emph{指标分裂}。分裂后指标所在的二维矢量空间称为 $g$ 的\emph{旋量空间}，
+记为 $S$。
+\end{definition}
+
+二维矢量空间中的二阶对称张量表示一个对合变换，因此可以说：平面上的每一个点矢都对应 $S$
+中的一个对合变换。这里出现两个旋量指标 $\alpha$ 与 $\dot\alpha$，它们分别属于两个互为
+共轭的二维旋量空间；在实的三维空间中这两个空间可以等同，故下文对不带点与带点的指标用同一
+套规则处理。
+
+$a$ 与 $a^{\alpha\dot\alpha}$ 之间的关系是线性的，因此可以用一个线性映射在两者之间转换：
+\[
+a^{\alpha\dot\alpha}=\sigma^{\alpha\dot\alpha}_i a^i .
+\]
+$\sigma^{\alpha\dot\alpha}_i$ 称为\emph{转换符}。按 $i=1,2,3$（即 $t,x,y$）的次序，它的
+三个非零分量可以写成矩阵
+\[
+(\sigma^{\alpha\dot\alpha}_i)=
+\Bigl(\,
+\begin{pmatrix}1&0\\0&1\end{pmatrix},\
+\begin{pmatrix}1&0\\0&-1\end{pmatrix},\
+\begin{pmatrix}0&1\\1&0\end{pmatrix}
+\,\Bigr),
+\]
+即
+\[
+\sigma^{11}_1=\sigma^{22}_1=1,\qquad
+\sigma^{11}_2=1,\quad \sigma^{22}_2=-1,\qquad
+\sigma^{12}_3=\sigma^{21}_3=1,
+\]
+其余分量为零。反过来的转换为
+\[
+a^i=\tfrac12\sigma^i_{\alpha\dot\alpha}a^{\alpha\dot\alpha},
+\]
+其中非零分量为
+\[
+\sigma^1_{11}=\sigma^1_{22}=1,\qquad
+\sigma^2_{11}=1,\quad \sigma^2_{22}=-1,\qquad
+\sigma^3_{12}=\sigma^3_{21}=1 .
+\]
+这里出现的系数 $\frac12$ 来自对称对 $(\alpha\dot\alpha)$ 在求和时的双重计数，下一节将把
+这一约定讲清楚。由于 $a$ 与 $a^{\alpha\dot\alpha}$ 只相差一个转换符，为节省字母，下文把
+矩阵 $a^{\alpha\dot\alpha}$ 也记为 $a$，只靠指标区分两种情形。
+
+\section{对称旋量张量与二次嵌入}
+
+$a^{\alpha\dot\alpha}$ 是对称的，而二维矢量空间中的对称张量总可以写成对称积的形式：
+\[
+a^{\alpha\dot\alpha}=\mathfrak a^\alpha\mathfrak b^{\dot\alpha}
++\mathfrak b^\alpha\mathfrak a^{\dot\alpha}=(\mathfrak a\mathfrak b)^{\alpha\dot\alpha}.
+\]
+旋量 $\mathfrak a,\mathfrak b$ 称为 $a$ 的\emph{旋量坐标}，它们正是这个对合变换的不动点。
+
+点 $a$ 在 $g$ 上的条件是 $g_{ij}a^ia^j=0$。当 $a^i=(t,x,y)$ 时，该条件写为
+$t^2-x^2-y^2=0$，即 $\det a^{\alpha\dot\alpha}=0$，也就是 $a^{\alpha\dot\alpha}$ 退化。
+此时它不能写成两个不同旋量的对称积，只能写成一个旋量与自身的乘积：
+\[
+a=\mathfrak a\mathfrak a,\qquad\text{即}\qquad
+a^{\alpha\dot\alpha}=\mathfrak a^\alpha\mathfrak a^{\dot\alpha}.
+\]
+此时称 $\mathfrak a$ 为 $a$ 的旋量坐标。
+
+于是，圆锥曲线 $g$ 上的点 $a$ 与旋量空间 $S$ 中的点 $\mathfrak a$ 有一一对应；
+更准确地说，$a$ 与 $\mathfrak a$ 的等价类 $[\mathfrak a]=\{\lambda\mathfrak a\}$
+一一对应，即射影旋量空间与二次点列一一对应。映射
+\[
+\phi:S\to V,\qquad \phi(\mathfrak a)=\mathfrak a\mathfrak a
+\]
+把 $\mathfrak a$ 映为 $g$ 上的点，它是嵌入；又因为 $\phi$ 关于 $\mathfrak a$ 是二次的，
+它还是非线性嵌入。
+
+\begin{definition}[二次嵌入]
+称嵌入 $\phi(\mathfrak a)=\mathfrak a\mathfrak a$ 为\emph{二次嵌入}，
+即旋量空间 $S$ 可以二次嵌入到圆锥曲线 $g$ 上。
+\end{definition}
+
+用 $\mathfrak a$ 表达 $g$ 上的点有两点好处。其一，$\mathfrak a$ 作为二维矢量所构造出的
+交比、对合与调和点列，正是前面在二次点列上定义的那些结构；其二，若用三维矢量 $a$ 表示
+$g$ 上的点，就必须附加约束 $a^2=0$，当同时涉及多个圆锥曲线上的点时，这些约束会带来
+麻烦，而用旋量则不必引入约束。
+
+\section{旋量的几何表示}
+
+旋量 $\mathfrak a$ 属于旋量空间 $S$，并不属于平面 $V$，因此严格说来不能在平面上画出旋量；
+但它在平面上的像 $\phi(\mathfrak a)$ 是 $g$ 上的点，属于 $V$。因此可以用 $\phi(\mathfrak a)$
+代表 $\mathfrak a$。
+
+设 $g$ 外有一点 $p$，其旋量坐标为 $\mathfrak a,\mathfrak b$，即 $p=(\mathfrak a\mathfrak b)$，
+则 $\phi(\mathfrak a)$ 与 $\phi(\mathfrak b)$ 是 $p$ 到 $g$ 的两条切线的切点
+（证明见下一节命题 1）。若 $p$ 在 $g$ 内部，则 $\mathfrak a,\mathfrak b$ 的坐标为复数，
+不能在实平面上画出。
+
+设 $p=(\mathfrak a\mathfrak b)$，$q=(\mathfrak c\mathfrak d)$。$g$ 上四点 $a,b,c,d$
+成调和点列等价于 $(\mathfrak a\mathfrak b):(\mathfrak c\mathfrak d)=0$；而由代数上的直觉
+（下一节证明）应有
+\[
+(\mathfrak a\mathfrak b):(\mathfrak c\mathfrak d)=p\cdot q .
+\]
+于是 $a,b,c,d$ 成调和点列也就等价于 $p,q$ 共轭。这一结论前面证明时并不自然，
+而在这里是自然得到的。
+
+\section{旋量坐标}
+
+通过乘以系数，总可以把旋量化为标准规范，例如取
+$\mathfrak a=(u,1)$，$\mathfrak b=(v,1)$。于是平面上的任意一点 $p=(\mathfrak a\mathfrak b)$
+都可用 $u,v$ 表出，这给出平面的另一种坐标系，称为\emph{旋量坐标系}。
+
+具体地，由 $\mathfrak a=(u,1),\mathfrak b=(v,1)$ 得
+\[
+a^{\alpha\dot\alpha}
+=\mathfrak a^\alpha\mathfrak b^{\dot\alpha}+\mathfrak b^\alpha\mathfrak a^{\dot\alpha}
+=\begin{pmatrix} 2uv & u+v\\ u+v & 2\end{pmatrix}.
+\]
+与 $\begin{pmatrix} t+x & y\\ y & t-x\end{pmatrix}$ 对比，得到方程组
+\[
+t+x=2uv,\qquad t-x=2,\qquad y=u+v,
+\]
+解得
+\[
+t=uv+1,\qquad x=uv-1,\qquad y=u+v .
+\]
+取仿射规范把 $t$ 化为 $1$（此时 $g:t^2-x^2-y^2=0$ 对应单位圆），就得到直角坐标与
+旋量坐标之间的转换关系
+\[
+x=\frac{uv-1}{uv+1},\qquad y=\frac{u+v}{uv+1},
+\]
+其中 $uv+1\neq0$。这是圆的旋量坐标，稍加修改即可得到椭圆的旋量坐标。
+
+旋量坐标特别适合处理切线问题。当 $u$ 固定时 $\mathfrak a$ 随之固定，点 $p$ 只能在过
+$\phi(\mathfrak a)$ 的切线上变动；对 $v$ 同理。因此\emph{固定任何一个旋量坐标就得到圆锥
+曲线的一条切线}。此外，令 $u=v$，则 $\mathfrak a=\mathfrak b$，此时 $p$ 在 $g$ 上，
+转换关系成为
+\[
+x=\frac{u^2-1}{u^2+1},\qquad y=\frac{2u}{u^2+1},
+\]
+它可以看作圆的参数方程。这一参数方程可由圆的经典参数方程与万能公式得到：
+\[
+u=\tan\frac\theta2,
+\]
+其中 $\theta$ 是 $OP$ 与 $x$ 轴的夹角。

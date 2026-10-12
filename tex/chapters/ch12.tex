@@ -1,0 +1,602 @@
+% 第十二节：平行与正交
+\chapter{平行与正交}
+
+\section{几何的分层}
+
+平面几何可以按结构从少到多分成若干层次：
+
+\begin{itemize}
+\item \textbf{射影几何}：只有三维矢量空间本身。有意义的概念是"点在直线上"、共点、共线、
+圆锥曲线、极点与极线、对合与调和点列等。
+\item \textbf{仿射几何}：再指定一条无穷远直线 $\linf$。由此产生平行、中点、圆锥曲线的中心、
+双曲线的渐近线，以及椭圆、双曲线与抛物线的分类。
+\item \textbf{正交几何}：再指定一个正交结构（见第三节）。由此产生垂直与角度。
+\item \textbf{解析几何}：再固定坐标系的原点、方向与单位长度，从而可以写出坐标并进行具体的
+数值计算。
+\end{itemize}
+
+层次之间的表示关系是单向的。
+
+\begin{proposition}[层次的表示]
+高层次的运算与关系可以表示低层次的运算与关系，反之一般不能。
+\end{proposition}
+
+\begin{example}
+用点坐标所满足的方程（解析几何）可以给出三点共线的条件（射影几何）；反过来，射影几何的
+关系不能表示"两点的横坐标相等"（解析几何），因为横坐标的数值依赖于坐标系的选取。
+\end{example}
+
+\begin{example}
+写出过两点的直线方程（解析几何），再与第三条直线求交点，可以判断三线共点，这实质上就是
+点矢的叉乘（射影几何）；但射影几何中没有平行概念，不能表示"过一点作已知直线的平行线"
+（仿射几何）。同样地，叉乘不能表示长度，长度需要正交结构或解析几何才会出现。
+\end{example}
+
+既然高层次的运算能表示低层次的一切，原则上可以把所有推理都放到最高层次进行；但用高层次的
+语言表示低层次的关系往往要引入多余的坐标与数值，计算量反而增大。因此有下面的原则。
+
+\begin{proposition}[解题层次的选取]
+若命题中出现的所有关系都属于射影几何，就用射影几何的运算；若还用到平行、中点、中心一类
+概念，就用仿射几何的运算；只有当命题中确实出现垂直、长度或角度时，才用正交几何或解析几何
+的运算。
+\end{proposition}
+
+命题中常含有超出需要的前提。例如命题对任意位置的 $A$ 都成立，题设却要求 $A$ 落在 $x$ 轴上；
+或者命题对任意双曲线都成立，题设却指定它是等轴双曲线。多余的条件会把推理引向不必要的层次。
+在选取方法之前，应先判断哪些条件是本质的、哪些是可以去掉的。
+
+\section{平行结构与单比}
+
+\begin{definition}[交比]
+同一直线 $l$ 上的四点 $a,b,c,d$ 的交比定义为
+\[
+(ab;cd)=\frac{[ac]\,[bd]}{[ad]\,[bc]},
+\]
+其中 $[ac]$ 表示在 $l$ 上任取一点 $r$ 后由 $a,c,r$ 三个点矢所作的行列式 $\det(a,c,r)$。
+上式在 $r$ 的替换与各点矢的规范化下都不变，因此是射影几何的量。
+\end{definition}
+
+取一个坐标系，使 $l$ 上所有点的第二个分量为 $0$，并适当规范化使第三个分量为 $1$，则四点
+成为 $(x_A,0,1)$ 等，此时
+\[
+(ab;cd)=\frac{(x_C-x_A)(x_D-x_B)}{(x_D-x_A)(x_C-x_B)} .
+\]
+在纯粹的射影几何中，交比是几何量，而 $x_C-x_A$ 这样的差并不是几何量：换一个坐标系它的值就变了。
+只有在赋予 $x_C-x_A$ 以"两点间长度"的意义（即取定一个特定的坐标系）之后，才能说交比是长度
+之比。类似地，射影几何中的叉乘（作过两点的直线）在解析几何中表现为写出直线方程。用高层次的
+量表示低层次的量，表达式通常比较繁。
+
+引入 $\linf$ 之后，直线 $l$ 上多出一个特殊点 $\infty=l\times\linf$，即 $l$ 与无穷远直线的交点。
+
+\begin{definition}[单比]
+设 $a,b,c$ 是直线 $l$ 上的三点，$\infty=l\times\linf$。称交比
+\[
+(ab;c\infty)=\frac{[ac]\,[b\infty]}{[a\infty]\,[bc]}
+\]
+为 $a,b,c$ 的单比。
+\end{definition}
+
+单比是特殊的交比，因而也是射影量。若所用坐标系已使 $x_C-x_A$ 具有长度差的意义，则无穷远点的
+坐标必为无穷大，把上式取极限即得
+\begin{equation}
+(ab;c\infty)=\frac{x_C-x_A}{x_C-x_B}.
+\label{eq:simple-ratio}
+\end{equation}
+也就是说，\textbf{单比就是同一直线上两条线段的有向长度之比}。单比是仿射几何的概念，却可以用
+长度（解析几何的量）简单地表示；反过来，长度是不能用仿射几何的运算表示的。
+
+\begin{proposition}[中点]
+$a,b,c,\infty$ 成调和点列，当且仅当 $C$ 是线段 $AB$ 的中点。
+\end{proposition}
+
+\begin{proof}
+调和的条件是 $(ab;c\infty)=-1$。代入 \eqref{eq:simple-ratio} 得
+\[
+\frac{x_C-x_A}{x_C-x_B}=-1
+\quad\Longleftrightarrow\quad
+x_C-x_A=x_B-x_C
+\quad\Longleftrightarrow\quad
+x_C=\frac{x_A+x_B}{2}.
+\]
+\end{proof}
+
+因此中点是仿射几何的概念。射影几何中只有交比与调和关系，不能定义中点，必须借助 $\linf$ 才行。
+
+\section{正交结构}
+
+蒙日圆问题用到了"垂直"，而垂直既不属于射影几何，也不属于仿射几何。平行结构来自引入特殊的
+线矢 $\linf$，类似地，垂直结构应当来自引入一个特殊的张量。
+
+\begin{definition}[垂直]
+设 $\theta^{ij}$ 是一个对称的 $(2,0)$ 型张量。规定两条直线 $m,n$ 垂直，当且仅当
+\begin{equation}
+\theta^{ij}m_in_j=0 .
+\label{eq:perp}
+\end{equation}
+\end{definition}
+
+\eqref{eq:perp} 是规范不变的：把 $m$ 换成 $\lambda m$（$\lambda\ne0$）时左端只差一个常数因子，
+条件本身不受影响。
+
+\subsection{平行的直线也垂直}
+
+若 $m,n$ 垂直，则与 $m$ 平行的任一直线与与 $n$ 平行的任一直线也垂直。与 $m$ 平行的直线可以写成
+$m+\lambda\linf$，与 $n$ 平行的直线可以写成 $n+\mu\linf$。于是对一切 $\lambda,\mu$ 都有
+\[
+\theta^{ij}(m+\lambda\linf)_i(n+\mu\linf)_j=0 .
+\]
+把左端展开，比较 $\lambda\mu$ 的系数得
+\begin{equation}
+\theta^{ij}\linfsub{i}=0 .
+\label{eq:theta-degenerate}
+\end{equation}
+即 $\theta$ 退化，且它的核至少包含 $\linf$。
+
+\subsection{直线不与自己垂直}
+
+一条直线不应与自身垂直，因此对任何 $m\ne\linf$ 都有 $\theta^{ij}m_im_j\ne0$。这说明 $\theta$
+不能是不定的：若 $\theta$ 的号差中含有两个相反的符号，就存在非零的实线矢使
+$\theta^{ij}m_im_j=0$。把 $\theta$ 对角化，它的号差只能是 $(1,1,0)$。
+
+\begin{definition}[正交结构]
+设三维矢量空间上给定一个对称的 $(2,0)$ 型张量 $\theta^{ij}$，其号差为 $(1,1,0)$，则称相应的
+射影几何上有一个\textbf{正交结构}。
+\end{definition}
+
+由 \eqref{eq:theta-degenerate}，$\linf$ 属于 $\theta$ 的核；而号差为 $(1,1,0)$ 意味着核是一维的，
+因此核恰好由 $\linf$ 张成。这说明正交结构唯一确定平行结构。
+
+\begin{proposition}[正交结构决定平行结构]
+正交结构 $\theta$ 的核是一维的。从代数看，满足 $\theta^{ij}\linfsub{i}=0$ 的线矢构成无穷远
+直线；从几何看，若两条直线垂直于同一条直线，则这两条直线平行。因此正交结构包含了平行结构。
+\end{proposition}
+
+\begin{remark}
+反过来不成立。在 $\linf$ 的任意一条补线上取正定二次型，再把它与核上的零二次型一起拼成
+$\theta$，就得到号差为 $(1,1,0)$ 的张量，可见平行结构不能决定正交结构。上面把 $\theta$ 的号差
+限定为 $(1,1,0)$，是由"平行的直线也垂直"与"直线不与自己垂直"这两条要求逼出来的，二者缺一不可。
+\end{remark}
+
+\subsection{标准坐标系下的形式}
+
+在与解析几何联系紧密的坐标系下，正交张量取标准形式
+\begin{equation}
+\theta^{ij}=\diag\{1,1,0\},\qquad \linfsub{i}=(0,0,1).
+\label{eq:standard-theta}
+\end{equation}
+
+\section{角度的度量}
+
+正交结构不仅判断两条直线是否垂直，还能给出它们的角度。
+
+\begin{definition}[角度]
+设 $m,n$ 是两个线矢，$\theta^{ij}m_in_j\ne0$。定义
+\begin{equation}
+\langle m,n\rangle=\frac{m\theta n}{\sqrt{(m\theta m)(n\theta n)}},
+\label{eq:angle}
+\end{equation}
+其中 $m\theta n$ 是 $\theta^{ij}m_in_j$ 的简写。
+\end{definition}
+
+\eqref{eq:angle} 是规范不变的：把 $m$ 换成 $\lambda m$、$n$ 换成 $\mu n$ 时，分子与分母同时乘上
+$|\lambda\mu|$，比值不变。又 \eqref{eq:angle} 只依赖 $\theta$，因此它只依赖正交结构。注意到
+$\theta$ 限制在商空间（模去核 $\linf$）上正定，故 \eqref{eq:angle} 的取值必在 $[-1,1]$ 内，
+且取到 $\pm1$ 当且仅当两条直线平行。
+
+\begin{proposition}[与斜率的关系]
+在 \eqref{eq:standard-theta} 的标准坐标系下，取
+\[
+m_i=(k_1,-1,b_1),\qquad n_i=(k_2,-1,b_2),
+\]
+则
+\begin{equation}
+\langle m,n\rangle
+=\frac{k_1k_2+1}{\sqrt{k_1{}^2+1}\,\sqrt{k_2{}^2+1}}
+=\cos(\theta_2-\theta_1),
+\label{eq:cos-angle}
+\end{equation}
+其中 $\tan\theta_1=k_1$，$\tan\theta_2=k_2$。
+\end{proposition}
+
+\begin{proof}
+由 \eqref{eq:standard-theta}，
+\[
+m\theta n=m_1n_1+m_2n_2=k_1k_2+1,\qquad
+m\theta m=k_1^2+1,\qquad
+n\theta n=k_2^2+1,
+\]
+代入 \eqref{eq:angle} 即得第一式。再由
+\[
+\cos(\theta_2-\theta_1)=\cos\theta_2\cos\theta_1+\sin\theta_2\sin\theta_1
+=\frac{1+k_1k_2}{\sqrt{1+k_1^2}\,\sqrt{1+k_2^2}}
+\]
+即得第二式。
+\end{proof}
+
+有了角度的度量，就可以在任意三角形中使用正弦定理，从而得到任意两条线段的有向长度之比。
+于是既可以度量角度，也可以度量线段的比。
+
+\begin{proposition}[正交几何的内容]
+正交结构给出角度与长度之比，因此平面几何中一切度量性质都可以用它表述。
+\end{proposition}
+
+它与解析几何的差别只在于尚未固定坐标系的原点、方向与单位长度。长度的度量使运算变复杂，因此
+涉及长度的命题未必适合用三维矢量方法处理；而不涉及 \eqref{eq:angle} 这类运算的命题（例如蒙日圆
+问题）用三维矢量方法仍可能得到简洁的处理。
+
+\section{正交结构与圆锥曲线}
+
+正交张量 $\theta$ 与圆锥曲线 $g$ 之间有如下两个关系。
+
+\begin{proposition}[等轴双曲线]
+记 $g:\theta=g_{ij}\theta^{ij}$。则 $g:\theta=0$ 当且仅当 $g$ 是等轴双曲线。
+\end{proposition}
+
+\begin{proof}
+取 $\linf$ 的补线为 $x,y$ 平面，并把 $g$ 对角化为
+\[
+g_{ij}=\diag\Bigl\{\frac{1}{a^2},\frac{1}{b^2},-1\Bigr\},
+\qquad a,b>0 ;
+\]
+对双曲线只需把 $b^2$ 换成 $-b^2$。由 \eqref{eq:standard-theta}，
+$g:\theta=\dfrac{1}{a^2}+\dfrac{1}{b^2}$。对椭圆它恒为正；对双曲线它为
+$\dfrac{1}{a^2}-\dfrac{1}{b^2}$，等于 $0$ 当且仅当 $a=b$，即两条渐近线互相垂直，这正是
+"等轴双曲线"的定义。
+\end{proof}
+
+\begin{proposition}[圆]
+设 $\linf$ 规范化使 $\linf^2=g^{ij}\linfsub{i}\linfsub{j}=-1$，其中
+$\linf^i=(g^{-1})^{ij}\linfsub{j}$。则
+\begin{equation}
+\theta^{ij}=\linf^2g^{ij}-\linf^i\linf^j
+\label{eq:circle}
+\end{equation}
+当且仅当 $g$ 是圆。
+\end{proposition}
+
+\begin{proof}
+取 $g_{ij}=\diag\{1/a^2,1/b^2,-1\}$，$\linfsub{i}=(0,0,1)$。则
+$g^{ij}=\diag\{a^2,b^2,-1\}$，$\linf^i=(g^{-1})^{ij}\linfsub{j}=(0,0,-1)$，$\linf^2=-1$。
+于是 \eqref{eq:circle} 给出
+\[
+\theta^{ij}=-g^{ij}-\linf^i\linf^j
+=\diag\{-a^2,-b^2,1\}+\diag\{0,0,-1\}
+=\diag\{-a^2,-b^2,0\}.
+\]
+要使它与 $\theta^{ij}=\diag\{1,1,0\}$ 成比例，必须且只须 $a^2=b^2$，即 $g$ 是圆。反过来，
+当 $a=b$ 时上式成为 $-a^2\diag\{1,1,0\}$，与 \eqref{eq:standard-theta} 只差一个规范因子，
+\eqref{eq:circle} 成立。
+\end{proof}
+
+\begin{remark}
+\eqref{eq:circle} 中的 $\linf^2$ 必须按上述规范化取定，否则等式只能把 $\theta$ 确定到相差一个
+与 $g$ 有关的因子。此外这里用 $g$ 的逆 $(g^{-1})^{ij}$ 升了 $\linf$ 的指标，与用 $g$ 升指标
+得到的张量应当区分开。
+\end{remark}
+
+从射影几何、仿射几何、正交几何到解析几何，结构越来越多，允许的坐标变换则越来越少：射影几何
+中坐标变换可以是任意可逆线性变换；仿射几何中必须保持 $\linf$ 不变，只允许拉伸、旋转与平移；
+正交几何中必须保持角度不变，只允许旋转、平移与整体放大；解析几何中坐标系固定，不允许变换。
+
+\section{例题}
+
+\begin{example}[双曲线切线被渐近线截得的线段]
+设 $g$ 是双曲线，$a$ 是 $g$ 上一点。过 $a$ 的切线交两条渐近线于 $b,c$。则 $a$ 是线段 $BC$ 的
+中点，即 $AB=AC$。
+\end{example}
+
+\begin{proof}
+把 $g$ 取作度规，无穷远直线为 $\linf$。双曲线与 $\linf$ 交于两点，这两点处的切线就是两条
+渐近线 $m,n$。由"直线与圆锥曲线相交"一节的结论，$m,n$ 的对称积为
+\begin{equation}
+(mn)_{ij}=\linf^2g_{ij}-\linfsub{i}\linfsub{j},
+\qquad \linf^2=g^{ij}\linfsub{i}\linfsub{j}.
+\label{eq:asymptotes}
+\end{equation}
+记 $a$ 处的切线为 $\alpha=a^*$，它与 $\linf$ 交于 $\infty=a\times\linf$。又
+$b=m\times\alpha$、$c=n\times\alpha$ 是切线与两条渐近线的交点。中点条件 $AB=AC$ 等价于
+$a,b,c,\infty$ 成调和点列，也就是 $a,\infty$ 关于退化圆锥曲线 $(mn)$ 共轭。
+
+\begin{lemma}
+设 $a$ 在 $g$ 上，$\infty=a\times\linf$，$m,n$ 由 \eqref{eq:asymptotes} 给出。则
+$a,b,c,\infty$ 成调和点列当且仅当
+\[
+(mn)_{ij}a^i\infty^j=0 .
+\]
+\end{lemma}
+
+\begin{proof}
+$a,\infty$ 关于 $(mn)$ 共轭时，$a,\infty$ 把两条直线 $m,n$ 调和分割。在直线 $\alpha$ 上，
+$m,n$ 与 $\alpha$ 的交点正是 $b,c$，因此 $a,\infty$ 与 $b,c$ 成调和点列。这正是二次对合中
+"共轭等价于调和分割"的结论在两条直线这一退化情形下的形式。
+\end{proof}
+
+代入 \eqref{eq:asymptotes} 与 $\infty=a\times\linf$，
+\[
+(mn)_{ij}a^i\infty^j
+=\bigl(\linf^2g_{ij}-\linfsub{i}\linfsub{j}\bigr)a^i(a\times\linf)^j .
+\]
+把括号中的两项分别与 $a$、$a\times\linf$ 缩并。第一项给出
+\[
+\linf^2\,g_{ij}a^i(a\times\linf)^j=\linf^2\,a\cdot(a\times\linf)=0,
+\]
+因为 $a\cdot(a\times\linf)=[a\,a\,\linf]=0$（混合积中有两个相同的因子）。第二项给出
+\[
+\linfsub{i}\linfsub{j}a^i(a\times\linf)^j
+=(\linf\cdot a)\;\bigl(\linf\cdot(a\times\linf)\bigr)=0,
+\]
+同样因为 $\linf\cdot(a\times\linf)=[\linf\,a\,\linf]=0$。两项都为零，故
+$(mn)_{ij}a^i\infty^j=0$，$a,b,c,\infty$ 成调和点列，$a$ 是 $BC$ 的中点，即 $AB=AC$。
+\end{proof}
+
+\begin{example}[蒙日圆]
+设椭圆 $g$ 为 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，$a$ 是椭圆外一点，过 $a$ 作椭圆的
+两条切线 $m,n$ 互相垂直。求 $a$ 的轨迹。
+\end{example}
+
+\begin{proof}
+过 $a$ 的两条切线的对称积为
+\[
+(mn)_{ij}=a^2g_{ij}-a_ia_j,\qquad a^2=g_{ij}a^ia^j .
+\]
+切线 $m,n$ 垂直的条件是 $(mn)_{ij}\theta^{ij}=0$，即
+\begin{equation}
+a^2\,(g:\theta)-\theta^{ij}a_ia_j=0,
+\qquad g:\theta=g_{ij}\theta^{ij}.
+\label{eq:monge00}
+\end{equation}
+由 $a_i=g_{ik}a^k$，第二项可写成
+\[
+\theta^{ij}a_ia_j=\theta^{ij}g_{ik}g_{jl}a^ka^l
+=\theta_{kl}a^ka^l,
+\qquad \theta_{kl}=g_{ik}g_{jl}\theta^{ij}.
+\]
+于是 \eqref{eq:monge00} 成为
+\[
+\bigl[\theta_{kl}-(g:\theta)\,g_{kl}\bigr]a^ka^l=0 .
+\]
+因此 $a$ 的轨迹由 $(0,2)$ 型张量
+\begin{equation}
+h=\theta-(g:\theta)\,g
+\qquad\text{即}\qquad
+h_{ij}=\theta_{ij}-(g:\theta)\,g_{ij}
+\label{eq:monge-h}
+\end{equation}
+描述，这是一条圆锥曲线。
+
+下面验证它是一条圆。取
+\[
+g_{ij}=\diag\Bigl\{\frac{1}{a^2},\frac{1}{b^2},-1\Bigr\},\qquad
+g^{ij}=\diag\{a^2,b^2,-1\},\qquad
+\theta^{ij}=\diag\{1,1,0\}.
+\]
+按定义 $\theta_{ij}=g_{ik}g_{jl}\theta^{kl}$：逐项把 $\theta$ 的非零分量乘上
+$g_{11}g_{11}=\frac{1}{a^4}$ 或 $g_{22}g_{22}=\frac{1}{b^4}$，而第三个分量因 $\theta^{33}=0$
+为零，得到
+\[
+\theta_{ij}=\diag\Bigl\{\frac{1}{a^4},\frac{1}{b^4},0\Bigr\}.
+\]
+\begin{remark}
+不要把 $\theta_{ij}$ 与 $\theta^{ij}$ 的分量混为一谈，特别是第三个分量容易写错：$\theta^{ij}$ 的
+第三个对角元是 $0$，由它降指标得到的 $\theta_{ij}$ 的第三个对角元仍是 $0$。第二个分量只由
+$g_{22}$ 的二次方决定（这里是 $1/b^4$），而不是 $1/a^2b^2$。
+\end{remark}
+于是
+\[
+g:\theta=\frac{1}{a^2}+\frac{1}{b^2},
+\]
+从而
+\begin{align*}
+h_{ij}&=\theta_{ij}-(g:\theta)\,g_{ij}
+=
+\begin{pmatrix}
+\dfrac{1}{a^4} & 0 & 0\\[6pt]
+0 & \dfrac{1}{b^4} & 0\\[6pt]
+0 & 0 & 0
+\end{pmatrix}
+-\Bigl(\frac{1}{a^2}+\frac{1}{b^2}\Bigr)
+\begin{pmatrix}
+\dfrac{1}{a^2} & 0 & 0\\[6pt]
+0 & \dfrac{1}{b^2} & 0\\[6pt]
+0 & 0 & -1
+\end{pmatrix}\\[4pt]
+&=
+\begin{pmatrix}
+-\dfrac{1}{a^2b^2} & 0 & 0\\[6pt]
+0 & -\dfrac{1}{a^2b^2} & 0\\[6pt]
+0 & 0 & \dfrac{1}{a^2}+\dfrac{1}{b^2}
+\end{pmatrix}.
+\end{align*}
+把整体的规范因子 $-\dfrac{1}{a^2b^2}$ 略去，这个张量与
+\[
+h_{ij}\sim\diag\{1,\;1,\;-(a^2+b^2)\}
+\]
+等价，对应的二次方程是
+\[
+x^2+y^2-(a^2+b^2)z^2=0,
+\]
+在仿射图 $z=1$ 中即
+\[
+x^2+y^2=a^2+b^2 .
+\]
+因此 $a$ 的轨迹是以椭圆中心为心、半径 $\sqrt{a^2+b^2}$ 的圆，称为\textbf{蒙日圆}。
+\end{proof}
+
+由 \eqref{eq:monge-h} 得到蒙日圆不依赖坐标系的表达式：轨迹是对一切满足
+\[
+\bigl[\theta^{ij}-(g:\theta)\,g^{ij}\bigr]a_ia_j=0
+\]
+的点 $a$ 构成的圆锥曲线。
+
+\begin{example}[对中心张直角的动弦]
+设椭圆 $g$ 为 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，直线 $l$ 与 $g$ 交于 $c,d$，椭圆的中心为
+$O$。若 $OC\perp OD$，求 $l$ 所满足的条件。
+\end{example}
+
+\begin{proof}
+直接表达 $OC\perp OD$ 需要先把 $c,d$ 分别与中心作叉乘得到两条直线，再与 $\theta$ 缩并。可以
+避免这一步骤：$OC\perp OD$ 只涉及 $c,d$ 两个点矢，因此可以引入一个 $(0,2)$ 型张量
+$\Theta_{ij}$，要求点矢满足
+\begin{equation}
+\Theta_{ij}c^id^j=0
+\label{eq:Theta-cond}
+\end{equation}
+当且仅当 $OC\perp OD$。
+
+在 $z=1$ 的仿射图中，点 $C(x_1,y_1)$、$D(x_2,y_2)$ 满足
+$OC\perp OD\iff x_1x_2+y_1y_2=0$。点矢取 $(x,y,1)$ 时第三个分量总为 $1$，故只需取
+\begin{equation}
+\Theta_{ij}=\diag\{1,1,0\}
+\label{eq:Theta-comp}
+\end{equation}
+即可。注意 \eqref{eq:Theta-cond} 中的 $\Theta$ 配对的是两个点矢，而定义 \eqref{eq:perp} 中的
+$\theta$ 配对的是两个线矢，二者是不同的张量；本节末的注说明它们的关系，两个例子则是同一组配对的
+两种用法。
+
+设 $l$ 的线矢为 $l_i$，$l$ 与 $g$ 的两交点 $c,d$ 的对称积为
+\[
+(cd)^{ij}=l^2g^{ij}-l^il^j,\qquad l^2=g^{ij}l_il_j .
+\]
+由 \eqref{eq:Theta-cond} 与对称性，
+\[
+0=\Theta_{ij}c^id^j=\tfrac12\Theta_{ij}(cd)^{ij}
+=\tfrac12\bigl[l^2\,g^{ij}\Theta_{ij}-l^il^j\Theta_{ij}\bigr].
+\]
+因此 $l$ 满足
+\begin{equation}
+l^2\,(g:\Theta)-l^il^j\Theta_{ij}=0,
+\qquad g:\Theta=g^{ij}\Theta_{ij}.
+\label{eq:chord00}
+\end{equation}
+由 $\Theta_{ij}=g_{ik}g_{jl}\Theta^{kl}$，第二项可写成
+\[
+l^il^j\Theta_{ij}=\Theta^{kl}\,(g_{ik}l^i)(g_{jl}l^j)
+=\Theta^{kl}\tilde l_k\tilde l_l,
+\qquad \tilde l_i=g_{ik}l^k .
+\]
+于是 \eqref{eq:chord00} 成为
+\[
+\bigl[\Theta^{ij}-(g:\Theta)\,g^{ij}\bigr]\tilde l_i\tilde l_j=0 .
+\]
+把括号中的张量记为
+\begin{equation}
+h^{ij}=\Theta^{ij}-(g:\Theta)\,g^{ij},
+\label{eq:chord-h}
+\end{equation}
+则条件写成 $h^{ij}\tilde l_i\tilde l_j=0$。这正是说 $l$ 与圆锥曲线 $h$ 相切：与 $g$ 相切的条件
+是 $l^2=0$，而这里取代 $g$ 的是 $h$。于是 $l$ 的包络是一条圆锥曲线。它与蒙日圆问题是对偶的：
+蒙日圆求的是过定点的两条垂线的交点的轨迹，这里求的是对中心张直角的弦的包络。
+
+下面算出 $h$。取
+\[
+g_{ij}=\diag\Bigl\{\frac{1}{a^2},\frac{1}{b^2},-1\Bigr\},\qquad
+g^{ij}=\diag\{a^2,b^2,-1\},\qquad
+\Theta_{ij}=\diag\{1,1,0\}.
+\]
+由 $\Theta^{ij}=g^{ik}g^{jl}\Theta_{kl}$ 得
+\[
+\Theta^{ij}=\diag\Bigl\{\frac{1}{a^2},\frac{1}{b^2},0\Bigr\},
+\]
+于是
+\[
+g:\Theta=g^{ij}\Theta_{ij}=a^2+b^2 .
+\]
+因此
+\begin{align*}
+h^{ij}&=\Theta^{ij}-(g:\Theta)\,g^{ij}
+=
+\begin{pmatrix}
+\dfrac{1}{a^2} & 0 & 0\\[6pt]
+0 & \dfrac{1}{b^2} & 0\\[6pt]
+0 & 0 & 0
+\end{pmatrix}
+-(a^2+b^2)
+\begin{pmatrix}
+a^2 & 0 & 0\\
+0 & b^2 & 0\\
+0 & 0 & -1
+\end{pmatrix}\\[4pt]
+&=-\frac{a^2+b^2}{a^2b^2}\,
+\diag\{a^2,\;b^2,\;-1\}.
+\end{align*}
+也就是说 $h^{ij}$ 与 $g^{ij}$ 成比例。由 $h^{ij}=C\,g^{ij}$
+（$C=-\dfrac{a^2+b^2}{a^2b^2}$）得
+\begin{align*}
+(h^{-1})^{ij}&=\frac1C\,(g^{-1})^{ij}
+=\frac{a^2b^2}{a^2+b^2}\,
+\diag\Bigl\{\frac{1}{a^2},\frac{1}{b^2},-1\Bigr\}\\[4pt]
+&\sim\diag\{b^2,\;a^2,\;-(a^2+b^2)\}
+\sim\diag\Bigl\{1,\;1,\;-\frac{a^2+b^2}{a^2b^2}\Bigr\}.
+\end{align*}
+相切条件 $l_il_j(h^{-1})^{ij}=0$ 因此成为
+\[
+l_1^2+l_2^2-\frac{a^2+b^2}{a^2b^2}l_3^2=0 .
+\]
+对线矢 $l=(u,v,w)$，$\dfrac{|w|}{\sqrt{u^2+v^2}}$ 是直线与原点的距离。于是 $l$ 与原点的距离
+$r$ 满足
+\[
+\frac{1}{r^2}=\frac{a^2+b^2}{a^2b^2},
+\qquad\text{即}\qquad
+r=\frac{ab}{\sqrt{a^2+b^2}} .
+\]
+因此所求条件是：$l$ 是对中心在原点、半径 $r=\dfrac{ab}{\sqrt{a^2+b^2}}$ 的圆所作的切线，
+即 $l$ 的包络是这个圆。
+\end{proof}
+
+\begin{example}[数值验证]
+取 $a=2$、$b=1$，此时 $1/r^2=1/4+1=5/4$，即 $r=2/\sqrt5$。设 $l$ 是水平直线
+\[
+l:\ y=t,
+\]
+它与椭圆 $\dfrac{x^2}{4}+y^2=1$ 的交点为 $\bigl(\pm 2\sqrt{1-t^2},\ t\bigr)$，其中
+$|t|\le 1$。把两个交点记作 $c,d$。由 \eqref{eq:Theta-comp}，
+\[
+\Theta_{ij}c^id^j
+=\bigl(2\sqrt{1-t^2}\bigr)\bigl(-2\sqrt{1-t^2}\bigr)+t^2
+=-4(1-t^2)+t^2=5t^2-4 .
+\]
+于是 $OC\perp OD$ 等价于 $5t^2=4$，即 $t=\pm\dfrac{2}{\sqrt5}$。取 $t=\dfrac{2}{\sqrt5}$，则
+\[
+x^2=4\Bigl(1-\frac45\Bigr)=\frac45,
+\qquad
+c=\Bigl(\frac{2}{\sqrt5},\frac{2}{\sqrt5}\Bigr),\quad
+d=\Bigl(-\frac{2}{\sqrt5},\frac{2}{\sqrt5}\Bigr),
+\]
+且
+\[
+\Theta_{ij}c^id^j
+=-\frac45+\frac45=0,
+\]
+确实满足 $OC\perp OD$。另一方面，$l:y=\dfrac{2}{\sqrt5}$ 的线矢为
+$l_i=\bigl(0,1,-\tfrac{2}{\sqrt5}\bigr)$，而
+\[
+l_il_j(h^{-1})^{ij}
+=\frac14\cdot 1-\frac54\cdot\frac45=1-1=0,
+\]
+与相切条件 $l_il_j(h^{-1})^{ij}=0$ 相符；$l$ 到中心的距离为 $2/\sqrt5=r$，与前面的结论一致。
+\end{example}
+
+\begin{remark}[$\theta$ 与 $\Theta$ 的关系]
+$\theta^{ij}$ 与 $\Theta_{ij}$ 的分量在标准坐标系下恰好都写成 $\diag\{1,1,0\}$，容易把二者当成
+同一个张量。它们确实不同：$\theta$ 是 $(2,0)$ 型、作用于线矢，$\Theta$ 是 $(0,2)$ 型、作用于点矢。
+用 $g$ 升降指标并不能把二者互换，例如在同一坐标系下
+\[
+\Theta^{ij}=g^{ik}g^{jl}\Theta_{kl}
+=\diag\Bigl\{\frac{1}{a^2},\frac{1}{b^2},0\Bigr\},
+\qquad
+\theta_{ij}=g_{ik}g_{jl}\theta^{kl}
+=\diag\Bigl\{\frac{1}{a^4},\frac{1}{b^4},0\Bigr\},
+\]
+它们既彼此不同，一般也都不与 $\diag\{1,1,0\}$ 成比例；只有当 $g$ 是圆（$a=b$）时，各张量才
+彼此只相差常数因子。
+\end{remark}
+
+\section{关于记号的注}
+
+涉及多条圆锥曲线时，指标的使用会出现歧义。如果只有一条圆锥曲线 $g_{ij}$ 并把它用作度规，那么
+$g^{ij}$ 既可以理解为用度规升指标得到的结果，也可以理解为 $g_{ij}$ 的逆张量，这两种理解一致。
+但如果还涉及另一条圆锥曲线 $h_{ij}$，用 $g$ 升指标得到的张量与对 $h$ 求逆得到的张量就不再相同。
+为避免混淆，约定：$h^{ij}$ 指用 $g$ 升指标得到的张量，即 $h^{ij}=g^{ik}g^{jl}h_{kl}$；而 $h$ 的
+逆用 $(h^{-1})^{ij}$ 表示，它出现在相切条件 $l_il_j(h^{-1})^{ij}=0$ 中。判断一条圆锥曲线是圆
+还是等轴双曲线，以及在 $h^{ij}l_il_j=0$ 与 $(h^{-1})^{ij}l_il_j=0$ 之间转换时，都要先看清所用
+的是哪一个张量。

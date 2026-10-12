@@ -1,0 +1,363 @@
+% 第三节：升降指标、点乘和叉乘
+\chapter{升降指标、点乘与叉乘}
+
+\section{对称张量与逆张量}
+
+前两章指出，只有矢量与对偶矢量之间才有自然的缩并，矢量与矢量之间没有。要在矢量与矢量
+之间定义点乘，必须引入附加结构。本章引入的附加结构是一个对称可逆的 $(0,2)$ 型张量。
+
+\begin{definition}[对称张量与反对称张量]
+张量 $A_{ij}$ 称为对称的，若 $A_{ij}=A_{ji}$；称为反对称的，若 $A_{ij}=-A_{ji}$。
+\end{definition}
+
+在三维空间中，$A_{ij}=A_{ji}$ 意味着 $A_{12}=A_{21}$、$A_{13}=A_{31}$、$A_{23}=A_{32}$。
+这个定义写在某一个基底下。不过 $A_{ij}B^iC^j$ 作为 $B,C$ 的二次函数与坐标系无关，而
+$A_{ij}=A_{ji}$ 等价于
+\[
+A_{ij}B^iC^j=A_{ji}B^iC^j
+\]
+对一切矢量 $B,C$ 成立。因此对称性是张量本身的性质，而不只是它在一组基底下分量的性质。
+
+对称张量 $A_{ij}$ 可以构造一个线性映射 $\tau$，把矢量映为对偶矢量：
+\[
+B^j\longmapsto \tau(B)_i=A_{ij}B^j ,
+\]
+其中一个指标与 $B$ 缩并，另一个指标作为对偶矢量的自由指标。
+
+\begin{definition}[逆张量]
+设 $A_{ij}$ 是 $(0,2)$ 型张量。若存在 $(2,0)$ 型张量 $C^{ij}$ 使
+\[
+C^{ij}A_{jk}=\delta^i_k ,
+\]
+则称 $A_{ij}$ 可逆，并称 $C^{ij}$ 为它的逆张量。
+\end{definition}
+
+定义中的条件来自逆映射：若 $\tau$ 有逆映射 $\tau^{-1}$，由 $\tau^{-1}\bigl(\tau(B)\bigr)=B$ 得
+\[
+B^i=C^{ij}A_{jk}B^k ,
+\]
+它对一切矢量 $B$ 成立，故 $(1,1)$ 型张量 $C^{ij}A_{jk}$ 是恒等映射，即 $C^{ij}A_{jk}=\delta^i_k$；
+反过来，若此式成立，则 $\tau^{-1}$ 由 $C$ 给出，$\tau$ 可逆。
+
+\begin{remark}
+若 $A_{ij}$ 对称，则它的逆 $C^{ij}$ 也对称。事实上 $C^{ik}A_{kl}C^{jl}=\delta^i_lC^{jl}=C^{ji}$，
+而把其中的 $A_{kl}$ 换成 $A_{lk}$ 并交换哑指标 $k,l$，同一个表达式又等于 $C^{ij}$；故
+$C^{ij}=C^{ji}$。
+\end{remark}
+
+\section{升降指标}
+
+有了对称可逆的张量 $A_{ij}$ 及其逆，就在矢量与对偶矢量之间得到两个互逆的映射：矢量 $B^i$
+对应于对偶矢量 $A_{ij}B^j$，对偶矢量 $f_i$ 对应于矢量 $C^{ij}f_j$。讨论其中一个时总同时在
+讨论另一个，不妨把它们看作同一个几何对象的两种写法，并引入记号
+\[
+B_i=A_{ij}B^j,\qquad f^i=C^{ij}f_j .
+\]
+直观地说，$A_{ij}$ 用来下降指标，$C^{ij}$ 用来上升指标。对任一张量可以逐指标地进行升降，
+例如对 $D^i{}_{jk}$ 上升第二个指标，得到
+\[
+D^{ij}{}_k=C^{jl}D^i{}_{lk} .
+\]
+
+\begin{example}
+计算 $A_{ij}$ 自身升降指标的结果。上升第一个指标：
+\[
+A^i{}_j=C^{ik}A_{kj}=\delta^i_j ,
+\]
+得到恒等张量。上升两个指标：
+\[
+A^{ij}=C^{ik}C^{jl}A_{kl}=C^{ik}\delta^j_k=C^{ij},
+\]
+得到 $A_{ij}$ 的逆。因此以后不再使用记号 $C^{ij}$，而用 $A^{ij}$ 表示 $A_{ij}$ 的逆张量。
+\end{example}
+
+\begin{definition}[度规]
+在矢量空间及其对偶空间中选定一个对称可逆的 $(0,2)$ 型张量用于升降指标，就称它为这个
+空间的度规，通常记为 $g_{ij}$，其逆记为 $g^{ij}$。
+\end{definition}
+
+度规的字面意思是“尺子”：有了度规才能定义两个矢量的点乘，而矢量与自身的点乘即长度的平方。
+在这个意义上，长度的概念建立在度规之上。
+
+\section{号差}
+
+\begin{theorem}[标准形式与号差]
+设 $A_{ij}$ 是 $(0,2)$ 型对称张量。则存在一组基底，使 $A_{ij}$ 在该基底下满足：$i\ne j$ 时
+$A_{ij}=0$，$i=j$ 时分量为 $+1$、$-1$ 或 $0$。其中 $+1$、$-1$、$0$ 的个数由 $A$ 本身决定，
+与所取基底无关，称为 $A$ 的号差。
+\end{theorem}
+
+\begin{proof}[证明要点]
+用配方法把二次型 $A_{ij}X^iX^j$ 化为平方和 $\sum_k\lambda_k(Y^k)^2$（$\lambda_k\ne0$），再把
+各系数化为 $\pm1$，即得上述基底。若有两种这样的标准形式，设其中 $+1$ 的个数分别为 $p,p'$，
+不妨 $p>p'$。在第一种标准形中取前 $p$ 个基矢张成的子空间，在第二种中取后 $n-p'$ 个基矢张成
+的子空间，二者维数之和 $p+n-p'>n$，故有非零的公共矢量 $X$。按第一种标准形，$A(X,X)>0$；
+按第二种标准形，$A(X,X)\le0$，矛盾。故 $p=p'$，同理 $-1$ 与 $0$ 的个数也分别相同，号差唯一。
+\end{proof}
+
+\begin{corollary}
+$A_{ij}$ 可逆当且仅当它的号差中 $0$ 的个数为零。
+\end{corollary}
+
+\begin{remark}
+应当注意不要把这一结论说过头。准确的表述是：号差是\emph{完全}不变量，即两个同维数的对称
+$(0,2)$ 型张量能由一个线性变换互相转化，当且仅当它们的号差相同；但坐标无关的性质并不止
+号差一个，例如对称性、反对称性也都与基底无关。
+\end{remark}
+
+\section{点乘、模方与定号性}
+
+\begin{definition}[点乘与模方]
+设 $g_{ij}$ 是度规，两个矢量 $A,B$ 的点乘定义为
+\[
+A\cdot B=A^iB_i=A_iB^i=g_{ij}A^iB^j .
+\]
+矢量与自身的点乘 $A^2=A\cdot A=g_{ij}A^iA^j$ 称为 $A$ 的模方，即长度的平方。
+\end{definition}
+
+度规要求对称，正是为了使点乘满足交换律：
+\[
+A\cdot B=g_{ij}A^iB^j=g_{ji}A^iB^j=g_{ji}B^jA^i=B\cdot A .
+\]
+
+矢量的模方不一定是正数，它的正负性反映了度规本身的性质，可以用号差描述。
+
+\begin{definition}[正定、负定与不定]
+设度规的号差为 $(p,q,r)$，其中 $p,q,r$ 分别是 $+1,-1,0$ 的个数。
+\begin{enumerate}
+\item 若对任意非零矢量 $A$ 都有 $A^2>0$，称度规正定，此时 $q=r=0$；
+\item 若对任意非零矢量 $A$ 都有 $A^2<0$，称度规负定，此时 $p=r=0$；
+\item 若 $A^2$ 可取正值、负值，也可为零，称度规不定。
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+号差中有 $+1$、有 $0$、没有 $-1$ 的情形常被笼统地称作“非负”，但它并不是正定的：此时恒有
+$A^2\ge0$，且存在非零矢量使 $A^2=0$，度规是退化的。正确的名称是半正定（非负定）；正定
+要求号差中 $0$ 的个数为零。
+\end{remark}
+
+若度规负定，则 $-g_{ij}$ 正定，二者给出的点乘只相差一个符号。因此以后一般不讨论负定度规，
+必要时改变符号即可。
+
+\section{例：欧氏度规与闵氏度规}
+
+\begin{example}[欧氏度规]
+在三维欧几里得空间中取一组正交归一基底，度规的分量为
+\[
+g_{11}=g_{22}=g_{33}=1,\qquad g_{ij}=0\quad(i\ne j),
+\]
+即 $g_{ij}=\delta_{ij}$。这时非零矢量 $A^i=(x,y,z)$ 的模方为
+\[
+A^2=x^2+y^2+z^2>0 ,
+\]
+故该度规正定，号差为 $(3,0,0)$。
+\end{example}
+
+\begin{remark}
+这里的 $\delta_{ij}$ 与前面常用的 $\delta^i_j$ 不同。$\delta^i_j$ 是恒等 $(1,1)$ 型张量，
+它在任何基底下分量都是 $\delta^i_j$；而 $\delta_{ij}$ 只在正交归一基底下分量才形如
+$\delta_{ij}$，换一组一般基底，它的分量是该基底下的欧氏度规矩阵，不再等于 $\delta_{ij}$。
+\end{remark}
+
+\begin{example}[闵氏度规]
+四维闵氏时空在某个惯性参考系下的度规分量为
+\[
+g_{00}=c^2,\qquad g_{11}=g_{22}=g_{33}=-1,
+\]
+其余分量为 $0$。这时 $A^i=(t,x,y,z)$ 的模方为
+\[
+A^2=c^2t^2-x^2-y^2-z^2 ,
+\]
+可取正值、负值或零，故该度规不定，号差为 $(1,3,0)$。
+\end{example}
+
+\begin{example}
+平面上的圆锥曲线可以放在三维空间中用不定度规处理，这是后文的内容。
+\end{example}
+
+\section{三阶反对称张量}
+
+前面用二阶对称张量定义了 $n$ 维空间中的点乘。下面用一个三阶反对称张量定义三维空间中的
+叉乘；叉乘只在三维空间中存在。
+
+\begin{definition}[反对称张量]
+$(0,3)$ 型张量 $\epsilon_{ijk}$ 称为反对称的，若交换其中任意两个指标后分量变号，例如
+$\epsilon_{ijk}=-\epsilon_{jik}$。
+\end{definition}
+
+与对称性一样，反对称性在一组基底下成立就在任何基底下成立：$\epsilon_{ijk}B^iC^jD^k$ 与
+基底无关，而反对称性等价于它对任意两个自变量交换后变号。
+
+由反对称性，若三个指标中有两个相等，则该分量为零。例如交换 $\epsilon_{112}$ 的前两个指标得
+$\epsilon_{112}=-\epsilon_{112}$，故 $\epsilon_{112}=0$。因此非零分量的三个指标必使 $1,2,3$
+各出现一次。设 $\epsilon_{123}=a$，则
+\[
+\epsilon_{123}=\epsilon_{231}=\epsilon_{312}=a,\qquad
+\epsilon_{213}=\epsilon_{132}=\epsilon_{321}=-a .
+\]
+
+\begin{remark}
+列举分量时容易写成自相矛盾的形式（例如同时写出 $\epsilon_{312}=-a$ 与 $\epsilon_{312}=a$）。
+正确的取法是：偶排列 $(123),(231),(312)$ 的分量都等于 $a$，奇排列 $(213),(132),(321)$
+的分量都等于 $-a$。
+\end{remark}
+
+于是三阶反对称张量的分量除一个待定常数 $a$ 外完全确定，而 $a$ 的变化只是给张量乘上一个
+常数。取 $a=1$，称为标准反对称张量。$a=1$ 只在部分基底下成立：在别的基底下写出 $\epsilon$
+的分量，$a$ 一般不再是 $1$；这一点对以下运算无关紧要，因此也可以简单地说 $\epsilon_{ijk}$
+是三维空间自带的结构。
+
+\begin{definition}[$\epsilon^{ijk}$]
+指标在上的三阶反对称张量 $\epsilon^{ijk}$ 不借助度规升降指标来定义，而要求
+\[
+\epsilon^{ijk}\epsilon_{ijk}=6 .
+\]
+\end{definition}
+
+这一条件唯一地确定 $\epsilon^{ijk}$。设 $\epsilon^{ijk}=\lambda\,\eta^{ijk}$，其中 $\eta^{ijk}$
+是标准反对称张量，则六个非零分量各贡献 $\lambda$，即 $\epsilon^{ijk}\epsilon_{ijk}=6\lambda$，
+故 $\lambda=1$：取 $\epsilon^{123}=1$ 时等式成立，并且满足等式的 $\epsilon^{ijk}$ 唯一。
+
+\begin{proposition}[$\epsilon$ 的缩并恒等式]
+\[
+\epsilon_{ijk}\epsilon^{imn}=\delta^m_j\delta^n_k-\delta^n_j\delta^m_k .
+\]
+\end{proposition}
+
+\begin{proof}
+左端对 $i$ 求和。若 $j=k$，左边因 $\epsilon_{ijk}$ 对 $j,k$ 反对称而为 $0$，右边也为 $0$。
+若 $j\ne k$，两边都对 $j,k$ 反对称，故只需验证 $j=2,k=3$ 的情形。此时左边只有 $i=1$ 时非零，
+值为 $\epsilon^{1mn}$；右边为 $\delta^m_2\delta^n_3-\delta^n_2\delta^m_3$。当 $(m,n)=(2,3)$ 时
+两边都等于 $1$，当 $(m,n)=(3,2)$ 时两边都等于 $-1$，其余情形两边都为 $0$。故恒等式成立。
+\end{proof}
+
+\begin{proposition}[$\epsilon$ 与行列式]
+\[
+\epsilon_{ijk}\epsilon^{lmn}=
+\det\begin{pmatrix}
+\delta^l_i & \delta^m_i & \delta^n_i\\
+\delta^l_j & \delta^m_j & \delta^n_j\\
+\delta^l_k & \delta^m_k & \delta^n_k
+\end{pmatrix}.
+\]
+\end{proposition}
+
+\begin{proof}
+两边都对 $(i,j,k)$ 反对称，也都对 $(l,m,n)$ 反对称（交换 $l,m$ 相当于交换行列式的两列）。
+而在 $(i,j,k)=(l,m,n)=(1,2,3)$ 时两边都等于 $1$。反对称张量的全部分量由它在 $(1,2,3)$ 处的值
+确定，故恒等式成立。
+\end{proof}
+
+\begin{remark}
+这两个公式的作用是：表达式中每出现一对 $\epsilon$，就可以把它们换成 $\delta$ 的组合，从而
+一次消去两个 $\epsilon$。反复使用后，一个表达式中剩下的 $\epsilon$ 的个数为 $0$ 或 $1$。
+\end{remark}
+
+\section{叉乘与混合积}
+
+\begin{definition}[叉乘]
+两个矢量 $A,B$ 的叉乘是一个对偶矢量，定义为
+\[
+(A\times B)_i=\epsilon_{ijk}A^jB^k .
+\]
+类似地，两个对偶矢量 $X,Y$ 的叉乘是一个矢量，定义为
+\[
+(X\times Y)^i=\epsilon^{ijk}X_jY_k .
+\]
+\end{definition}
+
+\begin{definition}[混合积]
+三个矢量 $A,B,C$ 的混合积是一个实数，定义为
+\[
+[ABC]=\epsilon_{ijk}A^iB^jC^k .
+\]
+同样可以定义三个对偶矢量的混合积。
+\end{definition}
+
+\begin{proposition}[基本性质]
+叉乘与混合积具有下列性质：
+\begin{enumerate}
+\item 叉乘是双线性的，并且反对称：$A\times B=-B\times A$，特别地 $A\times A=0$；
+\item 叉乘的结果与两个因子都缩并为零：$A\cdot(A\times B)=B\cdot(A\times B)=0$；
+\item 混合积对三个自变量都是线性的，交换任意两个因子变号；当 $A,B,C$ 共面时 $[ABC]=0$。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1)(3) 由 $\epsilon$ 的反对称性与线性性直接得到。(2) 例如
+\[
+A\cdot(A\times B)=A^i(A\times B)_i=A^i\epsilon_{ijk}A^jB^k=0,
+\]
+因为 $\epsilon_{ijk}$ 对 $i,j$ 反对称，而 $A^iA^j$ 对 $i,j$ 对称；$B$ 的情形同理。
+\end{proof}
+
+\begin{theorem}[二重外积公式]
+设 $A,B$ 是矢量，$C$ 是对偶矢量（对称地，也可以设 $A,B$ 是对偶矢量而 $C$ 是矢量），则
+\[
+(A\times B)\times C=(A\cdot C)B-(B\cdot C)A .
+\]
+\end{theorem}
+
+\begin{proof}
+设 $A,B$ 是矢量、$C$ 是对偶矢量。此时 $A\times B$ 与 $C$ 都是对偶矢量，它们的叉乘由
+$(X\times Y)^i=\epsilon^{ijk}X_jY_k$ 给出，于是
+\[
+\bigl((A\times B)\times C\bigr)^i
+=\epsilon^{ijk}(A\times B)_jC_k
+=\epsilon^{ijk}\epsilon_{jmn}A^mB^nC_k .
+\]
+把缩并恒等式 $\epsilon_{ijk}\epsilon^{imn}=\delta^m_j\delta^n_k-\delta^n_j\delta^m_k$ 中的指标
+重新命名，可得
+\[
+\epsilon^{ijk}\epsilon_{jmn}=\delta^i_n\delta^k_m-\delta^i_m\delta^k_n .
+\]
+代入得
+\[
+\bigl((A\times B)\times C\bigr)^i
+=A^mB^nC_k\bigl(\delta^i_n\delta^k_m-\delta^i_m\delta^k_n\bigr)
+=(A\cdot C)B^i-(B\cdot C)A^i ,
+\]
+即所证。$A,B$ 为对偶矢量而 $C$ 为矢量时证法相同。
+\end{proof}
+
+\begin{remark}
+公式中 $A,B$ 是矢量而 $C$ 是对偶矢量，或者 $A,B$ 是对偶矢量而 $C$ 是矢量。只有当存在度规时，
+才能把矢量与对偶矢量互相转换，从而定义矢量与对偶矢量之间的叉乘。
+\end{remark}
+
+\begin{corollary}
+\[
+(A\times B)\cdot(C\times D)=(A\cdot C)(B\cdot D)-(A\cdot D)(B\cdot C).
+\]
+特别地，取 $C=A$、$D=B$ 得
+\[
+(A\times B)^2=(A\cdot A)(B\cdot B)-(A\cdot B)^2 .
+\]
+\end{corollary}
+
+\begin{proof}
+$A\times B$ 与 $C\times D$ 都是对偶矢量，两个对偶矢量的点乘需要用度规把一个指标上升：
+在 $|\det g|=1$ 的基底下（例如标准正交基底）有 $g^{ij}\epsilon_{jkl}=\epsilon^{ikl}$，于是
+\[
+(A\times B)\cdot(C\times D)=g^{ij}(A\times B)_i(C\times D)_j
+=\epsilon^{j}{}_{ab}\epsilon_{jcd}A^aB^bC^cD^d .
+\]
+再由恒等式 $\epsilon^{jab}\epsilon_{jcd}=\delta^a_c\delta^b_d-\delta^a_d\delta^b_c$，得
+\[
+(A\times B)\cdot(C\times D)=(A\cdot C)(B\cdot D)-(A\cdot D)(B\cdot C).
+\]
+\end{proof}
+
+\begin{remark}
+上面的推论中出现了两个对偶矢量的点乘，必须用度规把一个指标上升。本节把 $\epsilon_{ijk}$ 与
+$\epsilon^{ijk}$ 都取为标准反对称符号，这只在 $|\det g|=1$ 的基底（例如标准正交基底）下才是
+由度规诱导的体积形式；在一般的非正交基底下，缩并的结果会多出 $\det g$ 因子。二重外积公式
+本身只用到 $\epsilon$ 与 $\delta$，与这一约定无关。
+\end{remark}
+
+本章介绍的升降指标、点乘、叉乘、混合积与指标缩并是后文的基本工具。
+
+\begin{exercise}
+展开 $\epsilon^{ijk}\epsilon_{ijk}$，写出它的六个非零项，并验证它等于 $6$。
+\end{exercise}

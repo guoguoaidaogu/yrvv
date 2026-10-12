@@ -1,0 +1,244 @@
+% 第十九节：再谈二次点列
+\chapter{再谈二次点列}
+
+引入指标分裂后，若要用旋量运算解决问题，就必须把原有的代数工具——点乘、叉乘、缩并，
+以及 $g_{ij}$、$\epsilon_{ijk}$ 等——全部翻译成旋量语言。为此先要熟悉二维矢量空间中的
+交比、对合与调和点列。
+
+\section{矢量运算的旋量翻译}
+
+联系矢量与旋量的工具是转换符 $\sigma^{\alpha\dot\alpha}_i$ 与 $\sigma^i_{\alpha\dot\alpha}$，
+其非零分量为
+\[
+\sigma^{11}_1=\sigma^{22}_1=1,\quad \sigma^{11}_2=1,\quad \sigma^{22}_2=-1,\quad
+\sigma^{12}_3=\sigma^{21}_3=1,
+\]
+以及
+\[
+\sigma^1_{11}=\sigma^1_{22}=1,\quad \sigma^2_{11}=1,\quad \sigma^2_{22}=-1,\quad
+\sigma^3_{12}=\sigma^3_{21}=1 .
+\]
+直接由分量计算可得
+\begin{equation}\label{eq:sigma-contract}
+\sigma^i_{\alpha\dot\alpha}\sigma^{\alpha\dot\alpha}_j=2\delta^i_j .
+\end{equation}
+
+\begin{remark}[归一化]
+\eqref{eq:sigma-contract} 右端的系数 $2$ 来自对称对 $(\alpha\dot\alpha)$ 在求和时的双重计数。
+若把两个转换符同时乘以归一化因子 $1/\sqrt2$，即令
+$\hat\sigma^{\alpha\dot\alpha}_i=\frac1{\sqrt2}\sigma^{\alpha\dot\alpha}_i$、
+$\hat\sigma^i_{\alpha\dot\alpha}=\frac1{\sqrt2}\sigma^i_{\alpha\dot\alpha}$，则
+$\hat\sigma^i_{\alpha\dot\alpha}\hat\sigma^{\alpha\dot\alpha}_j=\delta^i_j$。由于射影几何中
+点只由坐标的比确定，这一常数因子不影响任何几何结论。下面保留未归一化的转换符，并在每个
+等式中把相应的因子写清楚。
+\end{remark}
+
+\eqref{eq:sigma-contract} 的意义在于它给出了缩并运算的旋量表达。以 $(1,1)$ 型张量的缩并
+为例：
+\[
+\tau^i_i=\tau^j_i\delta^i_j=\tfrac12\,\tau^j_i\sigma^i_{\alpha\dot\alpha}\sigma^{\alpha\dot\alpha}_j
+=\tau^{\alpha\dot\alpha}_{\alpha\dot\alpha},
+\]
+其中转换符的作用是把矢量指标换为旋量指标。推广之：\emph{矢量的缩并总可以替换为旋量的
+二重缩并}。反之则未必：旋量的二重缩并不一定能替换为矢量的缩并。原因在于，一个矢量指标
+分裂出的两个旋量指标是对称的，反过来两个对称的旋量指标可以合成为一个矢量指标；若两个旋量
+指标不对称，就不能合成为矢量指标。概括地说，矢量代数总可以表示为旋量代数，旋量代数不一定
+能表示为矢量代数，因而旋量对几何的刻画比矢量更细致。
+
+旋量空间中的 Kronecker 记号记为 $\delta^\alpha_\gamma$。矢量空间的 $\delta^i_j$ 用旋量指标
+改写后记为 $\delta^{\alpha\dot\alpha}_{\gamma\dot\delta}$，两者只靠指标个数区分。由定义
+$\delta^{\alpha\dot\alpha}_{\gamma\dot\delta}
+=\sigma_i^{\alpha\dot\alpha}\sigma^i_{\gamma\dot\delta}
+=\sigma_1^{\alpha\dot\alpha}\sigma^1_{\gamma\dot\delta}
++\sigma_2^{\alpha\dot\alpha}\sigma^2_{\gamma\dot\delta}
++\sigma_3^{\alpha\dot\alpha}\sigma^3_{\gamma\dot\delta}$，直接计算得到
+\[
+\delta^{\alpha\dot\alpha}_{\gamma\dot\delta}
+=\delta^\alpha_\gamma\delta^{\dot\alpha}_{\dot\delta}
++\delta^{\dot\alpha}_\gamma\delta^\alpha_{\dot\delta},
+\]
+也就是说，它是在两个 Kronecker 记号的基础上对指标做了对称化。在只涉及一整套不带点的指标
+时，上式也常写成 $\delta^{\alpha\beta}_{\gamma\delta}
+=\delta^\alpha_\gamma\delta^\beta_\delta+\delta^\beta_\gamma\delta^\alpha_\delta$。
+
+\section{度规的旋量表示}
+
+矢量空间的度规 $g_{ij}$（旋量正是在 $g$ 的基础上构造出来的）用旋量指标改写后记为
+$g_{\alpha\dot\alpha\beta\dot\beta}$。它应当能用旋量空间中的基本张量 $\delta^\alpha_\gamma$
+与 $e_{\alpha\beta}$ 表示。由于 $g$ 只涉及下指标，用到的旋量基本张量只有 $e_{\alpha\beta}$。
+为寻找表达式，先列出它的三条对称性：
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item 交换第一对内的两个指标，值不变：
+      $g_{\alpha\dot\alpha\beta\dot\beta}=g_{\dot\alpha\alpha\beta\dot\beta}$；
+\item 交换第二对内的两个指标，值不变：
+      $g_{\alpha\dot\alpha\beta\dot\beta}=g_{\alpha\dot\alpha\dot\beta\beta}$；
+\item 同时交换前一对与后一对指标，值不变：
+      $g_{\alpha\dot\alpha\beta\dot\beta}=g_{\beta\dot\beta\alpha\dot\alpha}$。
+\end{enumerate}
+
+其中前两条来源于指标分裂，第三条来源于度规是对称张量。在这三条对称性的限制下，可以设
+\begin{equation}\label{eq:g-spinor}
+g_{\alpha\dot\alpha\beta\dot\beta}
+=e_{\alpha\beta}e_{\dot\alpha\dot\beta}+e_{\alpha\dot\beta}e_{\dot\alpha\beta},
+\end{equation}
+直接验证可知它满足上述三条对称性，而且确实是正确的构造。
+
+\begin{definition}[旋量形式下的度规]
+满足 \eqref{eq:g-spinor} 的张量 $g_{\alpha\dot\alpha\beta\dot\beta}$ 称为度规 $g_{ij}$ 的
+旋量表示。
+\end{definition}
+
+\eqref{eq:g-spinor} 有多个用途。第一个用途是给旋量降指标。设 $s^{\beta\dot\beta}$ 是一个
+对称旋量张量，则
+\[
+g_{\alpha\dot\alpha\beta\dot\beta}s^{\beta\dot\beta}
+=e_{\alpha\beta}e_{\dot\alpha\dot\beta}s^{\beta\dot\beta}
++e_{\alpha\dot\beta}e_{\dot\alpha\beta}s^{\beta\dot\beta}
+=s_{\alpha\dot\alpha}+s_{\dot\alpha\alpha},
+\]
+其中第二个等号用 $e$ 降指标。若 $s_{\alpha\dot\alpha}$ 本身是对称的，则结果就是
+$s_{\alpha\dot\alpha}$；否则还附加了一次对称化。
+
+第二个用途是定义点乘。设 $a^i,b^i$ 是点矢，则
+\[
+a\cdot b=g_{ij}a^ib^j
+=g_{\alpha\dot\alpha\beta\dot\beta}a^{\alpha\dot\alpha}b^{\beta\dot\beta}
+=a^{\beta\dot\beta}b_{\beta\dot\beta}.
+\]
+
+\section{二次点列的三个命题}
+
+借助新工具，可以更简单地证明二次点列与二次对合中的一些命题。
+
+\begin{proposition}\label{prop:tangent-points}
+设 $p$ 是 $g$ 外一点，其旋量坐标为 $\mathfrak a,\mathfrak b$，即 $p=(\mathfrak a\mathfrak b)$。
+则 $\phi(\mathfrak a)$ 与 $\phi(\mathfrak b)$ 是 $p$ 到 $g$ 的两条切线的切点。
+\end{proposition}
+
+\begin{proof}
+按定义
+\[
+p_{\alpha\dot\alpha}=\mathfrak a_\alpha\mathfrak b_{\dot\alpha}
++\mathfrak b_\alpha\mathfrak a_{\dot\alpha},
+\]
+而 $\phi(\mathfrak a)$ 的分量为
+$\phi(\mathfrak a)^{\alpha\dot\alpha}=\mathfrak a^\alpha\mathfrak a^{\dot\alpha}$。
+计算缩并
+\[
+p\cdot\phi(\mathfrak a)
+=p_{\alpha\dot\alpha}\phi(\mathfrak a)^{\alpha\dot\alpha}
+=\bigl(\mathfrak a_\alpha\mathfrak b_{\dot\alpha}
++\mathfrak b_\alpha\mathfrak a_{\dot\alpha}\bigr)\mathfrak a^\alpha\mathfrak a^{\dot\alpha}
+=(\mathfrak a_\alpha\mathfrak a^\alpha)(\mathfrak b_{\dot\alpha}\mathfrak a^{\dot\alpha})
++(\mathfrak b_\alpha\mathfrak a^\alpha)(\mathfrak a_{\dot\alpha}\mathfrak a^{\dot\alpha}).
+\]
+由于 $\mathfrak a_\alpha\mathfrak a^\alpha=e_{\alpha\beta}\mathfrak a^\beta\mathfrak a^\alpha=0$
+且 $\mathfrak a_{\dot\alpha}\mathfrak a^{\dot\alpha}=0$（$e$ 反对称），两项都为零，故
+\[
+p\cdot\phi(\mathfrak a)=0 .
+\]
+这正是说 $\phi(\mathfrak a)$ 位于 $p$ 的极线上。又因为
+$\phi(\mathfrak a)=\mathfrak a\mathfrak a$ 是 $g$ 上的点，所以 $\phi(\mathfrak a)$ 是 $p$ 的
+极线与 $g$ 的交点，即从 $p$ 引向 $g$ 的切线的切点。对 $\mathfrak b$ 的论证完全相同。
+由于 $\mathfrak a,\mathfrak b$ 线性无关，$\phi(\mathfrak a)\neq\phi(\mathfrak b)$，故它们是
+两条不同切线的切点。
+\end{proof}
+
+\begin{remark}
+把上述论证改写成对偶的形式，就得到本章开头提到的结论：若 $p=(\mathfrak a\mathfrak b)$、
+$q=(\mathfrak c\mathfrak d)$，则
+$(\mathfrak a\mathfrak b):(\mathfrak c\mathfrak d)=p\cdot q$。因此 $g$ 上四点 $a,b,c,d$ 成
+调和点列，当且仅当 $p,q$ 共轭。命题 3 给出了它的另一种写法。
+\end{remark}
+
+\begin{proposition}\label{prop:crossratio-spinor}
+设 $a,b,c,d$ 是 $g$ 上的四个定点。则对 $g$ 上任一点 $p$，四条直线
+$a\times p,\ b\times p,\ c\times p,\ d\times p$ 的交比与 $p$ 无关，且等于旋量
+$\mathfrak a,\mathfrak b,\mathfrak c,\mathfrak d$ 的交比。
+\end{proposition}
+
+\begin{proof}
+直线 $a\times p$ 的旋量式为 $(\mathfrak a\mathfrak p)_{\alpha\dot\alpha}$，换成矢量式为
+\[
+l_i=(\mathfrak a\mathfrak p)_{\alpha\dot\alpha}\sigma^{\alpha\dot\alpha}_i .
+\]
+右端关于 $\mathfrak a$ 是线性的，因此
+\[
+f:\mathfrak a\longmapsto(\mathfrak a\mathfrak p)_{\alpha\dot\alpha}\sigma^{\alpha\dot\alpha}_i
+\]
+是从旋量空间到以 $p$ 为中心的线束的线性映射。线性映射保持交比不变，所以无论 $p$ 如何选取，
+四条直线的交比都等于 $\mathfrak a,\mathfrak b,\mathfrak c,\mathfrak d$ 的交比。于是可以把
+这一交比定义为二次点列的交比。
+\end{proof}
+
+值得注意的是，$p$ 必须在 $g$ 上：只有此时 $p=\mathfrak p\mathfrak p$，直线 $a\times p$ 才能
+写成关于 $\mathfrak a$ 的线性表达式。若 $p$ 不在 $g$ 上，$p$ 需要两个旋量坐标，映射就不再
+是线性的。
+
+\begin{proposition}\label{prop:harmonic}
+$g$ 上四点 $a,b,c,d$ 成调和点列，当且仅当直线 $a\times b$ 与 $c\times d$ 共轭。
+\end{proposition}
+
+\begin{proof}
+直线 $a\times b$ 与 $c\times d$ 共轭，等价于它们的极点 $p,q$ 共轭。由命题
+\ref{prop:tangent-points}，$p=(\mathfrak a\mathfrak b)$，$q=(\mathfrak c\mathfrak d)$，
+故共轭条件 $p\cdot q=0$ 化为
+\[
+g_{\alpha\dot\alpha\beta\dot\beta}
+(\mathfrak a\mathfrak b)^{\alpha\dot\alpha}(\mathfrak c\mathfrak d)^{\beta\dot\beta}=0 .
+\]
+由于 $g$ 本身对称，$(\mathfrak a\mathfrak b)$ 与 $(\mathfrak c\mathfrak d)$ 中的对称符号
+可以去掉，得到
+\[
+g_{\alpha\dot\alpha\beta\dot\beta}\,
+\mathfrak a^\alpha\mathfrak b^{\dot\alpha}\mathfrak c^\beta\mathfrak d^{\dot\beta}=0 .
+\]
+代入 \eqref{eq:g-spinor}，左端成为
+\[
+e_{\alpha\beta}\mathfrak a^\alpha\mathfrak c^\beta\,
+e_{\dot\alpha\dot\beta}\mathfrak b^{\dot\alpha}\mathfrak d^{\dot\beta}
++e_{\alpha\dot\beta}\mathfrak a^\alpha\mathfrak d^{\dot\beta}\,
+e_{\dot\alpha\beta}\mathfrak b^{\dot\alpha}\mathfrak c^\beta
+=[\mathfrak a\mathfrak c][\mathfrak b\mathfrak d]+[\mathfrak a\mathfrak d][\mathfrak b\mathfrak c],
+\]
+即 $[\mathfrak a\mathfrak c][\mathfrak b\mathfrak d]+[\mathfrak a\mathfrak d][\mathfrak b\mathfrak c]=0$。
+这正是交比、对合与调和点列中对调和点列的定义。
+\end{proof}
+
+\section{Levi-Civita 记号的旋量表示}
+
+最后讨论 Levi-Civita 记号 $\epsilon_{ijk}$，它的旋量表示记为
+$\epsilon_{\alpha\dot\alpha\beta\dot\beta\gamma\dot\gamma}$。它满足两条对称性：
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item 交换一对内的两个指标（如 $\alpha$ 与 $\dot\alpha$）值不变，另外两对同理；
+\item 交换两整对指标（即把一对指标整体与另一对交换）时值变号。
+\end{enumerate}
+
+由第一条，每一对指标的独立编号只有 $11,12,22$ 三种；由第二条，三对指标的编号不能相同，
+于是在特定排列下只有唯一的选择。例如取 $\epsilon_{111222}=1$，再作排列即可得到其余
+$11$ 个非零值。
+
+$\epsilon_{\alpha\dot\alpha\beta\dot\beta\gamma\dot\gamma}$ 可以用 $e$ 表示：
+\begin{equation}\label{eq:eps-formula}
+\epsilon_{\alpha\dot\alpha\beta\dot\beta\gamma\dot\gamma}
+=\sum e_{\alpha\beta}e_{\beta\gamma}e_{\gamma\alpha},
+\end{equation}
+其中求和式共有 $8$ 项，分别对应于在指标的不同位置上加点。例如其中一项是
+$e_{\alpha\dot\beta}e_{\beta\dot\gamma}e_{\gamma\dot\alpha}$。
+
+$\epsilon_{\alpha\dot\alpha\beta\dot\beta\gamma\dot\gamma}$ 的作用是由两对点求出未知的
+对合变换。设 $p=(\mathfrak a\mathfrak b)$，$q=(\mathfrak c\mathfrak d)$，令
+\[
+r_{\alpha\dot\alpha}
+=\epsilon_{\alpha\dot\alpha\beta\dot\beta\gamma\dot\gamma}
+p^{\beta\dot\beta}q^{\gamma\dot\gamma}.
+\]
+由 $r$ 的对称性可知它表示一个对合变换；由 $\epsilon$ 的反对称性得到
+\[
+r_{\alpha\dot\alpha}\mathfrak a^\alpha\mathfrak b^{\dot\alpha}
+=r_{\alpha\dot\alpha}\mathfrak c^\alpha\mathfrak d^{\dot\alpha}=0 .
+\]
+于是 $r$ 表示这样一个对合关系：$\mathfrak a$ 与 $\mathfrak b$ 关于 $r$ 对合，
+$\mathfrak c$ 与 $\mathfrak d$ 关于 $r$ 对合。

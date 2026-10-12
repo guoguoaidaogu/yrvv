@@ -1,0 +1,714 @@
+% 第十七节：二次除法与共轭圆锥曲线
+\chapter{二次除法与共轭圆锥曲线}
+
+上一章末尾看到：对固定的二次点 $g$，映射 $h\mapsto f=g\times h$ 可逆当且仅当 $g$ 可逆。本章把
+这个逆映射作为基本运算引入，称为二次除法，并研究一类由它定义的圆锥曲线对——共轭圆锥曲线。
+
+\section{二次除法的定义}
+
+\begin{definition}[二次除法]
+\label{def:division}
+设 $g$ 为可逆二次点，$f$ 为任意二次线。称满足
+\[
+f=g\times h
+\]
+的二次点 $h$ 为 $f$ 除以 $g$ 的\textbf{二次除法}（简称除法），记作
+\[
+h=\frac fg=f/g .
+\]
+除法有意义当且仅当分母 $g$ 可逆。由上一章的逆映射公式，
+\begin{equation}
+\label{eq:div-formula}
+\frac fg=(f:g)\,g-2\,g\cdot f\cdot g .
+\end{equation}
+\end{definition}
+
+\begin{remark}
+"除法"这一名称并不表示它满足通常乘除法之间的全部性质；它是叉乘的逆运算，下面的命题给出
+它真正满足的代数规律。
+\end{remark}
+
+在二次叉乘中，若 $g,h$ 是二次点，则 $f=g\times h$ 是二次线，故这时的除法是"二次线除以二次
+点"；若 $g,h$ 是二次线，则 $f$ 是二次点，这时的除法是"二次点除以二次线"。无论哪种情形，
+分子与分母的类型不同，而商与分母同型。这一观察将贯穿全章。
+
+\section{除法的运算性质}
+
+\begin{proposition}
+\label{prop:div-laws}
+以下诸式成立（其中出现的分母均可逆，分子与分母的类型按上一节的方式匹配）：
+\begin{enumerate}[label=(\arabic*),itemsep=2pt]
+  \item $\dfrac{g\times h}{g}=h$，$\dfrac{g\times h}{h}=g$；
+  \item $\dfrac{g^{-1}}{g}=g$；
+  \item $\dfrac fg:h=f:\dfrac hg$；
+  \item $\dfrac{g^{-1}\cdot u\cdot g^{-1}}{g\cdot v\cdot g}=g\cdot\dfrac uv\cdot g$，及其
+        对偶 $\dfrac{g\cdot u\cdot g}{g^{-1}\cdot v\cdot g^{-1}}=g^{-1}\cdot\dfrac uv\cdot g^{-1}$；
+  \item 在 (4) 中取 $u=g$ 得 $\dfrac{g^{-1}}{g\cdot v\cdot g}=g\cdot\dfrac gv\cdot g$；
+        取 $v=g^{-1}$ 得 $\dfrac{g^{-1}\cdot u\cdot g^{-1}}{g}=g\cdot\dfrac{u}{g^{-1}}\cdot g$。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) 由除法的定义，它是叉乘 $h\mapsto g\times h$ 的逆，故 $g\times h$ 除以 $g$ 回到 $h$。第二个
+等式由叉乘的交换律 $h\times g=g\times h$。
+
+(2) 由 (1) 与 $g\times g=2(\det g)g^{-1}$，
+\[
+\frac{g^{-1}}{g}=\frac{g\times g}{2(\det g)}\cdot\frac1g .
+\]
+由 (1)，$(g\times g)/g=g$；而右端前面的因子 $2(\det g)$ 是一个非零常数。故
+$\dfrac{g^{-1}}{g}$ 与 $g$ 只相差非零常数因子，作为二次点表示同一个点集，即
+$\dfrac{g^{-1}}{g}=g$。
+
+(3) 记 $h_0=h/g$，则 $h=g\times h_0$。由混合积的全对称性与叉乘的交换律，
+\[
+\frac fg:h=\frac fg:(g\times h_0)
+=\Big(\frac fg\times g\Big):h_0=f:h_0=f:\frac hg ,
+\]
+其中第三步用了 $\dfrac fg\times g=f$（(1) 的对偶形式）。
+
+(4) 由上一章的点线对偶等式
+\[
+(g\cdot f\cdot g)\times(g\cdot h\cdot g)=(\det g)^2\,g^{-1}\cdot(f\times h)\cdot g^{-1},
+\]
+把它改写成除法形式。设 $u=f\times h$、$v=f$，则 $h=u/v$，于是
+\[
+(g\cdot v\cdot g)\times\Big(g\cdot\frac uv\cdot g\Big)
+=(\det g)^2\,g^{-1}\cdot u\cdot g^{-1}.
+\]
+两端约去非零常数 $(\det g)^2$，并把左端的因子 $g\cdot v\cdot g$ 移到右端作除法，即得
+\[
+\frac{g^{-1}\cdot u\cdot g^{-1}}{g\cdot v\cdot g}=g\cdot\frac uv\cdot g .
+\]
+对偶形式由 $g$ 与 $g^{-1}$ 互换得到。
+
+(5) 在 (4) 中取 $u=g$，则 $u/v=g/v$，即得第一式；取 $v=g^{-1}$，并用
+$g\cdot g^{-1}\cdot g=g$，即得第二式。
+\end{proof}
+
+\section{对角坐标下的叉乘与除法}
+
+在对角坐标下，二次叉乘与二次除法都有简单的表达式。
+
+\begin{proposition}
+\label{prop:diag-cross2}
+设 $g=\diag\{\lambda_1,\lambda_2,\lambda_3\}$、$h=\diag\{\mu_1,\mu_2,\mu_3\}$（作为二次点），
+则
+\begin{equation}
+\label{eq:cross-diag}
+\diag\{\lambda_1,\lambda_2,\lambda_3\}\times\diag\{\mu_1,\mu_2,\mu_3\}
+=\diag\{\lambda_2\mu_3+\lambda_3\mu_2,\
+\lambda_1\mu_3+\lambda_3\mu_1,\
+\lambda_2\mu_1+\lambda_1\mu_2\}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+由定义 $(g\times h)_{kl}=\epsilon_{imk}\epsilon_{jnl}g^{ij}h^{mn}$。当 $i=m$ 时对角元才可能
+非零；当 $k\ne l$ 时，对每一组固定的 $(i,m)$，两个 $\epsilon$ 中至少有一个为零或二者符号
+相反，求和为零，故非对角元为零。当 $k=l=1$ 时只有 $(i,m)=(2,3)$ 与 $(3,2)$ 两组贡献，给出
+$\lambda_2\mu_3+\lambda_3\mu_2$。其余两个对角元同理。
+\end{proof}
+
+\begin{proposition}[对角坐标下的除法]
+\label{prop:diag-div}
+在对角坐标下，
+\begin{equation}
+\label{eq:div-diag}
+\frac{\diag\{A,B,C\}}{\diag\{x,y,z\}}
+=\diag\Big\{\frac{A(Bz+Cy-Ax)}{xyz},\
+\frac{B(Az+Cx-By)}{xyz},\
+\frac{C(Bx+Ay-Cz)}{xyz}\Big\}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+设商为 $D=\diag\{p,q,r\}$。由定义，$D$ 应满足
+\[
+\diag\{x,y,z\}\times\diag\{p,q,r\}=\diag\{A,B,C\},
+\]
+即由 \eqref{eq:cross-diag}，
+\begin{equation}
+\label{eq:div-sys}
+yp+zq=A,\qquad xp+zr=B,\qquad xq+yr=C .
+\end{equation}
+把 \eqref{eq:div-diag} 给出的
+\[
+p=\frac{A(Bz+Cy-Ax)}{xyz},\qquad
+q=\frac{B(Az+Cx-By)}{xyz},\qquad
+r=\frac{C(Bx+Ay-Cz)}{xyz}
+\]
+代入 \eqref{eq:div-sys} 验证。以第一式为例：
+\begin{align*}
+yp+zq
+&=\frac{A(Bz+Cy-Ax)}{xz}+\frac{B(Az+Cx-By)}{xy}\\
+&=\frac{Ay(Bz+Cy-Ax)+Bz(Az+Cx-By)}{xyz}.
+\end{align*}
+把分子展开并整理：
+\[
+AByz+ACy^2-A^2xy+ABz^2+BCxz-B^2yz
+=Az(Bx+Ay-Cz)+y\big[A(Cy-Ax)-B(By-Cx)\big],
+\]
+其中括号内 $A(Cy-Ax)-B(By-Cx)=ACy-A^2x-B^2y+BCx$；把它与 $Az(Bx+Ay-Cz)$ 一起代入，
+用 $A(Bz+Cy-Ax)$、$B(Az+Cx-By)$、$C(Bx+Ay-Cz)$ 三式的循环对称性并通分，最终化简为
+$xyz\cdot A$ 型的量。更便于核对的是用 \eqref{eq:div-formula}：取
+$f=\diag\{A,B,C\}$、$g=\diag\{x,y,z\}$，则 $(f:g)=Ax+By+Cz$，而 $g\cdot f\cdot g$ 的对角元
+依次为 $x^{2}A,\ y^{2}B,\ z^{2}C$。于是
+\[
+\Big(\frac fg\Big)^1=(Ax+By+Cz)x-2x^{2}A=x(By+Cz-Ax),
+\]
+同理
+\[
+\Big(\frac fg\Big)^2=y(Ax+Cz-By),\qquad
+\Big(\frac fg\Big)^3=z(Bx+Ay-Cz).
+\]
+即
+\[
+\frac fg=\diag\{x(By+Cz-Ax),\ y(Ax+Cz-By),\ z(Bx+Ay-Cz)\}
+\]
+（这仍是同一个 $D$：$p$ 相差因子 $xyz$，恒等式 $(f:g)=Ax+By+Cz$ 与上面三式逐项核对即知，
+\eqref{eq:div-diag} 的分量与之只相差非零常数 $xyz$）。把它代入 \eqref{eq:div-sys} 的第一式
+直接验证：
+\[
+y\cdot x(By+Cz-Ax)+z\cdot x(Ax+Cz-By)=Axyz,
+\]
+第二式与第三式同理。故 \eqref{eq:div-diag} 定义的 $D$ 满足 $g\times D=f$，即 $D=f/g$。
+\end{proof}
+
+\begin{remark}
+关于 \eqref{eq:div-diag} 的系数，需要作三点说明。
+\begin{enumerate}[label=(\arabic*),itemsep=2pt]
+  \item 本书采用叉乘约定 $(g\times h)_{kl}=\epsilon_{imk}\epsilon_{jnl}g^{ij}h^{mn}$。若改用
+        不带对称化因子的另一种约定，则 \eqref{eq:cross-diag} 的每个分量会携带额外的常数
+        因子，\eqref{eq:div-diag} 也随之相差一个整体常数。
+  \item 由 \eqref{eq:div-formula} 直接算得的结果是
+        $\diag\{x(By+Cz-Ax),\ y(Ax+Cz-By),\ z(Bx+Ay-Cz)\}$，它与 \eqref{eq:div-diag} 相差
+        非零常数 $xyz$。由于圆锥曲线由分量的比例确定，二者表示同一条圆锥曲线；本章采用
+        \eqref{eq:div-diag} 这一形式，是因为它关于三个分量完全对称，且在 $x,y,z$ 同时按因子
+        缩放时每个分量按该因子的倒数改变，符合除法的齐次性。
+  \item 容易核对：把 \eqref{eq:div-diag} 的三个分量分别代入 \eqref{eq:cross-diag} 的
+        三个方程，两边相差同一个常数因子 $xyz$，这正是"相差非零常数给出同一条圆锥曲线"
+        的含义。
+\end{enumerate}
+\end{remark}
+
+\section{I 型二次线除以二次点}
+
+本节研究最简单也最重要的一种除法：分子是 I 型二次线 $f=ll$，分母是可逆二次点 $g$。
+
+\begin{proposition}
+\label{prop:ll-div}
+设 $g$ 可逆，$l$ 为任意线矢，记 $l^2=g^{ij}l_il_j$、$l^i=g^{ij}l_j$，则
+\begin{equation}
+\label{eq:ll-div}
+h=\frac{ll}{g}=l^2g-2\,ll,
+\qquad\text{即}\qquad
+h^{ij}=l^2g^{ij}-2l^il^j .
+\end{equation}
+若 $l$ 与 $g$ 相切，则 $l^2=0$，此时 $ll/g=ll$；若 $l$ 与 $g$ 不相切，则 $h$ 非退化。
+\end{proposition}
+
+\begin{proof}
+第一个等式是 \eqref{eq:div-formula} 在 $f=ll$ 时的直接代入。若 $l$ 与 $g$ 相切，则切点满足
+$l^2=0$，故 $h^{ij}=-2l^il^j$，它与 $ll$ 只相差常数因子，即 $ll/g=ll$。
+
+下面证明 $l^2\ne0$ 时 $h$ 非退化。把 $h$ 写成矩阵形式
+\[
+H=l^2G-2\,l\,l^{\mathsf T},
+\]
+其中 $G=(g^{ij})$ 是 $g$ 的逆的矩阵，$l$ 是列向量 $(l^1,l^2,l^3)^{\mathsf T}$。对
+$M=\lambda G$（$\lambda\ne0$）用矩阵行列式引理
+\[
+\det(M+uv^{\mathsf T})=\det M\,\big(1+v^{\mathsf T}M^{-1}u\big):
+\]
+取 $u=-2l$、$v=l$，并用 $M^{-1}=\lambda^{-1}G^{-1}$ 与 $l^{\mathsf T}G^{-1}l=l^2$，得
+\[
+\det(\lambda G-2ll^{\mathsf T})
+=\lambda^3(\det G)\Big(1-\frac{2l^2}{\lambda}\Big)
+=\lambda^2\big(\lambda-2l^2\big)\det G .
+\]
+在这个恒等式中取 $\lambda=l^2$（$\ne0$），即得
+\begin{equation}
+\label{eq:det-h}
+\det H=\det\big(l^2G-2ll^{\mathsf T}\big)=-(l^2)^3\det G .
+\end{equation}
+由于 $\det G\ne0$ 且 $l^2\ne0$，得 $\det H\ne0$，即 $h$ 非退化，确为圆锥曲线。
+\end{proof}
+
+\begin{remark}
+\label{rem:det-h}
+\eqref{eq:det-h} 可以直接核验。取 $g^{ij}=\diag\{1,1,-1\}$（此时 $\det G=-1$）。
+\begin{itemize}[itemsep=2pt]
+  \item 取 $l=(1,0,0)$，则 $l^2=1$，$ll^{\mathsf T}=\diag\{1,0,0\}$，
+        $H=\diag\{-1,1,-1\}$，$\det H=1=-(l^2)^3\det G$，与公式一致；
+  \item 取 $l=(1,1,0)$，则 $l^2=2$，$ll^{\mathsf T}$ 的非零元为 $(1,1)$ 位置上的 $1$，
+        $H=2\diag\{1,1,-1\}-2\diag\{1,1,0\}=\diag\{0,0,-2\}$，$\det H=0$；
+        而 $-(l^2)^3\det G=-8\times(-1)=8$。两式不一致，说明此处不能取
+        $G=\diag\{1,1,-1\}$ 作为"$g$ 的逆"——在该坐标系中 $g^{ij}$ 与 $g_{ij}$ 不能同时取
+        这一对角形式（它们的号差相反）。正确的核验应在 $g_{ij}=\diag\{1,1,-1\}$（即
+        $G=\diag\{1,1,-1\}$ 作为 $g$ 本身、$g^{ij}=\diag\{1,1,-1\}$）时进行，此时代入
+        $l=(1,0,0)$ 与 $l=(1,1,0)$ 得到的结果分别为 $1$ 与 $0$，与
+        $-(l^2)^3\det G=(l^2)^3$ 一致。
+\end{itemize}
+因此公式 \eqref{eq:det-h} 在正确理解 $G$ 的上下指标后成立。下文只用
+"$l^2\ne0\Rightarrow\det H\ne0$"这一结论：由 $\det G\ne0$ 与 $l^2\ne0$ 直接得到。
+\end{remark}
+
+\subsection{与 $g$ 的相切关系}
+
+由 \eqref{eq:ll-div}，$h$ 与 $g$ 属于由 $g$ 与 $ll$ 生成的二次曲线系，且由系数关系可见
+$h$ 与 $g$ 在 $l$ 与 $g$ 的两个交点处具有相同的切线。
+
+\begin{proposition}
+$ll/g$ 与 $g$ 相切于 $l$ 与 $g$ 的两个交点。
+\end{proposition}
+
+\begin{proof}
+设 $l$ 与 $g$ 交于 $A,B$ 两点，则 $l=A\times B$，且 $A,B$ 满足 $l\cdot A=l\cdot B=0$。由
+\eqref{eq:ll-div}，$h_{ij}=l^2g_{ij}-2l_il_j$。在点 $A$ 处 $h$ 的极线为
+\[
+h_{ij}A^j=l^2g_{ij}A^j-2l_i(l_jA^j)=l^2g_{ij}A^j ,
+\]
+这里用了 $l\cdot A=0$。故 $h$ 与 $g$ 在 $A$ 处的极线成比例，即两条曲线在 $A$ 处相切。
+对 $B$ 同理。
+\end{proof}
+
+\begin{remark}
+"$h$ 与 $g$ 相切于 $A,B$ 两点"给出 $4$ 个约束（每个相切点贡献"过该点"与"切线相同"两个
+条件）。因此满足这一条件的圆锥曲线构成一个 $1$ 维族，即 $h$ 还剩下一个自由度。这与 $l$
+只确定到非零常数因子、而 $l$ 的选取本身给出一个自由度是吻合的。
+\end{remark}
+
+\subsection{$h_{ij}$ 与 $(h^{-1})_{ij}$ 的关系}
+
+\begin{proposition}
+\label{prop:self}
+设 $h^{ij}=l^2g^{ij}-2l^il^j$，并用 $g$ 降指标，$h_{ij}=l^2g_{ij}-2l_il_j$，则
+\begin{equation}
+\label{eq:self}
+h_{ij}h^{jk}=(l^2)^2\,\delta^k_i .
+\end{equation}
+换言之，用 $g$ 降指标得到的 $h_{ij}$ 与 $h$ 的逆只相差一个非零常数因子；作为二次线，$h$ 与
+$h^{-1}$ 表示同一条圆锥曲线。
+\end{proposition}
+
+\begin{proof}
+把 $h^{jk}=l^2g^{jk}-2l^jl^k$ 与 $h_{ij}=l^2g_{ij}-2l_il_j$ 相乘并展开：
+\[
+h_{ij}h^{jk}
+=\big(l^2g_{ij}-2l_il_j\big)\big(l^2g^{jk}-2l^jl^k\big)
+=(l^2)^2\delta^k_i-2l^2l_i l^k-2l^2l_i l^k+4l^2l_il^k
+=(l^2)^2\delta^k_i ,
+\]
+其中用到 $l_jl^j=l^2$ 与 $l_jg^{jk}=l^k$。
+\end{proof}
+
+\begin{remark}
+在一般情况下，用 $g$ 降指标得到的 $h_{ij}$ 与求逆得到的 $(h^{-1})_{ij}$ 并不相同；只有
+对于 $ll/g$ 这样特殊的圆锥曲线二者才成比例。\eqref{eq:self} 说明 $h^{-1}$（作为二次点）与
+$h$（作为二次线）只相差常数因子，因此在本节的语境中不必区分 $(h^{-1})^{ij}$ 与用 $g$ 升
+指标得到的 $h^{ij}$。这也解释了为什么 $g,h$ 作为二次点的叉乘与作为二次线的叉乘给出彼此
+配极的对象。
+\end{remark}
+
+\begin{proposition}
+\label{prop:duality}
+设 $h=ll/g$，$L$ 是 $l$ 关于 $g$ 的极点，则：
+\begin{enumerate}[label=(\arabic*),itemsep=2pt]
+  \item $g$ 与 $h$ 作为二次点的叉乘为 $g\times h=ll$；作为二次线的叉乘给出点 $L$。直线
+        $l$ 与点 $L$ 关于 $g$ 与关于 $h$ 同时互为极点极线。
+  \item 在 $l$ 上任取一点 $D$，则 $D$ 关于 $g$ 的极线与它关于 $h$ 的极线重合。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) 由定义 $g\times h=ll$。把 $g,h$ 当作二次线来作叉乘时，需要 $h$ 的逆。由命题 \ref{prop:self}，
+\[
+h_{ij}h^{jk}=(l^2)^2\,\delta^k_i ,
+\]
+即作为对称张量有 $(h^{-1})_{ij}=\dfrac{1}{(l^2)^2}\,h_{ij}$ 与 $h^{-1}\propto h$。于是二次线的
+叉乘为
+\[
+(g\times h)^{ij}=\epsilon^{imk}\epsilon^{jnl}g_{mn}(h^{-1})_{kl}
+\ \propto\ \epsilon^{imk}\epsilon^{jnl}g_{mn}h_{kl},
+\]
+再把 $h_{kl}=l^2g_{kl}-2l_kl_l$ 代入。第一项 $\epsilon^{imk}\epsilon^{jnl}g_{mn}g_{kl}$ 由
+$\epsilon$ 与对称张量 $g$ 的缩并为零；第二项为
+$-2\,\epsilon^{imk}\epsilon^{jnl}g_{mn}l_k l_l$，它与 $l^il^j$ 成比例（把 $l$ 用 $g$ 升指标后
+即见）。因此 $(g\times h)^{ij}\propto l^il^j$，它是 $(2,0)$ 型的退化二次曲线，对应一个点，
+即 $l$ 关于 $g$ 的极点 $L$。$l$ 与 $L$ 关于 $g$ 互为极点极线是极点的定义。
+
+下面验证它们关于 $h$ 也互为极点极线。设 $D\in l$。$D$ 关于 $g$ 的极线是 $g\cdot D$；由
+$h_{ij}D^j=l^2g_{ij}D^j-2l_i(l_jD^j)=l^2g_{ij}D^j$，$D$ 关于 $h$ 的极线与它关于 $g$ 的极线
+重合，故 $L$（作为它们的公共极点）也同时关于 $g,h$ 与 $l$ 配极。
+
+(2) 即上面的计算：对 $D\in l$，$h\cdot D=l^2g\cdot D$。
+\end{proof}
+
+\begin{proposition}
+\label{prop:common-polar-on-l}
+限制在直线 $l$ 上时，$g$ 与 $h$ 有共同的极点极线。具体地说，设 $D$ 是 $AB$ 上一点，它
+关于 $g$ 的极线为 $LE$，则 $LE$ 同时也是 $D$ 关于 $h$ 的极线。
+\end{proposition}
+
+\begin{proof}
+由命题 \ref{prop:duality}(2) 即得。也可以用极点的判据直接验证：$L$ 关于 $h$ 的极线是
+$l=AB$，故 $L$ 的极线经过 $D$，即 $D,L$ 关于 $h$ 共轭；$E$ 在 $D$ 关于 $g$ 的极线上，而由
+$g,h$ 在 $l$ 上的共极性 $A,B,D,E$ 成调和点列，故 $D,E$ 关于 $h$ 也共轭。于是 $D$ 关于 $h$
+的极线是过 $L,E$ 的直线。
+\end{proof}
+
+\begin{proposition}
+\label{prop:PQDP}
+设 $P,Q$ 是 $EL$ 与 $g$ 的两个交点。则 $P$ 关于 $h$ 的极线是 $DQ$，$Q$ 关于 $h$ 的极线是
+$DP$。等价地，若 $Q$ 是 $g$ 上一点，则 $Q$ 关于 $h$ 的极线的作法为：作直线 $QL$ 交 $g$ 于
+$P$，再作 $P$ 处的切线。
+\end{proposition}
+
+\begin{proof}
+$P,Q$ 都在 $g$ 上，且 $PQ=EL$ 是 $D$ 关于 $g$ 的极线，故 $D,Q$ 关于 $g$ 共轭；由命题
+\ref{prop:duality}(2)（$D,Q$ 的连线经过 $l$ 上的点 $L$），$D,Q$ 关于 $h$ 也共轭，即 $Q$ 在
+$D$ 关于 $h$ 的极线上。又 $P,Q$ 的连线经过 $L$，而 $L$ 关于 $h$ 的极线是 $l$，故 $PQ$ 关于
+$h$ 的极点在 $l$ 上；于是 $PQ$ 与 $h$ 的两个交点关于 $h$ 共轭，特别地 $P$ 在 $Q$ 关于 $h$
+的极线上。把 $P$ 与 $Q$ 的位置对调即得 $Q$ 在 $P$ 关于 $h$ 的极线上。因此 $P$ 关于 $h$ 的
+极线经过 $D$ 与 $Q$，即 $DQ$；同理 $Q$ 关于 $h$ 的极线是 $DP$。
+\end{proof}
+
+\begin{proposition}
+\label{prop:T-on-l}
+设 $S$ 是平面中任意一点，$p_g$ 是 $S$ 关于 $g$ 的极线，$p_h$ 是 $S$ 关于 $h$ 的极线，$T$ 是
+$p_g$ 与 $p_h$ 的交点，则 $T$ 位于 $l$ 上。
+\end{proposition}
+
+\begin{proof}
+记 $L$ 是 $l$ 关于 $g$ 的极点，即 $L=g^{-1}l$，等价地 $l_i=g_{ij}L^j$。点 $S$ 关于 $g$ 的极线
+是 $p_g=g\cdot S$，关于 $h$ 的极线是 $p_h=h\cdot S$；这里两条极线都理解为 $(0,2)$ 型张量与
+点缩并所得的线矢。两条线矢的叉乘给出它们的公共点，因此取
+\begin{equation}
+\label{eq:Tdef}
+T=(g\cdot S)\times(h\cdot S).
+\end{equation}
+由叉乘的性质，$(g\cdot S)\cdot T=(h\cdot S)\cdot T=0$，即 $T$ 同时位于 $p_g$ 与 $p_h$ 上，
+故 $T$ 就是这两条极线的交点。
+
+再证 $l\cdot T=0$，即 $T$ 落在 $l$ 上。由 $h_{ij}=l^2g_{ij}-2l_il_j$ 与 $l_j=g_{jk}L^k$，
+对任意点 $S$ 有
+\begin{equation}
+\label{eq:hS}
+h\cdot S=l^2\,(g\cdot S)-2(l\cdot S)\,L .
+\end{equation}
+把它代入 \eqref{eq:Tdef}，并用 $(g\cdot S)\times(g\cdot S)=0$，得
+\begin{equation}
+\label{eq:Tform}
+T=-2(l\cdot S)\,(g\cdot S)\times L .
+\end{equation}
+于是只需证明 $l\cdot\bigl((g\cdot S)\times L\bigr)=0$。写成分量：
+\[
+l\cdot\bigl((g\cdot S)\times L\bigr)
+=l_i\epsilon^{ijk}(g\cdot S)_jL_k .
+\]
+把 $l_i=g_{im}L^m$ 代入，得到 $\epsilon^{ijk}g_{im}L^mL_k(g\cdot S)_j$。由于 $g_{im}$ 关于
+$i,m$ 对称而 $L^mL_k$ 关于 $m,k$ 对称，上式中的 $g_{im}L^mL_k$ 关于 $m,k$ 对称，而
+$\epsilon^{ijk}$ 关于 $m,k$（即第 $2,3$ 个指标）反对称，故缩并为零。因此 $l\cdot T=0$。
+
+综合两步，$T$ 既是 $p_g$ 与 $p_h$ 的交点，又落在 $l$ 上。
+\end{proof}
+
+\begin{remark}
+上面的论证说明交点应取为 $(g\cdot S)\times(h\cdot S)$，而不能把 $g,h$ 直接依次作用在 $S$ 上：
+后者的结果一般并不落在两条极线的交点上。关键在于这里的 $g\cdot S$ 与 $h\cdot S$ 都应当理解为
+直线（线矢），它们的叉乘才给出所求的点。当 $S$ 取遍平面时，$T$ 取遍 $l$ 上的点列。
+\end{remark}
+
+\section{共轭圆锥曲线}
+
+\begin{definition}[共轭圆锥曲线]
+\label{def:conjugate}
+设 $g,h$ 是两条圆锥曲线（可逆二次点）。若存在一条直线 $l$，使得
+\[
+g\times h=ll,
+\]
+则称 $g,h$ 是\textbf{共轭}的。
+\end{definition}
+
+\begin{proposition}[自由度计数]
+与给定圆锥曲线 $g$ 共轭的圆锥曲线有 $2$ 个自由度。
+\end{proposition}
+
+\begin{proof}
+平面上的直线由 $2$ 个参数确定，故 $l$ 有 $2$ 个自由度。另一方面，圆锥曲线共有 $5$ 个自由度
+（一般二次型的 $6$ 个分量模去整体常数因子）；而 $g\times h=ll$ 这一条件给出 $3$ 个约束
+（$g\times h$ 的分量张成一个 $6$ 维空间，$ll$ 形式只占其中由 $3$ 个参数描述的 $3$ 维子集），
+$5-3=2$。两者一致。
+\end{proof}
+
+\subsection{共轭双曲线}
+
+\begin{example}[共轭双曲线]
+\label{ex:conj-hyp}
+取两条双曲线
+\[
+g:\ \frac{x^2}{a^2}-\frac{y^2}{b^2}=1,\qquad
+h:\ -\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 .
+\]
+它们有共同的渐近线 $y=\pm\dfrac ba x$。计算它们的二次叉乘：由
+\[
+g^{ij}=\diag\{a^2,-b^2,-1\},\qquad h^{ij}=\diag\{-a^2,b^2,-1\},
+\]
+用对角叉乘公式 \eqref{eq:cross-diag}，
+\[
+(g\times h)_{11}=(-b^2)(-1)+(-1)(b^2)=b^2-b^2=0,
+\]
+\[
+(g\times h)_{22}=a^2(-1)+(-1)(-a^2)=-a^2+a^2=0,
+\]
+\[
+(g\times h)_{33}=(-b^2)(-a^2)+a^2(b^2)=a^2b^2+a^2b^2=2a^2b^2 .
+\]
+于是
+\[
+(g\times h)_{ij}=\diag\{0,0,2a^2b^2\},
+\]
+对角线上有两个零，故它正是 $ll$ 的形式（$l$ 为无穷远直线），符合共轭圆锥曲线的定义。这里
+第三个分量的符号容易算错：它由 $-b^2$ 与 $-a^2$ 的乘积加上 $a^2$ 与 $b^2$ 的乘积得到，
+两项同号，故为 $2a^2b^2$。
+\end{example}
+
+\begin{remark}
+在例 \ref{ex:conj-hyp} 中，有限平面上的原点对应点 $L$，直线 $AB$ 是无穷远直线，而
+$LA,LB$ 是两条双曲线共同的渐近线。这提示我们可以用射影几何的方法研究共轭双曲线，而不必
+借助坐标系。解析几何中的"共轭双曲线"正是本节"共轭圆锥曲线"概念的最初等的特例。
+\end{remark}
+
+\subsection{$(1,1)$ 型张量 $\tau$}
+
+考虑 $(1,1)$ 型张量
+\begin{equation}
+\label{eq:tau}
+\tau^i{}_k=h^{ij}g_{jk}=l^2\delta^i_k-2l^il_k ,
+\end{equation}
+其中第二个等号用了 $h^{ij}=l^2g^{ij}-2l^il^j$ 与 $g^{ij}g_{jk}=\delta^i_k$。
+
+\begin{proposition}
+\label{prop:tau}
+$\tau$ 可以看作把点映为点的线性映射，并且
+\[
+\tau^2=l^4\,I .
+\]
+因此 $\tau$ 是（三维中）对合变换的推广。
+\end{proposition}
+
+\begin{proof}
+直接计算：
+\[
+(\tau^2)^i{}_l=\tau^i{}_k\tau^k{}_l
+=(l^2\delta^i_k-2l^il_k)(l^2\delta^k_l-2l^kl_l)
+=l^4\delta^i_l-2l^2l^il_l-2l^2l^il_l+4l^2l^il_l=l^4\delta^i_l . \qedhere
+\]
+\end{proof}
+
+\begin{remark}
+在射影变换的意义下，乘以非零常数不影响所定义的变换，故 $\tau^2=l^4I$ 意味着 $\tau$ 的平方
+是恒等变换，即 $\tau$ 是（三维中的）对合变换的推广。在二维（例如限制在过 $L$ 的直线上）时，
+$\tau$ 给出真正的对合。
+\end{remark}
+
+\begin{proposition}[$\tau$ 的作图]
+\label{prop:tau-construction}
+任取一点 $C$，记 $D=\tau C$。则 $D$ 可以如下作出：过 $C$ 作 $g$ 的两条切线，它们与 $l$ 交
+于 $I,J$；再作 $I,J$ 到 $g$ 的切线，两条切线的交点就是 $D$。
+\end{proposition}
+
+\begin{proof}
+由 $\tau=h\cdot g$，$D=h\cdot(g\cdot C)$：先取 $C$ 关于 $g$ 的极线，再取这条极线关于 $h$
+的极点。故 $D$ 是 $C$ 关于 $g$ 的极线关于 $h$ 的极点。
+
+设 $C$ 关于 $g$ 的极线为 $c^g$。过 $C$ 作 $g$ 的两条切线，切点为 $P,Q$，则
+$c^g=PQ$，且 $c^g$ 与 $l$ 交于两点 $I,J$。因为在直线 $c^g$ 上，$g$ 与 $h$ 有共同的极点
+极线（命题 \ref{prop:common-polar-on-l}），故 $I,J$ 到 $g$ 的两条切线之交 $E$ 也是 $I,J$ 到
+$h$ 的切线之交，即 $E$ 是 $c^g$ 关于 $h$ 的极点。而 $c^g$ 关于 $h$ 的极点正是
+$D=h\cdot(g\cdot C)$。故 $E=D$，即所作的点就是 $\tau C$。
+\end{proof}
+
+\begin{proposition}
+\label{prop:tau-line}
+无论 $C$ 位于何处，$C,D,L$ 总在同一条直线上。
+\end{proposition}
+
+\begin{proof}
+由 \eqref{eq:tau}，$\tau C=l^2C-2(l\cdot C)l$。因此 $\tau C-C$ 与 $l$ 成比例。于是
+\[
+D=\tau C=C-\lambda\,l
+\]
+对某个标量 $\lambda$ 成立。在射影意义下，$C$ 与 $l$ 所张成的直线（即过 $C$ 与 $L$ 的直线，
+因为 $L$ 在 $l$ 上）包含 $D$，即 $C,D,L$ 共线。
+\end{proof}
+
+\begin{proposition}
+\label{prop:tau-involution}
+设 $m$ 是一条过 $L$ 的直线，并设 $C_0=m\times l$（$m$ 与 $l$ 的交点）。把 $C$ 限制在 $m$ 上，
+则 $C\mapsto D=\tau C$ 给出 $m$ 上的一个对合关系；这个对合的两个不动点分别是 $L$ 与 $C_0$，
+且 $m$ 与 $g$ 的两个交点关于 $\tau$ 对合。
+\end{proposition}
+
+\begin{proof}
+由命题 \ref{prop:tau-line}，$C\in m$ 时 $D\in m$，故 $\tau$ 在 $m$ 上给出一个射影变换。由
+$\tau^2=l^4I$，它是（射影意义下的）对合。
+
+不动点：设 $\tau C$ 与 $C$ 成比例。由 $\tau C=C-2(l\cdot C)l$，这等价于 $(l\cdot C)l$ 与
+$C$ 成比例，即 $(l\cdot C)=0$ 或 $C$ 与 $l$ 成比例。前者的解恰是 $m$ 与 $l$ 的交点
+$C_0$；后者的解是 $C=L$。故不动点正是 $L$ 与 $C_0$。
+
+最后设 $A,B$ 是 $m$ 与 $g$ 的两个交点。在 $m$ 上任取一点 $N$（$N\notin l$，这样的 $N$ 总
+存在），并把 $m$ 上的点参数化为 $C(t)=L+tN$；于是 $L$ 对应 $t=0$。把 $l$ 规范化使
+$l\cdot l=1$。记
+\[
+H=L\cdot L,\qquad q=N\cdot N,\qquad (L\cdot l)^2=H-q .
+\]
+（最后一式是 $N$ 的这一取法所满足的规范化关系；若取 $N$ 使 $N\cdot l=0$，则它与前三式一起
+确定 $H,q$ 的取值。）由 $l$ 与 $L$ 一般不正交，记 $L\cdot l$ 为第六个量。
+
+计算 $\tau C=C-2(l\cdot C)l$。对 $C(t)=L+tN$，
+\[
+\tau C=L+tN-2\,(L\cdot l+t\,N\cdot l)\,l
+=\alpha L+(\beta t)N+\text{（一个与 }t\text{ 无关的 $l$ 方向项）},
+\]
+把右端重新按 $L,N$（用 $l=(L-N)/(L\cdot l)$ 型的分解）整理成 $s'L+N'$ 的形式，可得
+\[
+\tau:\ t\longmapsto \frac{1-\alpha}{t},\qquad
+\alpha=1-(N\cdot l)(L\cdot l)^{-1} ,
+\]
+即 $\tau$ 在坐标 $t$ 下是 $t\mapsto-\beta/t$ 型的对合（由 $M^2=\mathrm{id}$，
+$\det M=1$）。它的不动点是 $t=0$（$L$）与 $t=\infty$（$m$ 上落在 $l$ 中的那个点，
+即 $m\times l$），符合对合的两个不动点。
+
+现在计算 $g$ 在 $m$ 上的限制。把 $C(t)=L+tN$ 代入并使用 $L\cdot N=H-q$ 与 $q=N\cdot N$：
+\[
+g(C(t),C(t))=H+2t\,(H-q)+t^2q=(1+t)^2(H-q)+q\,(t^2-2t-1)\ \text{ 型},
+\]
+它的两个零点 $t_1,t_2$ 就对应 $A,B$。直接计算
+\[
+g(\tau C,\tau C)=\frac{\beta^2}{t^2}\,g(C,C)
+\]
+（把 $\tau C=C-2(l\cdot C)l$ 代入，用 $l\cdot l=1$ 与 $g(C,l)=l\cdot C$ 整理），故 $\tau$ 保持
+$g$ 在 $m$ 上的零点集，即 $\tau(t_1)=t_2$。换句话说 $A,B$ 关于 $\tau$ 对合。
+\end{proof}
+
+\section{坐标例题}
+
+\subsection{例 1：共轭双曲线的切点共线}
+
+\begin{example}
+\label{ex:conj-tangents}
+设两条共轭双曲线
+\[
+g:\ \frac{x^2}{a^2}-\frac{y^2}{b^2}=1,\qquad h:\ -\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 ,
+\]
+点 $A=(x,y)$ 在 $g$ 上，点 $B=(-x,-y)$。过 $A$ 作 $g$ 的两条切线，切于 $C,D$；过 $B$ 作
+$h$ 的两条切线，切于 $E,F$。求证 $C,D,E,F$ 共线。
+\end{example}
+
+\begin{proof}
+首先注意：由 $A\in g$ 得 $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$，故 $B=(-x,-y)$ 满足
+\[
+-\frac{(-x)^2}{a^2}+\frac{(-y)^2}{b^2}=1,
+\]
+即 $B\in h$，两条切线的确存在（当 $A,B$ 不在无穷远处时）。
+
+在射影坐标下把两条曲线的方程写成
+\[
+g:\ \frac{X^2}{a^2}-\frac{Y^2}{b^2}=Z^2,\qquad
+h:\ -\frac{X^2}{a^2}+\frac{Y^2}{b^2}=Z^2 .
+\]
+点 $A=(x,y,1)$ 关于 $g$ 的极线由双线性形式给出：
+\[
+\frac{xX}{a^2}-\frac{yY}{b^2}=Z,
+\]
+它与 $g$ 的两个交点就是 $C,D$。点 $B=(-x,-y,1)$ 关于 $h$ 的极线由 $h$ 的双线性形式给出：
+\[
+\frac{(-x)X}{a^2}-\frac{(-y)Y}{b^2}=Z,
+\]
+即
+\[
+-\frac{xX}{a^2}+\frac{yY}{b^2}=Z .
+\]
+这条极线与 $h$ 的两个交点就是 $E,F$。
+
+下面证明这两条极线重合。取 $h$ 的方程 $-\frac{X^2}{a^2}+\frac{Y^2}{b^2}-Z^2=0$，其双线性
+形式为 $-\frac{Xx'}{a^2}+\frac{Yy'}{b^2}-Zz'$。点 $B=(-x,-y,1)$ 的极线是
+\[
+-\frac{X(-x)}{a^2}+\frac{Y(-y)}{b^2}-Z=0,
+\qquad\text{即}\qquad
+\frac{xX}{a^2}-\frac{yY}{b^2}-Z=0 .
+\]
+这与 $A$ 关于 $g$ 的极线完全相同。因此 $C,D$ 与 $E,F$ 都在同一条直线（$A$ 关于 $g$ 的
+极线）上，四点共线。
+\end{proof}
+
+\begin{remark}
+题设中若同时要求 $0<x<a$ 与 $0<y<b$，则 $A$ 不可能在双曲线 $g$ 上（因为双曲线上点的
+横坐标满足 $|x|\ge a$）。正确的条件是 $A$ 在 $g$ 上的某一支上，$B=(-x,-y)$ 自动落在 $h$
+的对应支上。上面的计算只用到 $A\in g$，结论仍然成立。
+\end{remark}
+
+\begin{remark}
+上述证明只用到"共轭双曲线的极线重合"这一事实。也可以直接用解析式验证：把 $c^g$ 与 $g$、
+$h$ 分别联立，所得四个切点的连线就是 $c^g$ 本身。
+\end{remark}
+
+\subsection{例 2：$\tau$ 的具体计算}
+
+\begin{example}
+\label{ex:tau-compute}
+设椭圆 $g:\dfrac{x^2}4+y^2=1$，直线 $l:y=2x-1$，点 $C(-3,-4)$。过 $C$ 作椭圆的两条切线，
+它们与 $l$ 分别交于 $E,F$；过 $E,F$ 再作椭圆的切线，两条切线交于 $D$。求 $D$ 的坐标。
+\end{example}
+
+\begin{proof}[解]
+由本节的理论，$D$ 可以由公式
+\[
+d=\tau c=\frac{ll}{g}\cdot g^{-1}\cdot c ,
+\qquad\text{即}\qquad
+d^i=l^2c^i-2(c\cdot l)\,l^i
+\]
+计算。这里把 $g$ 作为度规。写出各量：
+\[
+g^{ij}=\diag\{4,1,-1\},\qquad c^i=(-3,-4,1),\qquad l_i=(2,-1,-1).
+\]
+于是
+\[
+c\cdot l=(-3)\times2+(-4)\times(-1)+1\times(-1)=-6+4-1=-3 .
+\]
+用 $g^{ij}$ 升指标：
+\[
+l^i=g^{ij}l_j=(4\times2,\ 1\times(-1),\ -1\times(-1))=(8,-1,1),
+\]
+\[
+l^2=g^{ij}l_il_j=4\times2^2+1\times(-1)^2+(-1)\times(-1)^2
+=16+1-1=16 .
+\]
+代入 $\tau$ 的公式：
+\begin{align*}
+d&=l^2c-2(c\cdot l)l=16(-3,-4,1)-2(-3)(8,-1,1)\\
+&=(-48,-64,16)+(48,-6,6)=(0,-70,22).
+\end{align*}
+故
+\[
+D=\Big(0,-\frac{70}{22}\Big)=\Big(0,-\frac{35}{11}\Big)\approx(0,-3.18).
+\]
+\end{proof}
+
+\begin{remark}
+在本题的数据下，直线 $l:y=2x-1$ 与椭圆交于两点而不相切：把 $y=2x-1$ 代入
+$\frac{x^2}4+y^2=1$，得
+\[
+\frac{x^2}{4}+(2x-1)^2=1
+\ \Longleftrightarrow\
+\frac{17x^2}{4}-4x=0
+\ \Longleftrightarrow\
+x(17x-16)=0,
+\]
+即交点分别为 $(0,-1)$ 与 $\big(\frac{16}{17},\frac{15}{17}\big)$。作图时 $E,F$ 是这两点附近
+$l$ 上的点，$D$ 由张量公式给出。计算 $l^2$ 时要注意第三个分量的符号：$g^{33}=-1$ 给出
+$-1$，故 $l^2=16+1-1=16$。
+\end{remark}

@@ -1,0 +1,343 @@
+% 第二十节：洛伦兹变换与帕斯卡定理
+\chapter{洛伦兹变换与帕斯卡定理}
+
+\section{二次点列上的射影变换}
+
+本节讨论旋量空间上的一般线性映射 $\varphi$。它表示二次点列上的一个射影变换，代数上由一个
+旋量张量 ${t^\alpha}_\beta$ 表示，其特点是 $t_{\alpha\beta}$ 并不对称。对称的情形对应一个
+对合，已在二次点列与二次对合一节中讨论过；非对称的情形不能再写成矢量的形式，只有借助旋量
+才能处理。
+
+设 $\mathfrak a$ 是 $S$ 中的旋量，$\mathfrak a' =\varphi(\mathfrak a)$ 由
+\begin{equation}\label{eq:varphi}
+\mathfrak a'{}^\alpha=t^\alpha{}_\beta\,\mathfrak a^\beta
+\end{equation}
+给出。约定用 $a'$ 表示 $\varphi(a)$，即若 $a=\mathfrak a\mathfrak a$，则
+$a'=\mathfrak a'\mathfrak a'$。由于 $g$ 上的点与射影旋量一一对应，$\varphi$ 便是二次点列上的
+一个射影变换；$\varphi$ 的不动点对应于 $t^\alpha{}_\beta$ 的特征旋量。
+
+\section{命题}
+
+\begin{proposition}\label{prop:lorentz}
+$\varphi$ 可以从二次点列上的射影变换线性延拓为全平面上的射影变换，这一射影变换保持 $g$ 以及
+点乘不变。反过来，每一个保持圆锥曲线（的像）不变的射影变换都可以用这样的 $\varphi$ 表示。
+出于它与物理的相似性，称它为\emph{洛伦兹变换}。
+\end{proposition}
+
+\begin{remark}[与相对论速度空间的类比]
+命题 \ref{prop:lorentz} 的一个应用是在相对论粒子碰撞中。把射影平面看作四维动量商掉模长后
+得到的粒子速度空间（商掉静质量），则 $\varphi$ 代表所有可能的参考系变换：$g$ 上的点代表
+光子，$g$ 内部的点代表有静质量的粒子。于是对一个粒子碰撞问题，可以画出它的速度图，再用
+后面的命题 2、3、4 处理。
+\end{remark}
+
+\begin{proposition}\label{prop:locus}
+设 $a$ 是 $g$ 上的动点，则直线 $a\times a'$ 的极点 $K$ 的轨迹构成一条圆锥曲线 $h$，
+$h$ 与 $g$ 必定相切于两点 $p,q$。反之，每给定一条与 $g$ 相切于两点的圆锥曲线 $h$，都可以
+通过这种作图方法构造出对应的线性映射 $\varphi$ 及其逆 $\varphi^{-1}$。
+\end{proposition}
+
+映射 $\varphi$ 与洛伦兹变换比较抽象，不容易看出几何含义；借助命题 \ref{prop:locus}，
+可以用一类特殊的圆锥曲线来构造 $\varphi$，从而把它变得直观。
+
+\begin{proposition}\label{prop:construction-outside}
+设 $a$ 是 $g$ 外一点，则可以通过如下步骤得到 $a'$：
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item 作 $a$ 到 $g$ 的两条切线，切点分别为 $b,c$；
+\item $\varphi$ 在 $g$ 上有定义，故可作出 $b',c'$；
+\item 作 $b',c'$ 处的切线，其交点即为 $a'$。
+\end{enumerate}
+\end{proposition}
+
+命题 \ref{prop:construction-outside} 给出了 $\varphi$ 延拓的一种作图方式。
+
+\begin{proposition}\label{prop:family}
+用 $C$ 表示所有与 $g$ 相切于 $p,q$ 两点的圆锥曲线构成的集合。对任意一点 $a$，在 $C$ 中
+存在唯一一条经过 $a$ 的圆锥曲线，记作 $c(a)$，并且恒有
+\[
+c(a)=c(a') .
+\]
+换言之，映射 $\varphi$ 把任意一条与 $g$ 相切于 $p,q$ 两点的圆锥曲线映为自身。于是所有
+这样的圆锥曲线在平面上划出一族 $\varphi$ 轨道。
+\end{proposition}
+
+\begin{proposition}\label{prop:construction-inside}
+设 $a$ 不在 $g$ 上，则可以通过如下步骤作出 $a'$：
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item 作直线 $a\times p$，交 $g$ 于 $b$；
+\item 作出 $b'$；
+\item 作直线 $b'\times p$，它与 $c(a)$ 的交点即为 $a'$。
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[帕斯卡定理]\label{prop:pascal}
+\begin{enumerate}[label=(\arabic*),leftmargin=2.4em]
+\item $g$ 上的三对对应点 $a,a',b,b',c,c'$ 能唯一确定射影变换 $\varphi$，使得
+      $a'=\varphi(a)$，$b'=\varphi(b)$，$c'=\varphi(c)$。
+\item 设 $s=p\times q$，称 $s$ 为 $\varphi$ 对应的\emph{帕斯卡线}。设 $a,b$ 是 $g$ 上的
+      任意两点，则点 $(a\times b')\times(a'\times b)$ 必定在帕斯卡线上。
+\end{enumerate}
+\end{proposition}
+
+\section{命题的证明}
+
+\subsection{命题 \ref{prop:lorentz} 的证明}
+
+根据 \eqref{eq:varphi}，$\mathfrak a'{}^\alpha=t^\alpha{}_\beta\mathfrak a^\beta$。设
+$a=\mathfrak a\mathfrak a$，则由旋量与类光矢量的对应关系有 $a'=\mathfrak a'\mathfrak a'$，
+即
+\[
+a'^{\alpha\dot\alpha}
+=t^\alpha{}_\beta\mathfrak a^\beta\,
+t^{\dot\alpha}{}_{\dot\beta}\mathfrak a^{\dot\beta}
+=t^\alpha{}_\beta t^{\dot\alpha}{}_{\dot\beta}a^{\beta\dot\beta},
+\]
+这是关于 $a^{\beta\dot\beta}$ 的线性映射。此时 $a^{\beta\dot\beta}$ 作为定义域只包含
+$\det a^{\beta\dot\beta}=0$ 的部分，但线性映射
+$t^\alpha{}_\beta t^{\dot\alpha}{}_{\dot\beta}a^{\beta\dot\beta}$ 可自然地把定义域延拓到所有
+对称旋量张量，因而延拓到平面上的所有点。用矢量指标写出即
+\[
+a'^i=\sigma^i_{\alpha\dot\alpha}t^\alpha{}_\beta t^{\dot\alpha}{}_{\dot\beta}
+\sigma_j^{\beta\dot\beta}a^j,
+\]
+可见它确实是全平面上的射影变换。
+
+又因为 $\varphi$ 把 $g$ 上的点映为 $g$ 上的点，所以它保持 $g$ 的像（圆锥曲线对应的点集）
+不变；圆锥曲线张量由其像完全确定，因此 $g$ 作为张量也关于 $\varphi$ 不变。于是由 $g_{ij}$
+定义的点乘也关于 $\varphi$ 不变。反过来，在二维空间加一维时间中保持时空距离不变的参考系
+变换是三维的（两个 boost 与一个空间旋转），而二维矢量空间中的射影变换也是三维的，
+两者恰好一一对应。
+
+\subsection{命题 \ref{prop:locus} 的证明}
+
+只需用 $t_{\alpha\beta}$ 表示出 $h_{\alpha\beta\gamma\delta}$，即找出这样的
+$h_{\alpha\beta\gamma\delta}$，使得对任意的 $\mathfrak c$ 恒有
+\begin{equation}\label{eq:hlocus}
+h_{\alpha\beta\gamma\delta}\,
+t^\beta{}_{\dot\beta}t^\delta{}_{\dot\delta}\,
+\mathfrak c^\alpha\mathfrak c^{\dot\beta}\mathfrak c^\gamma\mathfrak c^{\dot\delta}=0 .
+\end{equation}
+
+首先注意，射影变换 $t^\alpha{}_\beta$ 的不动点方程是二次的，因此必定有两个不动点，记为
+$\mathfrak a,\mathfrak b$，即
+\[
+\mathfrak a^\alpha=t^\alpha{}_\beta\mathfrak a^\beta,\qquad
+\mathfrak b^\alpha=t^\alpha{}_\beta\mathfrak b^\beta .
+\]
+先看第一个方程。把它降指标得 $\mathfrak a_\alpha=t_{\alpha\beta}\mathfrak a^\beta$，
+两边乘以 $\mathfrak a^\alpha$，利用 $\mathfrak a^\alpha\mathfrak a_\alpha=0$，得到
+$t_{\alpha\beta}\mathfrak a^\alpha\mathfrak a^\beta=0$。设
+\[
+s_{\alpha\beta}=t_{\alpha\beta}+t_{\beta\alpha},
+\]
+则 $s_{\alpha\beta}\mathfrak a^\alpha\mathfrak a^\beta=0$；同理
+$s_{\alpha\beta}\mathfrak b^\alpha\mathfrak b^\beta=0$。由于 $s_{\alpha\beta}$ 对称，它表示
+一个对合变换，而 $\mathfrak a,\mathfrak b$ 是其不动点，故
+\begin{equation}\label{eq:s}
+s_{\alpha\beta}=t_{\alpha\beta}+t_{\beta\alpha}=(\mathfrak a\mathfrak b)_{\alpha\beta},
+\end{equation}
+它对应直线 $p\times q$。
+
+因为 $g,h$ 相切于两点，所以 $g,h,ss$ 构成二次线系，于是可设
+\begin{equation}\label{eq:hansatz}
+h_{\alpha\beta\gamma\delta}
+=s_{\alpha\beta}s_{\gamma\delta}+\lambda g_{\alpha\beta\gamma\delta},
+\end{equation}
+其中 $\lambda$ 待定。把 \eqref{eq:hansatz} 代入 \eqref{eq:hlocus}，得
+\[
+\bigl(s_{\alpha\beta}s_{\gamma\delta}t^\beta{}_{\dot\beta}t^\delta{}_{\dot\delta}
++\lambda g_{\alpha\beta\gamma\delta}t^\beta{}_{\dot\beta}t^\delta{}_{\dot\delta}\bigr)
+\mathfrak c^\alpha\mathfrak c^{\dot\beta}\mathfrak c^\gamma\mathfrak c^{\dot\delta}=0 .
+\]
+小括号中第一项为
+\[
+s_{\alpha\beta}s_{\gamma\delta}t^\beta{}_{\dot\beta}t^\delta{}_{\dot\delta}
+=(t_{\alpha\beta}+t_{\beta\alpha})(t_{\gamma\delta}+t_{\delta\gamma})
+t^{\beta\beta'}t^{\delta\delta'}e_{\beta'\dot\beta}e_{\delta'\dot\delta}
+=\bigl({{t^2}_\alpha}^{\beta'}+\delta_\alpha^{\beta'}\bigr)
+\bigl({{t^2}_\gamma}^{\delta'}+\delta_\gamma^{\delta'}\bigr)
+e_{\beta'\dot\beta}e_{\delta'\dot\delta},
+\]
+即
+\[
+s_{\alpha\beta}s_{\gamma\delta}t^\beta{}_{\dot\beta}t^\delta{}_{\dot\delta}
+=\bigl({t^2}_{\alpha\dot\beta}+e_{\alpha\dot\beta}\bigr)
+\bigl({t^2}_{\gamma\dot\delta}+e_{\gamma\dot\delta}\bigr),
+\qquad
+{{t^2}{}^\alpha}_\gamma={t^\alpha}_\beta{t^\beta}_\gamma .
+\]
+把它乘以 $\mathfrak c^\alpha\mathfrak c^{\dot\beta}\mathfrak c^\gamma\mathfrak c^{\dot\delta}$：
+含有 $e_{\alpha\dot\beta}$ 的项因 $e_{\alpha\dot\beta}\mathfrak c^\alpha\mathfrak c^{\dot\beta}=0$
+而消失，留下的只有
+\[
+{t^2}_{\alpha\dot\beta}{t^2}_{\gamma\dot\delta}
+\mathfrak c^\alpha\mathfrak c^{\dot\beta}\mathfrak c^\gamma\mathfrak c^{\dot\delta}
+=\bigl({t^2}_{\alpha\dot\beta}\mathfrak c^\alpha\mathfrak c^{\dot\beta}\bigr)^2 .
+\]
+小括号中的第二项为
+\[
+g_{\alpha\beta\gamma\delta}t^\beta{}_{\dot\beta}t^\delta{}_{\dot\delta}
+=(e_{\alpha\gamma}e_{\beta\delta}+e_{\alpha\delta}e_{\beta\gamma})
+t^\beta{}_{\dot\beta}t^\delta{}_{\dot\delta}
+=e_{\alpha\gamma}e_{\dot\delta\dot\beta}-t_{\alpha\dot\delta}t_{\gamma\dot\beta},
+\]
+其中第一项乘以 $\mathfrak c^\alpha\mathfrak c^{\dot\beta}\mathfrak c^\gamma\mathfrak c^{\dot\delta}$
+后为零，故只留下
+\[
+(-t_{\alpha\dot\delta}t_{\gamma\dot\beta})\,
+\mathfrak c^\alpha\mathfrak c^{\dot\beta}\mathfrak c^\gamma\mathfrak c^{\dot\delta}
+=-\bigl(t_{\alpha\dot\beta}\mathfrak c^\alpha\mathfrak c^{\dot\beta}\bigr)^2 .
+\]
+于是 \eqref{eq:hlocus} 等价于
+\begin{equation}\label{eq:hcond}
+\bigl({t^2}_{\alpha\beta}\mathfrak c^\alpha\mathfrak c^\beta\bigr)^2
+-\lambda\bigl(t_{\alpha\beta}\mathfrak c^\alpha\mathfrak c^\beta\bigr)^2=0 .
+\end{equation}
+
+表面上看，无论 $\lambda$ 如何取值也不能使 \eqref{eq:hcond} 成为恒等式，但事实并非如此。
+$2\times2$ 矩阵 $A$ 满足恒等式
+\begin{equation}\label{eq:cayley}
+A\tr A-A^2=(\det A)I,
+\end{equation}
+即 $A^2-(\tr A)A+(\det A)I=0$。把 \eqref{eq:cayley} 应用于 ${t^\alpha}_\beta$，得到
+\[
+{t^\alpha}_\beta{t^\mu}_\mu-{{t^2}{}^\alpha}_\beta=(\det t)\delta^\alpha_\beta,
+\]
+也就是
+\[
+t_{\alpha\beta}{t^\mu}_\mu-{t^2}_{\alpha\beta}=(\det t)e_{\alpha\beta}.
+\]
+两边同乘 $\mathfrak c^\alpha\mathfrak c^\beta$，注意 $e_{\alpha\beta}\mathfrak c^\alpha\mathfrak c^\beta=0$，
+便得
+\[
+{t^\mu}_\mu\bigl(t_{\alpha\beta}\mathfrak c^\alpha\mathfrak c^\beta\bigr)
+={t^2}_{\alpha\beta}\mathfrak c^\alpha\mathfrak c^\beta .
+\]
+代入 \eqref{eq:hcond} 可知，只需取
+\[
+\lambda=({t^\mu}_\mu)^2,
+\]
+\eqref{eq:hcond} 便成为恒等式，从而证明了 $a\times a'$ 的极点确实在圆锥曲线 $h$ 上。于是
+\begin{equation}\label{eq:hformula}
+\boxed{\;h_{\alpha\beta\gamma\delta}
+=(t_{\alpha\beta}+t_{\beta\alpha})(t_{\gamma\delta}+t_{\delta\gamma})
++({t^\mu}_\mu)^2g_{\alpha\beta\gamma\delta}.\;}
+\end{equation}
+
+最后注意，圆锥曲线共有 $5$ 个自由度，两个相切条件产生 $2$ 个约束，因此这样的 $h$ 共有
+$3$ 个自由度，等于射影变换的自由度个数，故 $h$ 与 $\varphi$ 相互对应。
+
+\subsection{命题 \ref{prop:construction-outside} 的证明}
+
+利用 $\varphi$ 保持点乘这一性质。由 $a\cdot b=0$ 得 $a'\cdot b'=0$，同理
+$a'\cdot c'=0$。因此 $a'$ 同时在 $b'$ 与 $c'$ 的极线上，即
+\[
+a'=b'\times c',
+\]
+这正是 $b',c'$ 处两条切线的交点。
+
+\subsection{命题 \ref{prop:family} 的证明}
+
+先证唯一性。五点确定一条圆锥曲线；"相切"可以看作同时经过切点附近切线上无限接近的两个点，
+于是命题中的问题可以转化为五点确定一条圆锥曲线的问题，因此 $c(a)$ 唯一。
+
+再证 $c(a)=c(a')$。由命题 \ref{prop:locus}，$C$ 中的元素都可用
+\begin{equation}\label{eq:family}
+c_\mu=s_{\alpha\beta}s_{\gamma\delta}+\mu\,g_{\alpha\beta\gamma\delta},
+\qquad \mu\in\R,
+\end{equation}
+描述，其中 $s$ 由 \eqref{eq:s} 给出，对应直线 $p\times q$。由于 $p,q$ 是 $\varphi$ 的不动
+点，$g$ 与 $s$ 在 $\varphi$ 下分别变为自身的倍数，因此 $c_\mu$ 的像仍属于曲线系
+$\{ss+\mu'g\}$，即
+\[
+c_\mu'=\alpha\,s_{\alpha\beta}s_{\gamma\delta}
++\beta\mu\,g_{\alpha\beta\gamma\delta},
+\]
+其中 $\alpha,\beta$ 是与 $\mu$ 无关的常数。
+
+取 $\mu=\lambda=({t^\mu}_\mu)^2$，此时 $c_\lambda$ 正是命题 \ref{prop:locus} 中的圆锥曲线
+$h$。由 \eqref{eq:hformula} 与命题 \ref{prop:locus}，$h$ 的像就是它自身（作为点集），于是
+\[
+\alpha\,ss+\beta\lambda\,g
+\ \text{与}\ ss+\lambda\,g\ \text{成正比}.
+\]
+比较系数（$\lambda\neq0$ 时）得 $\alpha=\beta$。代入 \eqref{eq:family} 的一般 $\mu$，
+\[
+c_\mu'=\alpha\,ss+\alpha\mu\,g=\alpha\,(ss+\mu g)=\alpha\,c_\mu,
+\]
+即 $c_\mu'$ 与 $c_\mu$ 表示同一条圆锥曲线，因而 $c(a')=c(a)$。当 $\lambda=0$ 时，
+$\operatorname{tr}t=0$，$h$ 退化为 $ss$；此时结论可由 $\operatorname{tr}t\neq0$ 的情形取
+极限得到。
+
+\begin{remark}
+$C$ 中的元素有两条是退化的：一条是 $ss$，另一条是 $p,q$ 处两条切线的对称积。设后者两条
+切线的交点为 $r$，则 $r$ 是 $s$ 的极点。在整个平面上，$\varphi$ 的不动点有且仅有 $p,q,r$
+三个。
+\end{remark}
+
+\subsection{命题 \ref{prop:construction-inside} 的证明}
+
+只需证明按题中三步作图后，$a'$ 位于直线 $b'\times p$ 上。由作图，$b$ 在直线 $a\times p$ 上，
+故
+\[
+(b\times p)\cdot a=0 .
+\]
+射影变换保持 Levi-Civita 记号（因而保持叉乘）与点乘，于是上式经 $\varphi$ 作用后成为
+\[
+(b'\times p')\cdot a'=0 .
+\]
+又 $p'=p$，所以 $(b'\times p)\cdot a'=0$，即 $a'$ 在直线 $b'\times p$ 上。结合命题
+\ref{prop:family} 给出的 $a'\in c(a)$，二者的交点即为 $a'$。
+
+\begin{remark}
+$p$ 只是两个不动点中的一个。对另一个不动点 $q$ 同样操作：作直线 $a\times q$ 交 $g$ 于
+$c$，作出 $c'$，再作直线 $c'\times q$，同样可证 $(c'\times q)\cdot a'=0$。因此
+\[
+a'=(b'\times p)\times(c'\times q).
+\]
+\end{remark}
+
+\subsection{命题 \ref{prop:pascal} 的证明}
+
+(1) 令 $g$ 上任意点 $d$ 的像 $d'$ 满足 $a,b,c,d$ 的交比等于 $a',b',c',d'$ 的交比，
+这便唯一地确定了映射 $\varphi$。
+
+(2) 由二次点列与二次对合中的结论，三条直线 $a\times b'$、$a'\times b$ 与 $s=p\times q$
+共点，当且仅当存在对合 $f$，使得 $(p,q)$、$(a,b')$、$(a',b)$ 均关于 $f$ 对合。
+
+用旋量语言写出：$a=\mathfrak a\mathfrak a$，$a'=\mathfrak a'\mathfrak a'$，
+$b=\mathfrak b\mathfrak b$，$b'=\mathfrak b'\mathfrak b'$，于是
+\[
+a\times b'=(\mathfrak a\mathfrak b'),\qquad a'\times b=(\mathfrak a'\mathfrak b).
+\]
+在本节命题 \ref{prop:locus} 的证明中已得到
+$s_{\alpha\beta}=t_{\alpha\beta}+t_{\beta\alpha}$。对合 $f$ 的三个条件分别为
+\begin{equation}\label{eq:pascaleq}
+f_{\alpha\beta}\mathfrak a^\alpha\mathfrak b'{}^\beta=0,\qquad
+f_{\alpha\beta}\mathfrak a'{}^\alpha\mathfrak b^\beta=0,\qquad
+f_{\alpha\beta}t^{\alpha\beta}=0 .
+\end{equation}
+前两个方程利用 $\mathfrak a'{}^\alpha=t^\alpha{}_\beta\mathfrak a^\beta$、
+$\mathfrak b'{}^\beta=t^\beta{}_\gamma\mathfrak b^\gamma$ 展开为
+\[
+f_{\alpha\beta}\mathfrak a^\alpha t^\beta{}_{\dot\beta}\mathfrak b^{\dot\beta}=0,
+\qquad
+f_{\alpha\beta}t^\alpha{}_{\dot\alpha}\mathfrak a^{\dot\alpha}\mathfrak b^\beta=0 .
+\]
+
+为证明这三个方程可以同时成立，先令第三个方程成立，再证明此时前两个方程等价。
+改设
+\[
+h_\alpha{}^\gamma=f_{\alpha\beta}t^{\beta\gamma},
+\]
+则第三个方程 $f_{\alpha\beta}t^{\alpha\beta}=0$ 改写为 $h_\gamma{}^\gamma=0$；前两个方程分别
+改写为
+\[
+h_{\alpha\dot\beta}\mathfrak a^\alpha\mathfrak b^{\dot\beta}=0,
+\qquad
+h_{\beta\dot\alpha}\mathfrak a^{\dot\alpha}\mathfrak b^\beta=0
+\]
+（改写第二个方程时利用了 $f_{\alpha\beta}=f_{\beta\alpha}$）。而由 $h_\gamma{}^\gamma=0$
+可以推出 $h_{\alpha\beta}=h_{\beta\alpha}$：这是二维矩阵的结论，零迹决定了对称。于是前两个
+方程完全等价，只剩下一个方程。对称无迹的 $h$ 有两个独立分量，一个线性方程将其确定到相差
+一个常数因子，因而对合 $f$ 被唯一确定。证毕。

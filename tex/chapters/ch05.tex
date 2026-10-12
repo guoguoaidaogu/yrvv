@@ -1,0 +1,210 @@
+% 第五节：点矢与线矢
+\chapter{点矢与线矢}
+
+\section{规范与规范不变}
+
+上一节末尾指出，所关心的只是与坐标系无关的运算所对应的几何关系。本节就从这类运算出发。先改换记号：一般用小写字母 $a,b,c,p,q,s$ 表示矢量，用 $k,l,m,n,u,v$ 表示对偶矢量，用 $f,g,h$ 表示张量；$A$ 表示 $a$ 所对应的点，其余类推。
+
+首先讨论矢量的加法，这里立刻会遇到麻烦。设 $a,b$ 是两个不共线的矢量，分别表示平面上的点 $A,B$，问 $a+b$ 有什么几何意义。
+
+\begin{example}
+取平面解析几何中的两点 $A(0,0)$、$B(1,0)$。取点矢
+\[
+a^i=(0,0,1),\qquad b^i=(1,0,1),
+\]
+它们分别表示 $A,B$，于是 $(a+b)^i=(1,0,2)$，按上一节的规则它表示点 $(1/2,0)$。但是表示同一个点的点矢并不唯一：也可以取
+\[
+a^i=(0,0,\lambda),\qquad b^i=(\mu,0,\mu),\qquad \lambda,\mu\neq 0,
+\]
+它们仍然分别表示 $A,B$，而此时
+\[
+(a+b)^i=(\mu,0,\lambda+\mu),
+\]
+对应的点是 $(\mu/(\lambda+\mu),0)$。随着 $\lambda,\mu$ 取不同的值，所得的点也不同。
+\end{example}
+
+这个例子说明，仅知道 $a,b$ 各自所对应的点，并不能确定 $a+b$ 所对应的点。要使它被确定，就不能允许 $a,b$ 沿各自的方向任意伸缩；为此需要附加条件来限制这些矢量。这种限制条件称为规范。
+
+\begin{definition}[标准规范]
+要求矢量在给定参考系下的第三个分量为 $1$，即 $A^3=1$，这一规范称为标准规范。
+\end{definition}
+
+有的关系只在选取了特定规范时才成立，有的定义只在选取了特定规范时才有意义；但也有一类关系，无论选取哪一种规范都成立。这类关系称为规范不变的，它们正是所要研究的对象。
+
+具体地说，设有若干元素，例如 $a,b,c,l,m,n,g$，它们之间满足某些等式。在任何元素被换成自身的非零倍数（即它仍然表示同一个点或同一条直线）之后，等式若仍然成立，就称这个等式是规范不变的。例如，$\kappa$ 为实数时，
+\[
+l\cdot a=0
+\]
+是规范不变的，而 $l\cdot a=\kappa$（$\kappa\neq 0$）不是规范不变的。一个等式是规范不变的，意味着它能够描述平面（确切地说是平面射影几何）中元素之间的关系；否则它可能只描述了三维矢量之间的关系。
+
+同样地，若用若干元素构造出一个实数，而其中任一元素换成自身的非零倍数时该实数不变，则这个实数具有几何意义。例如混合积 $[abc]$ 没有几何意义，而
+\[
+\frac{[abc][ade]}{[abd][ace]}
+\]
+具有几何意义：分子关于 $a$ 是二次的、关于 $b,c,d,e$ 各是一次，分母与之相同，故任一元素伸缩时比值不变。若用若干元素构造出一个矢量或张量，而在任一元素换成自身的非零倍数时，所构造出的元素也随之变为自身的若干倍，则这个元素具有几何意义。例如 $a+b$ 没有几何意义，而叉乘 $a\times b$ 具有几何意义，因为 $a\to\lambda a$ 时 $a\times b\to\lambda(a\times b)$。
+
+若由若干元素构造出一个命题，而在任一元素换成自身的非零倍数时命题仍然成立，则称这个命题具有几何意义。例如命题“三个矢量 $a,b,a+b$ 所对应的点一定共线”：虽然在不同规范下 $a+b$ 对应不同的点，但无论取哪一种规范，$a,b,a+b$ 三个矢量总是线性相关的，因而命题总是成立。这个例子稍后还会进一步讨论。
+
+\section{点矢与线矢}
+
+明确了什么样的表达式才有几何意义之后，从几何意义清楚的运算入手，讨论等式
+\[
+a\cdot l=0 .
+\]
+按齐次坐标一节建立的关系，矢量 $a$ 表示一个点，但对偶矢量 $l$ 表示什么尚不清楚。把等式展开：设
+\[
+l_i=(A,B,C),\qquad a^i=(X,Y,Z),
+\]
+则
+\[
+l\cdot a=AX+BY+CZ=0 .
+\]
+两边除以 $Z$，并利用 $x=X/Z$、$y=Y/Z$，得到
+\[
+Ax+By+C=0 .
+\]
+这正是直线在解析几何中的标准方程。因此 $a\cdot l=0$ 表示点 $a$ 位于由 $l$ 的分量所确定的直线上。又因为矢量与对偶矢量的缩并与坐标系无关，可以说对偶矢量 $l$ 表示一条直线。
+
+\begin{proposition}[点矢与线矢]
+在平面射影几何中有以下对应：
+\begin{enumerate}
+\item 矢量 $a$ 表示一个点，因此矢量也称为点矢；
+\item 对偶矢量 $l$ 表示一条直线，因此对偶矢量也称为线矢；
+\item $a\cdot l=0$ 表示点 $a$ 在直线 $l$ 上，或者说直线 $l$ 经过点 $a$。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+第 2、3 条的推导已如上：把 $l_i=(A,B,C)$、$a^i=(X,Y,Z)$ 代入 $a\cdot l=0$，在 $Z\neq 0$ 时等价于 $Ax+By+C=0$，即点 $a$ 满足直线 $l$ 的方程。第 1 条是上一节对应关系的重述。
+\end{proof}
+
+值得注意的是，对偶矢量与矢量在构造上地位相同，因此直线与点地位也相同。点与直线的这种对偶性，正是后文许多命题可以成对出现的原因。
+
+\begin{proposition}\label{prop:cross}
+两个点矢的叉乘 $a\times b$ 是线矢，且规范不变，它表示过 $a,b$ 两点的直线；两个线矢的叉乘 $m\times n$ 是点矢，且规范不变，它表示 $m,n$ 两条直线的交点。
+\end{proposition}
+
+\begin{proof}
+先看 $a\times b$。当 $a\to\lambda a$、$b\to\mu b$ 时，
+\[
+(\lambda a)\times(\mu b)=\lambda\mu\,(a\times b),
+\]
+故叉乘规范不变。又由叉乘的定义与混合积的反称性，
+\[
+(a\times b)\cdot a=[aab]=0,\qquad (a\times b)\cdot b=[bab]=0 .
+\]
+因此 $a\times b$ 所表示的直线既经过 $a$ 又经过 $b$；在 $a,b$ 不重合时，过这两点的直线唯一，故 $a\times b$ 正表示这条直线。
+
+对偶的论证给出 $m\times n$：它满足
+\[
+(m\times n)\cdot m=0,\qquad (m\times n)\cdot n=0,
+\]
+即它所表示的点既在 $m$ 上又在 $n$ 上；在 $m,n$ 不平行时两条直线只交于一点，故 $m\times n$ 正表示这个交点。
+\end{proof}
+
+\begin{definition}[一次点列]
+设 $a,b$ 是直线 $l$ 上两个不同的点，即 $a\cdot l=b\cdot l=0$。则对任意实数 $\lambda$，
+\[
+l\cdot(a+\lambda b)=l\cdot a+\lambda\,l\cdot b=0,
+\]
+故 $a+\lambda b$ 所对应的点都在直线 $l$ 上。当 $\lambda$ 取遍全体实数时，$a+\lambda b$ 取遍直线 $l$ 上的全体点（点 $b$ 除外）。这条直线上的全体点构成的集合称为（一次）点列。约定当 $\lambda=\infty$ 时，$a+\lambda b$ 表示点 $b$。
+\end{definition}
+
+\begin{remark}
+一次点列的定义与规范的选取无关：无论选取哪一种规范，$a+\lambda b$ 都取遍直线 $l$ 上的全体点。此外，$b$ 不能写成 $a+\lambda b$（$\lambda\in\R$）的形式，因此上面对 $\lambda=\infty$ 的约定不是严格的极限，只是一个记号的约定。
+\end{remark}
+
+\begin{definition}[一次线束]
+类似地，若两条直线 $m,n$ 交于点 $P$，则当 $\lambda$ 取遍全体实数时，$m+\lambda n$ 取遍过 $P$ 的全体直线。这些直线构成的集合称为一次线束，简称线束。
+\end{definition}
+
+\begin{proposition}
+三个点矢的混合积 $[abc]=0$ 当且仅当 $a,b,c$ 三点共线；三个线矢的混合积为零当且仅当这三条直线共点。
+\end{proposition}
+
+\begin{proof}
+由混合积与叉乘的关系 $[abc]=(a\times b)\cdot c$。若 $[abc]=0$，则点 $c$ 在直线 $a\times b$ 上，而 $a\times b$ 就是过 $a,b$ 的直线，故三点共线；反之若三点共线，则 $c$ 在过 $a,b$ 的直线上，于是 $(a\times b)\cdot c=0$。对偶地，三个线矢的混合积为零等价于它们的交点落在第三条直线上，即三线共点。
+\end{proof}
+
+\section{习题：Desargues 定理}
+
+\begin{exercise}[Desargues 定理]
+设三角形 $ABC$ 与 $A'B'C'$ 的对应顶点连线 $AA'$、$BB'$、$CC'$ 共点于 $D$，对应边 $BC$ 与 $B'C'$、$CA$ 与 $C'A'$、$AB$ 与 $A'B'$ 分别交于 $E,F,G$。求证：$E,F,G$ 三点共线。
+\end{exercise}
+
+\begin{proof}
+设 $a,b,c$ 是 $A,B,C$ 三点的点矢。由于 $A,B,C$ 不共线，$[abc]\neq 0$，可以把 $a,b,c$ 取作三维矢量空间的一组基。在这组基下
+\[
+a^i=(1,0,0),\qquad b^i=(0,1,0),\qquad c^i=(0,0,1).
+\]
+设 $d^i=(x,y,z)$。由于 $A,A',D$ 共线，三个点矢 $a,a',d$ 线性相关，而 $a,d$ 已张成过 $A,D$ 的平面，故可设
+\[
+a'=d+\lambda a=(x+\lambda,\,y,\,z).
+\]
+同理设
+\[
+b'=(x,\,y+\mu,\,z),\qquad c'=(x,\,y,\,z+\sigma).
+\]
+
+下面用叉乘求出三条对应边的交点。叉乘取约定 $(A\times B)_i=\epsilon_{ijk}A^jB^k$，$\epsilon_{123}=1$。
+
+先求 $E=BC\cap B'C'$。由 $b=(0,1,0)$、$c=(0,0,1)$ 得
+\[
+b\times c=(1,0,0),
+\]
+而
+\[
+b'\times c'=\big(y\sigma+\mu z+\mu\sigma,\,-\sigma x,\,-\mu x\big).
+\]
+于是
+\[
+e=(b\times c)\times(b'\times c')=(0,\,\mu x,\,-\sigma x).
+\]
+
+再求 $F=CA\cap C'A'$。由 $c=(0,0,1)$、$a=(1,0,0)$ 得
+\[
+c\times a=(0,1,0),
+\]
+而
+\[
+c'\times a'=\big(-\sigma y,\,z\lambda+\sigma x+\sigma\lambda,\,-\lambda y\big),
+\]
+于是
+\[
+f=(c\times a)\times(c'\times a')=(-\lambda y,\,0,\,\sigma y).
+\]
+
+最后求 $G=AB\cap A'B'$。由 $a=(1,0,0)$、$b=(0,1,0)$ 得
+\[
+a\times b=(0,0,1),
+\]
+而
+\[
+a'\times b'=\big(-\mu z,\,-\lambda z,\,\lambda y+\mu x+\lambda\mu\big),
+\]
+于是
+\[
+g=(a\times b)\times(a'\times b')=(\lambda z,\,-\mu z,\,0).
+\]
+
+计算三点的混合积：
+\[
+[efg]=
+\begin{vmatrix}
+0 & \mu x & -\sigma x\\
+-\lambda y & 0 & \sigma y\\
+\lambda z & -\mu z & 0
+\end{vmatrix}
+=xyz
+\begin{vmatrix}
+0 & \mu & -\sigma\\
+-\lambda & 0 & \sigma\\
+\lambda & -\mu & 0
+\end{vmatrix}=0,
+\]
+最后一个行列式为零，因为它的第三行等于前两行之和的相反数。故 $[efg]=0$，即 $E,F,G$ 三点共线。
+\end{proof}
+
+\begin{remark}
+上述推导并未用到 $x,y,z,\lambda,\mu,\sigma$ 全不为零的假设：混合积的表达式中每一列都含有相应的因子，行列式恒为零。因此退化的位置关系也包含在结论之中。
+\end{remark}

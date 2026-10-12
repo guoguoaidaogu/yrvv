@@ -1,0 +1,413 @@
+% 第七节：圆锥曲线、极点极线与分类
+\chapter{椭圆、双曲线、抛物线与极点极线}
+
+\section{圆锥曲线张量}
+
+\begin{definition}[圆锥曲线张量]
+一个不定的、对称的、可逆的 $(0,2)$ 型张量 $g_{ij}$ 称为圆锥曲线张量（或二次曲线张量），
+它所描述的几何对象称为 $g$ 对应的圆锥曲线。
+\end{definition}
+
+其中“对称”指 $g_{ij}=g_{ji}$；“可逆”指线性映射 $a^i\mapsto g_{ij}a^j$ 可逆，它的逆张量记为
+$(g^{-1})^{ij}$，满足
+\[
+(g^{-1})^{ij}g_{jk}=\delta^i_k .
+\]
+当讨论中只有一条圆锥曲线并把它取作度规时，把 $(g^{-1})^{ij}$ 简写为 $g^{ij}$，并用它升降指标。
+当同时出现多条圆锥曲线时必须注意：$g^{ij}$ 一般指用某条圆锥曲线 $g$ 升指标的结果，
+$(g^{-1})^{ij}$ 指 $g$ 的逆，两者一般不同，不能混用。
+
+“不定”指二次型 $g_{ij}a^ia^j$ 既取正值也取负值，即存在非零矢量 $a,b$ 使得
+$g_{ij}a^ia^j>0$ 而 $g_{ij}b^ib^j<0$。
+
+\begin{definition}[圆锥曲线上的点]
+若点矢 $a$ 满足
+\begin{equation}
+g_{ij}a^ia^j=0,
+\end{equation}
+则称 $a$ 对应的点在该圆锥曲线上。
+\end{definition}
+
+\begin{remark}
+上式是规范不变的：把 $a$ 换成 $\lambda a$（$\lambda\neq0$）时左边乘以 $\lambda^2$，方程不变。
+因此“点在圆锥曲线上”是一个射影概念。若 $g$ 是定的，即 $g_{ij}a^ia^j$ 恒正或恒负，则上述方程
+只有零解，圆锥曲线上没有任何点（如方程 $x^2+y^2=-1$ 就没有实解）；这正是要求 $g$ 不定的原因。
+三维实矢量空间上非退化不定对称张量的号差必为 $(2,1)$ 或 $(1,2)$。
+\end{remark}
+
+记 $a^2=a\cdot a=g_{ij}a^ia^j$，则“点在圆锥曲线上”就是 $a^2=0$。
+
+\begin{definition}[切线]
+若线矢 $l$ 满足
+\begin{equation}
+(g^{-1})^{ij}l_il_j=0,
+\end{equation}
+则称 $l$ 对应的直线与该圆锥曲线相切，并称 $l$ 为该圆锥曲线的一条切线。
+\end{definition}
+
+\begin{proposition}
+设圆锥曲线非退化，$l$ 是一条直线。则 $l$ 与圆锥曲线相切的充要条件是 $l$ 与它恰有一个交点
+（作为二重交点）。
+\end{proposition}
+
+\begin{proof}
+设 $L=\{x:l_ix^i=0\}$ 是 $l$ 对应的二维子空间，$l$ 上的点由二次型 $Q(x)=g_{ij}x^ix^j$
+在 $L$ 上的限制 $Q|_L$ 的零点给出。$L$ 上二次型退化当且仅当 $L\cap L^\perp\neq\{0\}$；由 $g$
+非退化，$L^\perp$ 是由 $l^\sharp$（分量 $(l^\sharp)^i=(g^{-1})^{ij}l_j$）张成的一维子空间，
+故这一条件等价于 $l^\sharp\in L$，即 $l_i(g^{-1})^{ij}l_j=0$，这正是相切的定义。
+
+反过来看 $L$ 上二次型的秩。二维空间上退化的二次型秩为 $1$，其零点集是过原点的一条直线，
+即 $l$ 上恰有一个点；秩为 $2$ 时，视其定号与否，零点集为空或两条过原点的直线，对应无交点或
+两个交点。非退化圆锥曲线不含整条直线，故秩为 $0$ 的情形不出现。
+\end{proof}
+
+\begin{remark}
+这里用 $(g^{-1})^{ij}l_il_j=0$ 定义相切，与用“只有一个交点”定义相切是等价的。这样定义的好处是
+点与切线的定义在形式上完全对称：
+\[
+\text{点在圆锥曲线上}:\ g_{ij}a^ia^j=0,\qquad
+\text{直线与圆锥曲线相切}:\ (g^{-1})^{ij}l_il_j=0 .
+\]
+\end{remark}
+
+\begin{example}[标准形式]
+取
+\[
+g_{ij}=\diag\Bigl\{\frac1{a^2},\frac1{b^2},-1\Bigr\},\qquad a,b>0,
+\]
+点的齐次坐标为 $(x,y,z)$。此时
+\[
+g_{ij}a^ia^j=\frac{x^2}{a^2}+\frac{y^2}{b^2}-z^2,
+\qquad
+(g^{-1})^{ij}=g^{ij}=\diag\{a^2,b^2,-1\}.
+\]
+在仿射坐标 $(x/z,\,y/z)$ 下，圆锥曲线的方程就是椭圆
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 .
+\]
+$b^2$ 取负值时同一公式给出双曲线，$g$ 的号差仍为 $(2,1)$。
+\end{example}
+
+\section{极点与极线}
+
+有了 $g$，就可以用它升降指标：点矢 $a^i$ 降指标得到线矢 $a_i=g_{ij}a^j$；线矢 $l_i$ 升指标得到
+点矢 $l^i=(g^{-1})^{ij}l_j$。
+
+\begin{definition}[极点与极线]
+对任一元素 $a$（点矢或线矢），$a^i$ 对应的点与 $a_i$ 对应的直线互为极点与极线：点 $a$ 的极线是
+由线矢 $a_i=g_{ij}a^j$ 确定的直线，线 $l$ 的极点是由点矢 $l^i=(g^{-1})^{ij}l_j$ 确定的点。
+由 $g$ 给出的这一对应称为极配。
+\end{definition}
+
+为了区分类型，下面记 $a^*$ 为元素 $a$ 在极配下的对应元素：若 $a$ 是点，$a^*$ 是它的极线，
+$(a^*)_i=g_{ij}a^j$；若 $l$ 是线，$l^*$ 是它的极点，$(l^*)^i=(g^{-1})^{ij}l_j$。于是 $a^{**}=a$。
+当只有一条圆锥曲线、不需要区分时，也可以说同一个字母 $a$ 既代表一个点又代表它的极线。
+
+\begin{remark}
+设 $x$ 是点，$l$ 是线，则 $x$ 在 $l$ 上当且仅当 $x\cdot l^*=0$。事实上
+\[
+x\cdot l^*=x_i(l^*)^i=g_{ij}x^j(g^{-1})^{ik}l_k=x^il_i,
+\]
+右端就是 $x$ 与 $l$ 的自然缩并。特别地，$x$ 在它自己的极线上当且仅当 $x^2=0$。
+\end{remark}
+
+\begin{example}[极线的解析式]
+取标准形式 $g_{ij}=\diag\{1/a^2,1/b^2,-1\}$，圆锥曲线为椭圆
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 .
+\]
+点 $(x_0,y_0)$ 的齐次坐标为 $(x_0,y_0,1)$，它的极线为
+\[
+\frac{x_0}{a^2}x+\frac{y_0}{b^2}y-z=0,
+\]
+写回仿射坐标即
+\[
+\frac{xx_0}{a^2}+\frac{yy_0}{b^2}=1 .
+\]
+若 $(x_0,y_0)$ 在椭圆上，这就是椭圆在该点的切线方程。
+\end{example}
+
+\begin{example}[极线互过]
+若 $A$ 的极线经过 $B$，则 $B$ 的极线经过 $A$。
+\end{example}
+
+\begin{proof}
+设 $A,B$ 的点矢为 $a,b$。“$A$ 的极线经过 $B$”即 $B\in a^*$，由上一注它等价于 $a\cdot b=0$；
+“$B$ 的极线经过 $A$”即 $A\in b^*$，等价于 $b\cdot a=0$。而 $a\cdot b=g_{ij}a^ib^j=b\cdot a$，
+故两个命题是同一件事。
+\end{proof}
+
+\begin{definition}[共轭]
+若 $a\cdot b=0$，则称 $a,b$ 关于该圆锥曲线共轭。
+\end{definition}
+
+\begin{example}[曲线上点的极线是切线]
+若点 $A$ 在圆锥曲线上，则 $A$ 的极线是圆锥曲线在 $A$ 处的切线。
+\end{example}
+
+\begin{proof}
+由 $a^2=g_{ij}a^ia^j=0$，作为线矢的 $a$ 满足相切条件
+$(g^{-1})^{ij}a_ia_j=a^2=0$，故直线 $a^*$ 与圆锥曲线相切。又 $a\cdot a=a^2=0$，即 $A$ 在
+$a^*$ 上。于是 $a^*$ 是过 $A$ 的切线，也就是圆锥曲线在 $A$ 处的切线。
+\end{proof}
+
+\begin{proposition}[极配与叉乘]
+对任意两点 $a,b$ 与任意两线 $m,n$，有
+\[
+(a\times b)^*=a^*\times b^*,\qquad (m\times n)^*=m^*\times n^* .
+\]
+两个等号都在允许相差非零常数的意义下成立，即作为点或直线相等。
+\end{proposition}
+
+\begin{proof}
+先证第一式。$a\times b$ 是直线 $AB$，$(a\times b)^*$ 是它的极点。设 $t=a^*\times b^*$，
+其分量为 $t^i=\epsilon^{ijk}(a^*)_j(b^*)_k=\epsilon^{ijk}a_jb_k$。于是
+\[
+a\cdot t=a_it^i=\epsilon^{ijk}a_ia_jb_k=0,
+\]
+这里用了 $\epsilon^{ijk}$ 关于 $i,j$ 反对称而 $a_ia_j$ 关于 $i,j$ 对称；同理 $b\cdot t=0$。
+因此 $a,b$ 都在 $t$ 的极线上，$t$ 的极线就是直线 $ab$，即 $t$ 是直线 $ab$ 的极点，
+故 $t=(a\times b)^*$。
+
+再证第二式。设 $t=m\times n$。由前一注，$x\in m$ 等价于 $x\cdot m^*=0$；而 $t\in m$，故
+$t\cdot m^*=0$，同理 $t\cdot n^*=0$。于是 $m^*,n^*$ 都在 $t$ 的极线上，$t$ 的极线就是直线
+$m^*n^*=m^*\times n^*$，即 $(m\times n)^*=m^*\times n^*$。
+\end{proof}
+
+\begin{example}[外点的极线]
+设 $A$ 在圆锥曲线外。过 $A$ 作圆锥曲线的两条切线，切点分别为 $B,C$，则直线 $BC$ 是 $A$ 的极线。
+\end{example}
+
+\begin{proof}
+$B$ 在圆锥曲线上，故 $B$ 的极线是过 $B$ 的切线；$A$ 在这条切线上，由极线互过，$B$ 在 $A$ 的极线
+上，即 $a\cdot b=0$。同理 $a\cdot c=0$。于是 $B,C$ 都在 $A$ 的极线上，而两点确定一条直线，
+故 $A$ 的极线就是 $BC$。
+\end{proof}
+
+\begin{corollary}
+若直线 $l$ 与圆锥曲线交于 $B,C$，则 $l$ 的极点是 $B,C$ 两处切线的交点。
+\end{corollary}
+
+\begin{proof}
+$l=b\times c$。由极配与叉乘的关系，$l^*=(b\times c)^*=b^*\times c^*$；由前一例，$b^*$ 与 $c^*$
+分别是 $B,C$ 处的切线，故 $l^*$ 就是这两条切线的交点。这也给出了由一条割线作它的极点的方法。
+\end{proof}
+
+\begin{definition}[自极三点形]
+若三点 $A,B,C$ 满足
+\[
+a\cdot b=b\cdot c=c\cdot a=0,
+\]
+则称 $ABC$ 为关于该圆锥曲线的自极三点形。
+\end{definition}
+
+\begin{remark}
+由定义，$a\cdot b=a\cdot c=0$ 说明 $B,C$ 都在 $A$ 的极线上，故 $A$ 的极线是 $BC$；同理 $B$ 的极线
+是 $AC$，$C$ 的极线是 $AB$。在三维矢量空间中，这意味着 $a,b,c$ 是关于 $g$ 两两正交的三个矢量，
+因而构成一组基；反过来，任取一组关于 $g$ 两两正交的基矢，就得到一个自极三点形。因此自极三点形
+可以理解为在三维矢量空间中选取了一组关于圆锥曲线张量正交的基。
+\end{remark}
+
+\begin{remark}
+极点极线与调和点列、交比的关系需要更多的射影几何工具，这里不再展开。
+\end{remark}
+
+\section{用两族割线作极线}
+
+\begin{lemma}[混合型拉格朗日恒等式]
+设 $A,B$ 是点，$C,D$ 是线，则
+\begin{equation}
+(A\times B)\cdot(C\times D)=(A\cdot C)(B\cdot D)-(A\cdot D)(B\cdot C).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+由二重外积公式可以推出这一恒等式；直接按分量计算也可：
+\[
+\begin{aligned}
+(A\times B)_i(C\times D)^i
+&=\epsilon_{ijk}A^jB^k\,\epsilon^{ilm}C_lD_m
+=(\delta_j^l\delta_k^m-\delta_k^l\delta_j^m)A^jB^kC_lD_m\\
+&=(A\cdot C)(B\cdot D)-(A\cdot D)(B\cdot C).
+\end{aligned}
+\]
+\end{proof}
+
+\begin{remark}
+恒等式要求两个叉乘类型相反：一个由两点作出（得到直线），另一个由两线作出（得到点），此时
+$\cdot$ 是点与线的自然缩并。不能把同一个恒等式直接用于两个由线作出的点：它们的点乘要用度规，
+而度规与 $\epsilon$ 之间一般没有使该恒等式成立的关系。下面的推导先借极配把点换成它的极线，
+再用上式展开。
+\end{remark}
+
+\begin{example}[用两族割线作极线]
+设 $J$ 不在圆锥曲线上。过 $J$ 作两条直线，分别交圆锥曲线于 $C,E$ 与 $D,F$，于是
+$J=CE\cap DF$。设
+\[
+H=CD\cap EF,\qquad I=CF\cap DE .
+\]
+则直线 $IH$ 是 $J$ 的极线。这一作法只用直尺，不需要预先作出切线。
+\end{example}
+
+\begin{proof}
+设 $c,d,e,f$ 是 $C,D,E,F$ 的点矢。由作法
+\[
+j=(c\times e)\times(d\times f),\qquad h=(c\times d)\times(e\times f),\qquad
+i=(c\times f)\times(d\times e).
+\]
+只需证明 $j\cdot h=j\cdot i=0$，这样 $H,I$ 都在 $J$ 的极线上。
+
+先算 $j\cdot h$。由极配与叉乘的关系，
+\[
+j^*=(c\times e)^*\times(d\times f)^*=(c^*\times e^*)\times(d^*\times f^*).
+\]
+点 $j$ 与它的极线 $j^*$ 满足 $j\cdot h=j^*\cdot h$（极线 $j^*$ 的线矢就是 $j_i=g_{ij}j^j$）。
+记
+\[
+A=c^*\times e^*,\qquad B=d^*\times f^*,\qquad C=c\times d,\qquad D=e\times f,
+\]
+则 $A,B$ 是点，$C,D$ 是线，$j^*=A\times B$，$h=C\times D$。由混合型拉格朗日恒等式
+\[
+j\cdot h=(A\times B)\cdot(C\times D)=(A\cdot C)(B\cdot D)-(A\cdot D)(B\cdot C).
+\]
+由于 $c,d,e,f$ 都在圆锥曲线上，有 $c\cdot c^*=c^2=0$，$d\cdot d^*=0$，$e\cdot e^*=0$，
+$f\cdot f^*=0$。逐个计算四个因子：
+\begin{align*}
+A\cdot C&=(c^*\times e^*)\cdot(c\times d)
+=(c\cdot c^*)(d\cdot e^*)-(c\cdot e^*)(d\cdot c^*)\\
+&=c^2(d\cdot e)-(c\cdot e)(c\cdot d)=-(c\cdot d)(c\cdot e),\\
+B\cdot D&=(d^*\times f^*)\cdot(e\times f)
+=(d\cdot e)(f\cdot f^*)-(d\cdot f)(f\cdot e^*)\\
+&=-(d\cdot f)(e\cdot f),\\
+A\cdot D&=(c^*\times e^*)\cdot(e\times f)
+=(c\cdot e)(e^*\cdot f)-(c\cdot f)(e^*\cdot e)\\
+&=(c\cdot e)(e\cdot f)-e^2(c\cdot f)=(c\cdot e)(e\cdot f),\\
+B\cdot C&=(d^*\times f^*)\cdot(c\times d)
+=(d\cdot c)(f^*\cdot d)-(d\cdot d)(f^*\cdot c)\\
+&=(c\cdot d)(d\cdot f)-d^2(c\cdot f)=(c\cdot d)(d\cdot f).
+\end{align*}
+代入得
+\begin{align*}
+j\cdot h&=\bigl[-(c\cdot d)(c\cdot e)\bigr]\bigl[-(d\cdot f)(e\cdot f)\bigr]
+-\bigl[(c\cdot e)(e\cdot f)\bigr]\bigl[(c\cdot d)(d\cdot f)\bigr]\\
+&=(c\cdot d)(c\cdot e)(d\cdot f)(e\cdot f)-(c\cdot e)(e\cdot f)(c\cdot d)(d\cdot f)=0 .
+\end{align*}
+
+再算 $j\cdot i$。同样地
+\[
+j^*=A\times B,\qquad i=(c\times f)\times(d\times e),
+\]
+把上面的 $C=c\times d$、$D=e\times f$ 换成 $C'=c\times f$、$D'=d\times e$，重复同样的计算（仍然
+用到 $c^2=d^2=e^2=f^2=0$），得到 $j\cdot i=0$。于是 $H,I$ 都在 $J$ 的极线上，故 $IH$ 是 $J$
+的极线。
+\end{proof}
+
+\begin{remark}
+这个证明的关键是选取合适的元素作为参量：直接设出圆锥曲线上的四点 $c,d,e,f$，再用它们表示
+$h,i,j$，计算就能顺利完成；若反过来由 $j$ 去求 $c,d,e,f$，则要解高次方程，计算会复杂得多。
+\end{remark}
+
+\section{用无穷远结构对圆锥曲线分类}
+
+非退化对称 $(0,2)$ 型张量在坐标变换下唯一不变的性质是它的号差；而圆锥曲线要求 $g$ 不定，
+号差只能是 $(2,1)$ 或 $(1,2)$，两者相差一个整体符号，在射影意义下没有区别。因此仅凭圆锥曲线
+张量无法区分椭圆、双曲线与抛物线。要把它们区分开，必须再附加一个结构，即无穷远结构 $\linf$。
+
+直观上，椭圆的所有点都在有限区域内，没有点在无穷远；双曲线沿两条渐近线的方向延伸到无穷远，
+因此有两个无穷远点；抛物线的开口只朝向一个方向，因此只有一个无穷远点。于是有
+
+\begin{definition}[椭圆、双曲线、抛物线]
+设 $g$ 对应的圆锥曲线与无穷远直线 $\linf$ 的关系为：
+\begin{itemize}
+\item 相离（无交点）：称该圆锥曲线为椭圆；
+\item 相交（两个交点）：称该圆锥曲线为双曲线；
+\item 相切（一个二重交点）：称该圆锥曲线为抛物线。
+\end{itemize}
+\end{definition}
+
+\begin{example}[解析判定]
+取 $g_{ij}=\diag\{1/a^2,1/b^2,-1\}$，$\linf$ 的线矢为 $(0,0,1)$，即判定时在齐次方程中令 $z=0$。
+\begin{itemize}
+\item 椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$ 齐次化为 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}-z^2=0$，
+令 $z=0$ 得 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=0$，只有零解，故与 $\linf$ 相离；
+\item 双曲线 $\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1$ 齐次化为 $\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}-z^2=0$，
+令 $z=0$ 得 $x^2/a^2=y^2/b^2$，给出两个无穷远点 $(a,\pm b,0)$，故与 $\linf$ 相交；
+\item 抛物线 $y^2=2px$ 齐次化为 $y^2-2pxz=0$，令 $z=0$ 得 $y^2=0$，即点 $(1,0,0)$ 为二重解，
+故与 $\linf$ 相切。
+\end{itemize}
+\end{example}
+
+\begin{proposition}[中心]
+圆锥曲线的中心是 $\linf$ 的极点 $\linf^*$。对椭圆与双曲线它是有限点，即通常的对称中心；
+对抛物线它在无穷远，因此抛物线没有有限中心。
+\end{proposition}
+
+\begin{proof}
+设圆锥曲线在仿射坐标下由
+\[
+Q(x,y)=Ax^2+2Bxy+Cy^2+2Dx+2Ey+F=0
+\]
+给出，齐次化后为 $Q(x,y,z)=Ax^2+2Bxy+Cy^2+2Dxz+2Eyz+Fz^2$，对应的 $g_{ij}$ 以
+$(A,B,D;B,C,E;D,E,F)$ 为分量。设 $p$ 为 $\linf=(0,0,1)$ 的极点，即
+$g_{ij}p^j=(\linf)_i$，写开就是
+\[
+Ap^1+Bp^2+Dp^3=0,\qquad Bp^1+Cp^2+Ep^3=0,\qquad Dp^1+Ep^2+Fp^3=1 .
+\]
+当 $AC-B^2\neq0$ 时可以取 $p^3=1$，此时前两式为
+\[
+Ap^1+Bp^2+D=0,\qquad Bp^1+Cp^2+E=0,
+\]
+这正是圆锥曲线的中心（即二次曲面 $Q$ 的极值点）所满足的方程，故 $\linf^*$ 就是中心。
+当 $AC-B^2=0$（抛物线）时，前两式的系数矩阵奇异而右端不能由它线性表示，方程组无 $p^3\neq0$
+的解，故 $p^3=0$，即 $\linf^*$ 在无穷远。
+\end{proof}
+
+\begin{proposition}[渐近线与中心]
+设双曲线与 $\linf$ 交于 $C,D$ 两点。则 $C,D$ 两处的切线就是双曲线的两条渐近线，它们相交于双曲线的
+中心。
+\end{proposition}
+
+\begin{proof}
+$C,D$ 都在 $\linf$ 上且不同，故过 $C,D$ 的直线就是 $\linf$，即 $c\times d=\linf$。由极配与叉乘的
+关系，
+\[
+c^*\times d^*=(c\times d)^*=\linf^*,
+\]
+而 $\linf^*$ 就是中心。另一方面 $C,D$ 在双曲线上，$c^*,d^*$ 分别是 $C,D$ 处的切线。由定义，
+$C,D$ 是双曲线的无穷远点，曲线在这两点的切线就是它沿无穷远方向的两条渐近线。因此两条渐近线
+相交于中心。这一结论也说明：中心是由无穷远结构派生出来的，凡是涉及中心的命题，都不能只用射影
+几何处理，而应在已有的参量之外再指定 $\linf$。
+\end{proof}
+
+\section{圆锥曲线与三维时空的类比}
+
+一个三维矢量空间配上一条圆锥曲线，与三维时空（一维时间、二维空间）配上闵可夫斯基度规，
+在形式上是相同的：两者都是一个三维实矢量空间配上一个号差为 $(2,1)$ 的不定对称双线性型。
+取光速 $c=1$，二者的对照如下表（表中的号差约定为 $(2,1)$，即圆锥曲线张量与闵氏度规在相差
+整体符号的意义下有相同的分量）。
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+平面上的圆锥曲线 & 三维时空 \\
+\midrule
+点由三维点矢表示（允许相差非零常数） & 点由坐标 $(t,x,y)$ 表示 \\
+圆锥曲线张量 $g_{ij}$ & 闵可夫斯基度规 $\eta_{ij}$ \\
+标准形式 $x^2+y^2-z^2=0$ & 光锥 $t^2-x^2-y^2=0$ \\
+点在圆锥曲线内：$g_{ij}a^ia^j<0$ & 类时矢量 \\
+点在圆锥曲线外：$g_{ij}a^ia^j>0$ & 类空矢量 \\
+点在圆锥曲线上：$g_{ij}a^ia^j=0$ & 类光矢量 \\
+直线与圆锥曲线相离：$(g^{-1})^{ij}l_il_j<0$ & $l$ 类时（$l^\perp$ 类空） \\
+直线与圆锥曲线相切：$(g^{-1})^{ij}l_il_j=0$ & $l$ 类光（$l^\perp$ 类光） \\
+直线与圆锥曲线相交：$(g^{-1})^{ij}l_il_j>0$ & $l$ 类空（$l^\perp$ 类时） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+表中直线的类型由线矢 $l$ 的双线性型 $(g^{-1})^{ij}l_il_j$ 的符号决定，而直线对应的平面
+$l^\perp=\{x:l_ix^i=0\}$ 的类型与 $l$ 相反：$l$ 类时时 $l^\perp$ 上的双线性型正定，即 $l^\perp$
+类空，反之亦然；$l$ 类光时 $l^\perp$ 退化，即类光。以标准形式为例，单位圆 $x^2+y^2=z^2$ 与直线
+$x=2z$ 相离，而 $l=(1,0,-2)$ 满足 $(g^{-1})^{ij}l_il_j=1-4<0$；与直线 $x=0$ 相交，而
+$l=(1,0,0)$ 满足 $(g^{-1})^{ij}l_il_j=1>0$。可见相离对应线矢类时，相交对应线矢类空。
+\end{remark}

@@ -1,0 +1,229 @@
+% 第十节例题：二次点列的计算
+\chapter{例题：二次点列的计算}
+
+本章的例题属于二次点列与二次对合的内容，可以看作第九节、第十节以及更早各节知识的练习。
+所用的工具主要是二次调和点列、极点与极线，以及初等的代数运算；计算一律采用张量记号，
+上指标为点矢，下指标为线矢，$a\cdot b=g_{ij}a^ib^j$。
+
+\section{二次曲线与直线的第二个交点}
+
+\begin{example}\label{ex:10-1}
+已知圆锥曲线 $g$ 及其上的一点 $a$。点 $s$ 不在 $g$ 上（$s^2\neq0$），直线 $a\times s$ 与 $g$
+交于两点，其中一点是 $a$，另一点记为 $b$。求 $b$ 的表达式。
+\end{example}
+
+\begin{proof}[解]
+因为 $a,b,s$ 共线，可设 $b=a+\lambda s$。由 $b$ 在 $g$ 上，
+\[
+b^2=(a+\lambda s)^2=a^2+2\lambda\,a\cdot s+\lambda^2s^2
+=\lambda\left(2a\cdot s+\lambda s^2\right)=0,
+\]
+其中用到 $a^2=0$。除去对应于 $\lambda=0$（即 $b=a$）的根，得
+\[
+\lambda=-\frac{2a\cdot s}{s^2},
+\]
+于是
+\[
+b=a-\frac{2a\cdot s}{s^2}\,s
+\quad\Longleftrightarrow\quad
+b=s^2a-2(a\cdot s)\,s .
+\]
+\end{proof}
+
+结果的特点是：$b$ 关于 $s$ 是二次的（$s$ 以二次点 $ss$ 的形式出现），关于 $a$ 是线性的。
+若把 $s$ 换成更一般的二次点，例如取 $k^{ij}=(ef)^{ij}=e^if^j+f^ie^j$，就得到下面的例题。
+
+\section{退化二次点}
+
+\begin{example}\label{ex:10-2}
+已知圆锥曲线 $g$ 及其上的一点 $a$。二次点 $k=(ef)$ 由 $g$ 上的两点 $e,f$ 生成，即
+$k^{ij}=e^if^j+f^ie^j$。由例 \ref{ex:10-1} 的办法作出点 $b$（把两条直线 $a\times e$、$a\times f$
+分别与 $g$ 的另一交点记为 $p,q$，再作 $p,q$ 处的切线，其交点为 $b$）。求 $b$。
+\end{example}
+
+\begin{proof}[解]
+由例 \ref{ex:10-1} 的结论，分别取 $s=e$ 与 $s=f$，得
+\[
+p=e^2a-2(a\cdot e)\,e,\qquad q=f^2a-2(a\cdot f)\,f .
+\]
+由于 $e,f$ 在 $g$ 上，$e^2=f^2=0$，故
+\[
+p=-2(a\cdot e)\,e,\qquad q=-2(a\cdot f)\,f .
+\]
+于是 $b$ 是 $p,q$ 关于 $g$ 的极点，即 $b$ 与 $p\times q$ 互为极点和极线：
+\[
+b\parallel p\times q
+=\left(-2(a\cdot e)e\right)\times\left(-2(a\cdot f)f\right)
+=4(a\cdot e)(a\cdot f)\,(e\times f).
+\]
+因此 $b$ 与 $e\times f$ 确定同一条直线的极点。直接验证可得，$e\times f$ 的极点为
+\[
+b=(a\cdot f)\,e+(a\cdot e)\,f-(e\cdot f)\,a .
+\]
+\end{proof}
+
+\begin{proof}[验证]
+记上式给出的矢量（再乘以 $-2$）为 $b$。直接计算
+\[
+(a\cdot f)e+(a\cdot e)f-(e\cdot f)a
+\]
+与 $e$ 作点乘：
+\[
+(a\cdot f)(e\cdot e)+(a\cdot e)(f\cdot e)-(e\cdot f)(a\cdot e)
+=(a\cdot e)(e\cdot f)-(a\cdot e)(e\cdot f)=0,
+\]
+与 $f$ 作点乘同样得 $0$，而与 $a$ 作点乘得 $(a\cdot e)(a\cdot f)$，均与 $p\times q$ 的相应点乘
+成比例。三个线性无关的矢量上的取值都相同，故两个表达式在规范因子下相等。若把这一结果用 $k$
+写出，则
+\[
+b=(k:g)\,a-2\,k\cdot g\cdot a ,
+\]
+其中 $k:g=k^{ij}g_{ij}=2(e\cdot f)$，
+$(k\cdot g\cdot a)^i=k^{ij}g_{jk}a^k$；这一形式正是下一章一般公式在退化一次点上的特殊情形。
+\end{proof}
+
+\section{可逆二次点}
+
+\begin{example}\label{ex:10-3}
+已知圆锥曲线 $g$ 及其上的一点 $a$，并给定一个可逆的二次点 $h$。过 $a$ 作 $h$ 的两条切线，
+分别交 $g$ 于 $p,q$ 两点（不同于 $a$）。作 $p,q$ 处的两条切线，交于点 $b$。求 $b$ 的表达式。
+\end{example}
+
+\begin{proof}[解]
+把 $h$ 换成由它诱导的退化二次点即可。设 $E,F$ 是过 $a$ 的两条切线与 $h$ 的切点，则直线 $EF$
+是 $a$ 关于 $h$ 的极线，其线矢与 $(h\cdot a)_i=h_{ij}a^j$ 成比例；而 $E,F$ 的对称积
+$k=(ef)$ 与 $h$ 之间有关系
+\[
+k^{ij}=\left((h^{-1})_{kl}a^ka^l\right)h^{ij}-a^ia^j ,
+\]
+其中 $(h^{-1})_{kl}$ 是 $h$ 的逆（当 $h$ 退化时取相应极限，或用伴随矩阵代替）。由例 \ref{ex:10-2}，
+$b=(k:g)\,a-2\,k\cdot g\cdot a$。把上式代入并利用 $a$ 在 $g$ 上，即 $a^2=g_{ij}a^ia^j=0$，
+含 $a^ia^j$ 的项消去，第一、三项中的系数 $\left((h^{-1})_{kl}a^ka^l\right)$ 可以约去，于是
+\[
+b=(h:g)\,a-2\,h\cdot g\cdot a ,
+\]
+其中约定 $(h\cdot g\cdot a)^i=(g^{-1})^{ia}h_{ab}(g^{-1})^{bj}a_j$。
+\end{proof}
+
+\begin{proof}[退化情形与数值验证]
+取 $g$ 为椭圆 $\dfrac{x^2}{4}+y^2=1$，$g^{ij}=\diag\{4,1,-1\}$，并把 $h$ 退化为两条直线
+$m,n$ 的对称积，则 $E,F$ 取为这两条直线与 $g$ 的另一交点。取 $s=(0,1,1)$，
+对合的两条不动直线 $m_1=(\tfrac12,1,-1)$、$m_2=(1,0,0)$，则
+\[
+h_{ij}=m_{1i}m_{2j}+m_{2i}m_{1j}
+=\begin{pmatrix}1&1&-1\\1&0&0\\-1&0&0\end{pmatrix},
+\qquad
+h^{ij}=g^{ia}g^{jb}h_{ab}
+=\begin{pmatrix}16&4&4\\4&0&0\\4&0&0\end{pmatrix},
+\]
+且 $g:h=h^{ij}g_{ij}=4$。于是 $f^{ij}=h^{ij}-4g^{ij}$。取辅助线矢 $m=(0,0,1)$，则
+$m\cdot s=m_is^i=1$，$m\cdot f\cdot m=f^{ij}m_im_j=4$，故
+\[
+l=2(m\cdot s)\,f\cdot m-(m\cdot f\cdot m)\,s=(8,-4,4)\sim(2,-1,1).
+\]
+$l$ 的极点为
+\[
+b=g^{-1}\cdot l=(8,-1,-1)\sim(2,-1,1),
+\]
+在仿射坐标下即定点 $(2,-1)$，与例 \ref{ex:10-2} 的结果一致。
+\end{proof}
+
+\begin{remark}
+上面用到的关系 $k=\left((h^{-1})_{kl}a^ka^l\right)h-aa$ 的含义是：过 $a$ 作 $h$ 的两条切线，
+切点 $E,F$ 的对称积 $k=(ef)$ 与 $h$ 只相差一个由 $a$ 决定的规范因子。当 $h$ 退化为两点 $e,f$ 时，
+$h$ 与 $k$ 描述的是同一个退化二次点，此时该关系中的系数正比于 $(e\cdot f)$，与例 \ref{ex:10-2}
+的结果一致。这一关系在 $h$ 退化时给出的是同一个退化二次点，可以作为例 \ref{ex:10-2} 的特例来验证。
+\end{remark}
+
+\section{极线与共线的几何证明}
+
+\begin{example}\label{ex:10-4}
+在例 \ref{ex:10-3} 的背景下，求证：$A,B$ 与 $A$ 在 $g$ 处的切线关于 $h$ 的极点共线。
+\end{example}
+
+\begin{proof}
+设 $EF$ 是 $A$ 关于 $h$ 的极线，其中 $E,F$ 是过 $A$ 的两条切线与 $h$ 的切点。设 $EF$ 与 $A$ 处的
+切线交于 $G$，并设 $A$ 处的切线关于 $h$ 的极点为 $H$。因为 $H$ 的极线过 $A$，由极点极线的对称性
+（La Hire 定理），$A$ 的极线 $EF$ 也过 $H$，即 $H$ 在 $EF$ 上。
+
+在直线 $EF$ 上，$E,F$ 是 $h$ 上的两个切点，$G$ 是 $EF$ 与 $A$ 处切线的交点，$H$ 是 $A$ 处切线
+关于 $h$ 的极点。由极点极线的调和性质，$E,F,G,H$ 成调和点列。于是以 $A$ 为中心的线束
+$AE,AF,AG,AH$ 成调和线束，把它与 $g$ 相交，得 $P,Q,A,I$ 是 $g$ 上的二次调和点列，其中
+$P,Q$ 是两条切线与 $g$ 的交点（即例 \ref{ex:10-3} 中的 $p,q$），$I$ 是 $AH$ 与 $g$ 的交点。
+
+由二次调和点列的判别条件，$AI$ 与 $PQ$ 关于 $g$ 共轭。而 $PQ$ 的极点就是 $B$，故 $AI$ 过 $B$，
+即 $A,H,B$ 三点共线。
+\end{proof}
+
+\begin{remark}
+由此可知 $b$ 的表达式必具有形式
+\[
+b^i=\lambda a^i+\mu\,h^{ij}g_{jk}a^k ,
+\]
+其中 $\lambda,\mu$ 是待定实数：因为 $A,H,B$ 共线，而 $H$ 的极线过 $A$。例 \ref{ex:10-3} 中求得的
+\[
+b=(h:g)\,a-2\,h\cdot g\cdot a
+\]
+正符合这一形式。
+\end{remark}
+
+\section{共轭条件的代数应用}
+
+\begin{example}\label{ex:10-5}
+在例 \ref{ex:10-2} 的背景下，设 $FB$ 与 $AE$ 交于点 $K$，求证：$K$ 与 $F$ 关于 $g$ 共轭。
+\end{example}
+
+\begin{proof}
+由例 \ref{ex:10-4}，$B$ 是 $PQ$ 关于 $g$ 的极点，故直线 $FB$ 过 $PQ$ 的极点，于是 $FB$ 与 $PQ$
+关于 $g$ 共轭。由共轭的判别条件，$FB$ 与 $PQ$ 的交点所对应的四点成调和点列：设 $FB$ 与 $g$ 交于
+$S,T$，则 $S,T,P,Q$ 是 $g$ 上的二次调和点列。以 $A$ 为中心射影，得 $AS,AT,AP,AQ$ 成调和线束；
+再与直线 $FB$ 相交，得 $S,T,K,F$ 成调和点列。由一维对合的判别条件，$K,F$ 关于 $g$ 共轭。
+\end{proof}
+
+同样的结论可以用代数方法直接得到，而且不需要前文中"同时约掉 $(e\times f)\cdot a$"这一步
+代数变形。设
+\[
+k=(b\times f)\times(a\times e),
+\]
+即 $K$ 的两个决定直线 $FB$ 与 $AE$ 的交点。$K$ 与 $F$ 关于 $g$ 共轭的条件是 $k\cdot f=0$。
+利用混合积的恒等式
+\[
+\left((b\times f)\times(a\times e)\right)\cdot f
+=\left((b\times f)\times f\right)\cdot(a\times e),
+\]
+并把 $b$ 按例 \ref{ex:10-4} 的结论写成
+\[
+b=\mu a+(a\cdot f)\,e+(a\cdot e)\,f
+\]
+（例 \ref{ex:10-4} 保证 $b$ 与 $a$ 以及 $k\cdot g\cdot a$ 共面，故可以这样设），代入得
+\[
+\left(\left(\mu\,a\times f+(a\cdot f)\,e\times f\right)\times f\right)\cdot(a\times e)=0 .
+\]
+用二重外积公式展开
+\[
+(a\times f)\times f=(a\cdot f)f-f^2a,\qquad
+(e\times f)\times f=(e\cdot f)f-f^2e,
+\]
+得
+\[
+\mu\left((a\cdot f)f-f^2a\right)\cdot(a\times e)
++(a\cdot f)\left((e\cdot f)f-f^2e\right)\cdot(a\times e)=0 .
+\]
+由于 $a\cdot(a\times e)=0$，$e\cdot(a\times e)=0$，且 $a^2=e^2=0$，上式化简为
+\[
+\mu\,(a\cdot f)\,f\cdot(a\times e)+(a\cdot f)(e\cdot f)\,f\cdot(a\times e)=0 .
+\]
+当 $f\cdot(a\times e)\neq0$ 时解得
+\[
+\mu=-(e\cdot f),
+\]
+即
+\[
+b=(a\cdot f)\,e+(a\cdot e)\,f-(e\cdot f)\,a ,
+\]
+与例 \ref{ex:10-2} 的结果一致。
+
+\begin{remark}
+当 $f\cdot(a\times e)=0$ 时，直线 $AE$ 过 $F$，此时 $K=F$ 是显然的共轭点，结论仍然成立；
+上面的推导只是把一般位置的情形写成了代数方程。
+\end{remark}

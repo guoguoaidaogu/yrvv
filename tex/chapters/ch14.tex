@@ -1,0 +1,979 @@
+% 第十四节：曲线系、笛沙格对合定理与圆锥曲线的光学性质
+\chapter{曲线系、笛沙格对合定理与圆锥曲线的光学性质}
+
+本章讨论由两条圆锥曲线生成的曲线系。曲线系是处理共点、共切、共焦等问题的一条统一途径：
+它把"经过某些固定点"或"切于某些固定直线"这类几何条件翻译为线性条件，
+因而可以用线性代数的方法处理。作为应用，我们将证明笛沙格（Desargues）对合定理，
+并由此推出共焦曲线系、圆锥曲线在焦点处的切线以及椭圆、双曲线的光学性质。
+
+\section{二次点系与二次线系}
+
+\begin{definition}[二次点系与二次线系]
+设 $g,h$ 是两个不同的二次点（即两个不同的 $(2,0)$ 型对称张量）。所有形如
+\[
+g+\lambda h\qquad(\lambda\in\R)
+\]
+的二次点构成的集合，再添上 $h$ 本身（即 $\lambda=\infty$ 的极限情形），称为 $g,h$ 生成的
+\textbf{二次点系}。
+
+设 $g,h$ 是两个不同的二次线（即两个不同的 $(0,2)$ 型对称张量）。所有形如
+\[
+g+\lambda h\qquad(\lambda\in\R)
+\]
+的二次线构成的集合，再添上 $h$ 本身，称为 $g,h$ 生成的\textbf{二次线系}。
+
+二次点系与二次线系统称\textbf{二次曲线系}。
+\end{definition}
+
+定义中两个元素都按比例视为同一个对象，故 $\lambda$ 取实数与 $\infty$ 恰好给出由 $g,h$
+张成的二维线性空间中的全部元素。必须注意，只有具有上述形式的集合才叫曲线系；
+任意一堆圆锥曲线放在一起不构成曲线系。
+
+\subsection{两类曲线系的区别}
+
+二次点系与二次线系是两个不同的概念，因为取逆不是线性运算：
+\[
+(g+\lambda h)^{-1}\neq g^{-1}+\lambda h^{-1}.
+\]
+同样，用 $g$ 升指标与用 $g,h$ 的线性组合升指标也不相同。两者的几何差异如下。
+
+若 $m$ 是 $g,h$ 的公切线，即
+\[
+g^{ij}m_im_j=h^{ij}m_im_j=0 ,
+\]
+则对任意实数 $\lambda$ 有
+\[
+(g^{ij}+\lambda h^{ij})m_im_j=0 .
+\]
+由定义，$g^{ij}+\lambda h^{ij}$ 是二次点系元素的系数张量，因此该直线与点系中每一条曲线都相切。
+故：\textbf{二次点系中的曲线具有公共切线}。
+
+若 $a$ 是 $g,h$ 的公共点，即
+\[
+g_{ij}a^ia^j=h_{ij}a^ia^j=0 ,
+\]
+则对任意实数 $\lambda$ 有
+\[
+(g_{ij}+\lambda h_{ij})a^ia^j=0 ,
+\]
+即点 $a$ 在二次线系的每一条曲线上。故：\textbf{二次线系中的曲线经过公共点}。
+
+这两种性质在几何上显然不同。用曲线的语言叙述就是：在二次点系中，若有两条曲线相切于同一条直线，
+则点系中所有曲线都与这条直线相切；在二次线系中，若有两条曲线经过同一点，
+则线系中所有曲线都经过这个点。
+
+"切于固定直线"与"经过固定点"给出了曲线系的必要条件。反过来，它们也给出了充分条件，
+这正是下一小节的内容。
+
+\subsection{充分性}
+
+\begin{proposition}[相切于四条定直线的二次点系]\label{prop:tangent-family}
+设 $l_1,l_2,l_3,l_4$ 是平面上四条直线，其中任意两条不平行、任意三条不共点。
+则与这四条直线都相切的全体二次点构成一个二次点系。
+\end{proposition}
+
+\begin{proof}
+\textbf{第一步：相切条件的计算。} 二次点（即二次曲线的齐次方程）的系数构成六维线性空间
+$W\cong\R^6$，于是二次曲线作为射影对象构成五维射影空间 $\mathbb{P}W$。设 $l$ 是一条直线，
+把二次曲线限制到 $l$ 上得到 $l$ 上的一个二次型。曲线与 $l$ 相切，等价于这一限制有重根，
+即其判别式为零；判别式是系数的二次多项式，但在齐次形式下它是系数的二次型。
+因此"与 $l$ 相切"在 $\mathbb{P}W$ 中是一个二次超曲面，特别地它是 $W$ 中一个非零代数方程，
+其解集是 $W$ 中的一个超曲面。
+
+\textbf{第二步：至少是二维的。} 四条直线两两相交，记 $t_{ij}=l_i\times l_j$。
+对两两配对的四条直线，任取一种配对方式，例如 $l_1,l_2$ 为一对、$l_3,l_4$ 为一对，
+则退化二次点
+\[
+f_1=\sym{l_1}{l_2},\qquad f_2=\sym{l_3}{l_4}
+\]
+都是两条直线之并，因而与 $l_1,l_2,l_3,l_4$ 全部相切。它们线性无关，
+故满足条件的二次点至少张成一个二维空间。
+
+\textbf{第三步：不可能超过二维。} 由第二步，解集在 $W$ 中至少是二维的。
+下面在一个具体模型上算出它恰为二维。
+
+取
+\[
+l_1:\ x=0,\qquad l_2:\ y=0,\qquad l_3:\ z=0,\qquad l_4:\ x+y+z=0 .
+\]
+这四条直线两两不平行、任意三条不共点。设二次点为
+\[
+F=ax^2+by^2+cz^2+dxy+eyz+fzx .
+\]
+与 $l_3:z=0$ 相切，相当于 $ax^2+dxy+by^2=0$ 有重根，即
+\[
+d^2-4ab=0 .
+\]
+与 $l_2:y=0$ 相切，相当于 $ax^2+fzx+cz^2=0$ 有重根，即
+\[
+f^2-4ac=0 .
+\]
+与 $l_1:x=0$ 相切，相当于 $by^2+eyz+cz^2=0$ 有重根，即
+\[
+e^2-4bc=0 .
+\]
+最后与 $l_4:x+y+z=0$ 相切，相当于把 $x=-y-z$ 代入后所得二次型有重根。代入得
+\[
+F(-y-z,\;y,\;z)
+=(a+b+c)y^2+2(a+b+d+e+f)\,yz+(a+b+c+2d+2e+2f)z^2 ,
+\]
+它有重根当且仅当
+\[
+(d+e+f)^2-4(a+b+c)(a+b+c+d+e+f)=0 .
+\]
+关键的一点是：由前三个条件，$d,e,f$ 的平方分别被 $a,b,c$ 决定，故它们的取值只有有限种组合；
+第四个条件再从中筛出一条射影直线。为了看出这一点，作代换
+\[
+(a,b,c)=(u^2,v^2,w^2),
+\]
+则前三个条件化为
+\[
+d=\pm 2uv,\qquad e=\pm 2vw,\qquad f=\pm 2wu ,
+\]
+这是有限多种符号选取。对每一种符号选取，第四个条件成为 $(u,v,w)$ 的一个非平凡齐次方程，
+它在射影直线 $(u:v:w)$ 上至多给出有限个点。
+另一方面，由第二步，它的解集至少是一条射影直线（因为
+$\sym{l_1}{l_3}$ 与 $\sym{l_2}{l_4}$ 所张成的二维空间中的元素都满足四个条件）。
+有限集与整条射影直线只能相等，故解集恰为一条射影直线，
+即满足四个相切条件的二次点在 $W$ 中构成二维线性子空间。
+
+\textbf{第四步：二维子空间必为二次点系。} 已证满足四个相切条件的二次点构成二维线性子空间
+$D\subset W$。取其中两个线性无关的元素 $G,H$（例如第二步中的 $f_1,f_2$），
+则 $D=\{G+\lambda H:\lambda\in\R\}\cup\{H\}$，这正是二次点系的定义。
+\end{proof}
+
+\begin{proposition}[经过四个定点的二次线系]\label{prop:point-family}
+设 $a,b,c,d$ 是平面上四点，其中任意三点不共线。则经过这四点的全体二次线构成一个二次线系。
+\end{proposition}
+
+\begin{proof}
+\textbf{第一步：至少是二维的。} 注意"两条直线的乘积"给出的退化二次曲线是两个一次因子的乘积，
+因此它经过两条直线上的所有点。于是退化二次线
+\[
+g=\sym{(a\times d)}{(b\times c)},\qquad
+h=\sym{(a\times c)}{(d\times b)}
+\]
+都经过 $a,b,c,d$ 四点。
+
+它们线性无关。为看出这一点，取坐标
+\[
+a=(1,0,0),\qquad b=(0,1,0),\qquad c=(0,0,1),\qquad d=(1,1,1),
+\]
+（三点不共线使这一取法可行）并把系数按 $(x^2,y^2,z^2,xy,yz,zx)$ 的顺序写成向量。由
+\[
+(a\times d)=(-1,0,1),\quad (b\times c)=(1,0,0),\quad
+(a\times c)=(0,1,0),\quad (d\times b)=(-1,0,-1)
+\]
+得
+\[
+g\sim(0,0,0,0,0,2),\qquad
+h\sim(0,2,0,0,2,2),
+\]
+这两个向量显然不成比例，故 $g,h$ 线性无关，满足条件的二次线至少张成一个二维空间。
+
+\textbf{第二步：不可能超过二维。} 保持上面的坐标。设经过 $a,b,c,d$ 的二次线为
+\[
+G=\alpha x^2+\beta y^2+\gamma z^2+\delta xy+\eps yz+\zeta zx .
+\]
+"经过 $a$"给出 $\alpha=0$；"经过 $b$"给出 $\beta=0$；"经过 $c$"给出 $\gamma=0$；
+"经过 $d$"给出
+\[
+(\alpha+\beta+\gamma)+(\delta+\eps+\zeta)=0 .
+\]
+于是约束条件为
+\[
+\alpha=\beta=\gamma=0,\qquad \delta+\eps+\zeta=0 .
+\]
+这四个条件中，前三个分别只涉及 $\alpha,\beta,\gamma$ 中的一个，第四个只涉及 $\delta,\eps,\zeta$，
+故它们线性无关，约束矩阵的秩恰为 $4$。因此解空间维数为 $6-4=2$。
+
+\textbf{第三步：二维解空间必为二次线系。} 由第二步，解空间 $D$ 是二维的；
+由第一步，$g,h\in D$ 且线性无关，故
+\[
+D=\{g+\lambda h:\lambda\in\R\}\cup\{h\},
+\]
+即 $D$ 是由 $g,h$ 生成的二次线系。
+\end{proof}
+
+\begin{remark}
+命题~\ref{prop:tangent-family} 与命题~\ref{prop:point-family} 互为对偶：
+把点与线互换，四定直线变成四个对偶点，"相切于四条定直线"变成"经过四个对偶点"。
+在应用中，"二次线系"比"二次点系"更常用。
+\end{remark}
+
+\subsection{二次线系的解析形式}
+
+设两个圆锥曲线的方程分别为
+\[
+G(x,y)=0,\qquad H(x,y)=0 ,
+\]
+其中 $G,H$ 是二次多项式。当 $\lambda$ 取遍实数与 $\infty$ 时，方程
+\[
+G(x,y)+\lambda H(x,y)=0
+\]
+描述的正是 $g,h$ 生成的二次线系。反之，任给二次线系，
+把其中一个元素作为 $G$、另一个元素关于同一坐标系的二次多项式作为 $H$，
+就得到这种解析形式。因此在解析几何的语境中，求过若干定点的圆锥曲线的问题，
+可以直接写成含参数 $\lambda$ 的方程再代入条件求解。
+
+相切于四条定直线的二次点系在解析几何中不太直观，因此不常直接使用。
+它最重要的应用是下一节的共焦曲线系。
+
+\section{共焦曲线系}
+
+回忆焦点与准线的射影定义：设 $g$ 是圆锥曲线，$\theta^{ij}$ 是正交张量，则
+\[
+\det\bigl(\theta^{ij}-\lambda g^{ij}\bigr)=0
+\]
+称为焦点方程。这是一个三次方程，$\lambda=0$ 是它的一个根（因为 $\theta$ 退化），
+另外两个根记为 $\lambda_1,\lambda_2$。与 $\lambda_1,\lambda_2$ 对应的两个 $(2,0)$ 型退化二次点记为
+\[
+X^{ij}=\theta^{ij}-\lambda_1 g^{ij},\qquad Y^{ij}=\theta^{ij}-\lambda_2 g^{ij},
+\]
+它们分别可写成一对焦点的对称积；$\lambda=0$ 对应的 $\theta=(z\bar z)$ 也同样是一对复共轭点的对称积。
+与 $X$ 对应的焦点记为 $f_1,f_2$，即
+\[
+X=\sym{f_1}{f_2},\qquad \theta=\sym{z}{\bar z}.
+\]
+
+\begin{proposition}[共焦曲线系]\label{prop:confocal}
+设 $f_1,f_2$ 是两个焦点，$X=\sym{f_1}{f_2}$，$\theta=\sym{z}{\bar z}$ 是正交结构。
+则以 $f_1,f_2$ 为焦点的全体圆锥曲线构成二次点系，称为\textbf{共焦曲线系}；
+它的元素可以写成
+\[
+g^{ij}=X^{ij}+\lambda\theta^{ij},
+\]
+$\lambda$ 取遍实数与 $\infty$。其中用 $g$ 升降指标，$X,\theta$ 都是 $(2,0)$ 型张量。
+\end{proposition}
+
+\begin{proof}
+只需说明共焦曲线系中所有曲线有公共切线。设直线 $m$ 同时经过 $f_1$ 与 $f_2$，
+即 $m\cdot f_1=m\cdot f_2=0$。由 $X=\sym{f_1}{f_2}$ 得
+\[
+X^{ij}m_im_j=2(m\cdot f_1)(m\cdot f_2)=0 .
+\]
+又 $z,\bar z$ 是无穷远处的两个复共轭点，任何直线都经过无穷远直线，
+故任何有限直线的线矢 $m$ 都满足
+\[
+\theta^{ij}m_im_j=2(m\cdot z)(m\cdot\bar z)=0 .
+\]
+于是对任意 $\lambda$ 有
+\[
+X^{ij}m_im_j+\lambda\theta^{ij}m_im_j=0 ,
+\]
+即 $m$ 与共焦曲线系中每一条曲线都相切。族中所有曲线都以过 $f_1,f_2$ 的直线为公共切线，
+故它是二次点系；又 $X,\theta$ 线性无关，故 $\{X^{ij}+\lambda\theta^{ij}\}$ 是它的一般元素。
+\end{proof}
+
+\begin{remark}
+$\theta=(z\bar z)$ 作为退化二次点，表示两条过 $z,\bar z$ 的直线之并，
+这两条直线是无穷远处的两条"迷向直线"。因此 $\theta^{ij}m_im_j=0$ 对任意有限直线自动成立，
+这一点在计算中要注意：不能因为 $\theta$ 退化为零就丢掉这一项。
+另外，$\lambda$ 的具体数值依赖于 $X,\theta$ 的规范化选取，但曲线族
+$\{X^{ij}+\lambda\theta^{ij}\}$ 本身与规范化无关。
+\end{remark}
+
+\section{例：椭圆上四点共圆的充要条件}
+
+\begin{example}[椭圆上四点共圆的斜率条件]\label{ex:concyclic}
+设 $\Gamma:\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ 是椭圆，$A,B,C,D$ 是它上面四个互不相同的点。
+则 $A,B,C,D$ 共圆的充要条件是
+\[
+k_{AB}+k_{CD}=0 ,
+\]
+其中 $k_{AB},k_{CD}$ 分别是弦 $AB,CD$ 的斜率；当弦为竖直线时约定斜率为无穷，
+相应的条件按极限理解。
+\end{example}
+
+\begin{proof}
+先建立斜率条件的代数形式。用齐次坐标 $(x,y,z)$，点与线分别是三维点矢与线矢。
+点 $a,b$ 的连线为 $m=a\times b$，其线矢写为 $m_i=(m_1,m_2,m_3)$，
+则直线的斜率是 $k=-m_1/m_2$（当 $m_2=0$ 即竖直线时斜率为无穷）。
+
+设 $x_\infty=(1,0,0)$ 与 $y_\infty=(0,1,0)$ 分别是 $x$ 轴方向与 $y$ 轴方向的无穷远点，
+$\sym{x_\infty}{y_\infty}$ 是它们的对称积。由
+\[
+\bigl(\sym{x_\infty}{y_\infty}\bigr)^{ij}m_in_j
+=x_\infty^im_in_jy_\infty^j+x_\infty^jm_jn_iy_\infty^i
+=m_1n_2+m_2n_1
+\]
+可知，直线 $m,n$ 满足
+\[
+\bigl(\sym{x_\infty}{y_\infty}\bigr)^{ij}m_in_j=0
+\]
+当且仅当 $m_1n_2+m_2n_1=0$。把 $m_1=-m_2k_{AB}$、$n_1=-n_2k_{CD}$ 代入，
+即得 $k_{AB}+k_{CD}=0$。因此斜率条件等价于
+\begin{equation}\label{eq:concyclic}
+\bigl(\sym{x_\infty}{y_\infty}\bigr)^{ij}(a\times b)_i(c\times d)_j=0 .
+\end{equation}
+
+再计算椭圆与圆在这两项上的取值。椭圆的系数张量为
+$g_{ij}=\diag\{1/a^2,\,1/b^2,\,-1\}$，于是
+\[
+g_{ij}x_\infty^iy_\infty^j=g_{12}=0 .
+\]
+半径为 $r$、中心为 $(p,q)$ 的圆方程为
+\[
+(x-p)^2+(y-q)^2-r^2=0 ,
+\]
+其二次部分的系数矩阵为 $\diag\{1,1,0\}$，故同样有
+\[
+h_{ij}x_\infty^iy_\infty^j=h_{12}=0 .
+\]
+也就是说，椭圆与圆都满足式~\eqref{eq:concyclic} 所描述的条件
+（等价地，$g$ 与 $h$ 都经过 $x_\infty,y_\infty$ 这一对对偶点，即都切于直线
+$\sym{x_\infty}{y_\infty}$ 所代表的两条"沿坐标方向的退化直线"）。
+
+\textbf{充分性。} 设 $A,B,C,D$ 在 $\Gamma$ 上且共圆，圆记为 $\omega$，其系数张量为 $h$。
+由命题~\ref{prop:point-family}，过 $A,B,C,D$ 的全体二次线构成由 $g,h$ 生成的二次线系。
+弦 $AB,CD$ 的并是退化的二次曲线，它经过 $A,B,C,D$，故其系数张量可以写成
+\[
+f=g+\lambda h
+\]
+（$\lambda$ 取实数或 $\infty$；$f$ 与弦对的系数张量至多相差一个非零常数因子，
+这不影响下面的齐次方程）。于是
+\[
+f_{ij}x_\infty^iy_\infty^j
+=g_{ij}x_\infty^iy_\infty^j+\lambda h_{ij}x_\infty^iy_\infty^j=0 .
+\]
+又 $f$ 是两条直线 $AB,CD$ 之并的系数张量，故 $(AB)$ 与 $(CD)$ 满足式~\eqref{eq:concyclic}，
+于是 $k_{AB}+k_{CD}=0$。
+
+\textbf{必要性。} 设 $A,B,C,D$ 在 $\Gamma$ 上且 $k_{AB}+k_{CD}=0$。由于四点都在 $\Gamma$ 上，
+过这四点的曲线中有一个标准的圆：任取其中三点所定的圆 $\omega$，由圆的方程知
+$h_{ij}x_\infty^iy_\infty^j=0$，又 $\omega$ 与 $\Gamma$ 在 $A,B,C,D$ 四点相交，
+故 $\omega$ 也在过这四点的二次线系中，即 $h=g+\lambda h_0$ 型。于是与充分性同样的计算表明
+$f_{ij}x_\infty^iy_\infty^j=0$，反过来给出 $k_{AB}+k_{CD}=0$。
+更直接地：由 $k_{AB}+k_{CD}=0$，弦对 $(AB)(CD)$ 满足式~\eqref{eq:concyclic}；
+过 $A,B,C$ 的圆 $\omega$ 也满足该式；两者都在过 $A,B,C$ 的二维线性空间中，
+而在四点 $\omega\cap\Gamma$ 处取值的线性泛函
+$f\mapsto f_{ij}x_\infty^iy_\infty^j$ 在它们上同时为零，
+故在它们的公共点 $D$ 上，$\omega$ 与弦对 $CD$ 满足同一线性关系，从而 $D$ 也在 $\omega$ 上。
+\end{proof}
+
+\begin{remark}
+式~\eqref{eq:concyclic} 的几何含义是：$x_\infty,y_\infty$ 两点关于直线 $AB,CD$ 成调和点列。
+这一点可以用交比直接验证：四条直线 $AB,CD$ 与过 $x_\infty,y_\infty$ 的两条直线的交比等于
+$\dfrac{k_{AB}k_{CD}-1}{k_{AB}k_{CD}+1}$，当且仅当 $k_{AB}+k_{CD}=0$ 时它等于 $-1$。
+因此"斜率之和为零"与"无穷远方向的对称点关于两弦调和"是同一件事。
+这里使用的是两个实无穷远点 $x_\infty,y_\infty$；由于椭圆与圆在坐标轴方向上都没有切点，
+$g$ 与 $h$ 在 $x_\infty,y_\infty$ 上的取值均为零，这正是所需的条件。
+\end{remark}
+
+\section{笛沙格对合定理}
+
+\subsection{定理的陈述与改写}
+
+\begin{theorem}[笛沙格对合定理]\label{thm:desargues}
+设 $C,D,E,F$ 是四个点（任意三点不共线），$l$ 是一条定直线。
+考虑经过 $C,D,E,F$ 四点的全体圆锥曲线；它们与 $l$ 交于一对动点。
+则 $l$ 上存在一个对合变换 $f$，使得对每一条这样的圆锥曲线，
+它与 $l$ 的两个交点都关于 $f$ 互相对合。若某条圆锥曲线与 $l$ 相切，
+则切点是这个对合的不动点。
+\end{theorem}
+
+\textbf{证明的思路。} 第一步把几何命题代数化：由命题~\ref{prop:point-family}，
+过四个定点的全体圆锥曲线正是二次线系 $\{g+\lambda h\}$，其中 $g,h$ 是两条退化的二次线
+（四点两两连线之并）。这样就把待定元素从"四个点加一条动曲线"减少到"两个张量加一个参数"。
+第二步把二次线系限制到定直线 $l$ 上。限制映射是线性的，且圆锥曲线在 $l$ 上的限制正是它与 $l$
+两个交点的对称积。于是平面上的问题化为二维空间上的一个命题。
+第三步利用限制映射的线性性：线系在 $l$ 上的像仍是二维线性族，而二维空间中的对合条件
+是关于参数 $\lambda$ 的线性等式，因此无数个等式等价于两个等式，解出它们即可。
+
+\subsection{限制到定直线}
+
+设二次线系为 $g+\lambda h$。关于限制映射，回忆第九节：三维空间中 $(0,2)$ 型对称张量可以限制为
+子空间上的 $(0,2)$ 型对称张量，且这一映射是线性的。记 $g,h$ 限制到 $l$ 上的像分别为 $g',h'$，
+则由线性性，
+\[
+(g+\lambda h)\big|_l=g'+\lambda h'.
+\]
+设这条圆锥曲线与 $l$ 交于两点 $a,b$。圆锥曲线在 $l$ 上的限制是其与 $l$ 的两个交点的对称积，
+即
+\[
+g'+\lambda h'=a_ib_j+a_jb_i=\sym{a}{b},
+\]
+其中 $a_i=e_{ij}a^j$、$b_i=e_{ij}b^j$，$e$ 是直线 $l$ 上的反对称张量（二维空间中的 $\eps$）。
+因此笛沙格对合定理等价于下面的二维命题，其中 $g',h'$ 都是二维矢量空间上的 $(0,2)$ 型对称张量，
+$g'+\lambda h'$ 表示它们的线性组合。
+
+\subsection{二维命题}
+
+\begin{proposition}[二维对合命题]\label{prop:2d-involution}
+设 $g',h'$ 是二维实矢量空间上两个线性无关的 $(0,2)$ 型对称张量。
+设点对 $a,b$ 使得存在实数 $\lambda$ 满足
+\[
+g'+\lambda h'=\sym{a}{b} ,
+\]
+则 $a,b$ 满足一个对合关系，即存在一个与 $\lambda$ 无关的对合变换 $f$，
+使得每一对满足上式（对不同 $\lambda$）的 $a,b$ 都关于 $f$ 互相对合。
+\end{proposition}
+
+\begin{proof}
+\textbf{第一步：化为标准坐标。} 先设 $g'$ 非退化。由 Sylvester 定理，
+可以取 $l$ 上的坐标使
+\[
+g'=\begin{pmatrix}0&1\\1&0\end{pmatrix},
+\]
+即 $g'(x,y)=x_1y_2+x_2y_1$。之所以能这样取，是因为 $g'$ 的作用只差一个可逆线性变换：
+任何非退化对称 $(0,2)$ 型张量都可以通过可逆线性变换化为上述形式。
+在新的坐标下，$h'$ 仍是对称张量，设
+\[
+h'=\begin{pmatrix}\alpha&\delta\\\delta&\gamma\end{pmatrix}.
+\]
+
+把 $l$ 上的点写成齐次坐标 $(1,t)$，即 $x=t e_1+e_2$（$t=\infty$ 对应 $e_1$）。
+记 $a$ 对应参数 $t$、$b$ 对应参数 $s$，计算
+\begin{align*}
+C_\lambda(s,t)
+&=(g'+\lambda h')\bigl((1,s),(1,t)\bigr)\\
+&=g'\bigl((1,s),(1,t)\bigr)+\lambda h'\bigl((1,s),(1,t)\bigr)\\
+&=2(s+t)+\lambda\bigl(\alpha+\gamma st+\delta(s+t)\bigr).
+\end{align*}
+条件 $g'+\lambda h'=\sym{a}{b}$ 意味着对合点对 $a,b$ 满足 $C_\lambda(s,t)=0$。
+（对称性可见 $C_\lambda(s,t)$ 关于 $s,t$ 对称，与 $\sym{a}{b}$ 的对称性一致。）
+
+由 $C_\lambda=0$ 解出
+\begin{equation}\label{eq:lambda}
+\lambda=-\frac{2(s+t)}{\alpha+\gamma st+\delta(s+t)} .
+\end{equation}
+
+\textbf{第二步：消去 $\lambda$。} 由第一步，$\det(g'+\lambda h')$ 是 $\lambda$ 的二次多项式，
+直接计算得
+\[
+\det(g'+\lambda h')
+=1+\lambda(\alpha+\gamma)+\lambda^2\bigl(\alpha\gamma-4\delta^2\bigr).
+\]
+而 $g'+\lambda h'=\sym{a}{b}$ 是退化张量，故
+\begin{equation}\label{eq:detzero}
+\det(g'+\lambda h')=0 .
+\end{equation}
+把式~\eqref{eq:lambda} 代入式~\eqref{eq:detzero}，并乘以分母的平方，得到
+\[
+P+Q(s+t)+R\,st=0 ,
+\]
+其中
+\[
+P=4\delta^2+2\gamma(\alpha-\gamma),\qquad
+Q=-2\delta(\alpha+\gamma),\qquad
+R=2\alpha(\alpha-\gamma).
+\]
+推导要点如下：式~\eqref{eq:detzero} 等价于
+\[
+(\alpha+\gamma st+\delta(s+t))^2
+-2(s+t)(\alpha+\gamma)(\alpha+\gamma st+\delta(s+t))
++4(s+t)^2(\alpha\gamma-4\delta^2)=0 .
+\]
+把左端按 $1,s+t,st$ 展开，$st$ 的二次项与 $(s+t)^2$ 相消，
+$(s+t)^2st$ 的二次项也相消，剩下的恰为 $P+Q(s+t)+R\,st$。
+
+\textbf{第三步：这一步定义一个对合。} 上式是关于 $s,t$ 的对称双线性方程，
+对每个 $t$ 关于 $s$ 是一次方程，其解
+\[
+s=-\frac{P+Qt}{Rt+Q}
+\]
+给出一个分式线性变换，且由对称性，它的逆是它自己，故它是对合变换。
+于是对每一对满足 $g'+\lambda h'=\sym{a}{b}$ 的 $a,b$，它们都满足这同一个对合关系。
+
+\textbf{第四步：如 $g'$ 退化。} 此时限制映射把 $g'$ 变为秩一的张量，
+式~\eqref{eq:detzero} 对 $\lambda$ 最多有一个解，对应的对合有一个不动点（切点），
+结论仍成立；也可以由非退化情形取极限得到。
+\end{proof}
+
+\subsection{对合的张量形式}
+
+上面的对合可以用一个 $(2,0)$ 型张量 $f$ 简洁地刻划。
+
+\begin{proposition}[对合张量]\label{prop:involution-tensor}
+设 $g',h'$ 是二维矢量空间上两个线性无关的 $(0,2)$ 型对称张量，$e^{ij}$ 是二维反对称张量。
+则存在 $(2,0)$ 型张量 $f$，使得
+\[
+f^{ij}a_ib_j=0
+\]
+对每一对满足 $g'+\lambda h'=\sym{a}{b}$ 的点 $a,b$ 都成立；
+这样的 $f$ 由 $f:g'=f:h'=0$ 确定（相差一个非零常数因子），
+并且具体可以取
+\[
+f_{il}=g'_{ij}e^{jk}h'_{kl}+g'_{lj}e^{jk}h'_{ki}
+\]
+（即 $f=(g'\cdot e\cdot h')$，小括号表示对称化）。
+\end{proposition}
+
+\begin{proof}
+\textbf{第一步：两个条件的等价性。} 记 $a,b$ 对应的参数为 $t,s$。
+"$a,b$ 关于 $f$ 互相对合"的含义是 $f^{ij}a_ib_j=0$，即
+\[
+f:\sym{a}{b}=0 .
+\]
+把 $\sym{a}{b}=g'+\lambda h'$ 代入，得
+\begin{equation}\label{eq:f-lambda}
+f:g'+\lambda\,f:h'=0 .
+\end{equation}
+式~\eqref{eq:f-lambda} 对满足条件的每一对 $a,b$（对应不同的 $\lambda$）都成立。
+当 $\lambda$ 取两个不同的实数时，即得
+\begin{equation}\label{eq:twocond}
+f:g'=0,\qquad f:h'=0 .
+\end{equation}
+反过来，若式~\eqref{eq:twocond} 成立，则由式~\eqref{eq:f-lambda} 对任意 $\lambda$ 成立，
+故所有对合点对 $a,b$ 都满足 $f^{ij}a_ib_j=0$。
+因此对合由式~\eqref{eq:twocond} 确定。这是关于 $f$ 的三个分量的两个齐次线性方程，
+解空间至少一维。
+
+\textbf{第二步：验证所给的 $f$ 满足两个条件。} 记 $f^{(1)}_{il}=g'_{ij}e^{jk}h'_{kl}$，
+$f^{(2)}_{il}=g'_{lj}e^{jk}h'_{ki}$。在这个写法下，$e$ 作用于中间指标，
+对称化以后 $f$ 对称。计算 $f:g'$：
+\begin{align*}
+f:g'
+&=f^{(1)}_{il}g'^{il}+f^{(2)}_{il}g'^{il}\\
+&=g'_{ij}e^{jk}h'_{kl}g'^{il}+g'_{lj}e^{jk}h'_{ki}g'^{il} .
+\end{align*}
+对第一项，把与 $g'$ 有关的部分缩并（等价地，把 $e$ 写在后两项之间并对 $g'$ 缩并）：
+\[
+g'_{lj}e^{jk}g'_{ik}=g'_{lj}e^{jk}g'_{ki}.
+\]
+交换哑指标 $j,k$ 并利用 $g'_{ki}=g'_{ik}$、$e^{jk}=-e^{kj}$ 得
+$g'_{lj}e^{jk}g'_{ki}=-g'_{lk}e^{kj}g'_{ji}=-g'_{lj}e^{jk}g'_{ki}$，故这一项为零。
+于是
+\[
+f:g'=g'_{ij}e^{jk}h'_{kl}g'^{il}
+=\bigl(g'_{ij}e^{jk}g'_{il}\bigr)h'_{kl}.
+\]
+利用二维恒等式
+\[
+g'_{ij}e^{jk}g'_{il}=\det(g')\,e_{il},
+\]
+得到
+\[
+f:g'=\det(g')\,e_{il}h'^{il}=0 ,
+\]
+最后一步用到 $e$ 反对称而 $h'$ 对称：$e_{il}h'^{il}=0$。
+完全类似地交换 $g'$ 与 $h'$ 的角色得 $f:h'=0$。这正是式~\eqref{eq:twocond}。
+
+\textbf{第三步：在标准坐标下求出 $f$。} 取坐标使
+$g'=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ 且
+$h'=\begin{pmatrix}\alpha&0\\0&\gamma\end{pmatrix}$（由第二步中 $f:g'=f:h'=0$
+以及 $e_{12}=1$，可以直接算出 $f$ 的形式）。此时
+\[
+e^{jk}=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+g'e=\begin{pmatrix}-1&0\\0&1\end{pmatrix},
+\]
+于是
+\[
+f=g'e h'+h'e g'
+=\begin{pmatrix}-\alpha&0\\0&\gamma\end{pmatrix}
++\begin{pmatrix}-\alpha&0\\0&\gamma\end{pmatrix}
+=-2\alpha\begin{pmatrix}1&0\\0&0\end{pmatrix}
++2\gamma\begin{pmatrix}0&0\\0&1\end{pmatrix}.
+\]
+这与命题陈述中的一般表达式一致（相差一个常数因子），特别地它与
+\[
+\begin{pmatrix}1&-1\\-1&1\end{pmatrix}
+\]
+成比例当且仅当 $\alpha=\gamma$ 的倍数关系；在第四步中我们会看到这一点。
+更直接地，把 $f_{il}$ 的分量写开：$f_{11}=0$，$f_{22}=0$，而
+\[
+f_{12}=f_{21}=g'_{1j}e^{jk}h'_{k2}+g'_{2j}e^{jk}h'_{k1}=\gamma-\alpha,
+\]
+故
+\[
+f=(\gamma-\alpha)\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+这说明 $f$ 也可以写成 $\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$ 的倍数：
+注意在坐标变换
+\[
+u=\frac{x+y}{2},\qquad v=\frac{x-y}{2}
+\]
+下，$g'=2uv$，而 $f$ 的上述形式恰对应于该坐标系中的 $\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$ 的倍数。
+\end{proof}
+
+\begin{remark}
+命题~\ref{prop:involution-tensor} 的第二、三两步给出了两种等价的表达：
+在标准坐标下，$f$ 是 $\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$ 的倍数（当 $\alpha\neq\gamma$ 时），
+而在一般的坐标下它由 $f=g'e h'+h'e g'$ 给出。
+由 $e_{ij}e^{ij}=2$ 与 $e_{ij}e^{ik}=\delta^k_j$ 可以验证
+$e^{ij}$、$e_{ij}$ 的作用恰好把 $\sym{a}{b}$ 变成与 $a,b$ 垂直的方向，
+这正是对合的几何意义。
+\end{remark}
+
+\subsection{证明结构小结}
+
+定理~\ref{thm:desargues} 的证明用到了三步。
+
+\begin{enumerate}
+\item \textbf{几何命题的代数化。} 用曲线系的性质，把"过四点的圆锥曲线族"改写为二次线系
+$g+\lambda h$，把几何图形的待定元素转化为两个张量与一个参数。
+\item \textbf{限制到直线。} 用限制映射把平面上的二次线系转化为直线上的二维"线系"
+$g'+\lambda h'$，消去了与该直线无关的几何元素。
+\item \textbf{用线性性把无穷多个等式化为两个等式。} 直线上的对合条件是关于 $\lambda$ 的线性等式，
+它要对所有 $\lambda$ 成立，等价于 $f:g'=f:h'=0$ 两个等式；解出 $f$ 就得到了对合。
+\end{enumerate}
+
+\subsection{推论}
+
+\begin{corollary}[直线上的对合]\label{cor:line-involution}
+设 $c,d,s,t$ 是直线 $l$ 上的四点。则
+\begin{enumerate}
+\item 存在 $l$ 上的一个对合变换 $f$，使得 $c,d$ 互相对合且 $s,t$ 互相对合；
+\item 对 $l$ 上任意两点 $a,b$，它们关于 $f$ 互相对合，当且仅当存在实数（或 $\infty$）$\lambda$ 使
+\[
+\sym{a}{b}=\sym{c}{d}+\lambda\sym{s}{t} ;
+\]
+\item 特别地，设 $p,q$ 是 $l$ 上两点，$f$ 是以它们为不动点的对合，则对 $l$ 上任意两点 $a,b$，
+它们关于 $f$ 对合，当且仅当存在 $\lambda$ 使
+\[
+\sym{a}{b}=\sym{p}{p}+\lambda\sym{q}{q} .
+\]
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(1) 由命题~\ref{prop:2d-involution}，$c,d$ 满足一个对合；由同一命题，
+存在另一个对合使 $s,t$ 对合。但直线上的对合构成的族是一维的，
+而由命题~\ref{prop:2d-involution} 的证明，对合由 $f:g'=f:h'=0$ 确定，
+其中 $g'=\sym{c}{d}$、$h'=\sym{s}{t}$。因此这两个条件确定的对合是同一个。
+具体地，$(cd)$ 与 $(st)$ 张成的线性族中每个元素都是一个对合张量，
+而 $\sym{c}{d}$ 与 $\sym{s}{t}$ 的任意线性组合都同时满足
+$f:\sym{c}{d}=0$ 与 $f:\sym{s}{t}=0$ 中的各自一个，故族中元素对应的对合都包含 $c,d$ 与 $s,t$。
+
+(2) 设 $f$ 是 (1) 中的对合，其张量记为 $F$。由 $F$ 满足
+$F:\sym{c}{d}=F:\sym{s}{t}=0$ 知 $F$ 与 $\sym{c}{d}$、$\sym{s}{t}$ 都正交。
+反之，任何与它们都正交的 $F$ 都给出同一个对合。现在
+$\sym{a}{b}$ 关于 $f$ 对合，即 $\sym{a}{b}$ 与 $F$ 正交。
+由二维空间的维数，正交于 $F$ 的空间是二维的；而 $\sym{c}{d}$ 与 $\sym{s}{t}$
+也在这个空间中且线性无关，故
+\[
+\sym{a}{b}=\lambda_1\sym{c}{d}+\lambda_2\sym{s}{t}.
+\]
+两边同时除以 $\lambda_2$（若 $\lambda_2=0$ 则对应 $\lambda=\infty$）即得所需形式。
+
+(3) 以 $p,q$ 为不动点的对合，其张量是 $\sym{p}{q}$；而 $\sym{p}{q}$ 与 $\sym{p}{p}$、$\sym{q}{q}$
+都正交。于是与 (2) 同样的论证给出 $\sym{a}{b}$ 落在 $\sym{p}{p}$ 与 $\sym{q}{q}$ 张成的空间中。
+\end{proof}
+
+\section{对偶命题与共焦曲线系的结论}
+
+\subsection{对偶命题}
+
+把定理~\ref{thm:desargues} 中的点与线互换，得到它的对偶命题。
+
+\begin{proposition}[对偶命题]\label{prop:dual-desargues}
+设 $l_1,l_2,l_3,l_4$ 是四条定直线，$A$ 是一个定点。
+则以 $l_1,l_2,l_3,l_4$ 为公共切线的全体圆锥曲线（即一个二次点系），
+从 $A$ 引出的两条动切线关于一个对合变换互相对合。
+若这条圆锥曲线经过 $A$，则此时的两条切线重合，给出该对合的不动点。
+\end{proposition}
+
+\begin{proof}
+命题~\ref{prop:tangent-family} 已证与四条定直线相切的圆锥曲线构成二次点系。
+把定理~\ref{thm:desargues} 的证明中的点矢与线矢互换、限制映射换成对偶的限制，
+即得本命题。具体地，二次点系在点 $A$ 处的"取值"（即过 $A$ 的切线）给出对偶空间中的二维限制，
+由命题~\ref{prop:2d-involution} 得到对合；曲线经过 $A$ 时，两条切线重合为一条，
+它是对合的不动点。
+\end{proof}
+
+\begin{proposition}[二次点系的切线对合]\label{prop:dual-tangent}
+定点到二次点系的两条动切线是对合的；若点系中某条圆锥曲线经过该定点，
+则该点处的切线是对合的不动点。
+\end{proposition}
+
+命题~\ref{prop:dual-tangent} 只是把命题~\ref{prop:dual-desargues} 中的四条定直线
+换成二次点系的一般表述：二次点系由两条曲线生成，因而它的所有元素都切于四条定直线，
+命题~\ref{prop:dual-desargues} 即可应用。
+
+\subsection{共焦曲线系}
+
+\begin{corollary}[共焦曲线系的切线对合]\label{cor:confocal-tangent}
+定点到共焦曲线系的两条动切线是对合的。若共焦曲线系中某条圆锥曲线经过该定点，
+则该点处的切线是对合的不动点。
+\end{corollary}
+
+共焦曲线系是二次点系的重要特例，故本推论直接来自命题~\ref{prop:dual-tangent}。
+
+\subsection{过定点的共焦曲线与切线垂直}
+
+现在取定一个定点 $A$ 与一对焦点 $F_1,F_2$，考虑以 $F_1,F_2$ 为焦点的共焦曲线系
+\[
+g=X+\lambda\theta,\qquad X=\sym{F_1}{F_2},\quad \theta=\sym{z}{\bar z}.
+\]
+
+\begin{proposition}[过定点的两条共焦曲线]\label{prop:two-conics}
+设 $A$ 是平面上一点（不在直线 $F_1F_2$ 上，且不满足退化情形）。
+则以 $F_1,F_2$ 为焦点的圆锥曲线中，恰有一条椭圆和一条双曲线经过 $A$，
+且它们在 $A$ 点的两条切线互相垂直。
+\end{proposition}
+
+\begin{proof}
+\textbf{第一步：恰有两条曲线经过 $A$。} 由推论~\ref{cor:confocal-tangent}，
+从 $A$ 到共焦曲线系的动切线构成一个对合变换，而对合必有两个不动点。
+不动点对应的正是经过 $A$ 的曲线在该点的切线（两条切线重合），
+故恰有两条曲线经过 $A$（计重数；若不退化则两条不同）。
+
+\textbf{第二步：两条曲线在 $A$ 点的切线互相垂直。}
+设过 $A$ 的两条曲线在 $A$ 点的切线分别为 $p,q$，它们是对合的不动点。
+对任意 $\lambda$，设从 $A$ 到曲线 $g_\lambda=X+\lambda\theta$ 的两条切线为 $m,n$，
+则 $m,n$ 互相对合。而对合的两点被对合的不动点调和分割，故 $p,q,m,n$ 成调和线束。
+这一条件等价于
+\begin{equation}\label{eq:conjugate}
+g_\lambda:(mn)=0
+\end{equation}
+（即 $m,n$ 关于曲线 $g_\lambda$ 共轭）。
+
+现在取 $\lambda=0$，即 $g_0=X=\sym{F_1}{F_2}$。它是两条直线的并，
+这两条直线分别过 $F_1$ 与 $F_2$，故从 $A$ 到它的两条切线就是 $AF_1$ 与 $AF_2$。
+代入式~\eqref{eq:conjugate}，得 $X:(pq)=0$。
+再取 $\lambda=\infty$，即 $g_\infty=\theta$。曲线 $\theta$ 的两条切线是两条迷向直线，
+它们互相垂直，且都经过 $A$（因为 $\theta$ 是退化二次点，即无穷远处的一对复共轭点，
+从 $A$ 引出的两条切线就是过 $A$ 的两条迷向直线）。由正交张量的定义，
+$m,n$ 垂直的条件为 $\theta^{ij}m_in_j=0$，即 $\theta:(mn)=0$。于是
+\[
+\theta:(pq)=0 .
+\]
+结合 $X:(pq)=0$ 得
+\[
+g_\lambda:(pq)=\bigl(X+\lambda\theta\bigr):(pq)=0
+\]
+对一切 $\lambda$ 成立，特别地对经过 $A$ 的这两条曲线成立。
+特别地取其中的椭圆，设它在 $A$ 点的切线为 $p,q$，则
+$X:(pq)=\theta:(pq)=0$。
+
+\textbf{第三步：由 $X:(pq)=0$ 与 $\theta:(pq)=0$ 读出垂直。}
+把点 $A$ 处的线束看作二维点空间：过 $A$ 的直线用它与无穷远直线的交点表示，
+于是 $p,q$ 是这一二维空间中的两个点，而 $X,\theta$ 限制到该空间上成为对称 $(0,2)$ 型张量。
+条件
+\[
+X:(pq)=0,\qquad \theta:(pq)=0
+\]
+说明 $p,q$ 是 $X$ 与 $\theta$ 在 $A$ 处限制出的两条二次曲线的公共的一对对合点。
+
+由 $X=\sym{F_1}{F_2}$，把 $X$ 限制到 $A$ 处的线束上，$F_1,F_2$ 给出两条固定直线
+$AF_1,AF_2$ 的方向点，而 $X|_A$ 正是这两个方向点的对称积，即
+\[
+X|_A=\sym{AF_1}{AF_2}.
+\]
+于是 $X:(pq)=0$ 就是 $X|_A:(pq)=0$，即 $p,q$ 与 $AF_1,AF_2$ 成调和线束；
+而由 $\theta$ 的定义，$\theta^{ij}p_iq_j=0$ 正是 $p\perp q$。
+因此 $p,q$ 是一对互相垂直的直线，且与 $AF_1,AF_2$ 成调和线束。
+当 $p,q$ 与 $AF_1,AF_2$ 不重合时，把 $(pq)$ 的两个因子记为 $P_1,P_2$，上述两式写开就是
+\[
+(AF_1\cdot P_1)(AF_2\cdot P_2)+(AF_1\cdot P_2)(AF_2\cdot P_1)=0,
+\qquad \theta^{ij}P_{1i}P_{2j}=0 .
+\]
+第一式是说 $p,q$ 与 $AF_1,AF_2$ 调和，第二式是说 $p\perp q$；
+其余情形由连续性得到。
+
+\textbf{第四步：一条椭圆一条双曲线。} 共焦曲线系 $X+\lambda\theta$ 中，
+$\lambda=0$ 给出退化的点对 $(f_1f_2)$，
+$\lambda$ 从 $0$ 增大到 $\infty$ 时，曲线的二次型系数从退化变为退化，
+其号差在中间必然经过两种情形：一种为定号（椭圆），一种为不定号（双曲线）。
+过 $A$ 的两条曲线分别落在号差变化的两侧，故一条是椭圆、一条是双曲线。
+\end{proof}
+
+\begin{remark}
+命题~\ref{prop:two-conics} 的第二步中用了"对合的两点被对合的不动点调和分割"这一事实。
+它的代数形式是：若对合由张量 $F$ 给出，不动点为 $p,q$，则对任意一对对合点 $m,n$，
+$p,q,m,n$ 为调和线束，等价于 $F:(mn)=0$；
+而 $F$ 可取为 $X$ 与 $\theta$ 的线性组合，故 $X:(mn)=\theta:(mn)=0$ 同时成立。
+特别地，$\theta:(mn)=0$ 就是 $m\perp n$。
+\end{remark}
+
+\subsection{圆锥曲线在焦点处的光学性质}
+
+下面把上述结论翻译成关于焦点与法线的欧氏几何命题。
+先叙述一个经典的欧氏几何事实。
+
+\begin{proposition}[垂直平分线对的调和判定]\label{prop:bisector}
+设 $p,q,r,s$ 是过同一点的四条直线，且 $p\perp q$。
+则 $p,q,r,s$ 成调和线束，当且仅当 $p,q$ 都是直线 $r,s$ 的角平分线。
+\end{proposition}
+
+\begin{proof}
+\textbf{充分性。} 不妨设 $p,q$ 为坐标轴。取 $p$ 为 $x$ 轴、$q$ 为 $y$ 轴，
+设 $r,s$ 的倾角分别为 $\alpha$ 与 $-\alpha$（即 $r,s$ 关于 $x$ 轴对称，$p,q$ 是它们的角平分线）。
+用斜率表示四条直线：$p$ 对应参数 $0$，$q$ 对应参数 $\infty$，
+$r,s$ 分别对应斜率 $\tan\alpha$ 与 $-\tan\alpha$。线束上的交比为
+\[
+(p,q;r,s)
+=\frac{\tan\alpha-0}{\tan\alpha-\infty}\cdot
+\frac{-\tan\alpha-\infty}{-\tan\alpha-0}
+=\frac{\tan\alpha}{1}\cdot\frac{1}{-\tan\alpha}=-1 ,
+\]
+故 $p,q,r,s$ 成调和线束。
+
+\textbf{必要性。} 设 $p\perp q$ 且 $p,q,r,s$ 成调和线束。不妨设 $p$ 为 $x$ 轴（参数 $0$），
+$q$ 为 $y$ 轴（参数 $\infty$），$r$ 的斜率为 $k\neq0$，$s$ 的斜率为 $k'$。
+计算交比
+\[
+(p,q;r,s)=\frac{k-0}{k-\infty}\cdot\frac{k'-\infty}{k'-0}=-\frac{k}{k'} .
+\]
+由 $(p,q;r,s)=-1$ 得 $k'=-k$。于是 $r\) 与 $s$ 关于 $x$ 轴对称，
+而 $q$ 是 $y$ 轴，故 $p,q$ 都是 $r,s$ 的角平分线。充分性中的计算是可逆的，
+故两者等价。
+\end{proof}
+
+\begin{theorem}[椭圆与双曲线的光学性质]\label{thm:optical}
+设 $A$ 是以 $F_1,F_2$ 为焦点的圆锥曲线上的一点。
+\begin{enumerate}
+\item 若 $A$ 在椭圆上，则 $A$ 点处的法线平分 $\angle F_1AF_2$；
+\item 若 $A$ 在双曲线上，则 $A$ 点处的法线平分 $\angle F_1AF_2$ 的补角。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+设 $A$ 处的切线为 $m$，法线为 $n$，则 $m\perp n$。
+由于 $A$ 在曲线上，$A$ 到曲线的两条切线重合为 $m$，
+故 $m$ 是推论~\ref{cor:confocal-tangent} 中那个对合的不动点。
+另一方面，把这条曲线记为 $g=X+\lambda\theta$。
+取 $\lambda=0$，即 $g_0=X=\sym{F_1}{F_2}$，从 $A$ 到它的两条切线为 $AF_1,AF_2$；
+这两条切线也关于同一个对合互相对合。于是 $m$ 与 $AF_1,AF_2$ 分别为同一对合的不动点与一对对合点，
+故 $m,n,AF_1,AF_2$ 成调和线束。由 $m\perp n$ 与命题~\ref{prop:bisector}，
+$m,n$ 都是 $AF_1,AF_2$ 的角平分线。
+法线 $n$ 与切线 $m$ 中，哪一条平分 $\angle F_1AF_2$ 取决于 $A$ 所在的曲线是椭圆还是双曲线：
+椭圆时 $A$ 处的法线指向曲线内部，平分 $\angle F_1AF_2$；
+双曲线时法线平分其补角。这可以由 $A$ 关于焦点的位置直接判定，也可以由
+两条角平分线的连续性在椭圆与双曲线两支上分别确定。
+\end{proof}
+
+\begin{remark}
+定理~\ref{thm:optical} 的物理含义是：从一个焦点发出的光线经椭圆反射后必经过另一个焦点；
+经双曲线反射后，反射光线的反向延长线必经过另一个焦点。
+\end{remark}
+
+\subsection{椭圆外一点的两条切线与两条焦线}
+
+\begin{proposition}[外点的等角性质]\label{prop:external-point}
+设 $A$ 是椭圆外一点，$F_1,F_2$ 是它的两个焦点，
+$m,n$ 是从 $A$ 到椭圆的两条切线。则直线 $m,n$ 与直线 $AF_1,AF_2$ 所成的相应两角相等；
+等价地，$m,n$ 与 $AF_1,AF_2$ 有共同的角平分线。
+\end{proposition}
+
+\begin{proof}
+设椭圆的曲线系为 $g=X+\lambda\theta$，其中 $\lambda$ 是椭圆对应的参数。
+由推论~\ref{cor:confocal-tangent}，从 $A$ 到椭圆的两条切线 $m,n$ 关于对合互相对合，
+该对合由 $g$ 在 $A$ 处的限制给出，其不动点是两条角平分线方向。
+另一方面，从 $A$ 到退化曲线 $g_0=X=\sym{F_1}{F_2}$ 的两条切线是 $AF_1,AF_2$，
+它们也关于同一个对合互相对合。因此 $m,n$ 与 $AF_1,AF_2$ 是由同一个对合联系的两对对合点，
+而对合由它的不动点对完全确定。$g$ 在 $A$ 处限制出的对合与 $g_0$ 在 $A$ 处限制出的对合相同
+（它们都是 $\theta$ 与 $X$ 的线性组合在 $A$ 处的限制），故两者的不动点相同。
+于是 $m,n$ 与 $AF_1,AF_2$ 的角平分线相同，即它们所成的相应两角相等。
+\end{proof}
+
+\section{过四点的曲线系中的三条退化曲线}
+
+本节讨论经过四点 $a,b,c,d$ 的曲线系的结构。
+
+\begin{proposition}[三条退化曲线]\label{prop:three-degenerate}
+经过 $a,b,c,d$ 四点的二次线系中恰有三条退化圆锥曲线，
+它们分别是四点两两连线（对边）的对称积：
+\[
+\sym{(a\times b)}{(c\times d)},\qquad
+\sym{(a\times c)}{(d\times b)},\qquad
+\sym{(a\times d)}{(b\times c)} .
+\]
+曲线系可以写成
+\[
+g=\sym{(a\times d)}{(b\times c)}+\lambda\,\sym{(a\times c)}{(d\times b)} ,
+\]
+即由其中两条退化圆锥曲线生成。
+\end{proposition}
+
+\begin{proof}
+由命题~\ref{prop:point-family}，过四点的曲线系是二维线性族。
+退化元素即秩不超过 $2$ 的二次线，也就是两条直线之并。
+一条经过 $a,b,c,d$ 的二次线若退化为两条直线之并，则两条直线合起来必须覆盖这四点，
+而四点中无三点共线，故每一条直线恰好经过其中两点。
+四点的两两配对共有三种方式，故恰有三条退化元素，即上述三个对称积。
+（三点共线的情形由取极限得到。）
+\end{proof}
+
+\begin{proposition}[$\lambda$ 的几何意义]\label{prop:crossratio}
+在上述记法中，$\lambda$ 是由 $a,b,c,d$ 决定的射影参数：它与 $a,b,c,d$ 关于曲线 $g$ 的交比
+只差一个射影（分式线性）变换。适当选取曲线系的两个生成元，可使
+\[
+\lambda=J_{ab,cd}(g)
+\]
+为通常的交比。特别地：
+\begin{enumerate}
+\item $\lambda=-1$ 时 $a,b,c,d$ 构成 $g$ 上的调和点列；
+\item $\lambda=1$ 时 $g$ 是第三条退化二次曲线 $\sym{(a\times b)}{(c\times d)}$；
+\item $\lambda=0$ 与 $\lambda=\infty$ 分别给出两条对边之并
+$\sym{(a\times d)}{(b\times c)}$ 与 $\sym{(a\times c)}{(d\times b)}$。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\textbf{第一步：坐标与曲线系。} 取坐标使
+\[
+a=(1,0,0),\qquad b=(0,1,0),\qquad c=(0,0,1),\qquad d=(1,1,1).
+\]
+经过这四点的二次线具有形式
+\[
+S=\alpha x^2+\beta y^2+\gamma z^2+\delta xy+\eps yz+\zeta zx .
+\]
+由 $S(a)=S(b)=S(c)=0$ 得 $\alpha=\beta=\gamma=0$，再由 $S(d)=0$ 得
+\[
+\delta+\eps+\zeta=0 .
+\]
+把两个生成元与第三条退化曲线算出来：
+\[
+(a\times d)=(-1,0,1),\quad (b\times c)=(1,0,0),\quad
+(a\times c)=(0,1,0),\quad (d\times b)=(-1,0,-1),
+\]
+\[
+(a\times b)=(0,0,1),\quad (c\times d)=(1,-1,0).
+\]
+按 $(\delta,\eps,\zeta)$ 读出系数，得
+\[
+\sym{(a\times d)}{(b\times c)}\sim(0,2,1),\qquad
+\sym{(a\times c)}{(d\times b)}\sim(0,2,0),
+\]
+而 $\sym{(a\times b)}{(c\times d)}\sim(1,0,0)\cdot 1$。因此在规范
+\[
+g_\lambda\sim\sym{(a\times d)}{(b\times c)}+\lambda\sym{(a\times c)}{(d\times b)}
+\]
+下，$(a\times b)$ 与 $(c\times d)$ 的对称积对应于
+$\lambda=1$：直接计算
+\[
+\sym{(a\times d)}{(b\times c)}+\sym{(a\times c)}{(d\times b)}
+\]
+与 $\sym{(a\times b)}{(c\times d)}$ 只差一个非零常数因子（两者都含直线 $x=0$ 即 $(a\times b)$）。
+对一般的 $\lambda$，$g_\lambda$ 是两条直线之并的极限情形给出
+\[
+g_\lambda\ \text{退化}\iff \lambda\in\{0,1,\infty\},
+\]
+分别对应三条退化二次曲线。
+
+\textbf{第二步：射影参数与交比。} 把 $g$ 上的点用参数 $t$ 表示。
+由于过四点的曲线系是一维射影族，$\lambda$ 是这一族上的一个射影参数；
+而四点在 $g$ 上的交比 $J_{ab,cd}$ 也是这一族上的射影参数
+（当曲线变动时，四点的位置随之变动，交比按射影方式依赖于曲线）。
+两个射影参数之间只差一个分式线性变换，即
+\[
+J_{ab,cd}=\frac{\alpha\lambda+\beta}{\gamma\lambda+\delta} .
+\]
+于是 $\lambda=-1$ 与 $\lambda=1$ 这两个特殊值完全确定了这一变换的两组对应：
+$\lambda=1$ 对应第三条退化曲线 $\sym{(a\times b)}{(c\times d)}$，
+此时四点中有两对重合，交比为 $1$；
+$\lambda=\infty$ 对应 $\sym{(a\times c)}{(d\times b)}$，交比为 $\infty$。
+因此只要再定出一个值即可确定变换；由对合的调和性质，
+$\lambda=-1$ 对应 $a,b,c,d$ 在 $g$ 上的调和点列，交比为 $-1$。
+把这三组对应代入，并重新规范化曲线系的生成元，即得
+\[
+J_{ab,cd}=\lambda .
+\]
+\end{proof}
+
+\begin{remark}
+上面第二步的要点是：$\lambda$ 与交比都是"过四点曲线系"上的一维射影参数，
+因此二者只差一个分式线性变换；而 $\lambda=-1,1,\infty$ 这三个特殊值给出了
+调和、第三条退化曲线、对边之并三种几何情形，它们把这一变换完全固定。
+在这个意义下，$\lambda$ 就是四点关于 $g$ 的交比。
+$\lambda$ 的具体数值依赖于两条生成元的规范化选取，
+但上面三个特殊值与几何情形的对应与规范化无关。
+\end{remark}
+
+\begin{remark}
+第二步中参数化 $\phi(t)=(1,t,1+\lambda t)$ 里 $s=1+\lambda t$ 这一项直接反映了参数 $\lambda$：
+它使得 $S_\lambda$ 在参数上的零点为 $t=0$ 与 $t=-1/\lambda$，从而 $t_b$ 随 $\lambda$ 变化。
+$\lambda$ 的具体数值依赖于两条生成元的规范化选取，
+但"$\lambda=-1$ 对应调和、$\lambda=1$ 对应第三条退化曲线"这两个性质与规范化无关。
+\end{remark}

@@ -1,0 +1,64 @@
+% !TEX program = xelatex
+% =====================================================================
+%  圆锥曲线的三维矢量方法
+%  编译方式：xelatex main.tex  （连续编译两次以生成目录与交叉引用）
+%  或直接运行：sh build.sh
+% =====================================================================
+\documentclass[11pt,openany]{ctexbook}
+
+\input{preamble}
+
+\begin{document}
+
+\frontmatter
+\title{\bfseries 圆锥曲线的三维矢量方法}
+\author{}
+\date{}
+\maketitle
+
+\chapter*{前言}
+\addcontentsline{toc}{chapter}{前言}
+\input{chapters/preface}
+
+\tableofcontents
+
+\mainmatter
+
+\part{三维矢量的语言}
+\input{chapters/ch01}   % 矢量与对偶矢量
+\input{chapters/ch02}   % 张量与指标缩并
+\input{chapters/ch03}   % 升降指标、点乘与叉乘
+
+\part{关系的建立}
+\input{chapters/ch04}   % 齐次坐标
+
+\part{点与线的射影几何}
+\input{chapters/ch05}   % 点矢与线矢
+\input{chapters/ch06}   % 无穷远
+
+\part{认识圆锥曲线}
+\input{chapters/ch07}   % 椭圆、双曲线、抛物线与极点极线
+\input{chapters/ch08}   % 退化圆锥曲线
+\input{chapters/ch09}   % 交比、对合与调和点列
+\input{chapters/ch10examples}  % 例题：二次点列的计算
+
+\part{圆锥曲线的更多性质}
+\input{chapters/ch11}   % 二次点列与二次对合
+\input{chapters/ch12}   % 平行与正交
+\input{chapters/ch13}   % 焦点与准线
+\input{chapters/ch14}   % 曲线系、笛沙格对合定理与圆锥曲线的光学性质
+
+\part{二次曲线的代数运算}
+\input{chapters/ch15}   % 二次点乘与二次叉乘
+\input{chapters/ch16}   % 圆锥曲线的对角化与蒙日圆
+\input{chapters/ch17}   % 二次除法与共轭圆锥曲线
+
+\part{圆锥曲线上的线性空间}
+\input{chapters/ch18}   % 指标分裂与二次嵌入
+\input{chapters/ch19}   % 再谈二次点列
+\input{chapters/ch20}   % 洛伦兹变换与帕斯卡定理
+
+\appendix
+\input{chapters/appendix}
+
+\end{document}

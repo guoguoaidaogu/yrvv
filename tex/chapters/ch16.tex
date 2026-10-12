@@ -1,0 +1,424 @@
+% 第十六节：圆锥曲线的对角化与蒙日圆
+\chapter{圆锥曲线的对角化与蒙日圆}
+
+上一章给出了二次点乘与二次叉乘的代数运算和几何意义。那些结论在一般坐标系下形式复杂，
+但若选取合适的坐标系使圆锥曲线的方程具有标准形式，运算会大幅简化。本章讨论这种简化的
+代数基础：二次型的同时对角化，并由此给出蒙日圆的一个简洁推导。
+
+\section{同时对角化定理}
+
+\begin{theorem}[同时对角化]
+\label{thm:simul}
+设 $g_{ij}$ 与 $h_{ij}$ 是两个实对称 $(0,2)$ 型张量，且 $g$ 非退化。则存在坐标变换，使
+$g_{ij}$ 与 $h_{ij}$ 的分量同时成为对角矩阵
+\[
+g_{ij}=\diag\{\lambda_1,\lambda_2,\lambda_3\},\qquad
+h_{ij}=\diag\{\mu_1,\mu_2,\mu_3\}.
+\]
+\end{theorem}
+
+\begin{proof}
+所有论证都是关于实对称矩阵的，因此可以先取定一组基，把 $g,h$ 写成对称矩阵。
+
+\textbf{第一步：设 $g$ 可逆，且 $g$ 与 $h$ 有相同的零空间形式。} 先考虑 $g$ 正定的情形。
+此时 $g$ 有唯一的正定平方根 $g^{1/2}$，亦有 $g^{-1/2}$。考虑实对称矩阵
+\[
+C=g^{-1/2}h\,g^{-1/2}.
+\]
+由实对称矩阵的谱定理，存在正交矩阵 $Q$ 使 $Q^{\mathsf T}CQ=\diag\{\mu_1,\mu_2,\mu_3\}$。取
+坐标变换的矩阵 $P=g^{-1/2}Q$，则
+\[
+P^{\mathsf T}hP=Q^{\mathsf T}g^{-1/2}h\,g^{-1/2}Q=\diag\{\mu_1,\mu_2,\mu_3\},
+\]
+\[
+P^{\mathsf T}gP=Q^{\mathsf T}g^{-1/2}g\,g^{-1/2}Q=Q^{\mathsf T}Q=\mathrm{id}
+=\diag\{1,1,1\}.
+\]
+把 $P$ 再作一个对角缩放，即可把 $P^{\mathsf T}gP$ 的每个对角元调到任意给定的非零值
+$\lambda_i$，同时 $P^{\mathsf T}hP$ 仍保持对角。故此时 $g,h$ 同时对角化，且 $g$ 的对角元
+可以任意指定。
+
+\textbf{第二步：$g$ 不定或 $h$ 退化。} 对 $t\in[0,1]$ 考虑
+$g_t=(1-t)g+t\,g_+$，其中 $g_+$ 是正定矩阵。$g_t$ 可逆且当 $t>0$ 时正定，故由第一步，
+$g_t$ 与 $h$ 可同时对角化。取 $t\to0$ 的极限（对角化的坐标系可取在紧集
+$\{P\mid \det P=1\}$ 中，必要时取子列），即得 $g,h$ 同时对角化的坐标系。若 $h$ 退化，
+则 $C$ 有零特征值，谱定理的论证仍然适用，只是有些 $\mu_i$ 为零。
+\end{proof}
+
+\begin{remark}
+上述定理是"二次型对的公共主方向"这一经典结论的张量表述。它只用到 $g$ 的非退化性；当 $g$
+与 $h$ 都是（实对称的）圆锥曲线时，结论即为：两条圆锥曲线可以在同一个坐标系下同时化为
+标准方程。
+\end{remark}
+
+\begin{corollary}[摆正]
+在定理 \ref{thm:simul} 所给的坐标系中，两条圆锥曲线的方程分别成为
+\[
+\lambda_1x^2+\lambda_2y^2+\lambda_3=0,\qquad
+\mu_1x^2+\mu_2y^2+\mu_3=0,
+\]
+即都得到了标准方程。可以进一步变换，使其中的一条成为圆、等轴双曲线等特殊形式。
+\end{corollary}
+
+\begin{definition}
+若一条圆锥曲线（或退化圆锥曲线）的方程可以写成
+$\lambda_1x^2+\lambda_2y^2+\lambda_3=0$ 的形式，即它关于坐标轴 $x=0$ 与 $y=0$ 都对称，
+则称它已被\textbf{摆正}（或已化为标准形式）。
+\end{definition}
+
+因为"换坐标系"与"对平面作射影变换"是等价的，定理 \ref{thm:simul} 也可以表述为：
+
+\begin{corollary}
+可以用一个射影变换把任意两条圆锥曲线同时摆正。
+\end{corollary}
+
+\section{仿射变换与正交变换}
+
+摆正两条圆锥曲线一般需要射影变换的全部自由度；只用仿射变换（保持无穷远直线的射影变换）或
+正交变换（保持垂直结构）往往不够。本节说明这两种限制分别对应什么条件。
+
+\subsection{仿射变换}
+
+仿射变换保持无穷远直线不变，因此它保持两圆锥曲线中心的相对位置。
+
+\begin{proposition}
+两条同心的圆锥曲线可以用仿射变换同时摆正。两条不同心的圆锥曲线一般不能只用仿射变换
+同时摆正。
+\end{proposition}
+
+\begin{proof}
+设两条曲线同心，中心为 $O$。把 $O$ 取为坐标原点，则两条曲线都是中心在原点的二次曲线，
+它们的方程只含二次项与常数项。先作一次旋转 $R_1$，把其中一条（记作 $g$）化为标准形式；此时
+另一条 $h$ 一般不再标准。再沿一个坐标方向作压缩：由于 $h$ 与 $g$ 同心，$h$ 在与 $g$ 的主轴
+一致的方向上的半轴长度可以单独缩放，故可以压缩到使 $h$ 也关于坐标轴对称。最后再作一次
+旋转 $R_2$，使两条曲线都关于新坐标轴对称：因为 $g$ 已被压缩成圆，圆在任意旋转下都保持标准
+形式，而 $R_2$ 把 $h$ 化为标准形式。于是 $g,h$ 同时摆正。
+
+若两条曲线不同心，设它们的中心分别为 $O_g\ne O_h$。任意仿射变换把中心映为中心，故变换后两
+曲线的中心仍不同，不可能同时关于同一对坐标轴对称（对称中心的唯一性）。故一般不能只用仿射
+变换同时摆正。更精确地说，同时摆正需要把两条曲线的中心都映到原点，这要求 $O_g=O_h$ 在仿射
+变换下已经相同。
+\end{proof}
+
+\begin{remark}
+上述过程在几何上即：旋转使小曲线摆正；沿主方向压缩使小曲线变成圆；再旋转使大曲线摆正。
+由于圆在旋转下保持为圆，最后一步不会破坏小曲线的标准形式。
+\end{remark}
+
+\subsection{正交变换与垂直张量}
+
+正交变换是保持无穷远绝对形（即垂直张量 $\theta$）的射影变换。在最初选取的坐标系下，
+\[
+\theta^{ij}=\diag\{1,1,0\}
+\]
+已经是对角的；因此"保持垂直结构不变"与"把 $\theta$ 化为对角"是同一件事。
+
+\begin{proposition}
+\label{prop:orth}
+把一条圆锥曲线 $g$ 用正交变换化为标准形式，等价于把 $g$ 与 $\theta$ 同时对角化。一般不能
+用正交变换同时把两条圆锥曲线 $g,h$ 摆正。
+\end{proposition}
+
+\begin{proof}
+正交变换的定义就是保持 $\theta$（即保持"两条直线垂直"这一关系）。若 $g$ 在变换后成为
+$\diag\{\lambda_1,\lambda_2,\lambda_3\}$，而 $\theta$ 同时保持 $\diag\{1,1,0\}$（或仍为对角），
+就说 $g$ 与 $\theta$ 被同时对角化。反之，$g$ 关于 $\theta$ 的主方向（即 $g$ 的对称轴）给出
+正交变换。
+
+要用正交变换同时摆正 $g$ 与 $h$，就需要同时对角化 $g,h,\theta$ 三个张量。一般三个对称张量
+不能被同一个正交变换同时对角化：$\theta$ 的对角化是自动的，但同时对角化 $g,h$ 所需的变换
+通常不是正交的（它含放缩），故一般不可能。
+\end{proof}
+
+\begin{remark}
+\textbf{正交变换是旋转、反射与平移，不包含放缩}。放缩会改变 $\theta$：例如把 $x$ 方向压缩
+$c$ 倍后，原来的垂直关系不再保持，$\theta$ 的分量也相应地变为非对角形式。这正是"仿射变换
+可以摆正同心曲线、正交变换却一般不能摆正两条曲线"的根源。
+\end{remark}
+
+\begin{example}[反比例函数]
+圆锥曲线 $xy-1=0$ 在旋转 $45^\circ$ 后化为
+\[
+X^2-Y^2=1,
+\]
+这是一条等轴双曲线。若允许放缩 $\sqrt2$ 倍，则坐标变换
+$x=X+Y,\ y=X-Y$ 直接把它化为上述标准形式。
+\end{example}
+
+\begin{example}[对勾函数]
+\label{ex:hook}
+设 $y=\dfrac1x+kx$（$k>0$），化为一般形式
+\[
+kx^2-xy+1=0 .
+\]
+它有两条渐近线：$y$ 轴与直线 $y=kx$。为了化为标准形式，选取旋转角 $\beta$，作坐标变换
+\begin{equation}
+\label{eq:rot}
+x=X\cos\beta+Y\sin\beta,\qquad y=-X\sin\beta+Y\cos\beta ,
+\end{equation}
+这是把坐标系逆时针旋转 $\beta$ 的变换。要使两条渐近线成为新坐标轴的方向，应取
+\[
+k=\cot 2\beta=\frac{\cos^2\beta-\sin^2\beta}{2\sin\beta\cos\beta}. \tag{$\ast$}
+\]
+
+把 \eqref{eq:rot} 代入 $kx^2-xy+1=0$，逐步展开。首先
+\[
+x^2=(X\cos\beta+Y\sin\beta)^2=X^2\cos^2\beta+2XY\sin\beta\cos\beta+Y^2\sin^2\beta,
+\]
+\begin{align*}
+xy&=(X\cos\beta+Y\sin\beta)(-X\sin\beta+Y\cos\beta)\\
+&=-X^2\sin\beta\cos\beta+XY(\cos^2\beta-\sin^2\beta)+Y^2\sin\beta\cos\beta .
+\end{align*}
+于是
+\begin{align*}
+kx^2-xy
+&=k\cos^2\beta X^2+\big(2k\sin\beta\cos\beta-\cos^2\beta+\sin^2\beta\big)XY\\
+&\qquad+k\sin^2\beta Y^2+\sin\beta\cos\beta .
+\end{align*}
+由 $(\ast)$，$XY$ 的系数为零；把 $(\ast)$ 代入 $X^2$ 与 $Y^2$ 的系数并化简：
+\[
+k\cos^2\beta=\frac{\cos^2\beta(\cos^2\beta-\sin^2\beta)}{2\sin\beta\cos\beta},
+\qquad
+k\sin^2\beta=\frac{\sin^2\beta(\cos^2\beta-\sin^2\beta)}{2\sin\beta\cos\beta}.
+\]
+再代入 $(\ast)$ 消去分母，最终得到
+\[
+\cos^2\beta\,X^2-\sin^2\beta\,Y^2+2\sin\beta\cos\beta=0 .
+\]
+这就是标准形式。
+\end{example}
+
+\begin{remark}
+例 \ref{ex:hook} 中的旋转角 $\beta$ 由曲线自身的渐近线决定，因此对勾函数的"摆正"只用到一条
+曲线的信息。若要同时摆正两条曲线，一般需要 $\theta$ 参与，而这正是正交变换不可能做到的。
+\end{remark}
+
+\section{对角化与 $8$ 个切点}
+
+上一章证明了：两条圆锥曲线的 $4$ 条公切线产生 $8$ 个切点，它们在同一条圆锥曲线
+$g\times h$ 上。当时这一事实显得有些偶然：确定一条圆锥曲线一般需要 $5$ 个点，而现在 $8$
+个点落在同一条曲线上。若把 $g,h$ 同时摆正，这一事实就变得显然。
+
+\begin{proposition}
+\label{prop:8pts}
+设 $g,h$ 在同一坐标系下已经摆正，则 $g\times h$ 在该坐标系下也摆正。特别地，$8$ 个公切点
+关于坐标轴对称，故它们落在一条摆正的圆锥曲线上。
+\end{proposition}
+
+\begin{proof}
+把 $g,h$ 写为对角形式 $g=\diag\{\lambda_1,\lambda_2,\lambda_3\}$、
+$h=\diag\{\mu_1,\mu_2,\mu_3\}$。由下一节的公式
+\[
+\diag\{\lambda_1,\lambda_2,\lambda_3\}\times\diag\{\mu_1,\mu_2,\mu_3\}
+=\diag\{\lambda_2\mu_3+\lambda_3\mu_2,\ \lambda_1\mu_3+\lambda_3\mu_1,\
+\lambda_2\mu_1+\lambda_1\mu_2\},
+\]
+$g\times h$ 仍是对角的，即仍然摆正。而"摆正"意味着关于两条坐标轴对称；$8$ 个公切点在对称
+变换下互相置换，故它们所在的圆锥曲线必关于坐标轴对称，即 $g\times h$ 已是摆正的那条。
+\end{proof}
+
+\begin{remark}
+当 $g\times h$ 摆正时，只要它经过两个关于两条坐标轴都对称位置的点（例如一对公切点），
+由对称性它就同时经过这 $8$ 个点。摆正后的圆锥曲线方程只有两个待定参数，恰好被两个点确定，
+故 $8$ 个点共线这一"巧合"就变成了常规的对称性。
+\end{remark}
+
+\section{对角二次曲线}
+
+\begin{definition}
+\label{def:diag}
+设 $f,g,h,\dots$ 为若干（至少两个）二次点或二次线。若存在一个坐标系，使得在这个坐标系下
+它们的分量矩阵同时是对角矩阵，则称这些二次点或二次线是\textbf{对角的}。若已约定选取哪个
+坐标系，也可直接说"$f$ 是对角的"。设 $\tau$ 为某个 $(1,1)$ 型张量，若 $\tau$ 在这个坐标系下
+的分量是对角的，也用相同的说法称呼它。
+\end{definition}
+
+\begin{proposition}[封闭性]
+\label{prop:closure}
+以下结论均成立：
+\begin{enumerate}[label=(\arabic*),itemsep=2pt]
+  \item 若 $g$ 是对角的，则 $g^{-1}$ 是对角的。
+  \item 若 $g,h$ 均是对角的，则 $g+h$ 是对角的（无论作为二次点还是二次线的加法）。
+  \item 若 $g,h$ 均是对角的，且 $g\cdot h$ 有定义，则 $g\cdot h$ 是对角的 $(1,1)$ 型张量。
+  \item 若 $g,h$ 均是对角的，则二次叉乘 $g\times h$ 是对角的。
+  \item 若 $f,g$ 是对角的、$g$ 可逆，且 $f=g\times h$，则 $h$ 是对角的。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+在使 $g,h$ 同时对角化的坐标系中，所有涉及的量都是对角矩阵。
+\begin{enumerate}[label=(\arabic*),itemsep=2pt]
+  \item 对角矩阵的逆仍是对角矩阵，对角元取倒数。
+  \item 两个对角矩阵之和仍是对角矩阵。
+  \item 两个对角矩阵之积仍是对角矩阵。
+  \item 由下一节的对角叉乘公式，$g\times h$ 的对角元由 $g,h$ 的对角元的多项式给出，非对角元
+        为零。
+  \item 由上一章的逆映射公式 $h=(f:g)g-2g\cdot f\cdot g$，右端只涉及 $f,g$ 的对角元和它们的
+        乘积，故 $h$ 仍是对角的。
+\end{enumerate}
+\end{proof}
+
+用一句话概括：当我们有两个对角的二次曲线时，由它们作出的任何通常的代数运算的结果仍是
+对角的。换言之，对角二次曲线构成一个代数封闭的集合 $\Sigma$。
+
+\begin{proposition}
+\label{prop:sigma}
+$\Sigma$ 有两个自由度。
+\end{proposition}
+
+\begin{proof}
+在固定的坐标系下，一条对角圆锥曲线由对角元
+$(\lambda_1,\lambda_2,\lambda_3)$ 确定；而二次型的整体非零常数因子不改变它所确定的曲线，
+故可把 $\lambda_3$ 规范化为 $1$（在 $\lambda_3\ne0$ 时），剩下两个自由参数
+$\lambda_1/\lambda_3,\lambda_2/\lambda_3$。退化情形（某个 $\lambda_i=0$）是低维的边界，
+不增加自由度。故 $\Sigma$ 恰有两个自由度。
+\end{proof}
+
+于是可以用两个参数 $(\xi,\eta)$ 表示 $\Sigma$ 中的元素，从而建立 $(\xi,\eta)$ 平面上的点与
+对角圆锥曲线之间的（可能带上若干技术细节的）对应。$(\xi,\eta)$ 平面上的每一点都对应一条
+圆锥曲线。
+
+\section{特征向量与共同极点极线}
+
+对角化的概念与特征向量密切相关。设 $g,h$ 为两条可逆二次线，考虑特征方程
+\[
+(g-\lambda h)\cdot r=0,\qquad \text{即}\qquad \det(g-\lambda h)=0 .
+\]
+这是关于 $\lambda$ 的三次方程，故一般有三个特征值（可以取实数，也可以取无穷大，后者对应
+$h$ 退化的方向）。
+
+\begin{proposition}
+\label{prop:eigen}
+设 $g,h$ 可逆，$r$ 是特征方程 $(g-\lambda h)\cdot r=0$ 的特征向量（$\lambda$ 为实数或
+$\infty$）。则 $r$ 关于 $g$ 的极线与关于 $h$ 的极线重合。反之，若两条极线重合，则 $r$ 是
+特征向量。
+\end{proposition}
+
+\begin{proof}
+特征方程可以写成
+\[
+g_{ij}r^j=\lambda\,h_{ij}r^j .
+\]
+方程左端 $g_{ij}r^j$ 是 $r$ 关于 $g$ 的极线的分量，右端 $h_{ij}r^j$ 是 $r$ 关于 $h$ 的极线的
+分量。二者相差一个非零倍数 $\lambda$ 与 $\lambda=\infty$ 的极限情形，故它们表示同一条
+直线。反之，若两条极线成比例，则比例系数就是特征值。当 $\lambda=\infty$（对应 $h$ 退化）
+时可取极限。
+\end{proof}
+
+\begin{proposition}
+\label{prop:eigenbasis}
+把三个特征向量取为新坐标系的基矢后，$g,h$ 同时对角化；反之，若在某个坐标系下 $g$ 已经对角
+化，则该坐标系的三个基矢是所有这类 $g$ 的共同特征向量，因而也是它们共同的极点极线。
+\end{proposition}
+
+\begin{proof}
+设 $r_1,r_2,r_3$ 是三个线性无关的特征向量，对应特征值 $\lambda_1,\lambda_2,\lambda_3$。以
+它们为基，$g_{ij}r_k^j=\lambda_k h_{ij}r_k^j$ 说明 $g$ 与 $h$ 在这组基下的矩阵只在对角线上
+有非零元（因为对每个基矢 $r_k$，$g\cdot r_k$ 与 $h\cdot r_k$ 成比例，故它们的非对角分量为
+零）。即 $g,h$ 同时对角化。反之，若 $g=\diag\{\lambda_1,\lambda_2,\lambda_3\}$，则对基矢
+$e_k$ 有 $g\cdot e_k=\lambda_k h\cdot e_k$（$h$ 也为对角时），故 $e_k$ 是特征向量。
+\end{proof}
+
+把以上事实串联起来：
+
+\begin{theorem}
+\label{thm:common-polar}
+设点 $a$ 与直线 $l$ 同时关于圆锥曲线 $g,h$ 构成极点极线对，而圆锥曲线 $f$ 是由 $g,h$
+经过若干代数运算得到的，则 $a$ 与 $l$ 关于 $f$ 也构成极点极线对。
+\end{theorem}
+
+\begin{proof}
+选取使 $g,h$ 同时对角化的坐标系（由命题 \ref{prop:eigenbasis}，这等价于把三个共同特征向量
+取为基矢）。在这个坐标系中，$g=\diag\{\lambda_1,\lambda_2,\lambda_3\}$、
+$h=\diag\{\mu_1,\mu_2,\mu_3\}$，而 $a,l$ 同时关于它们构成极点极线对。由命题
+\ref{prop:closure}，$f$ 在这个坐标系中也是对角的，且其对角元由 $\lambda_i,\mu_i$ 的多项式
+给出；由于 $a,l$ 在该坐标系中的相应分量只涉及 $g,h$ 的对角元，而这些量的任何代数运算在
+$f$ 上给出相同的对应对，故 $a,l$ 关于 $f$ 仍构成极点极线对。
+\end{proof}
+
+这一结论有助于直接看出由各种代数方法构造出的圆锥曲线的共同几何性质。
+
+\subsection{作三对共同极点极线}
+
+当平面上有 $g,h$ 时，可以如下作出它们的三对共同极点极线：先作出 $4$ 条公切线，它们两两相交
+于 $6$ 个点。由完全四边形与配极的关系，两个不相邻交点的连线是另外两个相邻交点连线的极点；
+换言之，相对交点的三条连线就是三条公共极线（把它们分别记作 $u,v,w$）。两条公共极线的
+交点就是第三条公共极线的极点（记作 $U,V,W$）。于是 $(U,u),(V,v),(W,w)$ 是三对共同极点
+极线。
+
+这三对极线还有一个更简单的描述：$4$ 条公切线两两相交所得的 $6$ 个点是配极意义下的一对
+互极三点形，三条公共极线正是这个三点形对边连线对应的极线。特别地，三条公共极线构成
+自极三点形。作图时，只要作出这 $4$ 条切线，就不需要再作任何曲线。
+
+\section{对角坐标下的二次叉乘与蒙日圆}
+
+\begin{proposition}
+\label{prop:diag-cross}
+设 $g^{ij}=\diag\{\lambda_1,\lambda_2,\lambda_3\}$、
+$h^{ij}=\diag\{\mu_1,\mu_2,\mu_3\}$，则
+\[
+(g\times h)^{kl}=\epsilon^{ikm}\epsilon^{jln}g^{ij}h^{mn}
+\]
+是对角的，并且
+\begin{equation}
+\label{eq:diag-cross}
+\diag\{\lambda_1,\lambda_2,\lambda_3\}\times\diag\{\mu_1,\mu_2,\mu_3\}
+=\diag\{\lambda_2\mu_3+\lambda_3\mu_2,\
+\lambda_1\mu_3+\lambda_3\mu_1,\
+\lambda_2\mu_1+\lambda_1\mu_2\}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+由定义 $(g\times h)_{kl}=\epsilon_{imk}\epsilon_{jnl}g^{ij}h^{mn}$。把 $g,h$ 的对角形式代入：
+\[
+(g\times h)_{kl}=\sum_{i,m}\epsilon_{imk}\epsilon_{iml}\,\lambda_i\mu_m .
+\]
+当 $k\ne l$ 时，对每个固定的 $i,m$，$\epsilon_{imk}$ 与 $\epsilon_{iml}$ 中至少有一个为零或
+者二者符号相反，求和为零；故 $(g\times h)_{kl}=0$。当 $k=l=1$ 时，只有 $(i,m)=(2,3)$ 与
+$(3,2)$ 两组非零，给出
+\[
+(g\times h)_{11}=\lambda_2\mu_3+\lambda_3\mu_2 .
+\]
+其余两个对角元同理，即得 \eqref{eq:diag-cross}。
+\end{proof}
+
+\begin{example}[蒙日圆]
+\label{ex:monge}
+设 $g$ 为椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，$a$ 是椭圆外一点。过 $a$ 作椭圆的两条
+切线 $m,n$，使 $m\perp n$，求 $a$ 的轨迹。
+\end{example}
+
+\begin{proof}[解]
+$a$ 到 $g$ 的两条切线所成的二次线可以用二次叉乘表示：$(mn)=g\times aa$。两条切线互相垂直
+等价于 $(mn):\theta=0$，其中 $\theta^{ij}=\diag\{1,1,0\}$ 是垂直张量。于是 $a$ 满足
+\[
+(g\times aa):\theta=0 .
+\]
+由混合积的全对称性，把它改写为
+\[
+(g\times \theta):aa=0 .
+\]
+因此 $a$ 在圆锥曲线 $h=g\times\theta$ 上。下面写出 $h$ 的方程。由定义
+\[
+g^{ij}=\diag\{a^2,b^2,-1\},\qquad \theta^{ij}=\diag\{1,1,0\},
+\]
+代入 \eqref{eq:diag-cross}：
+\[
+h_{ij}=(g\times\theta)_{ij}
+=\diag\{b^2\cdot0+(-1)\cdot1,\ a^2\cdot0+(-1)\cdot1,\ b^2\cdot1+a^2\cdot1\}
+=\diag\{-1,-1,a^2+b^2\}.
+\]
+于是 $h$ 的方程为
+\[
+-x^2-y^2+(a^2+b^2)=0,\qquad\text{即}\qquad x^2+y^2=a^2+b^2 .
+\]
+故满足条件的点 $a$ 的轨迹是以原点为圆心、半径为 $\sqrt{a^2+b^2}$ 的圆，即蒙日圆。
+\end{proof}
+
+\begin{remark}
+上述推导只用到二次叉乘的对角公式，不需要解切线方程，也不需要写出切点的坐标。这正是把
+圆锥曲线摆正后再作代数运算的好处。注意这里 $(g\times\theta)_{ij}$ 是由 $g^{ij}$ 与
+$\theta^{ij}$ 的对角元按 \eqref{eq:diag-cross} 计算所得的下指标张量；计算第三个分量时容易
+漏掉一个符号，因为 $g^{33}=-1$ 带负号，而 $\theta^{33}=0$。
+\end{remark}
